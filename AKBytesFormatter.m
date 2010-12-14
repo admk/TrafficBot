@@ -13,19 +13,23 @@
 
 #pragma mark convertion
 + (NSString *)convertBytesWithNumber:(NSNumber *)number {
-	return [self convertBytesWithNumber:number toUnit:[self bestUnitForNumber:number]];
+	return [self convertBytesWithNumber:number toUnit:[self bestUnitForNumber:number] decimals:YES];
 }
-+ (NSString *)convertBytesWithNumber:(NSNumber *)number toUnit:(AKBytesFormatterUnit)unit {
-	u_int64_t ullNum = [number unsignedLongLongValue];
-	ullNum /= unit;
-	NSNumber *numWithUnit = [NSNumber numberWithFloat:ullNum];
++ (NSString *)convertBytesWithNumber:(NSNumber *)number decimals:(BOOL)decimals {
+	return [self convertBytesWithNumber:number toUnit:[self bestUnitForNumber:number] decimals:decimals];
+}
++ (NSString *)convertBytesWithNumber:(NSNumber *)number toUnit:(AKBytesFormatterUnit)unit decimals:(BOOL)decimals {	float floatValue = [number floatValue];
+	floatValue /= (float)unit;
+	NSString *string = [NSString stringWithFormat:decimals? @"%.2f":@"%.0f", floatValue];
+	NSString *unitString = nil;
 	switch (unit) {
-		case AKBytesFormatterBytesUnit:		return [NSString stringWithFormat:@"%@ B",  numWithUnit];
-		case AKBytesFormatterKiloBytesUnit: return [NSString stringWithFormat:@"%@ KB", numWithUnit];
-		case AKBytesFormatterMegaBytesUnit: return [NSString stringWithFormat:@"%@ MB", numWithUnit];
-		case AKBytesFormatterGigaBytesUnit: return [NSString stringWithFormat:@"%@ GB", numWithUnit];
-		default: ALog(@"unrecognised unit: %l", unit); return nil;
+		case AKBytesFormatterBytesUnit:		unitString = @"B";  break; 
+		case AKBytesFormatterKiloBytesUnit: unitString = @"KB"; break;
+		case AKBytesFormatterMegaBytesUnit: unitString = @"MB"; break;
+		case AKBytesFormatterGigaBytesUnit: unitString = @"GB"; break;
+		default: ALog(@"unrecognised unit: %l", unit); break;
 	}
+	return [string stringByAppendingFormat:@" %@", unitString];
 }
 + (AKBytesFormatterUnit)bestUnitForNumber:(NSNumber *)number {
 	switch ([number unsignedLongLongValue]) {

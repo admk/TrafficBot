@@ -19,7 +19,8 @@ typedef enum {
 @interface AKBytesFormatter : NSObject
 
 + (NSString *)convertBytesWithNumber:(NSNumber *)number;
-+ (NSString *)convertBytesWithNumber:(NSNumber *)number toUnit:(AKBytesFormatterUnit)unit;
++ (NSString *)convertBytesWithNumber:(NSNumber *)number decimals:(BOOL)decimals;
++ (NSString *)convertBytesWithNumber:(NSNumber *)number toUnit:(AKBytesFormatterUnit)unit decimals:(BOOL)decimals;
 + (AKBytesFormatterUnit)bestUnitForNumber:(NSNumber *)number;
 
 @end

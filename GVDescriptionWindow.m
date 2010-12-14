@@ -112,7 +112,7 @@
 	_data = newData;
 
 	NSNumber *number = [NSNumber numberWithFloat:newData];
-	self._dataString = [AKBytesFormatter convertBytesWithNumber:number toUnit:[AKBytesFormatter bestUnitForNumber:number]];
+	self._dataString = [AKBytesFormatter convertBytesWithNumber:number];
 	self._dataString = [self._dataString stringByAppendingString:@"/s"];
 	// set text label
 	[dataTextField setTitleWithMnemonic:self._dataString];

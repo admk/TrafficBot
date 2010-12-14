@@ -39,24 +39,26 @@
 			<object class="NSCustomObject" id="1004">
 				<string key="NSClassName">NSApplication</string>
 			</object>
-			<object class="NSWindowTemplate" id="830996889">
+			<object class="NSWindowTemplate" id="907223101">
 				<int key="NSWindowStyleMask">8223</int>
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{230, 208}, {518, 333}}</string>
-				<int key="NSWTFlags">-1535639552</int>
-				<string key="NSWindowTitle">Window</string>
+				<int key="NSWTFlags">611844096</int>
+				<string key="NSWindowTitle">Captain's Log</string>
 				<string key="NSWindowClass">NSPanel</string>
 				<nil key="NSViewClass"/>
-				<object class="NSView" key="NSWindowView" id="724811214">
+				<string key="NSWindowContentMaxSize">{1024, 768}</string>
+				<string key="NSWindowContentMinSize">{200, 100}</string>
+				<object class="NSView" key="NSWindowView" id="957638134">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSCustomView" id="397787395">
-							<reference key="NSNextResponder" ref="724811214"/>
+						<object class="NSCustomView" id="38572865">
+							<reference key="NSNextResponder" ref="957638134"/>
 							<int key="NSvFlags">274</int>
 							<string key="NSFrameSize">{517, 333}</string>
-							<reference key="NSSuperview" ref="724811214"/>
+							<reference key="NSSuperview" ref="957638134"/>
 							<string key="NSClassName">TBGraphView</string>
 						</object>
 					</object>
@@ -64,7 +66,8 @@
 					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
-				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
+				<string key="NSMinSize">{200, 119}</string>
+				<string key="NSMaxSize">{1024, 787}</string>
 			</object>
 			<object class="NSCustomView" id="880100201">
 				<reference key="NSNextResponder"/>
@@ -107,7 +110,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">draggedPanel</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="830996889"/>
+						<reference key="destination" ref="907223101"/>
 					</object>
 					<int key="connectionID">16</int>
 				</object>
@@ -122,7 +125,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">controller</string>
-						<reference key="source" ref="397787395"/>
+						<reference key="source" ref="38572865"/>
 						<reference key="destination" ref="1001"/>
 					</object>
 					<int key="connectionID">19</int>
@@ -131,7 +134,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">draggedGraphView</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="397787395"/>
+						<reference key="destination" ref="38572865"/>
 					</object>
 					<int key="connectionID">20</int>
 				</object>
@@ -180,27 +183,27 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">14</int>
-						<reference key="object" ref="830996889"/>
+						<reference key="object" ref="907223101"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="724811214"/>
+							<reference ref="957638134"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Dragged Panel</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">15</int>
-						<reference key="object" ref="724811214"/>
+						<reference key="object" ref="957638134"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="397787395"/>
+							<reference ref="38572865"/>
 						</object>
-						<reference key="parent" ref="830996889"/>
+						<reference key="parent" ref="907223101"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">18</int>
-						<reference key="object" ref="397787395"/>
-						<reference key="parent" ref="724811214"/>
+						<reference key="object" ref="38572865"/>
+						<reference key="parent" ref="957638134"/>
 					</object>
 				</object>
 			</object>
@@ -216,6 +219,10 @@
 					<string>14.IBPluginDependency</string>
 					<string>14.IBWindowTemplateEditedContentRect</string>
 					<string>14.NSWindowTemplate.visibleAtLaunch</string>
+					<string>14.windowTemplate.hasMaxSize</string>
+					<string>14.windowTemplate.hasMinSize</string>
+					<string>14.windowTemplate.maxSize</string>
+					<string>14.windowTemplate.minSize</string>
 					<string>15.IBPluginDependency</string>
 					<string>18.IBPluginDependency</string>
 					<string>18.IBViewBoundsToFrameTransform</string>
@@ -228,10 +235,14 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">AQAAAADAAAAAA</bytes>
 					</object>
-					<string>{{505, 425}, {518, 333}}</string>
+					<string>{{449, 475}, {518, 333}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{505, 425}, {518, 333}}</string>
+					<string>{{449, 475}, {518, 333}}</string>
 					<boolean value="NO"/>
+					<boolean value="YES"/>
+					<boolean value="YES"/>
+					<string>{1024, 768}</string>
+					<string>{200, 100}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
