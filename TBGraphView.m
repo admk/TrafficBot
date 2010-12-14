@@ -214,6 +214,12 @@
 #pragma mark events
 - (void)mouseDragged:(NSEvent *)theEvent {
 	
+	[descriptionWindow orderOut:self];
+	if ([self.window respondsToSelector:@selector(setHasArrow:)]) {
+		[(MAAttachedWindow *)self.window setHasArrow:NO];
+	}
+	[self.window setAlphaValue:.7];
+
 	while (YES) {
 		
 		NSEvent *newEvent = [self.window nextEventMatchingMask:(NSLeftMouseDraggedMask | NSLeftMouseUpMask)];
@@ -230,14 +236,9 @@
 		}
 		
 		// still dragging
-		[descriptionWindow orderOut:self];
 		NSPoint windowOrigin = self.window.frame.origin;
 		NSPoint newOrigin = NSMakePoint(windowOrigin.x + [newEvent deltaX], windowOrigin.y - [newEvent deltaY]);
 		[self.window setFrameOrigin:newOrigin];
-		[self.window setAlphaValue:.7];
-		if ([self.window respondsToSelector:@selector(setHasArrow:)]) {
-		[(MAAttachedWindow *)self.window setHasArrow:NO];
-		}
 	}
 }
 - (void)mouseMoved:(NSEvent *)theEvent {
