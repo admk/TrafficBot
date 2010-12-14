@@ -9,7 +9,8 @@
 #import <Cocoa/Cocoa.h>
 
 @protocol TBGraphViewDelegate
-- (void)mouseDragged:(NSEvent *)theEvent;
+@optional
+- (void)showDraggedWindowWithFrame:(NSRect)frame;
 @end
 
 

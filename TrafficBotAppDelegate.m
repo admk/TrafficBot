@@ -85,6 +85,7 @@
 }
 - (void)dismissGraphWindow:(id)sender {
 	[graphWindowController dismiss:sender];
+	[statusItemController dismissHighlight:sender];
 }
 @end
 

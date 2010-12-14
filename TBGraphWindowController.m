@@ -8,26 +8,29 @@
 
 #import "TBGraphWindowController.h"
 #import "AKTrafficMonitorService.h"
+#import "TrafficBotAppDelegate.h"
 #import "MAAttachedWindow.h"
 #import "NSWindow+AKFlip.h"
 #import "NSWindow+NoodleEffects.h"
 
 @interface TBGraphWindowController ()
-- (void)_refresh;
+- (void)_refreshView:(TBGraphView *)view;
 - (void)_didReceiveNotificationFromTrafficMonitorService:(NSNotification *)notification;
 @end
 
 @implementation TBGraphWindowController
 
 - (void)awakeFromNib {
+	[draggedPanel setAcceptsMouseMovedEvents:YES];
+
 	[[AKTrafficMonitorService sharedService] addObserver:self selector:@selector(_didReceiveNotificationFromTrafficMonitorService:)];
-	[self _refresh];
+	[self _refreshView:self.graphView];
 }
 
 #pragma mark -
 - (void)flip:(id)sender fromWindow:(NSWindow *)aWindow atPoint:(NSPoint)point {
 	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-	[self _refresh];
+	[self _refreshView:self.graphView];
 	// shows graph view
 	_zoomRect = [sender convertRect:[sender bounds] toView:nil];
 	_zoomRect.origin = point;
@@ -53,13 +56,19 @@
 }
 
 #pragma mark -
-#pragma mark events
-
+#pragma mark protocol
+- (void)showDraggedWindowWithFrame:(NSRect)frame {
+	[draggedPanel makeFirstResponder:self.draggedGraphView];
+	[draggedPanel setFrame:frame display:NO];
+	[draggedPanel makeKeyAndOrderFront:self];
+	[[NSApp delegate] dismissGraphWindow:self];
+	[self _refreshView:self.draggedGraphView];
+}
 
 #pragma mark -
 #pragma mark private
 #pragma mark refresh view
-- (void)_refresh {
+- (void)_refreshView:(TBGraphView *)view {
 	// calculate total
 	NSDictionary *dict = [[AKTrafficMonitorService sharedService] rollingLogFile];
 	NSMutableDictionary *graphDict = [[[NSMutableDictionary alloc] initWithCapacity:[dict count]] autorelease];
@@ -68,14 +77,18 @@
 		double total = [[inOutDict objectForKey:@"in"] doubleValue] + [[inOutDict objectForKey:@"out"] doubleValue];
 		[graphDict setObject:[NSNumber numberWithDouble:total] forKey:[NSDate dateWithString:dateString]];
 	}
-	self.graphView.dataDict = graphDict;
+	view.dataDict = graphDict;
 }
 #pragma mark monitor service notifications
 - (void)_didReceiveNotificationFromTrafficMonitorService:(NSNotification *)notification {
 	if ([[notification name] isEqual:AKTrafficMonitorStatisticsDidUpdateNotification]) {
-		if (![self.window isVisible]) return;
-		[self _refresh];
+		if ([self.window isVisible]) {
+			[self _refreshView:self.graphView];
+		}
+		if ([self.draggedPanel isVisible]) {
+			[self _refreshView:self.draggedGraphView];	
+		}
 	}
 }
-@synthesize graphView, contentView, draggedPanel;
+@synthesize graphView, contentView, draggedPanel, draggedGraphView;
 @end

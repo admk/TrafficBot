@@ -212,16 +212,28 @@
 
 #pragma mark -
 #pragma mark events
-- (void)mouseDragged:(NSEvent *)theEvent {
+- (void)mouseDown:(NSEvent *)theEvent {
 	while (YES) {
 		NSEvent *newEvent = [self.window nextEventMatchingMask:(NSLeftMouseDraggedMask | NSLeftMouseUpMask)];
 		if ([newEvent type] == NSLeftMouseUp) {
-			break;
+			// user gave up left mouse
+			[self.window orderOut:self];
+			[self.window setAlphaValue:1];
+			if ([NSStringFromClass([self.window class]) isEqualToString:@"MAAttachedWindow"]) {
+				[(MAAttachedWindow *)self.window setHasArrow:YES];
+			}
+			[controller showDraggedWindowWithFrame:self.window.frame];
+			return;
 		}
+		// still dragging
 		[descriptionWindow orderOut:self];
 		NSPoint windowOrigin = self.window.frame.origin;
 		NSPoint newOrigin = NSMakePoint(windowOrigin.x + [newEvent deltaX], windowOrigin.y - [newEvent deltaY]);
 		[self.window setFrameOrigin:newOrigin];
+		[self.window setAlphaValue:.7];
+		if ([NSStringFromClass([self.window class]) isEqualToString:@"MAAttachedWindow"]) {
+			[(MAAttachedWindow *)self.window setHasArrow:NO];
+		}
 	}
 }
 - (void)mouseMoved:(NSEvent *)theEvent {

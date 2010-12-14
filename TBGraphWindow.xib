@@ -13,6 +13,7 @@
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="10"/>
+			<integer value="14"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -38,7 +39,7 @@
 			<object class="NSCustomObject" id="1004">
 				<string key="NSClassName">NSApplication</string>
 			</object>
-			<object class="NSWindowTemplate" id="856562313">
+			<object class="NSWindowTemplate" id="830996889">
 				<int key="NSWindowStyleMask">8223</int>
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{230, 208}, {518, 333}}</string>
@@ -46,12 +47,21 @@
 				<string key="NSWindowTitle">Window</string>
 				<string key="NSWindowClass">NSPanel</string>
 				<nil key="NSViewClass"/>
-				<object class="NSView" key="NSWindowView" id="330872947">
+				<object class="NSView" key="NSWindowView" id="724811214">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
+					<object class="NSMutableArray" key="NSSubviews">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSCustomView" id="397787395">
+							<reference key="NSNextResponder" ref="724811214"/>
+							<int key="NSvFlags">274</int>
+							<string key="NSFrameSize">{517, 333}</string>
+							<reference key="NSSuperview" ref="724811214"/>
+							<string key="NSClassName">TBGraphView</string>
+						</object>
+					</object>
 					<string key="NSFrameSize">{518, 333}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
@@ -97,7 +107,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">draggedPanel</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="856562313"/>
+						<reference key="destination" ref="830996889"/>
 					</object>
 					<int key="connectionID">16</int>
 				</object>
@@ -108,6 +118,22 @@
 						<reference key="destination" ref="1001"/>
 					</object>
 					<int key="connectionID">17</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">controller</string>
+						<reference key="source" ref="397787395"/>
+						<reference key="destination" ref="1001"/>
+					</object>
+					<int key="connectionID">19</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">draggedGraphView</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="397787395"/>
+					</object>
+					<int key="connectionID">20</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -154,18 +180,27 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">14</int>
-						<reference key="object" ref="856562313"/>
+						<reference key="object" ref="830996889"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="330872947"/>
+							<reference ref="724811214"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Dragged Panel</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">15</int>
-						<reference key="object" ref="330872947"/>
-						<reference key="parent" ref="856562313"/>
+						<reference key="object" ref="724811214"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="397787395"/>
+						</object>
+						<reference key="parent" ref="830996889"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">18</int>
+						<reference key="object" ref="397787395"/>
+						<reference key="parent" ref="724811214"/>
 					</object>
 				</object>
 			</object>
@@ -182,6 +217,8 @@
 					<string>14.IBWindowTemplateEditedContentRect</string>
 					<string>14.NSWindowTemplate.visibleAtLaunch</string>
 					<string>15.IBPluginDependency</string>
+					<string>18.IBPluginDependency</string>
+					<string>18.IBViewBoundsToFrameTransform</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -189,13 +226,17 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">AUObgADCRAAAA</bytes>
+						<bytes key="NSTransformStruct">AQAAAADAAAAAA</bytes>
 					</object>
-					<string>{{42, 772}, {518, 333}}</string>
+					<string>{{505, 425}, {518, 333}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{42, 772}, {518, 333}}</string>
+					<string>{{505, 425}, {518, 333}}</string>
 					<boolean value="NO"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">AcLkAABCvgAAA</bytes>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -214,7 +255,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">17</int>
+			<int key="maxID">20</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -271,12 +312,14 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>contentView</string>
+							<string>draggedGraphView</string>
 							<string>draggedPanel</string>
 							<string>graphView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSView</string>
+							<string>TBGraphView</string>
 							<string>NSPanel</string>
 							<string>TBGraphView</string>
 						</object>
@@ -286,6 +329,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>contentView</string>
+							<string>draggedGraphView</string>
 							<string>draggedPanel</string>
 							<string>graphView</string>
 						</object>
@@ -294,6 +338,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">contentView</string>
 								<string key="candidateClassName">NSView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">draggedGraphView</string>
+								<string key="candidateClassName">TBGraphView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">draggedPanel</string>
