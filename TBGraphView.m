@@ -80,7 +80,7 @@
 - (void)drawRect:(NSRect)dirtyRect {
 	
 	int yMax = 50000;
-	if (_yMax != 0) yMax = _yMax;
+	if (_yMax > 2) yMax = _yMax;
 	// grid
 	int incr = 2.5 * pow(10, (int)(log10f(yMax)-1));
 	for (float y = incr; y <= yMax; y += incr) {
@@ -212,27 +212,31 @@
 
 #pragma mark -
 #pragma mark events
-- (void)mouseDown:(NSEvent *)theEvent {
+- (void)mouseDragged:(NSEvent *)theEvent {
+	
 	while (YES) {
+		
 		NSEvent *newEvent = [self.window nextEventMatchingMask:(NSLeftMouseDraggedMask | NSLeftMouseUpMask)];
+		
 		if ([newEvent type] == NSLeftMouseUp) {
 			// user gave up left mouse
 			[self.window orderOut:self];
 			[self.window setAlphaValue:1];
-			if ([NSStringFromClass([self.window class]) isEqualToString:@"MAAttachedWindow"]) {
-				[(MAAttachedWindow *)self.window setHasArrow:YES];
+			if ([self.window respondsToSelector:@selector(setHasArrow:)]) {
+			[(MAAttachedWindow *)self.window setHasArrow:YES];
 			}
 			[controller showDraggedWindowWithFrame:self.window.frame];
 			return;
 		}
+		
 		// still dragging
 		[descriptionWindow orderOut:self];
 		NSPoint windowOrigin = self.window.frame.origin;
 		NSPoint newOrigin = NSMakePoint(windowOrigin.x + [newEvent deltaX], windowOrigin.y - [newEvent deltaY]);
 		[self.window setFrameOrigin:newOrigin];
 		[self.window setAlphaValue:.7];
-		if ([NSStringFromClass([self.window class]) isEqualToString:@"MAAttachedWindow"]) {
-			[(MAAttachedWindow *)self.window setHasArrow:NO];
+		if ([self.window respondsToSelector:@selector(setHasArrow:)]) {
+		[(MAAttachedWindow *)self.window setHasArrow:NO];
 		}
 	}
 }
