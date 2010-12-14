@@ -10,13 +10,11 @@
 #import "MAAttachedWindow.h"
 
 @class DWView;
-
 @interface GVDescriptionWindow : MAAttachedWindow {
 
 	DWView *view;
 	NSTextField *dateTextField;
 	NSTextField *dataTextField;
-	
 @private
 	NSDateFormatter *_dateFormatter;
 	NSDate *_date;

@@ -7,6 +7,7 @@
 //
 
 #import "GVDescriptionWindow.h"
+#import "AKBytesFormatter.h"
 
 #define VIEW_CORNER_RADIUS ((float)5.0)
 #define VIEW_GRADIENT_COLOR_1 [NSColor colorWithCalibratedRed:100.0/255 green:200.0/255 blue:1 alpha:1]
@@ -15,15 +16,6 @@
 #pragma mark -
 #pragma mark MAAttachedWindow private methods
 @interface MAAttachedWindow (MAPrivateMethods)
-// Geometry
-- (void)_updateGeometry;
-- (MAWindowPosition)_bestSideForAutomaticPosition;
-- (float)_arrowInset;
-// Drawing
-- (void)_updateBackground;
-- (NSColor *)_backgroundColorPatternImage;
-- (NSBezierPath *)_backgroundPath;
-- (void)_appendArrowToPath:(NSBezierPath *)path;
 - (void)_redisplay;
 @end
 
@@ -118,9 +110,10 @@
 - (void)setData:(float)newData {
 	if (_data == newData) return;
 	_data = newData;
-	
-	self._dataString = [NSString stringWithFormat:@"%.0f", _data];
-	
+
+	NSNumber *number = [NSNumber numberWithFloat:newData];
+	self._dataString = [AKBytesFormatter convertBytesWithNumber:number toUnit:[AKBytesFormatter bestUnitForNumber:number]];
+	self._dataString = [self._dataString stringByAppendingString:@"/s"];
 	// set text label
 	[dataTextField setTitleWithMnemonic:self._dataString];
 	
@@ -131,15 +124,14 @@
 #pragma mark private
 - (void)_updateViewSize {
 	
-	NSFont *font = [NSFont fontWithName:@"Helvetica" size:12];
-	float dateWidth = [self _widthOfString:self._dateString withFont:font];
-	float dataWidth = [self _widthOfString:self._dataString withFont:font];
+	float dateWidth = [self _widthOfString:self._dateString withFont:[NSFont fontWithName:@"Helvetica" size:12]];
+	float dataWidth = [self _widthOfString:self._dataString withFont:[NSFont fontWithName:@"Helvetica" size:14]];
 	float maxWidth;
 	if (dateWidth > dataWidth) maxWidth = dateWidth;
 	else maxWidth = dataWidth;
 	
 	NSRect rect = view.frame;
-	rect.size.width = maxWidth+10;
+	rect.size.width = maxWidth + 10;
 	[view setFrame:rect];
 	[super _redisplay];
 }

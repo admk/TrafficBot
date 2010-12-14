@@ -13,21 +13,19 @@
 - (void)showDraggedWindowWithFrame:(NSRect)frame;
 @end
 
-
 @class GVPegView;
 @class GVDescriptionWindow;
 @interface TBGraphView : NSView {
 
 	__weak id<TBGraphViewDelegate> controller;
-	GVDescriptionWindow *descriptionWindow;
-	
+	GVDescriptionWindow *descriptionWindow;	
 @private
-	NSDictionary *_dataDict;
-	float _dateRange;
-	float _yMax;
-	BOOL _mouseIsInside;
-	NSPoint _mouseViewPos;
-	GVPegView *_pegView;
+	NSDictionary	*_dataDict;
+	float			_dateRange;
+	float			_yMax;
+	BOOL			_mouseIsInside;
+	NSPoint			_mouseViewPos;
+	GVPegView		*_pegView;
 	NSDateFormatter *_dateFormatter;
 }
 @property (assign) id<TBGraphViewDelegate> controller;

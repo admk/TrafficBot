@@ -220,21 +220,18 @@
 	}
 	[self.window setAlphaValue:.7];
 
-	while (YES) {
-		
+	while (YES) {		
 		NSEvent *newEvent = [self.window nextEventMatchingMask:(NSLeftMouseDraggedMask | NSLeftMouseUpMask)];
-		
 		if ([newEvent type] == NSLeftMouseUp) {
 			// user gave up left mouse
 			[self.window orderOut:self];
 			[self.window setAlphaValue:1];
 			if ([self.window respondsToSelector:@selector(setHasArrow:)]) {
-			[(MAAttachedWindow *)self.window setHasArrow:YES];
+				[(MAAttachedWindow *)self.window setHasArrow:YES];
 			}
 			[controller showDraggedWindowWithFrame:self.window.frame];
 			return;
 		}
-		
 		// still dragging
 		NSPoint windowOrigin = self.window.frame.origin;
 		NSPoint newOrigin = NSMakePoint(windowOrigin.x + [newEvent deltaX], windowOrigin.y - [newEvent deltaY]);
