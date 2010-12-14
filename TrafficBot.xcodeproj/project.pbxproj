@@ -1,0 +1,883 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		256AC3DA0F4B6AC300CF3369 /* TrafficBotAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* TrafficBotAppDelegate.m */; };
+		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		B16F06891275E51D00D13C0B /* TBStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16F06881275E51D00D13C0B /* TBStatusView.xib */; };
+		B16F068C1275E53C00D13C0B /* TBPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16F068B1275E53C00D13C0B /* TBPreferencesWindow.xib */; };
+		B16F069312760D4E00D13C0B /* TBStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F069212760D4E00D13C0B /* TBStatusViewController.m */; };
+		B16F06A4127619A400D13C0B /* TBStatusItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F06A3127619A400D13C0B /* TBStatusItemController.m */; };
+		B16F06C71276211D00D13C0B /* TBStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F06C61276211D00D13C0B /* TBStatusItemView.m */; };
+		B16F084A12772C8200D13C0B /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F084912772C8200D13C0B /* MAAttachedWindow.m */; };
+		B16F08A61277636900D13C0B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B16F08A51277636900D13C0B /* Carbon.framework */; };
+		B16F0C421278708300D13C0B /* Gauge Pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0C401278708300D13C0B /* Gauge Pointer.png */; };
+		B16F0C431278708300D13C0B /* Gauge Face.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0C411278708300D13C0B /* Gauge Face.png */; };
+		B16F0C461278709C00D13C0B /* AKGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F0C451278709C00D13C0B /* AKGaugeView.m */; };
+		B16F0C84127877C200D13C0B /* Status View Title Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0C83127877C200D13C0B /* Status View Title Bar.png */; };
+		B16F0E941278CE6B00D13C0B /* AKTrafficMonitorService.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F0E931278CE6B00D13C0B /* AKTrafficMonitorService.m */; };
+		B16F0F151278FBAA00D13C0B /* Cog.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0F141278FBAA00D13C0B /* Cog.png */; };
+		B16F0F291278FD0F00D13C0B /* Dark Cog.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0F281278FD0F00D13C0B /* Dark Cog.png */; };
+		B16F108A127A09D000D13C0B /* APDrawingCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F1089127A09D000D13C0B /* APDrawingCategories.m */; };
+		B1F44962127E195F0020735E /* TBPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F44961127E195F0020735E /* TBPreferencesWindowController.m */; };
+		B1F44976127E1D4B0020735E /* Updates.tiff in Resources */ = {isa = PBXBuildFile; fileRef = B1F44975127E1D4B0020735E /* Updates.tiff */; };
+		B1F449B0127E352B0020735E /* NSWindow+NoodleEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F449AF127E352B0020735E /* NSWindow+NoodleEffects.m */; };
+		B1F44B3C127F2E820020735E /* Not Monitoring Background.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B3B127F2E820020735E /* Not Monitoring Background.png */; };
+		B1F44B52127F30530020735E /* Set Up Button.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B50127F30530020735E /* Set Up Button.png */; };
+		B1F44B53127F30530020735E /* Set Up Button Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B51127F30530020735E /* Set Up Button Pressed.png */; };
+		DA19893E12B459FD00D64DD7 /* TBGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19893B12B459FD00D64DD7 /* TBGraphView.m */; };
+		DA19893F12B459FD00D64DD7 /* GVDescriptionWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19893D12B459FD00D64DD7 /* GVDescriptionWindow.m */; };
+		DA19894012B459FD00D64DD7 /* TBGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19893B12B459FD00D64DD7 /* TBGraphView.m */; };
+		DA19894112B459FD00D64DD7 /* GVDescriptionWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19893D12B459FD00D64DD7 /* GVDescriptionWindow.m */; };
+		DA19897C12B45BDA00D64DD7 /* AKBytesFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19897B12B45BDA00D64DD7 /* AKBytesFormatter.m */; };
+		DA19897D12B45BDA00D64DD7 /* AKBytesFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19897B12B45BDA00D64DD7 /* AKBytesFormatter.m */; };
+		DA198D5512B6B41A00D64DD7 /* TBGraphWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA198D5412B6B41A00D64DD7 /* TBGraphWindow.xib */; };
+		DA198D5612B6B41A00D64DD7 /* TBGraphWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA198D5412B6B41A00D64DD7 /* TBGraphWindow.xib */; };
+		DA198D5C12B6B47E00D64DD7 /* TBGraphWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA198D5B12B6B47E00D64DD7 /* TBGraphWindowController.m */; };
+		DA198D5D12B6B47E00D64DD7 /* TBGraphWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA198D5B12B6B47E00D64DD7 /* TBGraphWindowController.m */; };
+		DA35AC1412AC2AA6009C02D2 /* FScript.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA35AC1312AC2AA6009C02D2 /* FScript.framework */; };
+		DA35AD0612AC2ADA009C02D2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		DA35AD0712AC2ADA009C02D2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		DA35AD0812AC2ADA009C02D2 /* TBStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16F06881275E51D00D13C0B /* TBStatusView.xib */; };
+		DA35AD0912AC2ADA009C02D2 /* TBPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16F068B1275E53C00D13C0B /* TBPreferencesWindow.xib */; };
+		DA35AD0B12AC2ADA009C02D2 /* Gauge Pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0C401278708300D13C0B /* Gauge Pointer.png */; };
+		DA35AD0C12AC2ADA009C02D2 /* Gauge Face.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0C411278708300D13C0B /* Gauge Face.png */; };
+		DA35AD0D12AC2ADA009C02D2 /* Status View Title Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0C83127877C200D13C0B /* Status View Title Bar.png */; };
+		DA35AD0E12AC2ADA009C02D2 /* Cog.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0F141278FBAA00D13C0B /* Cog.png */; };
+		DA35AD0F12AC2ADA009C02D2 /* Dark Cog.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0F281278FD0F00D13C0B /* Dark Cog.png */; };
+		DA35AD1012AC2ADA009C02D2 /* Updates.tiff in Resources */ = {isa = PBXBuildFile; fileRef = B1F44975127E1D4B0020735E /* Updates.tiff */; };
+		DA35AD1112AC2ADA009C02D2 /* Not Monitoring Background.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B3B127F2E820020735E /* Not Monitoring Background.png */; };
+		DA35AD1212AC2ADA009C02D2 /* Set Up Button.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B50127F30530020735E /* Set Up Button.png */; };
+		DA35AD1312AC2ADA009C02D2 /* Set Up Button Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B51127F30530020735E /* Set Up Button Pressed.png */; };
+		DA35AD1412AC2ADA009C02D2 /* General.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45A129F21AB00AE41FF /* General.png */; };
+		DA35AD1512AC2ADA009C02D2 /* Monitor.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45B129F21AB00AE41FF /* Monitor.png */; };
+		DA35AD1612AC2ADA009C02D2 /* Splash Green.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45C129F21AB00AE41FF /* Splash Green.png */; };
+		DA35AD1712AC2ADA009C02D2 /* Advanced.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB460129F21FA00AE41FF /* Advanced.png */; };
+		DA35AD1812AC2ADA009C02D2 /* TBDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = DABFB4AF129F2CF100AE41FF /* TBDefaults.plist */; };
+		DA35AD1A12AC2ADA009C02D2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		DA35AD1B12AC2ADA009C02D2 /* TrafficBotAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* TrafficBotAppDelegate.m */; };
+		DA35AD1C12AC2ADA009C02D2 /* TBStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F069212760D4E00D13C0B /* TBStatusViewController.m */; };
+		DA35AD1D12AC2ADA009C02D2 /* TBStatusItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F06A3127619A400D13C0B /* TBStatusItemController.m */; };
+		DA35AD1E12AC2ADA009C02D2 /* TBStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F06C61276211D00D13C0B /* TBStatusItemView.m */; };
+		DA35AD1F12AC2ADA009C02D2 /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F084912772C8200D13C0B /* MAAttachedWindow.m */; };
+		DA35AD2012AC2ADA009C02D2 /* AKGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F0C451278709C00D13C0B /* AKGaugeView.m */; };
+		DA35AD2112AC2ADA009C02D2 /* AKTrafficMonitorService.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F0E931278CE6B00D13C0B /* AKTrafficMonitorService.m */; };
+		DA35AD2212AC2ADA009C02D2 /* APDrawingCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F1089127A09D000D13C0B /* APDrawingCategories.m */; };
+		DA35AD2312AC2ADA009C02D2 /* TBPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F44961127E195F0020735E /* TBPreferencesWindowController.m */; };
+		DA35AD2412AC2ADA009C02D2 /* NSWindow+NoodleEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F449AF127E352B0020735E /* NSWindow+NoodleEffects.m */; };
+		DA35AD2512AC2ADA009C02D2 /* NSDate+AKMidnight.m in Sources */ = {isa = PBXBuildFile; fileRef = DABFB4D612A0421A00AE41FF /* NSDate+AKMidnight.m */; };
+		DA35AD2712AC2ADA009C02D2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		DA35AD2812AC2ADA009C02D2 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B16F08A51277636900D13C0B /* Carbon.framework */; };
+		DA4BE76A12AC8CDF0070618E /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */; };
+		DA4BE76B12AC8CDF0070618E /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */; };
+		DA4BE85412AD86AF0070618E /* Status Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA4BE85312AD86AF0070618E /* Status Icon.png */; };
+		DA4BE85512AD86AF0070618E /* Status Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA4BE85312AD86AF0070618E /* Status Icon.png */; };
+		DA4BF12312B2930C0070618E /* NSWindow+AKFlip.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */; };
+		DA4BF12412B2930C0070618E /* NSWindow+AKFlip.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */; };
+		DA4BF13B12B29EFE0070618E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4BF13A12B29EFE0070618E /* QuartzCore.framework */; };
+		DA4BF1E712B2DBCF0070618E /* Info Alt.png in Resources */ = {isa = PBXBuildFile; fileRef = DA4BF1E512B2DBCF0070618E /* Info Alt.png */; };
+		DA4BF1E812B2DBCF0070618E /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = DA4BF1E612B2DBCF0070618E /* Info.png */; };
+		DA4BF1E912B2DBCF0070618E /* Info Alt.png in Resources */ = {isa = PBXBuildFile; fileRef = DA4BF1E512B2DBCF0070618E /* Info Alt.png */; };
+		DA4BF1EA12B2DBCF0070618E /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = DA4BF1E612B2DBCF0070618E /* Info.png */; };
+		DABFB45D129F21AB00AE41FF /* General.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45A129F21AB00AE41FF /* General.png */; };
+		DABFB45E129F21AB00AE41FF /* Monitor.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45B129F21AB00AE41FF /* Monitor.png */; };
+		DABFB45F129F21AB00AE41FF /* Splash Green.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45C129F21AB00AE41FF /* Splash Green.png */; };
+		DABFB461129F21FA00AE41FF /* Advanced.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB460129F21FA00AE41FF /* Advanced.png */; };
+		DABFB4B0129F2CF100AE41FF /* TBDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = DABFB4AF129F2CF100AE41FF /* TBDefaults.plist */; };
+		DABFB4D712A0421A00AE41FF /* NSDate+AKMidnight.m in Sources */ = {isa = PBXBuildFile; fileRef = DABFB4D612A0421A00AE41FF /* NSDate+AKMidnight.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		256AC3D80F4B6AC300CF3369 /* TrafficBotAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrafficBotAppDelegate.h; sourceTree = "<group>"; };
+		256AC3D90F4B6AC300CF3369 /* TrafficBotAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TrafficBotAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		256AC3F00F4B6AF500CF3369 /* TrafficBot_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrafficBot_Prefix.pch; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		8D1107310486CEB800E47090 /* TrafficBot-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TrafficBot-Info.plist"; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* TrafficBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrafficBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B16F06881275E51D00D13C0B /* TBStatusView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBStatusView.xib; sourceTree = "<group>"; };
+		B16F068B1275E53C00D13C0B /* TBPreferencesWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBPreferencesWindow.xib; sourceTree = "<group>"; };
+		B16F069112760D4E00D13C0B /* TBStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBStatusViewController.h; sourceTree = "<group>"; };
+		B16F069212760D4E00D13C0B /* TBStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBStatusViewController.m; sourceTree = "<group>"; };
+		B16F06A2127619A400D13C0B /* TBStatusItemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBStatusItemController.h; sourceTree = "<group>"; };
+		B16F06A3127619A400D13C0B /* TBStatusItemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBStatusItemController.m; sourceTree = "<group>"; };
+		B16F06C51276211D00D13C0B /* TBStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBStatusItemView.h; sourceTree = "<group>"; };
+		B16F06C61276211D00D13C0B /* TBStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBStatusItemView.m; sourceTree = "<group>"; };
+		B16F084812772C8200D13C0B /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MAAttachedWindow.h; path = "../Cocoa Utilities/Attached Window/MAAttachedWindow.h"; sourceTree = "<group>"; };
+		B16F084912772C8200D13C0B /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MAAttachedWindow.m; path = "../Cocoa Utilities/Attached Window/MAAttachedWindow.m"; sourceTree = "<group>"; };
+		B16F08A51277636900D13C0B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		B16F0C401278708300D13C0B /* Gauge Pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gauge Pointer.png"; path = "../Private Utilites/Gauge View/Gauge Pointer.png"; sourceTree = "<group>"; };
+		B16F0C411278708300D13C0B /* Gauge Face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gauge Face.png"; path = "../Private Utilites/Gauge View/Gauge Face.png"; sourceTree = "<group>"; };
+		B16F0C441278709C00D13C0B /* AKGaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKGaugeView.h; path = "../Private Utilites/Gauge View/AKGaugeView.h"; sourceTree = "<group>"; };
+		B16F0C451278709C00D13C0B /* AKGaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKGaugeView.m; path = "../Private Utilites/Gauge View/AKGaugeView.m"; sourceTree = "<group>"; };
+		B16F0C83127877C200D13C0B /* Status View Title Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Status View Title Bar.png"; path = "Images/Status View Title Bar.png"; sourceTree = "<group>"; };
+		B16F0E921278CE6B00D13C0B /* AKTrafficMonitorService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTrafficMonitorService.h; sourceTree = "<group>"; };
+		B16F0E931278CE6B00D13C0B /* AKTrafficMonitorService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AKTrafficMonitorService.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B16F0F141278FBAA00D13C0B /* Cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Cog.png; path = Images/Cog.png; sourceTree = "<group>"; };
+		B16F0F281278FD0F00D13C0B /* Dark Cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Dark Cog.png"; path = "Images/Dark Cog.png"; sourceTree = "<group>"; };
+		B16F0FB512798BEE00D13C0B /* DMCommonMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DMCommonMacros.h; path = "../Cocoa Utilities/Macros/DMCommonMacros.h"; sourceTree = "<group>"; };
+		B16F1088127A09D000D13C0B /* APDrawingCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APDrawingCategories.h; path = "../Cocoa Utilities/Drawing Categories/APDrawingCategories.h"; sourceTree = "<group>"; };
+		B16F1089127A09D000D13C0B /* APDrawingCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APDrawingCategories.m; path = "../Cocoa Utilities/Drawing Categories/APDrawingCategories.m"; sourceTree = "<group>"; };
+		B1F44960127E195F0020735E /* TBPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBPreferencesWindowController.h; sourceTree = "<group>"; };
+		B1F44961127E195F0020735E /* TBPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBPreferencesWindowController.m; sourceTree = "<group>"; };
+		B1F44975127E1D4B0020735E /* Updates.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = Updates.tiff; path = Images/Updates.tiff; sourceTree = "<group>"; };
+		B1F449AE127E352B0020735E /* NSWindow+NoodleEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSWindow+NoodleEffects.h"; path = "../Cocoa Utilities/NSWindow (NoodleEffects)/NSWindow+NoodleEffects.h"; sourceTree = "<group>"; };
+		B1F449AF127E352B0020735E /* NSWindow+NoodleEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSWindow+NoodleEffects.m"; path = "../Cocoa Utilities/NSWindow (NoodleEffects)/NSWindow+NoodleEffects.m"; sourceTree = "<group>"; };
+		B1F44B3B127F2E820020735E /* Not Monitoring Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Not Monitoring Background.png"; path = "Images/Not Monitoring Background.png"; sourceTree = "<group>"; };
+		B1F44B50127F30530020735E /* Set Up Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Up Button.png"; path = "Images/Set Up Button.png"; sourceTree = "<group>"; };
+		B1F44B51127F30530020735E /* Set Up Button Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Up Button Pressed.png"; path = "Images/Set Up Button Pressed.png"; sourceTree = "<group>"; };
+		DA19893A12B459FD00D64DD7 /* TBGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGraphView.h; sourceTree = "<group>"; };
+		DA19893B12B459FD00D64DD7 /* TBGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGraphView.m; sourceTree = "<group>"; };
+		DA19893C12B459FD00D64DD7 /* GVDescriptionWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVDescriptionWindow.h; sourceTree = "<group>"; };
+		DA19893D12B459FD00D64DD7 /* GVDescriptionWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVDescriptionWindow.m; sourceTree = "<group>"; };
+		DA19897A12B45BDA00D64DD7 /* AKBytesFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKBytesFormatter.h; sourceTree = "<group>"; };
+		DA19897B12B45BDA00D64DD7 /* AKBytesFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKBytesFormatter.m; sourceTree = "<group>"; };
+		DA198D5412B6B41A00D64DD7 /* TBGraphWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBGraphWindow.xib; sourceTree = "<group>"; };
+		DA198D5A12B6B47E00D64DD7 /* TBGraphWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGraphWindowController.h; sourceTree = "<group>"; };
+		DA198D5B12B6B47E00D64DD7 /* TBGraphWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGraphWindowController.m; sourceTree = "<group>"; };
+		DA35AC1312AC2AA6009C02D2 /* FScript.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FScript.framework; path = Library/Frameworks/FScript.framework; sourceTree = SDKROOT; };
+		DA35AD2D12AC2ADA009C02D2 /* TrafficBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrafficBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA35AD2F12AC2ADA009C02D2 /* TrafficBot-Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TrafficBot-Info copy.plist"; sourceTree = "<group>"; };
+		DA4BE76812AC8CDF0070618E /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaunchAtLoginController.h; path = "../Cocoa Utilities/Launch At Login Controller/LaunchAtLoginController.h"; sourceTree = "<group>"; };
+		DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaunchAtLoginController.m; path = "../Cocoa Utilities/Launch At Login Controller/LaunchAtLoginController.m"; sourceTree = "<group>"; };
+		DA4BE80012AD786B0070618E /* AKDebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKDebugMacros.h; path = "../Cocoa Utilities/Macros/AKDebugMacros.h"; sourceTree = "<group>"; };
+		DA4BE83612AD85380070618E /* UKHelperMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UKHelperMacros.h; path = "../Cocoa Utilities/Macros/UKHelperMacros.h"; sourceTree = SOURCE_ROOT; };
+		DA4BE85312AD86AF0070618E /* Status Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Status Icon.png"; path = "Images/Status Icon.png"; sourceTree = "<group>"; };
+		DA4BEBB912B0485B0070618E /* AKScopeReleased.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKScopeReleased.h; path = "../Cocoa Utilities/Macros/AKScopeReleased.h"; sourceTree = SOURCE_ROOT; };
+		DA4BF12112B2930C0070618E /* NSWindow+AKFlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSWindow+AKFlip.h"; path = "../Cocoa Utilities/NSWindow (AKFlip)/NSWindow+AKFlip.h"; sourceTree = "<group>"; };
+		DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSWindow+AKFlip.m"; path = "../Cocoa Utilities/NSWindow (AKFlip)/NSWindow+AKFlip.m"; sourceTree = "<group>"; };
+		DA4BF13A12B29EFE0070618E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DA4BF1E512B2DBCF0070618E /* Info Alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Info Alt.png"; path = "Images/Info Alt.png"; sourceTree = "<group>"; };
+		DA4BF1E612B2DBCF0070618E /* Info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Info.png; path = Images/Info.png; sourceTree = "<group>"; };
+		DABFB45A129F21AB00AE41FF /* General.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = General.png; path = Images/General.png; sourceTree = "<group>"; };
+		DABFB45B129F21AB00AE41FF /* Monitor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Monitor.png; path = Images/Monitor.png; sourceTree = "<group>"; };
+		DABFB45C129F21AB00AE41FF /* Splash Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Splash Green.png"; path = "Images/Splash Green.png"; sourceTree = "<group>"; };
+		DABFB460129F21FA00AE41FF /* Advanced.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Advanced.png; path = Images/Advanced.png; sourceTree = "<group>"; };
+		DABFB4AF129F2CF100AE41FF /* TBDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = TBDefaults.plist; sourceTree = "<group>"; };
+		DABFB4D512A0421A00AE41FF /* NSDate+AKMidnight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+AKMidnight.h"; path = "../Cocoa Utilities/NSDate (AKMidnight)/NSDate+AKMidnight.h"; sourceTree = "<group>"; };
+		DABFB4D612A0421A00AE41FF /* NSDate+AKMidnight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+AKMidnight.m"; path = "../Cocoa Utilities/NSDate (AKMidnight)/NSDate+AKMidnight.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				B16F08A61277636900D13C0B /* Carbon.framework in Frameworks */,
+				DA35AC1412AC2AA6009C02D2 /* FScript.framework in Frameworks */,
+				DA4BF13B12B29EFE0070618E /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA35AD2612AC2ADA009C02D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA35AD2712AC2ADA009C02D2 /* Cocoa.framework in Frameworks */,
+				DA35AD2812AC2ADA009C02D2 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B1F449B4127E35460020735E /* App Delegate */,
+				B16F069F12760E6000D13C0B /* UI */,
+				B16F0867127749C200D13C0B /* Core Services */,
+				B1F44A5D127F031B0020735E /* Utilities */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B16F08A51277636900D13C0B /* Carbon.framework */,
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				DA35AC1312AC2AA6009C02D2 /* FScript.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* TrafficBot.app */,
+				DA35AD2D12AC2ADA009C02D2 /* TrafficBot.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* TrafficBot */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+				DA4BF13A12B29EFE0070618E /* QuartzCore.framework */,
+			);
+			name = TrafficBot;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				256AC3F00F4B6AF500CF3369 /* TrafficBot_Prefix.pch */,
+				DA4BE80012AD786B0070618E /* AKDebugMacros.h */,
+				DA4BEBB912B0485B0070618E /* AKScopeReleased.h */,
+				B16F0FB512798BEE00D13C0B /* DMCommonMacros.h */,
+				DA4BE83612AD85380070618E /* UKHelperMacros.h */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DABFB4AF129F2CF100AE41FF /* TBDefaults.plist */,
+				B16F0C3F1278705600D13C0B /* Images */,
+				8D1107310486CEB800E47090 /* TrafficBot-Info.plist */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
+				B16F06881275E51D00D13C0B /* TBStatusView.xib */,
+				DA198D5412B6B41A00D64DD7 /* TBGraphWindow.xib */,
+				B16F068B1275E53C00D13C0B /* TBPreferencesWindow.xib */,
+				DA35AD2F12AC2ADA009C02D2 /* TrafficBot-Info copy.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B1063270127FAABF0041B919 /* Preferences Window */ = {
+			isa = PBXGroup;
+			children = (
+				DABFB460129F21FA00AE41FF /* Advanced.png */,
+				B1F44975127E1D4B0020735E /* Updates.tiff */,
+				DABFB45A129F21AB00AE41FF /* General.png */,
+				DABFB45B129F21AB00AE41FF /* Monitor.png */,
+				DABFB45C129F21AB00AE41FF /* Splash Green.png */,
+			);
+			name = "Preferences Window";
+			sourceTree = "<group>";
+		};
+		B16F069F12760E6000D13C0B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B16F06A01276197700D13C0B /* Status Item */,
+				B16F06A11276198600D13C0B /* Status View */,
+				DA198A8512B55C9100D64DD7 /* Graph Window */,
+				B1F44958127E191B0020735E /* Preferences Window */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		B16F06A01276197700D13C0B /* Status Item */ = {
+			isa = PBXGroup;
+			children = (
+				B16F06C51276211D00D13C0B /* TBStatusItemView.h */,
+				B16F06C61276211D00D13C0B /* TBStatusItemView.m */,
+				B16F06A2127619A400D13C0B /* TBStatusItemController.h */,
+				B16F06A3127619A400D13C0B /* TBStatusItemController.m */,
+			);
+			name = "Status Item";
+			sourceTree = "<group>";
+		};
+		B16F06A11276198600D13C0B /* Status View */ = {
+			isa = PBXGroup;
+			children = (
+				B16F069112760D4E00D13C0B /* TBStatusViewController.h */,
+				B16F069212760D4E00D13C0B /* TBStatusViewController.m */,
+				B16F0C3E1278704900D13C0B /* Gauge View */,
+			);
+			name = "Status View";
+			sourceTree = "<group>";
+		};
+		B16F0867127749C200D13C0B /* Core Services */ = {
+			isa = PBXGroup;
+			children = (
+				B16F0E911278CE4700D13C0B /* Traffic Monitor Notification Service */,
+				DA19897E12B45BDE00D64DD7 /* Bytes Formatter */,
+			);
+			name = "Core Services";
+			sourceTree = "<group>";
+		};
+		B16F0C3E1278704900D13C0B /* Gauge View */ = {
+			isa = PBXGroup;
+			children = (
+				B16F0C441278709C00D13C0B /* AKGaugeView.h */,
+				B16F0C451278709C00D13C0B /* AKGaugeView.m */,
+			);
+			name = "Gauge View";
+			sourceTree = "<group>";
+		};
+		B16F0C3F1278705600D13C0B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B1063270127FAABF0041B919 /* Preferences Window */,
+				B16F0C611278770500D13C0B /* Status View */,
+				B16F0C621278771500D13C0B /* Status Item */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		B16F0C611278770500D13C0B /* Status View */ = {
+			isa = PBXGroup;
+			children = (
+				DA4BE81312AD7DC00070618E /* Gauge View */,
+				DA4BF1E612B2DBCF0070618E /* Info.png */,
+				DA4BF1E512B2DBCF0070618E /* Info Alt.png */,
+				B1F44B50127F30530020735E /* Set Up Button.png */,
+				B1F44B51127F30530020735E /* Set Up Button Pressed.png */,
+				B1F44B3B127F2E820020735E /* Not Monitoring Background.png */,
+				B16F0F141278FBAA00D13C0B /* Cog.png */,
+				B16F0F281278FD0F00D13C0B /* Dark Cog.png */,
+				B16F0C83127877C200D13C0B /* Status View Title Bar.png */,
+			);
+			name = "Status View";
+			sourceTree = "<group>";
+		};
+		B16F0C621278771500D13C0B /* Status Item */ = {
+			isa = PBXGroup;
+			children = (
+				DA4BE85312AD86AF0070618E /* Status Icon.png */,
+			);
+			name = "Status Item";
+			sourceTree = "<group>";
+		};
+		B16F0E911278CE4700D13C0B /* Traffic Monitor Notification Service */ = {
+			isa = PBXGroup;
+			children = (
+				B16F0E921278CE6B00D13C0B /* AKTrafficMonitorService.h */,
+				B16F0E931278CE6B00D13C0B /* AKTrafficMonitorService.m */,
+			);
+			name = "Traffic Monitor Notification Service";
+			sourceTree = "<group>";
+		};
+		B16F1087127A09B600D13C0B /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				B16F1088127A09D000D13C0B /* APDrawingCategories.h */,
+				B16F1089127A09D000D13C0B /* APDrawingCategories.m */,
+			);
+			name = Drawing;
+			sourceTree = "<group>";
+		};
+		B1F44958127E191B0020735E /* Preferences Window */ = {
+			isa = PBXGroup;
+			children = (
+				B1F44960127E195F0020735E /* TBPreferencesWindowController.h */,
+				B1F44961127E195F0020735E /* TBPreferencesWindowController.m */,
+			);
+			name = "Preferences Window";
+			sourceTree = "<group>";
+		};
+		B1F449B4127E35460020735E /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				256AC3D80F4B6AC300CF3369 /* TrafficBotAppDelegate.h */,
+				256AC3D90F4B6AC300CF3369 /* TrafficBotAppDelegate.m */,
+			);
+			name = "App Delegate";
+			sourceTree = "<group>";
+		};
+		B1F449B5127E356F0020735E /* NSWindow+NoodleEffects */ = {
+			isa = PBXGroup;
+			children = (
+				B1F449AE127E352B0020735E /* NSWindow+NoodleEffects.h */,
+				B1F449AF127E352B0020735E /* NSWindow+NoodleEffects.m */,
+			);
+			name = "NSWindow+NoodleEffects";
+			sourceTree = "<group>";
+		};
+		B1F44A5D127F031B0020735E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DA4BE75E12AC8CAD0070618E /* Start at Login */,
+				DAFADFAC12AB24B50027CEE8 /* Attached Window */,
+				DABFB4D412A041E100AE41FF /* NSDate+AKMidnight */,
+				DA4BF12712B2962F0070618E /* NSWindow+AKFlip */,
+				B1F449B5127E356F0020735E /* NSWindow+NoodleEffects */,
+				B16F1087127A09B600D13C0B /* Drawing */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		DA19893912B459F200D64DD7 /* Graph View */ = {
+			isa = PBXGroup;
+			children = (
+				DA19893A12B459FD00D64DD7 /* TBGraphView.h */,
+				DA19893B12B459FD00D64DD7 /* TBGraphView.m */,
+				DA19893C12B459FD00D64DD7 /* GVDescriptionWindow.h */,
+				DA19893D12B459FD00D64DD7 /* GVDescriptionWindow.m */,
+			);
+			name = "Graph View";
+			sourceTree = "<group>";
+		};
+		DA19897E12B45BDE00D64DD7 /* Bytes Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				DA19897A12B45BDA00D64DD7 /* AKBytesFormatter.h */,
+				DA19897B12B45BDA00D64DD7 /* AKBytesFormatter.m */,
+			);
+			name = "Bytes Formatter";
+			sourceTree = "<group>";
+		};
+		DA198A8512B55C9100D64DD7 /* Graph Window */ = {
+			isa = PBXGroup;
+			children = (
+				DA198D5A12B6B47E00D64DD7 /* TBGraphWindowController.h */,
+				DA198D5B12B6B47E00D64DD7 /* TBGraphWindowController.m */,
+				DA19893912B459F200D64DD7 /* Graph View */,
+			);
+			name = "Graph Window";
+			sourceTree = "<group>";
+		};
+		DA4BE75E12AC8CAD0070618E /* Start at Login */ = {
+			isa = PBXGroup;
+			children = (
+				DA4BE76812AC8CDF0070618E /* LaunchAtLoginController.h */,
+				DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */,
+			);
+			name = "Start at Login";
+			sourceTree = "<group>";
+		};
+		DA4BE81312AD7DC00070618E /* Gauge View */ = {
+			isa = PBXGroup;
+			children = (
+				B16F0C401278708300D13C0B /* Gauge Pointer.png */,
+				B16F0C411278708300D13C0B /* Gauge Face.png */,
+			);
+			name = "Gauge View";
+			sourceTree = "<group>";
+		};
+		DA4BF12712B2962F0070618E /* NSWindow+AKFlip */ = {
+			isa = PBXGroup;
+			children = (
+				DA4BF12112B2930C0070618E /* NSWindow+AKFlip.h */,
+				DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */,
+			);
+			name = "NSWindow+AKFlip";
+			sourceTree = "<group>";
+		};
+		DABFB4D412A041E100AE41FF /* NSDate+AKMidnight */ = {
+			isa = PBXGroup;
+			children = (
+				DABFB4D512A0421A00AE41FF /* NSDate+AKMidnight.h */,
+				DABFB4D612A0421A00AE41FF /* NSDate+AKMidnight.m */,
+			);
+			name = "NSDate+AKMidnight";
+			sourceTree = "<group>";
+		};
+		DAFADFAC12AB24B50027CEE8 /* Attached Window */ = {
+			isa = PBXGroup;
+			children = (
+				B16F084812772C8200D13C0B /* MAAttachedWindow.h */,
+				B16F084912772C8200D13C0B /* MAAttachedWindow.m */,
+			);
+			name = "Attached Window";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* TrafficBot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "TrafficBot" */;
+			buildPhases = (
+				B16F0A4A1277768600D13C0B /* Increment Bundle Version */,
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TrafficBot;
+			productInstallPath = "$(HOME)/Applications";
+			productName = TrafficBot;
+			productReference = 8D1107320486CEB800E47090 /* TrafficBot.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DA35AD0312AC2ADA009C02D2 /* TrafficBot release */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA35AD2A12AC2ADA009C02D2 /* Build configuration list for PBXNativeTarget "TrafficBot release" */;
+			buildPhases = (
+				DA35AD0412AC2ADA009C02D2 /* Increment Bundle Version */,
+				DA35AD0512AC2ADA009C02D2 /* Resources */,
+				DA35AD1912AC2ADA009C02D2 /* Sources */,
+				DA35AD2612AC2ADA009C02D2 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TrafficBot release";
+			productInstallPath = "$(HOME)/Applications";
+			productName = TrafficBot;
+			productReference = DA35AD2D12AC2ADA009C02D2 /* TrafficBot.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TrafficBot" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* TrafficBot */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1107260486CEB800E47090 /* TrafficBot */,
+				DA35AD0312AC2ADA009C02D2 /* TrafficBot release */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
+				B16F06891275E51D00D13C0B /* TBStatusView.xib in Resources */,
+				B16F068C1275E53C00D13C0B /* TBPreferencesWindow.xib in Resources */,
+				B16F0C421278708300D13C0B /* Gauge Pointer.png in Resources */,
+				B16F0C431278708300D13C0B /* Gauge Face.png in Resources */,
+				B16F0C84127877C200D13C0B /* Status View Title Bar.png in Resources */,
+				B16F0F151278FBAA00D13C0B /* Cog.png in Resources */,
+				B16F0F291278FD0F00D13C0B /* Dark Cog.png in Resources */,
+				B1F44976127E1D4B0020735E /* Updates.tiff in Resources */,
+				B1F44B3C127F2E820020735E /* Not Monitoring Background.png in Resources */,
+				B1F44B52127F30530020735E /* Set Up Button.png in Resources */,
+				B1F44B53127F30530020735E /* Set Up Button Pressed.png in Resources */,
+				DABFB45D129F21AB00AE41FF /* General.png in Resources */,
+				DABFB45E129F21AB00AE41FF /* Monitor.png in Resources */,
+				DABFB45F129F21AB00AE41FF /* Splash Green.png in Resources */,
+				DABFB461129F21FA00AE41FF /* Advanced.png in Resources */,
+				DABFB4B0129F2CF100AE41FF /* TBDefaults.plist in Resources */,
+				DA4BE85412AD86AF0070618E /* Status Icon.png in Resources */,
+				DA4BF1E712B2DBCF0070618E /* Info Alt.png in Resources */,
+				DA4BF1E812B2DBCF0070618E /* Info.png in Resources */,
+				DA198D5512B6B41A00D64DD7 /* TBGraphWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA35AD0512AC2ADA009C02D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA35AD0612AC2ADA009C02D2 /* InfoPlist.strings in Resources */,
+				DA35AD0712AC2ADA009C02D2 /* MainMenu.xib in Resources */,
+				DA35AD0812AC2ADA009C02D2 /* TBStatusView.xib in Resources */,
+				DA35AD0912AC2ADA009C02D2 /* TBPreferencesWindow.xib in Resources */,
+				DA35AD0B12AC2ADA009C02D2 /* Gauge Pointer.png in Resources */,
+				DA35AD0C12AC2ADA009C02D2 /* Gauge Face.png in Resources */,
+				DA35AD0D12AC2ADA009C02D2 /* Status View Title Bar.png in Resources */,
+				DA35AD0E12AC2ADA009C02D2 /* Cog.png in Resources */,
+				DA35AD0F12AC2ADA009C02D2 /* Dark Cog.png in Resources */,
+				DA35AD1012AC2ADA009C02D2 /* Updates.tiff in Resources */,
+				DA35AD1112AC2ADA009C02D2 /* Not Monitoring Background.png in Resources */,
+				DA35AD1212AC2ADA009C02D2 /* Set Up Button.png in Resources */,
+				DA35AD1312AC2ADA009C02D2 /* Set Up Button Pressed.png in Resources */,
+				DA35AD1412AC2ADA009C02D2 /* General.png in Resources */,
+				DA35AD1512AC2ADA009C02D2 /* Monitor.png in Resources */,
+				DA35AD1612AC2ADA009C02D2 /* Splash Green.png in Resources */,
+				DA35AD1712AC2ADA009C02D2 /* Advanced.png in Resources */,
+				DA35AD1812AC2ADA009C02D2 /* TBDefaults.plist in Resources */,
+				DA4BE85512AD86AF0070618E /* Status Icon.png in Resources */,
+				DA4BF1E912B2DBCF0070618E /* Info Alt.png in Resources */,
+				DA4BF1EA12B2DBCF0070618E /* Info.png in Resources */,
+				DA198D5612B6B41A00D64DD7 /* TBGraphWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B16F0A4A1277768600D13C0B /* Increment Bundle Version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Increment Bundle Version";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nbuildPlist=\"${PRODUCT_NAME}-Info.plist\"\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $buildPlist)\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set CFBundleVersion $buildNumber\" $buildPlist";
+		};
+		DA35AD0412AC2ADA009C02D2 /* Increment Bundle Version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Increment Bundle Version";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nbuildPlist=\"${PRODUCT_NAME}-Info.plist\"\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $buildPlist)\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set CFBundleVersion $buildNumber\" $buildPlist";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				256AC3DA0F4B6AC300CF3369 /* TrafficBotAppDelegate.m in Sources */,
+				B16F069312760D4E00D13C0B /* TBStatusViewController.m in Sources */,
+				B16F06A4127619A400D13C0B /* TBStatusItemController.m in Sources */,
+				B16F06C71276211D00D13C0B /* TBStatusItemView.m in Sources */,
+				B16F084A12772C8200D13C0B /* MAAttachedWindow.m in Sources */,
+				B16F0C461278709C00D13C0B /* AKGaugeView.m in Sources */,
+				B16F0E941278CE6B00D13C0B /* AKTrafficMonitorService.m in Sources */,
+				B16F108A127A09D000D13C0B /* APDrawingCategories.m in Sources */,
+				B1F44962127E195F0020735E /* TBPreferencesWindowController.m in Sources */,
+				B1F449B0127E352B0020735E /* NSWindow+NoodleEffects.m in Sources */,
+				DABFB4D712A0421A00AE41FF /* NSDate+AKMidnight.m in Sources */,
+				DA4BE76A12AC8CDF0070618E /* LaunchAtLoginController.m in Sources */,
+				DA4BF12312B2930C0070618E /* NSWindow+AKFlip.m in Sources */,
+				DA19893E12B459FD00D64DD7 /* TBGraphView.m in Sources */,
+				DA19893F12B459FD00D64DD7 /* GVDescriptionWindow.m in Sources */,
+				DA19897C12B45BDA00D64DD7 /* AKBytesFormatter.m in Sources */,
+				DA198D5C12B6B47E00D64DD7 /* TBGraphWindowController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA35AD1912AC2ADA009C02D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA35AD1A12AC2ADA009C02D2 /* main.m in Sources */,
+				DA35AD1B12AC2ADA009C02D2 /* TrafficBotAppDelegate.m in Sources */,
+				DA35AD1C12AC2ADA009C02D2 /* TBStatusViewController.m in Sources */,
+				DA35AD1D12AC2ADA009C02D2 /* TBStatusItemController.m in Sources */,
+				DA35AD1E12AC2ADA009C02D2 /* TBStatusItemView.m in Sources */,
+				DA35AD1F12AC2ADA009C02D2 /* MAAttachedWindow.m in Sources */,
+				DA35AD2012AC2ADA009C02D2 /* AKGaugeView.m in Sources */,
+				DA35AD2112AC2ADA009C02D2 /* AKTrafficMonitorService.m in Sources */,
+				DA35AD2212AC2ADA009C02D2 /* APDrawingCategories.m in Sources */,
+				DA35AD2312AC2ADA009C02D2 /* TBPreferencesWindowController.m in Sources */,
+				DA35AD2412AC2ADA009C02D2 /* NSWindow+NoodleEffects.m in Sources */,
+				DA35AD2512AC2ADA009C02D2 /* NSDate+AKMidnight.m in Sources */,
+				DA4BE76B12AC8CDF0070618E /* LaunchAtLoginController.m in Sources */,
+				DA4BF12412B2930C0070618E /* NSWindow+AKFlip.m in Sources */,
+				DA19894012B459FD00D64DD7 /* TBGraphView.m in Sources */,
+				DA19894112B459FD00D64DD7 /* GVDescriptionWindow.m in Sources */,
+				DA19897D12B45BDA00D64DD7 /* AKBytesFormatter.m in Sources */,
+				DA198D5D12B6B47E00D64DD7 /* TBGraphWindowController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C165DFE840E0CC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1DDD58140DA1D0A300B32029 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DDD58150DA1D0A300B32029 /* English */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = TrafficBot_Prefix.pch;
+				INFOPLIST_FILE = "TrafficBot-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = TrafficBot;
+			};
+			name = Debug;
+		};
+		C01FCF4C08A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = TrafficBot_Prefix.pch;
+				INFOPLIST_FILE = "TrafficBot-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = TrafficBot;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = macosx10.6;
+				WARNING_CFLAGS = "";
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = macosx10.6;
+				WARNING_CFLAGS = "";
+			};
+			name = Release;
+		};
+		DA35AD2B12AC2ADA009C02D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = TrafficBot_Prefix.pch;
+				INFOPLIST_FILE = "TrafficBot-Info copy.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = TrafficBot;
+			};
+			name = Debug;
+		};
+		DA35AD2C12AC2ADA009C02D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = TrafficBot_Prefix.pch;
+				INFOPLIST_FILE = "TrafficBot-Info copy.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = TrafficBot;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "TrafficBot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TrafficBot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA35AD2A12AC2ADA009C02D2 /* Build configuration list for PBXNativeTarget "TrafficBot release" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA35AD2B12AC2ADA009C02D2 /* Debug */,
+				DA35AD2C12AC2ADA009C02D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
