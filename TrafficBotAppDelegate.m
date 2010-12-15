@@ -9,7 +9,7 @@
 #import "TrafficBotAppDelegate.h"
 #import "AKTrafficMonitorService.h"
 #import "TBPreferencesWindowController.h"
-#import "TBStatusViewController.h"
+#import "TBStatusWindowController.h"
 #import "TBGraphWindowController.h"
 #import "TBStatusItemController.h"
 #import "NSDate+AKMidnight.h"
@@ -66,22 +66,22 @@
 	if (!preferencesWindowController)
 		preferencesWindowController = [[TBPreferencesWindowController alloc] init];
 	[preferencesWindowController showWindow:nil];
-	[self dismissStatusView:sender];
+	[self dismissStatusWindow:sender];
 	[graphWindowController dismiss:sender];
 }
-- (void)showStatusView:(id)sender atPoint:(NSPoint)point {
-	if (!statusViewController)
-		statusViewController = [[TBStatusViewController alloc] initWithNibName:@"TBStatusView" bundle:nil];
-	[statusViewController show:sender atPoint:point];
+- (void)showStatusWindow:(id)sender atPoint:(NSPoint)point {
+	if (!statusWindowController)
+		statusWindowController = [[TBStatusWindowController alloc] initWithWindowNibName:@"TBStatusWindow"];
+	[statusWindowController show:sender atPoint:point];
 }
-- (void)dismissStatusView:(id)sender {
-	[statusViewController dismiss:sender];
+- (void)dismissStatusWindow:(id)sender {
+	[statusWindowController dismiss:sender];
 	[statusItemController dismissHighlight:sender];
 }
 - (void)showGraphWindow:(id)sender atPoint:(NSPoint)point {
 	if (!graphWindowController)
 		graphWindowController = [[TBGraphWindowController alloc] initWithWindowNibName:@"TBGraphWindow"];
-	[graphWindowController flip:sender fromWindow:(NSWindow *)statusViewController.window atPoint:point];
+	[graphWindowController flip:sender fromWindow:statusWindowController.window atPoint:point];
 }
 - (void)dismissGraphWindow:(id)sender {
 	[graphWindowController dismiss:sender];

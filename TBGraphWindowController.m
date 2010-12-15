@@ -43,10 +43,10 @@
 	_zoomRect.origin = point;
 	if (!self.window) {
 		MAAttachedWindow *window = [[MAAttachedWindow alloc] initWithView:self.contentView 
-											 attachedToPoint:_zoomRect.origin 
-													inWindow:nil 
-													  onSide:MAPositionBottom 
-												  atDistance:3.0];
+														  attachedToPoint:_zoomRect.origin 
+																 inWindow:nil 
+																   onSide:MAPositionBottom 
+															   atDistance:3.0];
 		[window setArrowHeight:10];
 		[window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
 		[window setAcceptsMouseMovedEvents:YES];

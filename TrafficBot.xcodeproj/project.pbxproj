@@ -12,9 +12,8 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		B16F06891275E51D00D13C0B /* TBStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16F06881275E51D00D13C0B /* TBStatusView.xib */; };
 		B16F068C1275E53C00D13C0B /* TBPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16F068B1275E53C00D13C0B /* TBPreferencesWindow.xib */; };
-		B16F069312760D4E00D13C0B /* TBStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F069212760D4E00D13C0B /* TBStatusViewController.m */; };
+		B16F069312760D4E00D13C0B /* TBStatusWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F069212760D4E00D13C0B /* TBStatusWindowController.m */; };
 		B16F06A4127619A400D13C0B /* TBStatusItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F06A3127619A400D13C0B /* TBStatusItemController.m */; };
 		B16F06C71276211D00D13C0B /* TBStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F06C61276211D00D13C0B /* TBStatusItemView.m */; };
 		B16F084A12772C8200D13C0B /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F084912772C8200D13C0B /* MAAttachedWindow.m */; };
@@ -54,7 +53,6 @@
 		DA35AC1412AC2AA6009C02D2 /* FScript.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA35AC1312AC2AA6009C02D2 /* FScript.framework */; };
 		DA35AD0612AC2ADA009C02D2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		DA35AD0712AC2ADA009C02D2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
-		DA35AD0812AC2ADA009C02D2 /* TBStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16F06881275E51D00D13C0B /* TBStatusView.xib */; };
 		DA35AD0912AC2ADA009C02D2 /* TBPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16F068B1275E53C00D13C0B /* TBPreferencesWindow.xib */; };
 		DA35AD0B12AC2ADA009C02D2 /* Gauge Pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0C401278708300D13C0B /* Gauge Pointer.png */; };
 		DA35AD0C12AC2ADA009C02D2 /* Gauge Face.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0C411278708300D13C0B /* Gauge Face.png */; };
@@ -72,7 +70,7 @@
 		DA35AD1812AC2ADA009C02D2 /* TBDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = DABFB4AF129F2CF100AE41FF /* TBDefaults.plist */; };
 		DA35AD1A12AC2ADA009C02D2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		DA35AD1B12AC2ADA009C02D2 /* TrafficBotAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* TrafficBotAppDelegate.m */; };
-		DA35AD1C12AC2ADA009C02D2 /* TBStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F069212760D4E00D13C0B /* TBStatusViewController.m */; };
+		DA35AD1C12AC2ADA009C02D2 /* TBStatusWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F069212760D4E00D13C0B /* TBStatusWindowController.m */; };
 		DA35AD1D12AC2ADA009C02D2 /* TBStatusItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F06A3127619A400D13C0B /* TBStatusItemController.m */; };
 		DA35AD1E12AC2ADA009C02D2 /* TBStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F06C61276211D00D13C0B /* TBStatusItemView.m */; };
 		DA35AD1F12AC2ADA009C02D2 /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F084912772C8200D13C0B /* MAAttachedWindow.m */; };
@@ -91,6 +89,7 @@
 		DA4BF12312B2930C0070618E /* NSWindow+AKFlip.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */; };
 		DA4BF12412B2930C0070618E /* NSWindow+AKFlip.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */; };
 		DA4BF13B12B29EFE0070618E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4BF13A12B29EFE0070618E /* QuartzCore.framework */; };
+		DA6D3BE112B959D0003D5F61 /* TBStatusWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */; };
 		DABFB45D129F21AB00AE41FF /* General.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45A129F21AB00AE41FF /* General.png */; };
 		DABFB45E129F21AB00AE41FF /* Monitor.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45B129F21AB00AE41FF /* Monitor.png */; };
 		DABFB45F129F21AB00AE41FF /* Splash Green.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45C129F21AB00AE41FF /* Splash Green.png */; };
@@ -112,10 +111,9 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* TrafficBot-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TrafficBot-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* TrafficBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrafficBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B16F06881275E51D00D13C0B /* TBStatusView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBStatusView.xib; sourceTree = "<group>"; };
 		B16F068B1275E53C00D13C0B /* TBPreferencesWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBPreferencesWindow.xib; sourceTree = "<group>"; };
-		B16F069112760D4E00D13C0B /* TBStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBStatusViewController.h; sourceTree = "<group>"; };
-		B16F069212760D4E00D13C0B /* TBStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBStatusViewController.m; sourceTree = "<group>"; };
+		B16F069112760D4E00D13C0B /* TBStatusWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBStatusWindowController.h; sourceTree = "<group>"; };
+		B16F069212760D4E00D13C0B /* TBStatusWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBStatusWindowController.m; sourceTree = "<group>"; };
 		B16F06A2127619A400D13C0B /* TBStatusItemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBStatusItemController.h; sourceTree = "<group>"; };
 		B16F06A3127619A400D13C0B /* TBStatusItemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBStatusItemController.m; sourceTree = "<group>"; };
 		B16F06C51276211D00D13C0B /* TBStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBStatusItemView.h; sourceTree = "<group>"; };
@@ -168,6 +166,7 @@
 		DA4BF12112B2930C0070618E /* NSWindow+AKFlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSWindow+AKFlip.h"; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (AKFlip)/NSWindow+AKFlip.h"; sourceTree = "<group>"; };
 		DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSWindow+AKFlip.m"; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (AKFlip)/NSWindow+AKFlip.m"; sourceTree = "<group>"; };
 		DA4BF13A12B29EFE0070618E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBStatusWindow.xib; sourceTree = "<group>"; };
 		DABFB45A129F21AB00AE41FF /* General.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = General.png; path = Images/General.png; sourceTree = "<group>"; };
 		DABFB45B129F21AB00AE41FF /* Monitor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Monitor.png; path = Images/Monitor.png; sourceTree = "<group>"; };
 		DABFB45C129F21AB00AE41FF /* Splash Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Splash Green.png"; path = "Images/Splash Green.png"; sourceTree = "<group>"; };
@@ -275,7 +274,7 @@
 				8D1107310486CEB800E47090 /* TrafficBot-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
-				B16F06881275E51D00D13C0B /* TBStatusView.xib */,
+				DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */,
 				DA198D5412B6B41A00D64DD7 /* TBGraphWindow.xib */,
 				B16F068B1275E53C00D13C0B /* TBPreferencesWindow.xib */,
 				DA35AD2F12AC2ADA009C02D2 /* TrafficBot-Info copy.plist */,
@@ -329,8 +328,8 @@
 		B16F06A11276198600D13C0B /* Status View */ = {
 			isa = PBXGroup;
 			children = (
-				B16F069112760D4E00D13C0B /* TBStatusViewController.h */,
-				B16F069212760D4E00D13C0B /* TBStatusViewController.m */,
+				B16F069112760D4E00D13C0B /* TBStatusWindowController.h */,
+				B16F069212760D4E00D13C0B /* TBStatusWindowController.m */,
 				B16F0C3E1278704900D13C0B /* Gauge View */,
 			);
 			name = "Status View";
@@ -596,7 +595,6 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
-				B16F06891275E51D00D13C0B /* TBStatusView.xib in Resources */,
 				B16F068C1275E53C00D13C0B /* TBPreferencesWindow.xib in Resources */,
 				B16F0C421278708300D13C0B /* Gauge Pointer.png in Resources */,
 				B16F0C431278708300D13C0B /* Gauge Face.png in Resources */,
@@ -618,6 +616,7 @@
 				DA049FC212B8534600ECA24C /* Gauge.png in Resources */,
 				DA049FD812B853FF00ECA24C /* Info Alt.png in Resources */,
 				DA049FD912B853FF00ECA24C /* Info.png in Resources */,
+				DA6D3BE112B959D0003D5F61 /* TBStatusWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,7 +626,6 @@
 			files = (
 				DA35AD0612AC2ADA009C02D2 /* InfoPlist.strings in Resources */,
 				DA35AD0712AC2ADA009C02D2 /* MainMenu.xib in Resources */,
-				DA35AD0812AC2ADA009C02D2 /* TBStatusView.xib in Resources */,
 				DA35AD0912AC2ADA009C02D2 /* TBPreferencesWindow.xib in Resources */,
 				DA35AD0B12AC2ADA009C02D2 /* Gauge Pointer.png in Resources */,
 				DA35AD0C12AC2ADA009C02D2 /* Gauge Face.png in Resources */,
@@ -692,7 +690,7 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* TrafficBotAppDelegate.m in Sources */,
-				B16F069312760D4E00D13C0B /* TBStatusViewController.m in Sources */,
+				B16F069312760D4E00D13C0B /* TBStatusWindowController.m in Sources */,
 				B16F06A4127619A400D13C0B /* TBStatusItemController.m in Sources */,
 				B16F06C71276211D00D13C0B /* TBStatusItemView.m in Sources */,
 				B16F084A12772C8200D13C0B /* MAAttachedWindow.m in Sources */,
@@ -717,7 +715,7 @@
 			files = (
 				DA35AD1A12AC2ADA009C02D2 /* main.m in Sources */,
 				DA35AD1B12AC2ADA009C02D2 /* TrafficBotAppDelegate.m in Sources */,
-				DA35AD1C12AC2ADA009C02D2 /* TBStatusViewController.m in Sources */,
+				DA35AD1C12AC2ADA009C02D2 /* TBStatusWindowController.m in Sources */,
 				DA35AD1D12AC2ADA009C02D2 /* TBStatusItemController.m in Sources */,
 				DA35AD1E12AC2ADA009C02D2 /* TBStatusItemView.m in Sources */,
 				DA35AD1F12AC2ADA009C02D2 /* MAAttachedWindow.m in Sources */,

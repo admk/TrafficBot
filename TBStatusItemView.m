@@ -43,14 +43,14 @@
 - (void)mouseDown:(NSEvent *)theEvent {
     if (_highlighted) {
 		[self dismissHighlight:nil];
-		[[NSApp delegate] dismissStatusView:nil];
+		[[NSApp delegate] dismissStatusWindow:nil];
 		[[NSApp delegate] dismissGraphWindow:nil];
 	}
 	else {
 		[self highlight:nil];
 		NSRect frame = [[self window] frame];
 		NSPoint point = NSMakePoint(NSMidX(frame), NSMinY(frame));
-		[[NSApp delegate] showStatusView:self atPoint:point];
+		[[NSApp delegate] showStatusWindow:self atPoint:point];
     }
 }
 - (void)rightMouseDown:(NSEvent *)theEvent {

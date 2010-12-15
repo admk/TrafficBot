@@ -10,20 +10,23 @@
 
 @class MAAttachedWindow, AKGaugeView, TBGraphView;
 
-@interface TBStatusViewController : NSViewController {
+@interface TBStatusWindowController : NSWindowController {
 	
-	MAAttachedWindow		*window;
-	IBOutlet AKGaugeView	*gaugeView;
-	IBOutlet NSView			*notMonitoringView;
-	IBOutlet NSTextField	*usageTextField;
-		
+	NSView		*contentView;
+	AKGaugeView	*gaugeView;
+	NSView		*notMonitoringView;
+	NSTextField	*usageTextField;
 @private
 	NSRect				_statusItemRect;
 	BOOL				_monitoring;
 	NSNumber			*_limit;
 }
 
-@property (readonly) MAAttachedWindow *window;
+@property (assign) IBOutlet NSView		*contentView;
+@property (assign) IBOutlet AKGaugeView	*gaugeView;
+@property (assign) IBOutlet NSView		*notMonitoringView;
+@property (assign) IBOutlet NSTextField	*usageTextField;
+
 @property (assign, getter=isMonitoring) BOOL monitoring;
 @property (retain, nonatomic) NSNumber *limit;
 

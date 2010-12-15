@@ -6,7 +6,7 @@
 //  Copyright 2010 Loca Apps. All rights reserved.
 //
 
-#import "TBStatusViewController.h"
+#import "TBStatusWindowController.h"
 #import "AKTrafficMonitorService.h"
 #import "TrafficBotAppDelegate.h"
 #import "MAAttachedWindow.h"
@@ -16,22 +16,26 @@
 #import "TBGraphView.h"
 #import "AKBytesFormatter.h"
 
-@interface TBStatusViewController (Private)
+@interface TBStatusWindowController (Private)
 - (void)_refreshStatusView;
 - (void)_didReceiveNotificationFromTrafficMonitorService:(NSNotification *)notification;
 - (void)_setUsageWithTotalIn:(NSNumber *)totalIn totalOut:(NSNumber *)totalOut;
 @end
 
 #pragma mark -
-@implementation TBStatusViewController
+@implementation TBStatusWindowController
+- (id)initWithWindowNibName:(NSString *)windowNibName {
+	self = [super initWithWindowNibName:windowNibName];
+	if (!self) return nil;
+	_monitoring = NO;
+	return self;
+}
+
 - (void)dealloc {
     [usageTextField release], usageTextField = nil;
 	[super dealloc];
 }
 - (void)awakeFromNib {
-	
-	[self setMonitoring:NO];
-	
 	// bindings & notifications
 	NSArray *bindings = [NSArray arrayWithObjects:
 						 @"monitoring", Property(limit), nil];
@@ -41,10 +45,10 @@
 	   withKeyPath:[@"values." stringByAppendingString:bindingKey]
 		   options:nil];
 	[[AKTrafficMonitorService sharedService] addObserver:self selector:@selector(_didReceiveNotificationFromTrafficMonitorService:)];
-	[gaugeView bind:@"criticalPercentage" 
-		   toObject:[NSUserDefaultsController sharedUserDefaultsController]
-		withKeyPath:@"values.criticalPercentage" 
-			options:nil];
+	[self.gaugeView bind:@"criticalPercentage" 
+				toObject:[NSUserDefaultsController sharedUserDefaultsController]
+			 withKeyPath:@"values.criticalPercentage" 
+				 options:nil];
 }
 #pragma mark -
 #pragma mark setters & getters
@@ -52,7 +56,7 @@
 	_monitoring = inBool;
 	[notMonitoringView removeFromSuperview];
 	if (_monitoring) return;
-	[self.view addSubview:notMonitoringView];
+	[self.contentView addSubview:notMonitoringView];
 }
 - (void)setLimit:(NSNumber *)newLimit {
 	if ([_limit isEqualToNumber:newLimit]) return;
@@ -65,28 +69,28 @@
 - (void)show:(id)sender atPoint:(NSPoint)point {
 	
 	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-	
 	// shows status view
 	_statusItemRect = [sender convertRect:[sender bounds] toView:nil];
 	_statusItemRect.origin = point;
-	if (!window) {
-		window = [[MAAttachedWindow alloc] initWithView:self.view 
-										attachedToPoint:_statusItemRect.origin 
-											   inWindow:nil 
-												 onSide:MAPositionBottom 
-											 atDistance:3.0];
+	if ([[self.window class] isNotEqualTo:[MAAttachedWindow class]]) {
+		MAAttachedWindow *window = [[MAAttachedWindow alloc] initWithView:self.contentView 
+											 attachedToPoint:_statusItemRect.origin 
+													inWindow:nil 
+													  onSide:MAPositionBottom 
+												  atDistance:3.0];
 		[window setArrowHeight:10];
 		[window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
 		[window makeKeyAndOrderFront:self];
+		self.window = window;
 	}
 	else {
-		[window setPoint:point];
-		[window zoomOnFromRect:_statusItemRect];
+		[(MAAttachedWindow *)self.window setPoint:point];
 	}
 	[self _refreshStatusView];
+	[self.window zoomOnFromRect:_statusItemRect];
 }
 - (void)dismiss:(id)sender {
-	[window zoomOffToRect:_statusItemRect];
+	[self.window zoomOffToRect:_statusItemRect];
 	[gaugeView setPercentage:0 animated:NO];
 }
 - (IBAction)info:(id)sender {
@@ -95,16 +99,16 @@
 - (IBAction)preferences:(id)sender {
 	[[NSApp delegate] showPreferencesWindow:self];
 }
-@synthesize window;
+@synthesize contentView, gaugeView, notMonitoringView, usageTextField;
 @synthesize monitoring = _monitoring, limit = _limit;
 @end
 #pragma mark -
-@implementation TBStatusViewController (Private)
+@implementation TBStatusWindowController (Private)
 #pragma mark -
 #pragma mark status view
 - (void)_refreshStatusView {
 	
-	BOOL animated = [window isVisible];
+	BOOL animated = [self.window isVisible];
 	
 	// update display
 	NSNumber *totalIn = [[AKTrafficMonitorService sharedService] totalIn];
@@ -138,4 +142,5 @@
 		// stats did update
 		[self _refreshStatusView];
 	}
-}@end
+}
+@end

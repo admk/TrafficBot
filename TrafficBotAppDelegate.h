@@ -9,22 +9,22 @@
 #import <Cocoa/Cocoa.h>
 
 @class TBPreferencesWindowController;
-@class TBStatusViewController, TBGraphWindowController;
+@class TBStatusWindowController, TBGraphWindowController;
 @class TBStatusItemController;
 
 @interface TrafficBotAppDelegate : NSObject <NSApplicationDelegate> {
 	
 	// ui
 	IBOutlet TBStatusItemController	*statusItemController;
-	TBStatusViewController			*statusViewController;
+	TBStatusWindowController		*statusWindowController;
 	TBGraphWindowController			*graphWindowController;
 	TBPreferencesWindowController	*preferencesWindowController;
 	
 }
 
 - (void)showPreferencesWindow:(id)sender;
-- (void)showStatusView:(id)sender atPoint:(NSPoint)point;
-- (void)dismissStatusView:(id)sender;
+- (void)showStatusWindow:(id)sender atPoint:(NSPoint)point;
+- (void)dismissStatusWindow:(id)sender;
 - (void)showGraphWindow:(id)sender atPoint:(NSPoint)point;
 - (void)dismissGraphWindow:(id)sender;
 
