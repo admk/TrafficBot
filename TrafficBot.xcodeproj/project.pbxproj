@@ -84,8 +84,6 @@
 		DA35AD2812AC2ADA009C02D2 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B16F08A51277636900D13C0B /* Carbon.framework */; };
 		DA4BE76A12AC8CDF0070618E /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */; };
 		DA4BE76B12AC8CDF0070618E /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */; };
-		DA4BE85412AD86AF0070618E /* Status Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA4BE85312AD86AF0070618E /* Status Icon.png */; };
-		DA4BE85512AD86AF0070618E /* Status Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA4BE85312AD86AF0070618E /* Status Icon.png */; };
 		DA4BF12312B2930C0070618E /* NSWindow+AKFlip.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */; };
 		DA4BF12412B2930C0070618E /* NSWindow+AKFlip.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */; };
 		DA4BF13B12B29EFE0070618E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4BF13A12B29EFE0070618E /* QuartzCore.framework */; };
@@ -161,7 +159,6 @@
 		DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaunchAtLoginController.m; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/Launch At Login Controller/LaunchAtLoginController.m"; sourceTree = "<group>"; };
 		DA4BE80012AD786B0070618E /* AKDebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKDebugMacros.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Macros/AKDebugMacros.h"; sourceTree = "<absolute>"; };
 		DA4BE83612AD85380070618E /* UKHelperMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UKHelperMacros.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Macros/UKHelperMacros.h"; sourceTree = "<absolute>"; };
-		DA4BE85312AD86AF0070618E /* Status Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Status Icon.png"; path = "Images/Status Icon.png"; sourceTree = "<group>"; };
 		DA4BEBB912B0485B0070618E /* AKScopeReleased.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKScopeReleased.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Macros/AKScopeReleased.h"; sourceTree = "<absolute>"; };
 		DA4BF12112B2930C0070618E /* NSWindow+AKFlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSWindow+AKFlip.h"; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (AKFlip)/NSWindow+AKFlip.h"; sourceTree = "<group>"; };
 		DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSWindow+AKFlip.m"; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (AKFlip)/NSWindow+AKFlip.m"; sourceTree = "<group>"; };
@@ -358,7 +355,6 @@
 			children = (
 				B1063270127FAABF0041B919 /* Preferences Window */,
 				B16F0C611278770500D13C0B /* Status View */,
-				B16F0C621278771500D13C0B /* Status Item */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -379,14 +375,6 @@
 				DA049FD712B853FF00ECA24C /* Info.png */,
 			);
 			name = "Status View";
-			sourceTree = "<group>";
-		};
-		B16F0C621278771500D13C0B /* Status Item */ = {
-			isa = PBXGroup;
-			children = (
-				DA4BE85312AD86AF0070618E /* Status Icon.png */,
-			);
-			name = "Status Item";
 			sourceTree = "<group>";
 		};
 		B16F0E911278CE4700D13C0B /* Traffic Monitor Notification Service */ = {
@@ -610,7 +598,6 @@
 				DABFB45F129F21AB00AE41FF /* Splash Green.png in Resources */,
 				DABFB461129F21FA00AE41FF /* Advanced.png in Resources */,
 				DABFB4B0129F2CF100AE41FF /* TBDefaults.plist in Resources */,
-				DA4BE85412AD86AF0070618E /* Status Icon.png in Resources */,
 				DA198D5512B6B41A00D64DD7 /* TBGraphWindow.xib in Resources */,
 				DA049FC112B8534600ECA24C /* Gauge Pressed.png in Resources */,
 				DA049FC212B8534600ECA24C /* Gauge.png in Resources */,
@@ -641,7 +628,6 @@
 				DA35AD1612AC2ADA009C02D2 /* Splash Green.png in Resources */,
 				DA35AD1712AC2ADA009C02D2 /* Advanced.png in Resources */,
 				DA35AD1812AC2ADA009C02D2 /* TBDefaults.plist in Resources */,
-				DA4BE85512AD86AF0070618E /* Status Icon.png in Resources */,
 				DA198D5612B6B41A00D64DD7 /* TBGraphWindow.xib in Resources */,
 				DA049FC312B8534600ECA24C /* Gauge Pressed.png in Resources */,
 				DA049FC412B8534600ECA24C /* Gauge.png in Resources */,

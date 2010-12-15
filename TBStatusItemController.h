@@ -11,13 +11,18 @@
 
 @interface TBStatusItemController : NSObject <TBStatusItemViewDelegate> {
 	
-	TBStatusItemView *statusItemView;
+	TBStatusItemView	*statusItemView;
 	
-	NSStatusItem* statusItem;
-	IBOutlet NSMenu *menu;
+	NSStatusItem		*statusItem;
+	IBOutlet NSMenu		*menu;
+	
+@private
+	NSNumber	*_limit;
 }
 
 @property (retain) TBStatusItemView *statusItemView;
+
+@property (retain, nonatomic) NSNumber *limit;
 
 - (id)init;
 - (void)showStatusItem;

@@ -85,9 +85,9 @@
 	}
 	else {
 		[(MAAttachedWindow *)self.window setPoint:point];
+		[self.window zoomOnFromRect:_statusItemRect];
 	}
 	[self _refreshStatusView];
-	[self.window zoomOnFromRect:_statusItemRect];
 }
 - (void)dismiss:(id)sender {
 	[self.window zoomOffToRect:_statusItemRect];

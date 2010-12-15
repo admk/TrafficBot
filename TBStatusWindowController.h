@@ -17,9 +17,9 @@
 	NSView		*notMonitoringView;
 	NSTextField	*usageTextField;
 @private
-	NSRect				_statusItemRect;
-	BOOL				_monitoring;
-	NSNumber			*_limit;
+	NSRect		_statusItemRect;
+	BOOL		_monitoring;
+	NSNumber	*_limit;
 }
 
 @property (assign) IBOutlet NSView		*contentView;

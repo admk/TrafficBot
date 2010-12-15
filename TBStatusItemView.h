@@ -17,10 +17,17 @@
 @interface TBStatusItemView : NSView {
 	
 	__weak id<TBStatusItemViewDelegate> controller;
-    BOOL _highlighted;
 	
+@private
+    BOOL	_highlighted;
+	float	_percentage;
+	BOOL	_monitoring;
 }
+
 @property (assign) id<TBStatusItemViewDelegate> controller;
+
+@property (assign, getter=isMonitoring) BOOL monitoring;
+@property (assign) float percentage;
 
 - (id)initWithFrame:(NSRect)frame controller:(id<TBStatusItemViewDelegate>)inController;
 
