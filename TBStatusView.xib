@@ -541,7 +541,7 @@
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
-				<string key="1.IBEditorWindowLastContentRect">{{42, 488}, {230, 108}}</string>
+				<string key="1.IBEditorWindowLastContentRect">{{33, 449}, {230, 108}}</string>
 				<string key="1.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1.WindowOrigin">{628, 654}</string>
 				<string key="1.editorWindowContentRectSynchronizationRect">{{217, 442}, {480, 272}}</string>
@@ -671,7 +671,7 @@
 				<string key="52.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="63.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<object class="NSAffineTransform" key="63.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABC9gAAwtIAAA</bytes>
+					<bytes key="NSTransformStruct">P4AAAL+AAABDVAAAwsoAAA</bytes>
 				</object>
 				<string key="64.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -690,14 +690,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">../Private Utilites/Gauge View/AKGaugeView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">TBGraphView</string>
-					<string key="superclassName">NSView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">TBGraphView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -724,7 +716,6 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="gaugeView">AKGaugeView</string>
-						<string key="graphView">TBGraphView</string>
 						<string key="notMonitoringView">NSView</string>
 						<string key="usageTextField">NSTextField</string>
 					</dictionary>
@@ -732,10 +723,6 @@
 						<object class="IBToOneOutletInfo" key="gaugeView">
 							<string key="name">gaugeView</string>
 							<string key="candidateClassName">AKGaugeView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="graphView">
-							<string key="name">graphView</string>
-							<string key="candidateClassName">TBGraphView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="notMonitoringView">
 							<string key="name">notMonitoringView</string>

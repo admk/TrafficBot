@@ -33,6 +33,14 @@
 		B1F44B3C127F2E820020735E /* Not Monitoring Background.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B3B127F2E820020735E /* Not Monitoring Background.png */; };
 		B1F44B52127F30530020735E /* Set Up Button.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B50127F30530020735E /* Set Up Button.png */; };
 		B1F44B53127F30530020735E /* Set Up Button Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B51127F30530020735E /* Set Up Button Pressed.png */; };
+		DA049FC112B8534600ECA24C /* Gauge Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FBF12B8534600ECA24C /* Gauge Pressed.png */; };
+		DA049FC212B8534600ECA24C /* Gauge.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FC012B8534600ECA24C /* Gauge.png */; };
+		DA049FC312B8534600ECA24C /* Gauge Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FBF12B8534600ECA24C /* Gauge Pressed.png */; };
+		DA049FC412B8534600ECA24C /* Gauge.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FC012B8534600ECA24C /* Gauge.png */; };
+		DA049FD812B853FF00ECA24C /* Info Alt.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FD612B853FF00ECA24C /* Info Alt.png */; };
+		DA049FD912B853FF00ECA24C /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FD712B853FF00ECA24C /* Info.png */; };
+		DA049FDA12B853FF00ECA24C /* Info Alt.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FD612B853FF00ECA24C /* Info Alt.png */; };
+		DA049FDB12B853FF00ECA24C /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FD712B853FF00ECA24C /* Info.png */; };
 		DA19893E12B459FD00D64DD7 /* TBGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19893B12B459FD00D64DD7 /* TBGraphView.m */; };
 		DA19893F12B459FD00D64DD7 /* GVDescriptionWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19893D12B459FD00D64DD7 /* GVDescriptionWindow.m */; };
 		DA19894012B459FD00D64DD7 /* TBGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19893B12B459FD00D64DD7 /* TBGraphView.m */; };
@@ -83,10 +91,6 @@
 		DA4BF12312B2930C0070618E /* NSWindow+AKFlip.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */; };
 		DA4BF12412B2930C0070618E /* NSWindow+AKFlip.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */; };
 		DA4BF13B12B29EFE0070618E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4BF13A12B29EFE0070618E /* QuartzCore.framework */; };
-		DA4BF1E712B2DBCF0070618E /* Info Alt.png in Resources */ = {isa = PBXBuildFile; fileRef = DA4BF1E512B2DBCF0070618E /* Info Alt.png */; };
-		DA4BF1E812B2DBCF0070618E /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = DA4BF1E612B2DBCF0070618E /* Info.png */; };
-		DA4BF1E912B2DBCF0070618E /* Info Alt.png in Resources */ = {isa = PBXBuildFile; fileRef = DA4BF1E512B2DBCF0070618E /* Info Alt.png */; };
-		DA4BF1EA12B2DBCF0070618E /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = DA4BF1E612B2DBCF0070618E /* Info.png */; };
 		DABFB45D129F21AB00AE41FF /* General.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45A129F21AB00AE41FF /* General.png */; };
 		DABFB45E129F21AB00AE41FF /* Monitor.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45B129F21AB00AE41FF /* Monitor.png */; };
 		DABFB45F129F21AB00AE41FF /* Splash Green.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45C129F21AB00AE41FF /* Splash Green.png */; };
@@ -116,8 +120,8 @@
 		B16F06A3127619A400D13C0B /* TBStatusItemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBStatusItemController.m; sourceTree = "<group>"; };
 		B16F06C51276211D00D13C0B /* TBStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBStatusItemView.h; sourceTree = "<group>"; };
 		B16F06C61276211D00D13C0B /* TBStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBStatusItemView.m; sourceTree = "<group>"; };
-		B16F084812772C8200D13C0B /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MAAttachedWindow.h; path = "../Cocoa Utilities/Attached Window/MAAttachedWindow.h"; sourceTree = "<group>"; };
-		B16F084912772C8200D13C0B /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MAAttachedWindow.m; path = "../Cocoa Utilities/Attached Window/MAAttachedWindow.m"; sourceTree = "<group>"; };
+		B16F084812772C8200D13C0B /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MAAttachedWindow.h; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/Attached Window/MAAttachedWindow.h"; sourceTree = "<group>"; };
+		B16F084912772C8200D13C0B /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MAAttachedWindow.m; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/Attached Window/MAAttachedWindow.m"; sourceTree = "<group>"; };
 		B16F08A51277636900D13C0B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		B16F0C401278708300D13C0B /* Gauge Pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gauge Pointer.png"; path = "../Private Utilites/Gauge View/Gauge Pointer.png"; sourceTree = "<group>"; };
 		B16F0C411278708300D13C0B /* Gauge Face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gauge Face.png"; path = "../Private Utilites/Gauge View/Gauge Face.png"; sourceTree = "<group>"; };
@@ -129,16 +133,20 @@
 		B16F0F141278FBAA00D13C0B /* Cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Cog.png; path = Images/Cog.png; sourceTree = "<group>"; };
 		B16F0F281278FD0F00D13C0B /* Dark Cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Dark Cog.png"; path = "Images/Dark Cog.png"; sourceTree = "<group>"; };
 		B16F0FB512798BEE00D13C0B /* DMCommonMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DMCommonMacros.h; path = "../Cocoa Utilities/Macros/DMCommonMacros.h"; sourceTree = "<group>"; };
-		B16F1088127A09D000D13C0B /* APDrawingCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APDrawingCategories.h; path = "../Cocoa Utilities/Drawing Categories/APDrawingCategories.h"; sourceTree = "<group>"; };
-		B16F1089127A09D000D13C0B /* APDrawingCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APDrawingCategories.m; path = "../Cocoa Utilities/Drawing Categories/APDrawingCategories.m"; sourceTree = "<group>"; };
+		B16F1088127A09D000D13C0B /* APDrawingCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APDrawingCategories.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Drawing Categories/APDrawingCategories.h"; sourceTree = "<absolute>"; };
+		B16F1089127A09D000D13C0B /* APDrawingCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APDrawingCategories.m; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Drawing Categories/APDrawingCategories.m"; sourceTree = "<absolute>"; };
 		B1F44960127E195F0020735E /* TBPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBPreferencesWindowController.h; sourceTree = "<group>"; };
 		B1F44961127E195F0020735E /* TBPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBPreferencesWindowController.m; sourceTree = "<group>"; };
 		B1F44975127E1D4B0020735E /* Updates.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = Updates.tiff; path = Images/Updates.tiff; sourceTree = "<group>"; };
-		B1F449AE127E352B0020735E /* NSWindow+NoodleEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSWindow+NoodleEffects.h"; path = "../Cocoa Utilities/NSWindow (NoodleEffects)/NSWindow+NoodleEffects.h"; sourceTree = "<group>"; };
-		B1F449AF127E352B0020735E /* NSWindow+NoodleEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSWindow+NoodleEffects.m"; path = "../Cocoa Utilities/NSWindow (NoodleEffects)/NSWindow+NoodleEffects.m"; sourceTree = "<group>"; };
+		B1F449AE127E352B0020735E /* NSWindow+NoodleEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSWindow+NoodleEffects.h"; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (NoodleEffects)/NSWindow+NoodleEffects.h"; sourceTree = "<absolute>"; };
+		B1F449AF127E352B0020735E /* NSWindow+NoodleEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSWindow+NoodleEffects.m"; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (NoodleEffects)/NSWindow+NoodleEffects.m"; sourceTree = "<absolute>"; };
 		B1F44B3B127F2E820020735E /* Not Monitoring Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Not Monitoring Background.png"; path = "Images/Not Monitoring Background.png"; sourceTree = "<group>"; };
 		B1F44B50127F30530020735E /* Set Up Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Up Button.png"; path = "Images/Set Up Button.png"; sourceTree = "<group>"; };
 		B1F44B51127F30530020735E /* Set Up Button Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Up Button Pressed.png"; path = "Images/Set Up Button Pressed.png"; sourceTree = "<group>"; };
+		DA049FBF12B8534600ECA24C /* Gauge Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gauge Pressed.png"; path = "Images/Gauge Pressed.png"; sourceTree = "<group>"; };
+		DA049FC012B8534600ECA24C /* Gauge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Gauge.png; path = Images/Gauge.png; sourceTree = "<group>"; };
+		DA049FD612B853FF00ECA24C /* Info Alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Info Alt.png"; path = "Images/Info Alt.png"; sourceTree = "<group>"; };
+		DA049FD712B853FF00ECA24C /* Info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Info.png; path = Images/Info.png; sourceTree = "<group>"; };
 		DA19893A12B459FD00D64DD7 /* TBGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGraphView.h; sourceTree = "<group>"; };
 		DA19893B12B459FD00D64DD7 /* TBGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGraphView.m; sourceTree = "<group>"; };
 		DA19893C12B459FD00D64DD7 /* GVDescriptionWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVDescriptionWindow.h; sourceTree = "<group>"; };
@@ -151,24 +159,22 @@
 		DA35AC1312AC2AA6009C02D2 /* FScript.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FScript.framework; path = Library/Frameworks/FScript.framework; sourceTree = SDKROOT; };
 		DA35AD2D12AC2ADA009C02D2 /* TrafficBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrafficBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA35AD2F12AC2ADA009C02D2 /* TrafficBot-Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TrafficBot-Info copy.plist"; sourceTree = "<group>"; };
-		DA4BE76812AC8CDF0070618E /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaunchAtLoginController.h; path = "../Cocoa Utilities/Launch At Login Controller/LaunchAtLoginController.h"; sourceTree = "<group>"; };
-		DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaunchAtLoginController.m; path = "../Cocoa Utilities/Launch At Login Controller/LaunchAtLoginController.m"; sourceTree = "<group>"; };
+		DA4BE76812AC8CDF0070618E /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaunchAtLoginController.h; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/Launch At Login Controller/LaunchAtLoginController.h"; sourceTree = "<group>"; };
+		DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaunchAtLoginController.m; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/Launch At Login Controller/LaunchAtLoginController.m"; sourceTree = "<group>"; };
 		DA4BE80012AD786B0070618E /* AKDebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKDebugMacros.h; path = "../Cocoa Utilities/Macros/AKDebugMacros.h"; sourceTree = "<group>"; };
 		DA4BE83612AD85380070618E /* UKHelperMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UKHelperMacros.h; path = "../Cocoa Utilities/Macros/UKHelperMacros.h"; sourceTree = SOURCE_ROOT; };
 		DA4BE85312AD86AF0070618E /* Status Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Status Icon.png"; path = "Images/Status Icon.png"; sourceTree = "<group>"; };
 		DA4BEBB912B0485B0070618E /* AKScopeReleased.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKScopeReleased.h; path = "../Cocoa Utilities/Macros/AKScopeReleased.h"; sourceTree = SOURCE_ROOT; };
-		DA4BF12112B2930C0070618E /* NSWindow+AKFlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSWindow+AKFlip.h"; path = "../Cocoa Utilities/NSWindow (AKFlip)/NSWindow+AKFlip.h"; sourceTree = "<group>"; };
-		DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSWindow+AKFlip.m"; path = "../Cocoa Utilities/NSWindow (AKFlip)/NSWindow+AKFlip.m"; sourceTree = "<group>"; };
+		DA4BF12112B2930C0070618E /* NSWindow+AKFlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSWindow+AKFlip.h"; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (AKFlip)/NSWindow+AKFlip.h"; sourceTree = "<group>"; };
+		DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSWindow+AKFlip.m"; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (AKFlip)/NSWindow+AKFlip.m"; sourceTree = "<group>"; };
 		DA4BF13A12B29EFE0070618E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		DA4BF1E512B2DBCF0070618E /* Info Alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Info Alt.png"; path = "Images/Info Alt.png"; sourceTree = "<group>"; };
-		DA4BF1E612B2DBCF0070618E /* Info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Info.png; path = Images/Info.png; sourceTree = "<group>"; };
 		DABFB45A129F21AB00AE41FF /* General.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = General.png; path = Images/General.png; sourceTree = "<group>"; };
 		DABFB45B129F21AB00AE41FF /* Monitor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Monitor.png; path = Images/Monitor.png; sourceTree = "<group>"; };
 		DABFB45C129F21AB00AE41FF /* Splash Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Splash Green.png"; path = "Images/Splash Green.png"; sourceTree = "<group>"; };
 		DABFB460129F21FA00AE41FF /* Advanced.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Advanced.png; path = Images/Advanced.png; sourceTree = "<group>"; };
 		DABFB4AF129F2CF100AE41FF /* TBDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = TBDefaults.plist; sourceTree = "<group>"; };
-		DABFB4D512A0421A00AE41FF /* NSDate+AKMidnight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+AKMidnight.h"; path = "../Cocoa Utilities/NSDate (AKMidnight)/NSDate+AKMidnight.h"; sourceTree = "<group>"; };
-		DABFB4D612A0421A00AE41FF /* NSDate+AKMidnight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+AKMidnight.m"; path = "../Cocoa Utilities/NSDate (AKMidnight)/NSDate+AKMidnight.m"; sourceTree = "<group>"; };
+		DABFB4D512A0421A00AE41FF /* NSDate+AKMidnight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+AKMidnight.h"; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/NSDate (AKMidnight)/NSDate+AKMidnight.h"; sourceTree = "<group>"; };
+		DABFB4D612A0421A00AE41FF /* NSDate+AKMidnight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+AKMidnight.m"; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/NSDate (AKMidnight)/NSDate+AKMidnight.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,14 +368,16 @@
 			isa = PBXGroup;
 			children = (
 				DA4BE81312AD7DC00070618E /* Gauge View */,
-				DA4BF1E612B2DBCF0070618E /* Info.png */,
-				DA4BF1E512B2DBCF0070618E /* Info Alt.png */,
 				B1F44B50127F30530020735E /* Set Up Button.png */,
 				B1F44B51127F30530020735E /* Set Up Button Pressed.png */,
 				B1F44B3B127F2E820020735E /* Not Monitoring Background.png */,
 				B16F0F141278FBAA00D13C0B /* Cog.png */,
 				B16F0F281278FD0F00D13C0B /* Dark Cog.png */,
 				B16F0C83127877C200D13C0B /* Status View Title Bar.png */,
+				DA049FBF12B8534600ECA24C /* Gauge Pressed.png */,
+				DA049FC012B8534600ECA24C /* Gauge.png */,
+				DA049FD612B853FF00ECA24C /* Info Alt.png */,
+				DA049FD712B853FF00ECA24C /* Info.png */,
 			);
 			name = "Status View";
 			sourceTree = "<group>";
@@ -605,9 +613,11 @@
 				DABFB461129F21FA00AE41FF /* Advanced.png in Resources */,
 				DABFB4B0129F2CF100AE41FF /* TBDefaults.plist in Resources */,
 				DA4BE85412AD86AF0070618E /* Status Icon.png in Resources */,
-				DA4BF1E712B2DBCF0070618E /* Info Alt.png in Resources */,
-				DA4BF1E812B2DBCF0070618E /* Info.png in Resources */,
 				DA198D5512B6B41A00D64DD7 /* TBGraphWindow.xib in Resources */,
+				DA049FC112B8534600ECA24C /* Gauge Pressed.png in Resources */,
+				DA049FC212B8534600ECA24C /* Gauge.png in Resources */,
+				DA049FD812B853FF00ECA24C /* Info Alt.png in Resources */,
+				DA049FD912B853FF00ECA24C /* Info.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,9 +644,11 @@
 				DA35AD1712AC2ADA009C02D2 /* Advanced.png in Resources */,
 				DA35AD1812AC2ADA009C02D2 /* TBDefaults.plist in Resources */,
 				DA4BE85512AD86AF0070618E /* Status Icon.png in Resources */,
-				DA4BF1E912B2DBCF0070618E /* Info Alt.png in Resources */,
-				DA4BF1EA12B2DBCF0070618E /* Info.png in Resources */,
 				DA198D5612B6B41A00D64DD7 /* TBGraphWindow.xib in Resources */,
+				DA049FC312B8534600ECA24C /* Gauge Pressed.png in Resources */,
+				DA049FC412B8534600ECA24C /* Gauge.png in Resources */,
+				DA049FDA12B853FF00ECA24C /* Info Alt.png in Resources */,
+				DA049FDB12B853FF00ECA24C /* Info.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

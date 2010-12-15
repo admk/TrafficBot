@@ -70,6 +70,11 @@
     return self;
 }
 - (void)dealloc {
+	self._diffDict = nil;
+	self._sortedDates = nil;
+	self._firstDate = nil;
+	self._lastDate = nil;
+	self._path = nil;
 	[descriptionWindow release], descriptionWindow = nil;
 	[_dataDict release], _dataDict = nil;
 	[_pegView release], _pegView = nil;

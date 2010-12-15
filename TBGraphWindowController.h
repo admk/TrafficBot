@@ -25,5 +25,6 @@
 
 - (void)flip:(id)sender fromWindow:(NSWindow *)aWindow atPoint:(NSPoint)point;
 - (void)dismiss:(id)sender;
+- (IBAction)flipBack:(id)sender;
 
 @end

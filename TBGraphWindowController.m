@@ -14,11 +14,17 @@
 #import "NSWindow+NoodleEffects.h"
 
 @interface TBGraphWindowController ()
+@property (retain) NSWindow *_flipFromWindow;
 - (void)_refreshView:(TBGraphView *)view;
 - (void)_didReceiveNotificationFromTrafficMonitorService:(NSNotification *)notification;
 @end
 
 @implementation TBGraphWindowController
+
+- (void)dealloc {
+	self._flipFromWindow = nil;
+	[super dealloc];
+}
 
 - (void)awakeFromNib {
 	[draggedPanel setAcceptsMouseMovedEvents:YES];
@@ -28,6 +34,7 @@
 }
 
 #pragma mark -
+#pragma mark ui
 - (void)flip:(id)sender fromWindow:(NSWindow *)aWindow atPoint:(NSPoint)point {
 	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 	[self _refreshView:self.graphView];
@@ -35,7 +42,7 @@
 	_zoomRect = [sender convertRect:[sender bounds] toView:nil];
 	_zoomRect.origin = point;
 	if (!self.window) {
-		MAAttachedWindow *window = [[MAAttachedWindow alloc] initWithView:self.graphView 
+		MAAttachedWindow *window = [[MAAttachedWindow alloc] initWithView:self.contentView 
 											 attachedToPoint:_zoomRect.origin 
 													inWindow:nil 
 													  onSide:MAPositionBottom 
@@ -49,12 +56,15 @@
 		[(MAAttachedWindow *)self.window setPoint:point];
 	}
 	[aWindow flipToWindow:self.window];
+	self._flipFromWindow = aWindow;
 	[self.window makeFirstResponder:self.graphView];
 }
 - (void)dismiss:(id)sender {
 	[self.window zoomOffToRect:_zoomRect];
 }
-
+- (IBAction)flipBack:(id)sender {
+	[self.window flipBackToWindow:self._flipFromWindow];
+}
 #pragma mark -
 #pragma mark protocol
 - (void)showDraggedWindowWithFrame:(NSRect)frame {
@@ -91,4 +101,5 @@
 	}
 }
 @synthesize graphView, contentView, draggedPanel, draggedGraphView;
+@synthesize _flipFromWindow;
 @end
