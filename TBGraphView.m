@@ -50,9 +50,10 @@
 @property (retain, nonatomic) NSArray *_sortedDates;
 @property (retain, nonatomic) NSDate *_firstDate;
 @property (retain, nonatomic) NSDate *_lastDate;
-@property (retain, nonatomic) NSBezierPath *_path;
+@property (retain, nonatomic) NSImage *_imageRep;
 
 - (NSBezierPath *)_bezierPathForData;
+- (NSImage *)_imageRepresenation;
 
 - (NSPoint)_pointForDate:(NSDate *)date;
 - (float)_horizontalPositionForDate:(NSDate *)date;
@@ -74,7 +75,6 @@
 	self._sortedDates = nil;
 	self._firstDate = nil;
 	self._lastDate = nil;
-	self._path = nil;
 	[descriptionWindow release], descriptionWindow = nil;
 	[_dataDict release], _dataDict = nil;
 	[_pegView release], _pegView = nil;
@@ -83,99 +83,14 @@
 }
 
 #pragma mark -
-#pragma mark drawing parts
-- (void)_drawGrid {
-	int yMax = 2;
-	if (_yMax > 2) yMax = _yMax;
-	// horizontal grid
-	int incr = 2.5 * pow(10, (int)(log10f(yMax)-1));
-	int yItr = 0;
-	for (float y = incr; y <= yMax; y += incr) {
-		AKScopeAutoreleased();
-		// path
-		NSBezierPath *yPath = [NSBezierPath bezierPath];
-		float yPos = y/yMax * (self.bounds.size.height - VIEW_INSET * 2) + VIEW_INSET;
-		NSPoint yFrom = { VIEW_INSET, yPos };
-		NSPoint yTo = { self.bounds.size.width - VIEW_INSET, yPos };
-		[yPath moveToPoint:yFrom];
-		[yPath lineToPoint:yTo];
-		// stroke
-		[[NSColor colorWithCalibratedWhite:1 alpha:.1*(yItr++%2)+.1] set];
-		[yPath stroke];
-	}
-	// vertical grid
-	for (NSDate *date = [self._firstDate midnightTomorrow]; 
-		 [date isLessThanOrEqualTo:self._lastDate]; 
-		 date = [date midnightTomorrow]) {
-		AKScopeAutoreleased();
-		// point
-		float xPos = [self _horizontalPositionForDate:date];
-		NSPoint point = { xPos - 20, self.bounds.size.height - VIEW_INSET };
-		// string
-		NSString *dateString = [_dateFormatter stringFromDate:date];
-		// draw
-		NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-									[NSFont fontWithName:@"Helvetica Light" size:11], NSFontAttributeName, 
-									[NSColor whiteColor], NSForegroundColorAttributeName, nil];
-		[dateString drawAtPoint:point withAttributes:attributes];
-	}
-}
-- (void)_drawNoData {
-	NSPoint point = { self.bounds.size.width / 2 - 120, self.bounds.size.height / 2 };
-	NSString *noDataString = @"No Data Available.";
-	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-								[NSFont fontWithName:@"Helvetica Light" size:32], NSFontAttributeName, 
-								[NSColor colorWithCalibratedWhite:1 alpha:.3], NSForegroundColorAttributeName, nil];
-	[noDataString drawAtPoint:point withAttributes:attributes];
-}
-- (void)_drawDates {
-	if (!_dateFormatter) {
-		_dateFormatter = [[NSDateFormatter alloc] init];
-		[_dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-		[_dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-	}
-	for (NSDate *date = [self._firstDate nextHour]; 
-		 [date isLessThanOrEqualTo:self._lastDate]; 
-		 date = [date nextHour]) {
-		AKScopeAutoreleased();
-		// point
-		float xPos = [self _horizontalPositionForDate:date];
-		// grid path
-		NSBezierPath *xPath = [NSBezierPath bezierPath];
-		NSPoint xFrom = { xPos, VIEW_INSET };
-		NSPoint xTo = { xPos, self.bounds.size.height - VIEW_INSET };
-		[xPath moveToPoint:xFrom];
-		[xPath lineToPoint:xTo];
-		// stroke
-		[[NSColor colorWithCalibratedWhite:1 alpha:.2] set];
-		[xPath stroke];
-	}
-}
-- (void)_drawGraph {
-	// graph bezier
-	if ([self inLiveResize]) self._path = [self _bezierPathForData];
-	// stroke
-	NSBezierPath *path = [[self._path copy] autorelease];
-	[[NSColor whiteColor] set];
-	[path stroke];
-	// fill
-	NSColor *gradColor1 = [NSColor colorWithCalibratedRed:145.0/255 green:206.0/255 blue:230.0/255 alpha:.5];
-	NSColor *gradColor2 = [NSColor colorWithCalibratedRed:145.0/255 green:206.0/255 blue:230.0/255 alpha:.1];
-	NSGradient* gradient = [[[NSGradient alloc] initWithColorsAndLocations:
-							 gradColor1, (CGFloat)0.0, gradColor2, (CGFloat)1.0, nil] autorelease];
-	NSPoint endPoint = {self.bounds.size.width - VIEW_INSET, VIEW_INSET};
-	[path lineToPoint:endPoint];
-	[gradient drawInBezierPath:path angle:-90.0];	
-}
 #pragma mark drawRect
 - (void)drawRect:(NSRect)dirtyRect {
-	[self _drawGrid];
-	if (HAS_NO_DATA) {
-		[self _drawNoData];
-		return;
-	}
-	[self _drawDates];
-	[self _drawGraph];
+	if (!self._imageRep) self._imageRep = [self _imageRepresenation];
+	[self._imageRep drawInRect:self.bounds fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+}
+- (void)viewDidEndLiveResize {
+	self._imageRep = [self _imageRepresenation];
+	[self setNeedsDisplay:YES];
 }
 
 #pragma mark -
@@ -223,8 +138,8 @@
 		if (y > _yMax) _yMax = y;
 	}
 	
-	// update path
-	self._path = [self _bezierPathForData];
+	// update view
+	self._imageRep = [self _imageRepresenation];
 	[self setNeedsDisplay:YES];
 }
 
@@ -294,6 +209,7 @@
 
 #pragma mark -
 #pragma mark private
+#pragma mark bezier path
 - (NSBezierPath *)_bezierPathForData {
 	NSBezierPath *path = [NSBezierPath bezierPath];
 	[path moveToPoint:[self _pointForDate:[self._sortedDates objectAtIndex:0]]];
@@ -301,30 +217,124 @@
 		AKScopeAutoreleased();
 		[path lineToPoint:[self _pointForDate:date]];
 	}
-	[path setLineWidth:1.5];
+	[path setLineWidth:2];
 	[path setLineJoinStyle:NSRoundLineJoinStyle];
-	[path setFlatness:[self._sortedDates count]/20];
 	return path;
 }
 
+#pragma mark drawing parts
+- (void)_drawGrid {
+	int yMax = 2;
+	if (_yMax > 2) yMax = _yMax;
+	// horizontal grid
+	int incr = 2.5 * pow(10, (int)(log10f(yMax)-1));
+	int yItr = 0;
+	for (float y = incr; y <= yMax; y += incr) {
+		AKScopeAutoreleased();
+		// path
+		NSBezierPath *yPath = [NSBezierPath bezierPath];
+		float yPos = y/yMax * (self.bounds.size.height - VIEW_INSET * 2) + VIEW_INSET;
+		NSPoint yFrom = { VIEW_INSET, yPos };
+		NSPoint yTo = { self.bounds.size.width - VIEW_INSET, yPos };
+		[yPath moveToPoint:yFrom];
+		[yPath lineToPoint:yTo];
+		// stroke
+		[[NSColor colorWithCalibratedWhite:1 alpha:.1*(yItr++%2)+.1] set];
+		[yPath stroke];
+	}
+	// vertical grid
+	for (NSDate *date = [self._firstDate midnightTomorrow]; 
+		 [date isLessThanOrEqualTo:self._lastDate]; 
+		 date = [date midnightTomorrow]) {
+		AKScopeAutoreleased();
+		// point
+		float xPos = [self _horizontalPositionForDate:date];
+		NSPoint point = { xPos - 20, self.bounds.size.height - VIEW_INSET };
+		// string
+		NSString *dateString = [_dateFormatter stringFromDate:date];
+		// draw
+		NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+									[NSFont fontWithName:@"Helvetica Light" size:11], NSFontAttributeName, 
+									[NSColor whiteColor], NSForegroundColorAttributeName, nil];
+		[dateString drawAtPoint:point withAttributes:attributes];
+	}
+}
+- (void)_drawNoData {
+	NSPoint point = { self.bounds.size.width / 2 - 120, self.bounds.size.height / 2 };
+	NSString *noDataString = @"No Data Available.";
+	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+								[NSFont fontWithName:@"Helvetica Light" size:32], NSFontAttributeName, 
+								[NSColor colorWithCalibratedWhite:1 alpha:.3], NSForegroundColorAttributeName, nil];
+	[noDataString drawAtPoint:point withAttributes:attributes];
+}
+- (void)_drawDates {
+	if (!_dateFormatter) {
+		_dateFormatter = [[NSDateFormatter alloc] init];
+		[_dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+		[_dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+	}
+	for (NSDate *date = [self._firstDate nextHour]; 
+		 [date isLessThanOrEqualTo:self._lastDate]; 
+		 date = [date nextHour]) {
+		AKScopeAutoreleased();
+		// point
+		float xPos = [self _horizontalPositionForDate:date];
+		// grid path
+		NSBezierPath *xPath = [NSBezierPath bezierPath];
+		NSPoint xFrom = { xPos, VIEW_INSET };
+		NSPoint xTo = { xPos, self.bounds.size.height - VIEW_INSET };
+		[xPath moveToPoint:xFrom];
+		[xPath lineToPoint:xTo];
+		// stroke
+		[[NSColor colorWithCalibratedWhite:1 alpha:.2] set];
+		[xPath stroke];
+	}
+}
+- (void)_drawGraph {
+	// stroke
+	NSBezierPath *path = [self _bezierPathForData];
+	[[NSColor whiteColor] set];
+	[path stroke];
+	// fill
+	NSColor *gradColor1 = [NSColor colorWithCalibratedRed:145.0/255 green:206.0/255 blue:230.0/255 alpha:.5];
+	NSColor *gradColor2 = [NSColor colorWithCalibratedRed:145.0/255 green:206.0/255 blue:230.0/255 alpha:.1];
+	NSGradient* gradient = [[[NSGradient alloc] initWithColorsAndLocations:
+							 gradColor1, (CGFloat)0.0, gradColor2, (CGFloat)1.0, nil] autorelease];
+	NSPoint endPoint = {self.bounds.size.width - VIEW_INSET, VIEW_INSET};
+	[path lineToPoint:endPoint];
+	[gradient drawInBezierPath:path angle:-90.0];	
+}
+- (NSImage *)_imageRepresenation {
+	NSImage *image = [[[NSImage alloc] initWithSize:self.bounds.size] autorelease];
+	[image lockFocus];
+	[self _drawGrid];
+	if (HAS_NO_DATA) {
+		[self _drawNoData];
+	}
+	else {
+		[self _drawDates];
+		[self _drawGraph];
+	}
+	[image unlockFocus];
+	return image;
+}
+
+#pragma mark point query methods
 - (NSPoint)_pointForDate:(NSDate *)date {
 	NSPoint point;
 	point.x = [self _horizontalPositionForDate:date];
 	point.y = [self _verticalPositionForDate:date];
 	return point;
 }
-
 - (float)_horizontalPositionForDate:(NSDate *)date {
 	float propotion = [date timeIntervalSinceDate:self._firstDate] / _dateRange;
 	return propotion * (self.bounds.size.width - VIEW_INSET * 2) + VIEW_INSET;
 }
-
 - (float)_verticalPositionForDate:(NSDate *)date {
 	//ZAssert([[self._diffDict allKeys] containsObject:date], @"can't find value for date %@", date);
 	float propotion = [[self._diffDict objectForKey:date] doubleValue] / _yMax;
 	return propotion * (self.bounds.size.height - VIEW_INSET * 3) + VIEW_INSET;
 }
-
 - (NSDate *)_nearestDateForPoint:(NSPoint)point {
 	float xProp = point.x / self.bounds.size.width;
 	NSTimeInterval ti = xProp * _dateRange;
@@ -337,6 +347,6 @@
 }
 @synthesize controller;
 @synthesize dataDict = _dataDict;
-@synthesize _path, _sortedDates, _diffDict, _firstDate, _lastDate;
+@synthesize _imageRep, _sortedDates, _diffDict, _firstDate, _lastDate;
 @end
 
