@@ -217,8 +217,15 @@
 		AKScopeAutoreleased();
 		[path lineToPoint:[self _pointForDate:date]];
 	}
+<<<<<<< HEAD
 	[path setLineWidth:2];
 	[path setLineJoinStyle:NSRoundLineJoinStyle];
+=======
+	
+	[path setLineWidth:2];
+	[path setLineJoinStyle:NSRoundLineJoinStyle];
+	
+>>>>>>> refs/heads/graph_efficiency
 	return path;
 }
 
