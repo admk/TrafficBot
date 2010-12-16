@@ -57,7 +57,7 @@
 	}
 	else {
 		// shadow
-		NSShadow *shadow = [[NSShadow alloc] init];
+		NSShadow *shadow = [[[NSShadow alloc] init] autorelease];
 		[shadow setShadowOffset:NSMakeSize(0, -1)];
 		[shadow setShadowBlurRadius:0];
 		[shadow setShadowColor:[NSColor colorWithCalibratedWhite:1 alpha:.5]];

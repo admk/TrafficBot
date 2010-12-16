@@ -295,8 +295,7 @@ static AKTrafficMonitorService *sharedService = nil;
 			// log current entry for rolling log
 			NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
 								   NumberFromULL(diffIn), @"in", 
-								   NumberFromULL(diffOut), @"out",
-								   nil];
+								   NumberFromULL(diffOut), @"out", nil];
 			[rollingLog setObject:entry forKey:[[NSDate date] description]];
 			[self _writeToRollingLogFile:rollingLog];
 		} break;
@@ -306,8 +305,7 @@ static AKTrafficMonitorService *sharedService = nil;
 				// log only total
 				NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
 									   NumberFromULL(self._totalIn), @"in", 
-									   NumberFromULL(self._totalOut), @"out",
-									   nil];
+									   NumberFromULL(self._totalOut), @"out", nil];
 				NSDictionary *log = [NSDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]];
 				[self _writeToFixedLogFile:log];
 			}
@@ -323,8 +321,7 @@ static AKTrafficMonitorService *sharedService = nil;
 			// log only total
 			NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
 								   NumberFromULL(self._totalIn), @"in", 
-								   NumberFromULL(self._totalOut), @"out",
-								   nil];
+								   NumberFromULL(self._totalOut), @"out", nil];
 			NSDictionary *log = [NSDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]];
 			[self _writeToFixedLogFile:log];
 		} break;
@@ -356,10 +353,10 @@ static AKTrafficMonitorService *sharedService = nil;
 			totalobytes += if2m->ifm_data.ifi_obytes;
 		}
 	}
+	free(buf);
 	return [NSDictionary dictionaryWithObjectsAndKeys:
 			NumberFromULL(totalibytes), @"in", 
-			NumberFromULL(totalobytes), @"out", 
-			nil];
+			NumberFromULL(totalobytes), @"out", nil];
 }
 
 #pragma mark -
@@ -386,8 +383,7 @@ static AKTrafficMonitorService *sharedService = nil;
 	
 	NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
 						   NumberFromULL(0), @"in", 
-						   NumberFromULL(0), @"out",
-						   nil];
+						   NumberFromULL(0), @"out", nil];
 	return [NSMutableDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]];
 }
 - (NSString *)_rollingLogFilePath {

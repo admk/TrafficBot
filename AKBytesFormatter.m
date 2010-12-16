@@ -18,7 +18,8 @@
 + (NSString *)convertBytesWithNumber:(NSNumber *)number decimals:(BOOL)decimals {
 	return [self convertBytesWithNumber:number toUnit:[self bestUnitForNumber:number] decimals:decimals];
 }
-+ (NSString *)convertBytesWithNumber:(NSNumber *)number toUnit:(AKBytesFormatterUnit)unit decimals:(BOOL)decimals {	float floatValue = [number floatValue];
++ (NSString *)convertBytesWithNumber:(NSNumber *)number toUnit:(AKBytesFormatterUnit)unit decimals:(BOOL)decimals {
+	float floatValue = [number floatValue];
 	floatValue /= (float)unit;
 	NSString *string = [NSString stringWithFormat:decimals? @"%.2f":@"%.0f", floatValue];
 	NSString *unitString = nil;
@@ -39,6 +40,5 @@
 		default /* > AKBytesFormatterGigaBytesUnit ... */ :						return AKBytesFormatterGigaBytesUnit; 
 	}
 }
-
 
 @end
