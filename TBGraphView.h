@@ -17,7 +17,7 @@
 @class GVDescriptionWindow;
 @interface TBGraphView : NSView {
 
-	__weak id<TBGraphViewDelegate> controller;
+	__weak id<TBGraphViewDelegate> delegate;
 	GVDescriptionWindow *descriptionWindow;	
 @private
 	NSDictionary	*_dataDict;
@@ -28,7 +28,7 @@
 	GVPegView		*_pegView;
 	NSDateFormatter *_dateFormatter;
 }
-@property (assign) id<TBGraphViewDelegate> controller;
+@property (assign) id<TBGraphViewDelegate> delegate;
 @property (retain, nonatomic) NSDictionary *dataDict;
 
 @end

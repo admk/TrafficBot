@@ -359,7 +359,7 @@
 	}
 	return self._lastDate;
 }
-@synthesize controller;
+@synthesize delegate;
 @synthesize dataDict = _dataDict;
 @synthesize _imageRep, _sortedDates, _diffDict, _firstDate, _lastDate;
 @end
