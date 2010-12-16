@@ -15,9 +15,8 @@
 #import "GVDescriptionWindow.h"
 #import "NSDate+AKMidnight.h"
 
-@interface GVPegView : NSView
-@end
-
+#pragma mark -
+@interface GVPegView : NSView @end
 @implementation GVPegView
 - (void)drawRect:(NSRect)dirtyRect {
 	// peg
@@ -111,33 +110,37 @@
 	else {
 		self._sortedDates = sortedDates;	
 	}
-	self._firstDate = [self._sortedDates objectAtIndex:0];
-	self._lastDate = [self._sortedDates lastObject];
-	_dateRange = [self._lastDate timeIntervalSinceDate:self._firstDate];
 	
-	// calculate speed
-	NSMutableDictionary *diffDict = [NSMutableDictionary dictionaryWithCapacity:[dict count]];
-	NSDate *prevDate = self._firstDate;
-	for (NSDate *date in self._sortedDates) {
-		AKScopeAutoreleased();
-		if (prevDate != self._firstDate) {
-			double data = [[dict objectForKey:date] doubleValue];
-			NSTimeInterval ti = [date timeIntervalSinceDate:prevDate];
-			double speed = data / ti;
-			[diffDict setObject:[NSNumber numberWithDouble:speed] forKey:date];
+	if (!IsEmpty(self._sortedDates)) {
+		// dates
+		self._firstDate = [self._sortedDates objectAtIndex:0];
+		self._lastDate = [self._sortedDates lastObject];
+		_dateRange = [self._lastDate timeIntervalSinceDate:self._firstDate];
+		// calculate speed
+		NSMutableDictionary *diffDict = [NSMutableDictionary dictionaryWithCapacity:[dict count]];
+		NSDate *prevDate = self._firstDate;
+		for (NSDate *date in self._sortedDates) {
+			AKScopeAutoreleased();
+			if (prevDate != self._firstDate) {
+				double data = [[dict objectForKey:date] doubleValue];
+				NSTimeInterval ti = [date timeIntervalSinceDate:prevDate];
+				double speed = data / ti;
+				[diffDict setObject:[NSNumber numberWithDouble:speed] forKey:date];
+			}
+			prevDate = date;
 		}
-		prevDate = date;
+		self._diffDict = diffDict;
+		// find max for graph
+		_yMax = 0;
+		for (NSDate *date in self._sortedDates) {
+			AKScopeAutoreleased();
+			double y = [[diffDict objectForKey:date] doubleValue];
+			if (y > _yMax) _yMax = y;
+		}
 	}
-	self._diffDict = diffDict;
-	
-	// find max for graph
-	_yMax = 0;
-	for (NSDate *date in self._sortedDates) {
-		AKScopeAutoreleased();
-		double y = [[diffDict objectForKey:date] doubleValue];
-		if (y > _yMax) _yMax = y;
+	else {
+		self._diffDict = [NSDictionary dictionary];
 	}
-	
 	// update view
 	self._imageRep = [self _imageRepresenation];
 	[self setNeedsDisplay:YES];
@@ -235,7 +238,7 @@
 
 #pragma mark drawing parts
 - (void)_drawGrid {
-	int yMax = 2;
+	int yMax = 5;
 	if (_yMax > 2) yMax = _yMax;
 	// horizontal grid
 	int incr = 2.5 * pow(10, (int)(log10f(yMax)-1));
