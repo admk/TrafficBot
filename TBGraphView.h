@@ -23,8 +23,6 @@
 	NSDictionary	*_dataDict;
 	float			_dateRange;
 	float			_yMax;
-	BOOL			_mouseIsInside;
-	NSPoint			_mouseViewPos;
 	GVPegView		*_pegView;
 	NSDateFormatter *_dateFormatter;
 }

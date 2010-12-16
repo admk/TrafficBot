@@ -50,9 +50,13 @@
 @property (retain, nonatomic) NSDate *_firstDate;
 @property (retain, nonatomic) NSDate *_lastDate;
 @property (retain, nonatomic) NSImage *_imageRep;
+@property (retain, nonatomic) NSDate *_mouseDate;
 
 - (NSBezierPath *)_bezierPathForData;
 - (NSImage *)_imageRepresenation;
+
+- (void)_showDescriptionForDate:(NSDate *)date;
+- (void)_dismissDescription;
 
 - (NSPoint)_pointForDate:(NSDate *)date;
 - (float)_horizontalPositionForDate:(NSDate *)date;
@@ -87,9 +91,66 @@
 	if (!self._imageRep) self._imageRep = [self _imageRepresenation];
 	[self._imageRep drawInRect:self.bounds fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
 }
+
+#pragma mark -
+#pragma mark notifications & events
+- (void)viewWillStartLiveResize {
+	[self _dismissDescription];
+}
 - (void)viewDidEndLiveResize {
 	self._imageRep = [self _imageRepresenation];
 	[self setNeedsDisplay:YES];
+}
+- (void)mouseDragged:(NSEvent *)theEvent {
+	
+	// ui behaviours
+	[self _dismissDescription];
+	if ([self.window respondsToSelector:@selector(setHasArrow:)]) {
+		[(MAAttachedWindow *)self.window setHasArrow:NO];
+	}
+	[self.window setAlphaValue:.7];
+
+	// frame calculations
+	NSPoint originalMouseLocation = [self.window convertBaseToScreen:[theEvent locationInWindow]];
+	NSRect originalFrame = [self.window frame];
+
+	while (YES) {		
+		
+		NSEvent *newEvent = [self.window nextEventMatchingMask:(NSLeftMouseDraggedMask | NSLeftMouseUpMask)];
+		if ([newEvent type] == NSLeftMouseUp) {
+			// user gave up left mouse
+			[self.window orderOut:self];
+			[self.window setAlphaValue:1];
+			if ([self.window respondsToSelector:@selector(setHasArrow:)]) {
+				[(MAAttachedWindow *)self.window setHasArrow:YES];
+			}
+			[delegate showDraggedWindowWithFrame:self.window.frame];
+			return;
+		}
+		
+		// still dragging
+		NSPoint newMouseLocation = [self.window convertBaseToScreen:[newEvent locationInWindow]];
+		NSRect newFrame = originalFrame;
+		float deltaX = newMouseLocation.x - originalMouseLocation.x;
+		float deltaY = newMouseLocation.y - originalMouseLocation.y;
+		newFrame.origin.x += deltaX;
+		newFrame.origin.y += deltaY;
+		[self.window setFrame:newFrame display:YES animate:NO];
+	}
+}
+- (void)mouseMoved:(NSEvent *)theEvent {
+	if (HAS_NO_DATA) return;
+	NSPoint point = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+	if ([self mouse:point inRect:[self bounds]]) {
+		self._mouseDate = [self _nearestDateForPoint:point];
+		[self _showDescriptionForDate:self._mouseDate];
+	}
+	else {
+		[self _dismissDescription];
+	}
+}
+- (BOOL)acceptsFirstResponder {
+	return YES;
 }
 
 #pragma mark -
@@ -142,83 +203,9 @@
 		self._diffDict = [NSDictionary dictionary];
 	}
 	// update view
+	[self _showDescriptionForDate:self._mouseDate];
 	self._imageRep = [self _imageRepresenation];
 	[self setNeedsDisplay:YES];
-}
-
-#pragma mark -
-#pragma mark events
-- (void)mouseDragged:(NSEvent *)theEvent {
-	
-	// window behaviours
-	[descriptionWindow orderOut:self];
-	if ([self.window respondsToSelector:@selector(setHasArrow:)]) {
-		[(MAAttachedWindow *)self.window setHasArrow:NO];
-	}
-	[self.window setAlphaValue:.7];
-
-	// frame calculations
-	NSPoint originalMouseLocation = [self.window convertBaseToScreen:[theEvent locationInWindow]];
-	NSRect originalFrame = [self.window frame];
-
-	while (YES) {		
-		
-		NSEvent *newEvent = [self.window nextEventMatchingMask:(NSLeftMouseDraggedMask | NSLeftMouseUpMask)];
-		if ([newEvent type] == NSLeftMouseUp) {
-			// user gave up left mouse
-			[self.window orderOut:self];
-			[self.window setAlphaValue:1];
-			if ([self.window respondsToSelector:@selector(setHasArrow:)]) {
-				[(MAAttachedWindow *)self.window setHasArrow:YES];
-			}
-			[controller showDraggedWindowWithFrame:self.window.frame];
-			return;
-		}
-		
-		// still dragging
-		NSPoint newMouseLocation = [self.window convertBaseToScreen:[newEvent locationInWindow]];
-		NSRect newFrame = originalFrame;
-		float deltaX = newMouseLocation.x - originalMouseLocation.x;
-		float deltaY = newMouseLocation.y - originalMouseLocation.y;
-		newFrame.origin.x += deltaX;
-		newFrame.origin.y += deltaY;
-		[self.window setFrame:newFrame display:YES animate:NO];
-	}
-}
-- (void)mouseMoved:(NSEvent *)theEvent {
-	if (HAS_NO_DATA) return;
-	
-	NSPoint mouse = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-	NSDate *date = [self _nearestDateForPoint:mouse];
-	_mouseViewPos = [self _pointForDate:date];
-	NSPoint windowPos = [self convertPoint:_mouseViewPos toView:self.window.contentView];
-	
-	_mouseIsInside = [self mouse:mouse inRect:[self bounds]];
-	if (_mouseIsInside) {
-		// peg
-		NSRect pegRect = NSMakeRect(_mouseViewPos.x - 8, _mouseViewPos.y - 8, 16, 16);
-		if (!_pegView) {
-			_pegView = [[GVPegView alloc] initWithFrame:pegRect];
-		}
-		_pegView.frame = pegRect;
-		[self addSubview:_pegView];
-		// window
-		if (!descriptionWindow) {
-			descriptionWindow = [[GVDescriptionWindow alloc] initWithPoint:windowPos inWindow:self.window];
-		}
-		[descriptionWindow setPoint:windowPos];
-		// just appear
-		[descriptionWindow setDate:date];
-		[descriptionWindow setData:[[self._diffDict objectForKey:date] floatValue]];
-		[descriptionWindow orderFront:self];
-	}
-	else {
-		[_pegView removeFromSuperview];
-		[descriptionWindow orderOut:self];
-	}
-}
-- (BOOL)acceptsFirstResponder {
-	return YES;
 }
 
 #pragma mark -
@@ -333,6 +320,34 @@
 	return image;
 }
 
+#pragma mark descriptionWindow
+- (void)_showDescriptionForDate:(NSDate *)date {
+	if (!date) return;
+	// points
+	NSPoint viewPos = [self _pointForDate:date];
+	NSPoint windowPos = [self convertPoint:viewPos toView:self.window.contentView];
+	// peg
+	NSRect pegRect = NSMakeRect(viewPos.x - 8, viewPos.y - 8, 16, 16);
+	if (!_pegView) {
+		_pegView = [[GVPegView alloc] initWithFrame:pegRect];
+	}
+	_pegView.frame = pegRect;
+	[self addSubview:_pegView];
+	// window
+	if (!descriptionWindow) {
+		descriptionWindow = [[GVDescriptionWindow alloc] initWithPoint:windowPos inWindow:self.window];
+	}
+	[descriptionWindow setPoint:windowPos];
+	[descriptionWindow setDate:date];
+	[descriptionWindow setData:[[self._diffDict objectForKey:date] floatValue]];
+	// appear
+	[descriptionWindow orderFront:self];
+}
+- (void)_dismissDescription {
+	[descriptionWindow orderOut:self];
+	[_pegView removeFromSuperview];
+}
+
 #pragma mark point query methods
 - (NSPoint)_pointForDate:(NSDate *)date {
 	NSPoint point;
@@ -361,6 +376,6 @@
 }
 @synthesize delegate;
 @synthesize dataDict = _dataDict;
-@synthesize _imageRep, _sortedDates, _diffDict, _firstDate, _lastDate;
+@synthesize _mouseDate, _imageRep, _sortedDates, _diffDict, _firstDate, _lastDate;
 @end
 
