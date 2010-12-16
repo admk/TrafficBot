@@ -101,6 +101,9 @@
 	self._imageRep = [self _imageRepresenation];
 	[self setNeedsDisplay:YES];
 }
+- (void)viewDidHide {
+	[self _dismissDescription];
+}
 - (void)mouseDragged:(NSEvent *)theEvent {
 	
 	// ui behaviours
