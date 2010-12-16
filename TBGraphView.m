@@ -89,7 +89,10 @@
 #pragma mark drawRect
 - (void)drawRect:(NSRect)dirtyRect {
 	if (!self._imageRep) self._imageRep = [self _imageRepresenation];
-	[self._imageRep drawInRect:self.bounds fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+	NSRect boundsRect = NSInsetRect(self.bounds, VIEW_INSET, VIEW_INSET);
+	NSRect imageRect = NSMakeRect(0, 0, self._imageRep.size.width, self._imageRep.size.height);
+	imageRect = NSInsetRect(imageRect, VIEW_INSET, VIEW_INSET);
+	[self._imageRep drawInRect:boundsRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1];
 }
 
 #pragma mark -

@@ -28,9 +28,9 @@
 
 - (void)awakeFromNib {
 	[draggedPanel setAcceptsMouseMovedEvents:YES];
-
-	[[AKTrafficMonitorService sharedService] addObserver:self selector:@selector(_didReceiveNotificationFromTrafficMonitorService:)];
+	[draggedPanel setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];	
 	[self _refreshView:self.graphView];
+	[[AKTrafficMonitorService sharedService] addObserver:self selector:@selector(_didReceiveNotificationFromTrafficMonitorService:)];
 }
 
 #pragma mark -
