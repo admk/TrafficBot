@@ -44,9 +44,9 @@ typedef enum {
 @property (assign, getter=isMonitoring) BOOL monitoring;
 
 // modes:
-// 1: a rolling period - traffic in the last x hours/days
-// 2: a fixed period - or monitor one fixed period, say, until midnight tomorrow?
-// 3: an indefinite period
+// tms_rolling_mode:	a rolling period - traffic in the last x hours/days
+// tms_fixed_mode:		a fixed period - or monitor one fixed period, say, until midnight tomorrow?
+// tms_indefinite_mode: an indefinite period
 @property (assign) tms_mode_t monitoringMode;
 
 // time interval for rolling period
@@ -63,9 +63,11 @@ typedef enum {
 
 + (AKTrafficMonitorService *)sharedService;
 
+// notifications
 - (void)addObserver:(id)inObserver selector:(SEL)inSelector;
 - (void)removeObserver:(id)inObserver;
 
+// dictionary representation of log files
 - (NSMutableDictionary *)rollingLogFile;
 - (NSMutableDictionary *)fixedLogFile;
 

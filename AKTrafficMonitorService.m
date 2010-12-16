@@ -62,6 +62,9 @@ static AKTrafficMonitorService *sharedService = nil;
 	_lastOut = 0;
 	_totalIn = 0;
 	_totalOut = 0;
+	_rollingPeriodInterval = 0;
+	_fixedPeriodRestartDate = nil;
+	_monitoring = NO;
 	_monitoringMode = tms_unreachable_mode;
 	
     return self;
