@@ -50,10 +50,10 @@
 	[[AKTrafficMonitorService sharedService] addObserver:self selector:@selector(_didReceiveNotificationFromTrafficMonitorService:)];
 }
 - (void)applicationDidResignActive:(NSNotification *)notification {
-	/*
+#ifndef DEBUG
 	[self dismissStatusView:self];
 	[self dismissGraphWindow:self];
-	//*/
+#endif
 }
 - (void)applicationWillTerminate:(NSNotification *)notification {
 	[[AKTrafficMonitorService sharedService] removeObserver:self];
