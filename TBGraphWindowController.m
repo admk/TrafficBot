@@ -46,7 +46,7 @@
 														  attachedToPoint:_zoomRect.origin 
 																 inWindow:nil 
 																   onSide:MAPositionBottom 
-															   atDistance:3.0];
+															   atDistance:3.0f];
 		[window setArrowHeight:10];
 		[window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
 		[window setAcceptsMouseMovedEvents:YES];

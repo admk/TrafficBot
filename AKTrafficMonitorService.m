@@ -173,26 +173,26 @@ static AKTrafficMonitorService *sharedService = nil;
 	switch (self.monitoringMode) {
 			
 		case tms_rolling_mode: {
-			NSMutableDictionary *log = [self rollingLogFile];
-			for (NSString *dateString in [log allKeys]) {
+			NSMutableDictionary *tLog = [self rollingLogFile];
+			for (NSString *dateString in [tLog allKeys]) {
 				AKScopeAutoreleased();
 				NSDate *date = [NSDate dateWithString:dateString];
 				// remove expired entries
 				if ([date timeIntervalSinceNow] < -self.rollingPeriodInterval)
-					[log removeObjectForKey:dateString];
+					[tLog removeObjectForKey:dateString];
 				else {
-					self._totalIn += ULLFromNumber([[log objectForKey:dateString] objectForKey:@"in"]);
-					self._totalOut += ULLFromNumber([[log objectForKey:dateString] objectForKey:@"out"]);
+					self._totalIn += ULLFromNumber([[tLog objectForKey:dateString] objectForKey:@"in"]);
+					self._totalOut += ULLFromNumber([[tLog objectForKey:dateString] objectForKey:@"out"]);
 				}
 			}
-			[self _writeToRollingLogFile:log];
+			[self _writeToRollingLogFile:tLog];
 		} break;
 			
 		case tms_fixed_mode: {
-			NSMutableDictionary *log = [self fixedLogFile];
+			NSMutableDictionary *tLog = [self fixedLogFile];
 			if ([self.fixedPeriodRestartDate timeIntervalSinceNow] > 0) {
-				NSString *dateString = [[log allKeys] objectAtIndex:0];
-				NSDictionary *entry = [log objectForKey:dateString];
+				NSString *dateString = [[tLog allKeys] objectAtIndex:0];
+				NSDictionary *entry = [tLog objectForKey:dateString];
 				self._totalIn = ULLFromNumber([entry objectForKey:@"in"]);
 				self._totalOut = ULLFromNumber([entry objectForKey:@"out"]);
 			}
@@ -205,9 +205,9 @@ static AKTrafficMonitorService *sharedService = nil;
 		} break;
 			
 		case tms_indefinite_mode: {
-			NSMutableDictionary *log = [self fixedLogFile];
-			NSString *dateString = [[log allKeys] objectAtIndex:0];
-			NSDictionary *entry = [log objectForKey:dateString];
+			NSMutableDictionary *tLog = [self fixedLogFile];
+			NSString *dateString = [[tLog allKeys] objectAtIndex:0];
+			NSDictionary *entry = [tLog objectForKey:dateString];
 			self._totalIn = ULLFromNumber([entry objectForKey:@"in"]);
 			self._totalOut = ULLFromNumber([entry objectForKey:@"out"]);			
 		} break;
@@ -307,8 +307,8 @@ static AKTrafficMonitorService *sharedService = nil;
 				NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
 									   NumberFromULL(self._totalIn), @"in", 
 									   NumberFromULL(self._totalOut), @"out", nil];
-				NSDictionary *log = [NSDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]];
-				[self _writeToFixedLogFile:log];
+				NSDictionary *tLog = [NSDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]];
+				[self _writeToFixedLogFile:tLog];
 			}
 			else {
 				[self clearStatistics];
@@ -323,8 +323,8 @@ static AKTrafficMonitorService *sharedService = nil;
 			NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
 								   NumberFromULL(self._totalIn), @"in", 
 								   NumberFromULL(self._totalOut), @"out", nil];
-			NSDictionary *log = [NSDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]];
-			[self _writeToFixedLogFile:log];
+			NSDictionary *tLog = [NSDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]];
+			[self _writeToFixedLogFile:tLog];
 		} break;
 
 		default: ALog(@"unrecognised mode"); break;
@@ -362,18 +362,18 @@ static AKTrafficMonitorService *sharedService = nil;
 
 #pragma mark -
 #pragma mark file management
-- (BOOL)_writeToRollingLogFile:(NSDictionary *)log {
+- (BOOL)_writeToRollingLogFile:(NSDictionary *)tLog {
 	// save log file
-	DLog(@"writing log to file, entry count: %d", [log count]);
-	BOOL success = [log writeToFile:[self _rollingLogFilePath] atomically:YES];
+	DLog(@"writing log to file, entry count: %d", [tLog count]);
+	BOOL success = [tLog writeToFile:[self _rollingLogFilePath] atomically:YES];
 	ZAssert(success, @"failed to write log");
 	return success;
 }
-- (BOOL)_writeToFixedLogFile:(NSDictionary *)log {
-	ZAssert([[log allKeys] count] == 1, @"log file must have exactly one entry for a fixed period monitoring");
+- (BOOL)_writeToFixedLogFile:(NSDictionary *)tLog {
+	ZAssert([[tLog allKeys] count] == 1, @"log file must have exactly one entry for a fixed period monitoring");
 	// save log file
-	DLog(@"writing log to file, entry count: %d", [log count]);
-	BOOL success = [log writeToFile:[self _fixedLogFilePath] atomically:YES];
+	DLog(@"writing log to file, entry count: %d", [tLog count]);
+	BOOL success = [tLog writeToFile:[self _fixedLogFilePath] atomically:YES];
 	ZAssert(success, @"failed to write log");
 	return success;
 }

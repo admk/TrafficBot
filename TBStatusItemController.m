@@ -45,8 +45,8 @@
 #pragma mark UI methods
 - (void)showStatusItem {
 	// status item
-	float width = 29.0;
-    float height = [[NSStatusBar systemStatusBar] thickness];
+	float width = 29.0f;
+    float height = (float)[[NSStatusBar systemStatusBar] thickness];
     NSRect viewFrame = NSMakeRect(0, 0, width, height);
 	self.statusItemView = [[[TBStatusItemView alloc] initWithFrame:viewFrame controller:self] autorelease];
     statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:width] retain];

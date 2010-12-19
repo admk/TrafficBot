@@ -47,7 +47,7 @@
 	
 	[oldPreferencesView removeFromSuperview];
 	
-	float heightDelta = _preferencesView.frame.size.height - oldPreferencesView.frame.size.height;
+	float heightDelta = (float)(_preferencesView.frame.size.height - oldPreferencesView.frame.size.height);
     NSRect frame = [self.window frame];
     frame.origin.y -= heightDelta;
     frame.size.height += heightDelta;

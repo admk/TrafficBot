@@ -38,7 +38,7 @@
 @property (retain, nonatomic) NSString *_dateString;
 @property (retain, nonatomic) NSString *_dataString;
 - (void)_updateViewSize;
-- (CGFloat)_widthOfString:(NSString *)string withFont:(NSFont *)font;
+- (float)_widthOfString:(NSString *)string withFont:(NSFont *)font;
 - (NSTextField *)_newTextFieldWithFrame:(NSRect)frameRect;
 @end
 
@@ -124,7 +124,7 @@
 #pragma mark private
 - (void)_updateViewSize {
 	
-	float dateWidth = [self _widthOfString:self._dateString withFont:[NSFont fontWithName:@"Helvetica" size:12]];
+	float dateWidth = [self _widthOfString:self._dateString withFont:[NSFont fontWithName:@"Helvetica" size:12.0f]];
 	float dataWidth = [self _widthOfString:self._dataString withFont:[NSFont fontWithName:@"Helvetica" size:14]];
 	float maxWidth;
 	if (dateWidth > dataWidth) maxWidth = dateWidth;
@@ -135,10 +135,10 @@
 	[view setFrame:rect];
 	[super _redisplay];
 }
-- (CGFloat)_widthOfString:(NSString *)string withFont:(NSFont *)font {
+- (float)_widthOfString:(NSString *)string withFont:(NSFont *)font {
 	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, nil];
 	NSAttributedString *aString = [[[NSAttributedString alloc] initWithString:string attributes:attributes] autorelease];
-	return aString.size.width;
+	return (float)aString.size.width;
 }
 
 - (NSTextField *)_newTextFieldWithFrame:(NSRect)frameRect {

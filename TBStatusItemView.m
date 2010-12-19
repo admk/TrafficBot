@@ -57,11 +57,11 @@
 	}
 	else {
 		// shadow
-		NSShadow *shadow = [[[NSShadow alloc] init] autorelease];
-		[shadow setShadowOffset:NSMakeSize(0, -1)];
-		[shadow setShadowBlurRadius:0];
-		[shadow setShadowColor:[NSColor colorWithCalibratedWhite:1 alpha:.5]];
-		[shadow set];
+		NSShadow *aShadow = [[[NSShadow alloc] init] autorelease];
+		[aShadow setShadowOffset:NSMakeSize(0, -1)];
+		[aShadow setShadowBlurRadius:0];
+		[aShadow setShadowColor:[NSColor colorWithCalibratedWhite:1 alpha:.5]];
+		[aShadow set];
 		[path fill];
 		// gradient fill
 		NSGradient *gradient = [[[NSGradient alloc] initWithStartingColor:[NSColor blackColor] endingColor:[NSColor darkGrayColor]] autorelease];
@@ -117,9 +117,9 @@
 									inset:(float)inset 
 								 atHeight:(float)yOffset {
 	// math
-	float width = frame.size.width - inset * 2;
+	float width = (float)frame.size.width - inset * 2.0f;
 	//float height = frame.size.height - inset * 2;
-	float theta_rad = theta / 180 * pi;
+	float theta_rad = theta / 180.0f * (float)pi;
 	float radius = width / (2 * sinf(theta_rad));
 	float radius_sin_factor = radius * sinf(theta_rad);
 	float radius_cos_factor = radius * cosf(theta_rad);

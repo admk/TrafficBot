@@ -6,7 +6,7 @@
 //  Copyright 2010 Imperial College. All rights reserved.
 //
 
-#define VIEW_INSET 20
+#define VIEW_INSET 20.0f
 #define MAX_ON_SCREEN_DATA 1440
 #define MIN_DATA 2
 #define HAS_NO_DATA [[self._diffDict allKeys] count] < MIN_DATA
@@ -137,8 +137,8 @@
 		// still dragging
 		NSPoint newMouseLocation = [self.window convertBaseToScreen:[newEvent locationInWindow]];
 		NSRect newFrame = originalFrame;
-		float deltaX = newMouseLocation.x - originalMouseLocation.x;
-		float deltaY = newMouseLocation.y - originalMouseLocation.y;
+		float deltaX = (float)(newMouseLocation.x - originalMouseLocation.x);
+		float deltaY = (float)(newMouseLocation.y - originalMouseLocation.y);
 		newFrame.origin.x += deltaX;
 		newFrame.origin.y += deltaY;
 		[self.window setFrame:newFrame display:YES animate:NO];
@@ -182,7 +182,7 @@
 		// dates
 		self._firstDate = [self._sortedDates objectAtIndex:0];
 		self._lastDate = [self._sortedDates lastObject];
-		_dateRange = [self._lastDate timeIntervalSinceDate:self._firstDate];
+		_dateRange = (float)[self._lastDate timeIntervalSinceDate:self._firstDate];
 		// calculate speed
 		NSMutableDictionary *diffDict = [NSMutableDictionary dictionaryWithCapacity:[dict count]];
 		NSDate *prevDate = self._firstDate;
@@ -201,7 +201,7 @@
 		_yMax = 0;
 		for (NSDate *date in self._sortedDates) {
 			AKScopeAutoreleased();
-			double y = [[diffDict objectForKey:date] doubleValue];
+			float y = [[diffDict objectForKey:date] floatValue];
 			if (y > _yMax) _yMax = y;
 		}
 	}
@@ -234,13 +234,13 @@
 	int yMax = 5;
 	if (_yMax > 2) yMax = _yMax;
 	// horizontal grid
-	int incr = 2.5 * pow(10, (int)(log10f(yMax)-1));
+	int incr = (int)(2.5 * pow(10, (int)(log10f(yMax)-1)));
 	int yItr = 0;
 	for (float y = incr; y <= yMax; y += incr) {
 		AKScopeAutoreleased();
 		// path
 		NSBezierPath *yPath = [NSBezierPath bezierPath];
-		float yPos = y/yMax * (self.bounds.size.height - VIEW_INSET * 2) + VIEW_INSET;
+		float yPos = y/yMax * ((float)self.bounds.size.height - VIEW_INSET * 2) + VIEW_INSET;
 		NSPoint yFrom = { VIEW_INSET, yPos };
 		NSPoint yTo = { self.bounds.size.width - VIEW_INSET, yPos };
 		[yPath moveToPoint:yFrom];
@@ -362,16 +362,16 @@
 	return point;
 }
 - (float)_horizontalPositionForDate:(NSDate *)date {
-	float propotion = [date timeIntervalSinceDate:self._firstDate] / _dateRange;
-	return propotion * (self.bounds.size.width - VIEW_INSET * 2) + VIEW_INSET;
+	float propotion = (float)[date timeIntervalSinceDate:self._firstDate] / _dateRange;
+	return propotion * ((float)self.bounds.size.width - VIEW_INSET * 2) + VIEW_INSET;
 }
 - (float)_verticalPositionForDate:(NSDate *)date {
 	//ZAssert([[self._diffDict allKeys] containsObject:date], @"can't find value for date %@", date);
-	float propotion = [[self._diffDict objectForKey:date] doubleValue] / _yMax;
-	return propotion * (self.bounds.size.height - VIEW_INSET * 3) + VIEW_INSET;
+	float propotion = (float)[[self._diffDict objectForKey:date] doubleValue] / _yMax;
+	return propotion * ((float)self.bounds.size.height - VIEW_INSET * 3) + VIEW_INSET;
 }
 - (NSDate *)_nearestDateForPoint:(NSPoint)point {
-	float xProp = point.x / self.bounds.size.width;
+	float xProp = (float)(point.x / self.bounds.size.width);
 	NSTimeInterval ti = xProp * _dateRange;
 	NSDate *dateAtPoint = [self._firstDate dateByAddingTimeInterval:ti];
 	for (NSDate *date in self._sortedDates) {
