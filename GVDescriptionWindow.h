@@ -14,17 +14,10 @@
 
 	DWView *view;
 	NSTextField *dateTextField;
-	NSTextField *dataTextField;
+	NSTextField *detailTextField;
 @private
 	NSDateFormatter *_dateFormatter;
-	NSDate *_date;
-	float _data;
-	NSString *_dateString;
-	NSString *_dataString;
 }
-
-@property (retain, nonatomic) NSDate *date;
-@property (assign, nonatomic) float data;
 
 - (id)initWithPoint:(NSPoint)point 
 		   inWindow:(NSWindow *)window;
@@ -33,5 +26,7 @@
 		  inWindow:(NSWindow *)window 
 			onSide:(MAWindowPosition)side 
 		atDistance:(float)distance;
+
+- (void)updateViewWithDate:(NSDate *)date detail:(NSString *)detailString;
 
 @end

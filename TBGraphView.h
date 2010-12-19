@@ -13,7 +13,7 @@
 - (void)showDraggedWindowWithFrame:(NSRect)frame;
 @end
 
-@class GVPegView;
+@class GVIndicatorView;
 @class GVDescriptionWindow;
 @interface TBGraphView : NSView <NSCoding> {
 
@@ -23,7 +23,7 @@
 	NSDictionary	*_dataDict;
 	float			_dateRange;
 	float			_yMax;
-	GVPegView		*_pegView;
+	GVIndicatorView	*_indicatorView;
 	NSDateFormatter *_dateFormatter;
 }
 @property (assign) id<TBGraphViewDelegate> delegate;

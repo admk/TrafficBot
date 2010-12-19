@@ -83,9 +83,7 @@
 	NSDictionary *dict = [[AKTrafficMonitorService sharedService] rollingLogFile];
 	NSMutableDictionary *graphDict = [[[NSMutableDictionary alloc] initWithCapacity:[dict count]] autorelease];
 	for (NSString *dateString in [dict allKeys]) {
-		NSDictionary *inOutDict = [dict objectForKey:dateString];
-		double total = [[inOutDict objectForKey:@"in"] doubleValue] + [[inOutDict objectForKey:@"out"] doubleValue];
-		[graphDict setObject:[NSNumber numberWithDouble:total] forKey:[NSDate dateWithString:dateString]];
+		[graphDict setObject:[dict objectForKey:dateString] forKey:[NSDate dateWithString:dateString]];
 	}
 	view.dataDict = graphDict;
 }

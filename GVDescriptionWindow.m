@@ -7,7 +7,6 @@
 //
 
 #import "GVDescriptionWindow.h"
-#import "AKBytesFormatter.h"
 
 #define VIEW_CORNER_RADIUS ((float)5.0)
 #define VIEW_GRADIENT_COLOR_1 [NSColor colorWithCalibratedRed:100.0/255 green:200.0/255 blue:1 alpha:1]
@@ -35,10 +34,14 @@
 #pragma mark -
 #pragma mark private methods
 @interface GVDescriptionWindow ()
+<<<<<<< HEAD
 @property (retain, nonatomic) NSString *_dateString;
 @property (retain, nonatomic) NSString *_dataString;
 - (void)_updateViewSize;
 - (float)_widthOfString:(NSString *)string withFont:(NSFont *)font;
+=======
+- (CGFloat)_widthOfString:(NSString *)string withFont:(NSFont *)font;
+>>>>>>> Preliminary in/out graph view.
 - (NSTextField *)_newTextFieldWithFrame:(NSRect)frameRect;
 @end
 
@@ -56,9 +59,9 @@
 	
 	view = [[DWView alloc] initWithFrame:NSMakeRect(0, 0, 50, 35)];
 	dateTextField = [self _newTextFieldWithFrame:NSMakeRect(0, 21, 50, 11)];
-	dataTextField = [self _newTextFieldWithFrame:NSMakeRect(0, 6, 50, 15)];
-	[dataTextField setFont:[NSFont fontWithName:@"Helvetica" size:14]];
-	[view addSubview:dateTextField], [view addSubview:dataTextField];
+	detailTextField = [self _newTextFieldWithFrame:NSMakeRect(0, 6, 50, 15)];
+	[detailTextField setFont:[NSFont fontWithName:@"Helvetica" size:14]];
+	[view addSubview:dateTextField], [view addSubview:detailTextField];
 	
 	[super initWithView:view attachedToPoint:point inWindow:window onSide:side atDistance:distance];
 	if (!self) {
@@ -81,27 +84,22 @@
 - (void)dealloc {
 	[_dateFormatter release], _dateFormatter = nil;
 	[dateTextField release], dateTextField = nil;
-	[dataTextField release], dataTextField = nil;
+	[detailTextField release], detailTextField = nil;
 	[view release], view = nil;
-	self._dateString = nil;
-	self._dataString = nil;
-	self.date = nil;
 	
 	[super dealloc];
 }
 
 #pragma mark -
-#pragma mark accessors
-- (void)setDate:(NSDate *)newDate {
-	if ([_date isEqualToDate:newDate]) return;
-	[_date release];
-	_date = [newDate retain];
-	
+#pragma mark view update
+- (void)updateViewWithDate:(NSDate *)date detail:(NSString *)detailString {
+	// update text fields
 	if (!_dateFormatter) {
 		_dateFormatter = [[NSDateFormatter alloc] init];
 		[_dateFormatter setDateStyle:NSDateFormatterNoStyle];
 		[_dateFormatter setTimeStyle:NSDateFormatterShortStyle];
 	}
+<<<<<<< HEAD
 	self._dateString = [_dateFormatter stringFromDate:_date];
 	
 	// set text label
@@ -126,16 +124,30 @@
 	
 	float dateWidth = [self _widthOfString:self._dateString withFont:[NSFont fontWithName:@"Helvetica" size:12.0f]];
 	float dataWidth = [self _widthOfString:self._dataString withFont:[NSFont fontWithName:@"Helvetica" size:14]];
+=======
+	NSString *dateString = [_dateFormatter stringFromDate:date];
+	[dateTextField setTitleWithMnemonic:dateString];
+	[detailTextField setTitleWithMnemonic:detailString];
+	// update view size
+	float dateWidth = [self _widthOfString:dateString withFont:[NSFont fontWithName:@"Helvetica" size:12]];
+	float dataWidth = [self _widthOfString:detailString withFont:[NSFont fontWithName:@"Helvetica" size:14]];
+>>>>>>> Preliminary in/out graph view.
 	float maxWidth;
 	if (dateWidth > dataWidth) maxWidth = dateWidth;
 	else maxWidth = dataWidth;
-	
 	NSRect rect = view.frame;
 	rect.size.width = maxWidth + 10;
 	[view setFrame:rect];
 	[super _redisplay];
 }
+<<<<<<< HEAD
 - (float)_widthOfString:(NSString *)string withFont:(NSFont *)font {
+=======
+
+#pragma mark -
+#pragma mark private
+- (CGFloat)_widthOfString:(NSString *)string withFont:(NSFont *)font {
+>>>>>>> Preliminary in/out graph view.
 	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, nil];
 	NSAttributedString *aString = [[[NSAttributedString alloc] initWithString:string attributes:attributes] autorelease];
 	return (float)aString.size.width;
@@ -154,6 +166,4 @@
 	return textField;
 }
 
-@synthesize date = _date, data = _data;
-@synthesize _dateString, _dataString;
 @end

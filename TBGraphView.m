@@ -7,60 +7,57 @@
 //
 
 #define VIEW_INSET 20.0f
-#define MAX_ON_SCREEN_DATA 1440
+#define MAX_ON_SCREEN_DATA 4800
 #define MIN_DATA 2
-#define HAS_NO_DATA [[self._diffDict allKeys] count] < MIN_DATA
+#define HAS_NO_DATA [self._sortedDates count] < MIN_DATA
 
 #import "TBGraphView.h"
 #import "GVDescriptionWindow.h"
 #import "NSDate+AKMidnight.h"
+#import "AKBytesFormatter.h"
 
 #pragma mark -
-@interface GVPegView : NSView @end
-@implementation GVPegView
+@interface GVIndicatorView : NSView @end
+@implementation GVIndicatorView
 - (void)drawRect:(NSRect)dirtyRect {
-	// peg
-	NSBezierPath* pegPath = [NSBezierPath bezierPath];
-	[pegPath appendBezierPathWithOvalInRect:NSInsetRect(self.bounds, 5, 5)];
+	// path
+	NSBezierPath* path = [NSBezierPath bezierPath];
+	[path moveToPoint:NSMakePoint(10, 0)];
+	[path lineToPoint:NSMakePoint(10, self.bounds.size.height - VIEW_INSET)];
 	// shadow
-	NSShadow *pegShadow = [[[NSShadow alloc] init] autorelease];
-	[pegShadow setShadowColor:[NSColor blackColor]];
-	[pegShadow setShadowOffset:NSMakeSize(0, -2)];
-	[pegShadow setShadowBlurRadius:4];
-	[pegShadow set];
-	[pegPath fill];
+	NSShadow *aShadow = [[[NSShadow alloc] init] autorelease];
+	[aShadow setShadowColor:[NSColor blackColor]];
+	[aShadow setShadowOffset:NSMakeSize(0, -2)];
+	[aShadow setShadowBlurRadius:4];
+	[aShadow set];
+	[path fill];
 	// stroke
-	[[NSColor whiteColor] set];
-	[pegPath setLineWidth:4];
-	[pegPath stroke];
-	// fill
-	NSColor *pegColor1 = [NSColor colorWithCalibratedRed:0 green:180.0/255 blue:1 alpha:1];
-	NSColor *pegColor2 = [NSColor colorWithCalibratedRed:0 green:70.0/255 blue:125.0/255 alpha:1];
-	NSGradient* gradient = [[[NSGradient alloc] initWithColorsAndLocations:
-							 pegColor1, (CGFloat)0.0, pegColor2, (CGFloat)1.0, nil] autorelease];
-	[gradient drawInBezierPath:pegPath angle:-90.0];
+	[[NSColor colorWithCalibratedRed:100.0/255 green:200.0/255 blue:1 alpha:1] set];
+	[path setLineWidth:2];
+	[path stroke];
 }
 @end
 
 #pragma mark -
 @interface TBGraphView ()
 
-@property (retain, nonatomic) NSDictionary *_diffDict;
+@property (retain, nonatomic) NSDictionary *_inDiffDict;
+@property (retain, nonatomic) NSDictionary *_outDiffDict;
+@property (retain, nonatomic) NSImage *_imageRep;
 @property (retain, nonatomic) NSArray *_sortedDates;
 @property (retain, nonatomic) NSDate *_firstDate;
 @property (retain, nonatomic) NSDate *_lastDate;
-@property (retain, nonatomic) NSImage *_imageRep;
 @property (retain, nonatomic) NSDate *_mouseDate;
 
-- (NSBezierPath *)_bezierPathForData;
+- (NSBezierPath *)_bezierPathWithDict:(NSDictionary *)dict;
 - (NSImage *)_imageRepresenation;
 
 - (void)_showDescriptionForDate:(NSDate *)date;
 - (void)_dismissDescription;
 
-- (NSPoint)_pointForDate:(NSDate *)date;
+- (NSPoint)_pointForDate:(NSDate *)date withDictionary:(NSDictionary *)dict;
 - (float)_horizontalPositionForDate:(NSDate *)date;
-- (float)_verticalPositionForDate:(NSDate *)date;
+- (float)_verticalPositionForDate:(NSDate *)date withDictionary:(NSDictionary *)dict;
 - (NSDate *)_nearestDateForPoint:(NSPoint)point;
 
 @end
@@ -74,13 +71,14 @@
     return self;
 }
 - (void)dealloc {
-	self._diffDict = nil;
+	self._inDiffDict = nil;
+	self._outDiffDict = nil;
 	self._sortedDates = nil;
 	self._firstDate = nil;
 	self._lastDate = nil;
 	[descriptionWindow release], descriptionWindow = nil;
 	[_dataDict release], _dataDict = nil;
-	[_pegView release], _pegView = nil;
+	[_indicatorView release], _indicatorView = nil;
 	[_dateFormatter release], _dateFormatter = nil;
 	[super dealloc];
 }
@@ -196,30 +194,35 @@
 		self._lastDate = [self._sortedDates lastObject];
 		_dateRange = (float)[self._lastDate timeIntervalSinceDate:self._firstDate];
 		// calculate speed
-		NSMutableDictionary *diffDict = [NSMutableDictionary dictionaryWithCapacity:[dict count]];
+		NSMutableDictionary *inDiffDict = [NSMutableDictionary dictionaryWithCapacity:[dict count]];
+		NSMutableDictionary *outDiffDict = [NSMutableDictionary dictionaryWithCapacity:[dict count]];
 		NSDate *prevDate = self._firstDate;
 		for (NSDate *date in self._sortedDates) {
 			AKScopeAutoreleased();
 			if (prevDate != self._firstDate) {
-				double data = [[dict objectForKey:date] doubleValue];
+				double inData = [[[dict objectForKey:date] objectForKey:@"in"] doubleValue];
+				double outData = [[[dict objectForKey:date] objectForKey:@"out"] doubleValue];
 				NSTimeInterval ti = [date timeIntervalSinceDate:prevDate];
-				double speed = data / ti;
-				[diffDict setObject:[NSNumber numberWithDouble:speed] forKey:date];
+				double inSpeed = inData / ti;
+				double outSpeed = outData / ti;
+				[inDiffDict setObject:[NSNumber numberWithDouble:inSpeed] forKey:date];
+				[outDiffDict setObject:[NSNumber numberWithDouble:outSpeed] forKey:date];
 			}
 			prevDate = date;
 		}
-		self._diffDict = diffDict;
+		self._inDiffDict = inDiffDict;
+		self._outDiffDict = outDiffDict;
 		// find max for graph
 		_yMax = 0;
 		for (NSDate *date in self._sortedDates) {
 			AKScopeAutoreleased();
-			float y = [[diffDict objectForKey:date] floatValue];
-			if (y > _yMax) _yMax = y;
+			float inY = [[inDiffDict objectForKey:date] floatValue];
+			float outY = [[outDiffDict objectForKey:date] floatValue];
+			if (inY > _yMax) _yMax = inY;
+			if (outY > _yMax) _yMax = outY;
 		}
 	}
-	else {
-		self._diffDict = [NSDictionary dictionary];
-	}
+	
 	// update view
 	[self _showDescriptionForDate:self._mouseDate];
 	self._imageRep = [self _imageRepresenation];
@@ -229,12 +232,12 @@
 #pragma mark -
 #pragma mark private
 #pragma mark bezier path
-- (NSBezierPath *)_bezierPathForData {
+- (NSBezierPath *)_bezierPathWithDict:(NSDictionary *)dict {
 	NSBezierPath *path = [NSBezierPath bezierPath];
-	[path moveToPoint:[self _pointForDate:[self._sortedDates objectAtIndex:0]]];
+	[path moveToPoint:[self _pointForDate:[self._sortedDates objectAtIndex:0] withDictionary:dict]];
 	for (NSDate *date in self._sortedDates) {
 		AKScopeAutoreleased();
-		[path lineToPoint:[self _pointForDate:date]];
+		[path lineToPoint:[self _pointForDate:date withDictionary:dict]];
 	}
 	[path setLineWidth:2];
 	[path setLineJoinStyle:NSRoundLineJoinStyle];
@@ -309,19 +312,24 @@
 		[xPath stroke];
 	}
 }
-- (void)_drawGraph {
+- (void)_drawGraphWithPath:(NSBezierPath *)path withColor:(NSColor *)color {
 	// stroke
-	NSBezierPath *path = [self _bezierPathForData];
-	[[NSColor whiteColor] set];
+	[color set];
 	[path stroke];
+	// gradient colors
+	NSColor *color1 = [NSColor colorWithCalibratedRed:[color redComponent] 
+												green:[color greenComponent] 
+												 blue:[color blueComponent] 
+												alpha:.5];
+	NSColor *color2 = [NSColor colorWithCalibratedRed:[color redComponent] 
+												green:[color greenComponent] 
+												 blue:[color blueComponent] 
+												alpha:.1];
+	NSGradient *gradient = [[[NSGradient alloc] initWithStartingColor:color1 endingColor:color2] autorelease];
 	// fill
-	NSColor *gradColor1 = [NSColor colorWithCalibratedRed:145.0/255 green:206.0/255 blue:230.0/255 alpha:.5];
-	NSColor *gradColor2 = [NSColor colorWithCalibratedRed:145.0/255 green:206.0/255 blue:230.0/255 alpha:.1];
-	NSGradient* gradient = [[[NSGradient alloc] initWithColorsAndLocations:
-							 gradColor1, (CGFloat)0.0, gradColor2, (CGFloat)1.0, nil] autorelease];
 	NSPoint endPoint = {self.bounds.size.width - VIEW_INSET, VIEW_INSET};
 	[path lineToPoint:endPoint];
-	[gradient drawInBezierPath:path angle:-90.0];	
+	[gradient drawInBezierPath:path angle:-90.0];
 }
 - (NSImage *)_imageRepresenation {
 	NSImage *image = [[[NSImage alloc] initWithSize:self.bounds.size] autorelease];
@@ -332,7 +340,10 @@
 	}
 	else {
 		[self _drawDates];
-		[self _drawGraph];
+		NSColor *inColor = [NSColor colorWithCalibratedRed:145.0/255 green:206.0/255 blue:230.0/255 alpha:1];
+		[self _drawGraphWithPath:[self _bezierPathWithDict:self._inDiffDict] withColor:inColor];
+		NSColor *outColor = [NSColor colorWithCalibratedRed:1 green:172/255.0 blue:0 alpha:1];
+		[self _drawGraphWithPath:[self _bezierPathWithDict:self._outDiffDict] withColor:outColor];
 	}
 	[image unlockFocus];
 	return image;
@@ -342,44 +353,47 @@
 - (void)_showDescriptionForDate:(NSDate *)date {
 	if (!date) return;
 	// points
-	NSPoint viewPos = [self _pointForDate:date];
+	float xPos = [self _horizontalPositionForDate:date];
+	NSPoint viewPos = { xPos, self.bounds.size.height - VIEW_INSET };
 	NSPoint windowPos = [self convertPoint:viewPos toView:self.window.contentView];
 	// peg
-	NSRect pegRect = NSMakeRect(viewPos.x - 8, viewPos.y - 8, 16, 16);
-	if (!_pegView) {
-		_pegView = [[GVPegView alloc] initWithFrame:pegRect];
+	NSRect indicatorRect = NSMakeRect( viewPos.x - 10, VIEW_INSET, 20, self.bounds.size.height - VIEW_INSET);
+	if (!_indicatorView) {
+		_indicatorView = [[GVIndicatorView alloc] initWithFrame:indicatorRect];
 	}
-	_pegView.frame = pegRect;
-	[self addSubview:_pegView];
+	_indicatorView.frame = indicatorRect;
+	[self addSubview:_indicatorView];
+	// description string
+	NSString *inString = [AKBytesFormatter convertBytesWithNumber:[self._inDiffDict objectForKey:date] decimals:YES];
+	NSString *outString = [AKBytesFormatter convertBytesWithNumber:[self._outDiffDict objectForKey:date] decimals:YES];
+	NSString *detailString = [NSString stringWithFormat:@"In: %@/s, Out: %@/s", inString, outString];
 	// window
 	if (!descriptionWindow) {
 		descriptionWindow = [[GVDescriptionWindow alloc] initWithPoint:windowPos inWindow:self.window];
 	}
 	[descriptionWindow setPoint:windowPos];
-	[descriptionWindow setDate:date];
-	[descriptionWindow setData:[[self._diffDict objectForKey:date] floatValue]];
+	[descriptionWindow updateViewWithDate:date detail:detailString];
 	// appear
 	[descriptionWindow orderFront:self];
 }
 - (void)_dismissDescription {
 	[descriptionWindow orderOut:self];
-	[_pegView removeFromSuperview];
+	[_indicatorView removeFromSuperview];
 }
 
 #pragma mark point query methods
-- (NSPoint)_pointForDate:(NSDate *)date {
-	NSPoint point;
-	point.x = [self _horizontalPositionForDate:date];
-	point.y = [self _verticalPositionForDate:date];
-	return point;
+- (NSPoint)_pointForDate:(NSDate *)date withDictionary:(NSDictionary *)dict{ 
+	return (NSPoint) {
+		[self _horizontalPositionForDate:date],
+		[self _verticalPositionForDate:date withDictionary:dict]
+	};
 }
 - (float)_horizontalPositionForDate:(NSDate *)date {
 	float propotion = (float)[date timeIntervalSinceDate:self._firstDate] / _dateRange;
 	return propotion * ((float)self.bounds.size.width - VIEW_INSET * 2) + VIEW_INSET;
 }
-- (float)_verticalPositionForDate:(NSDate *)date {
-	//ZAssert([[self._diffDict allKeys] containsObject:date], @"can't find value for date %@", date);
-	float propotion = (float)[[self._diffDict objectForKey:date] doubleValue] / _yMax;
+- (float)_verticalPositionForDate:(NSDate *)date withDictionary:(NSDictionary *)dict {
+	float propotion = [[dict objectForKey:date] floatValue] / _yMax;
 	return propotion * ((float)self.bounds.size.height - VIEW_INSET * 3) + VIEW_INSET;
 }
 - (NSDate *)_nearestDateForPoint:(NSPoint)point {
@@ -394,6 +408,8 @@
 }
 @synthesize delegate;
 @synthesize dataDict = _dataDict;
-@synthesize _mouseDate, _imageRep, _sortedDates, _diffDict, _firstDate, _lastDate;
+@synthesize _inDiffDict, _outDiffDict;
+@synthesize _imageRep;
+@synthesize _mouseDate, _sortedDates, _firstDate, _lastDate;
 @end
 
