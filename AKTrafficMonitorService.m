@@ -332,8 +332,8 @@ static AKTrafficMonitorService *sharedService = nil;
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
 }
+
 - (NSDictionary *)_readDataUsage {
-	
 	int mib[] = {CTL_NET, PF_ROUTE, 0, 0, NET_RT_IFLIST2, 0};
 	size_t len;
 	if (sysctl(mib, 6, NULL, &len, NULL, 0) < 0)
@@ -341,11 +341,11 @@ static AKTrafficMonitorService *sharedService = nil;
 	char *buf = (char *)malloc(len);
 	if (sysctl(mib, 6, buf, &len, NULL, 0) < 0)
 		fprintf(stderr, "sysctl: %s\n", strerror(errno));
-	char *lim = buf + len;
+	char *buf_end = buf + len;
 	char *next = NULL;
 	TMS_ULL_T totalibytes = 0;
 	TMS_ULL_T totalobytes = 0;
-	for (next = buf; next < lim; ) {
+	for (next = buf; next < buf_end; ) {		
 		struct if_msghdr *ifm = (struct if_msghdr *)next;
 		next += ifm->ifm_msglen;
 		if (ifm->ifm_type == RTM_IFINFO2) {

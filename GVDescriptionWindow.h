@@ -11,7 +11,6 @@
 
 @class DWView;
 @interface GVDescriptionWindow : MAAttachedWindow {
-
 	DWView *view;
 	NSTextField *dateTextField;
 	NSTextField *detailTextField;

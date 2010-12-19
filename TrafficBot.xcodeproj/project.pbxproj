@@ -40,6 +40,7 @@
 		DA049FD912B853FF00ECA24C /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FD712B853FF00ECA24C /* Info.png */; };
 		DA049FDA12B853FF00ECA24C /* Info Alt.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FD612B853FF00ECA24C /* Info Alt.png */; };
 		DA049FDB12B853FF00ECA24C /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FD712B853FF00ECA24C /* Info.png */; };
+		DA06937612BD9774008B1584 /* GVViewCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = DA06937512BD9774008B1584 /* GVViewCollection.m */; };
 		DA19893E12B459FD00D64DD7 /* TBGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19893B12B459FD00D64DD7 /* TBGraphView.m */; };
 		DA19893F12B459FD00D64DD7 /* GVDescriptionWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19893D12B459FD00D64DD7 /* GVDescriptionWindow.m */; };
 		DA19894012B459FD00D64DD7 /* TBGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19893B12B459FD00D64DD7 /* TBGraphView.m */; };
@@ -143,6 +144,8 @@
 		DA049FC012B8534600ECA24C /* Gauge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Gauge.png; path = Images/Gauge.png; sourceTree = "<group>"; };
 		DA049FD612B853FF00ECA24C /* Info Alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Info Alt.png"; path = "Images/Info Alt.png"; sourceTree = "<group>"; };
 		DA049FD712B853FF00ECA24C /* Info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Info.png; path = Images/Info.png; sourceTree = "<group>"; };
+		DA06937412BD9774008B1584 /* GVViewCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVViewCollection.h; sourceTree = "<group>"; };
+		DA06937512BD9774008B1584 /* GVViewCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVViewCollection.m; sourceTree = "<group>"; };
 		DA19893A12B459FD00D64DD7 /* TBGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGraphView.h; sourceTree = "<group>"; };
 		DA19893B12B459FD00D64DD7 /* TBGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGraphView.m; sourceTree = "<group>"; };
 		DA19893C12B459FD00D64DD7 /* GVDescriptionWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVDescriptionWindow.h; sourceTree = "<group>"; };
@@ -440,6 +443,8 @@
 			children = (
 				DA19893A12B459FD00D64DD7 /* TBGraphView.h */,
 				DA19893B12B459FD00D64DD7 /* TBGraphView.m */,
+				DA06937412BD9774008B1584 /* GVViewCollection.h */,
+				DA06937512BD9774008B1584 /* GVViewCollection.m */,
 				DA19893C12B459FD00D64DD7 /* GVDescriptionWindow.h */,
 				DA19893D12B459FD00D64DD7 /* GVDescriptionWindow.m */,
 			);
@@ -692,6 +697,7 @@
 				DA19893F12B459FD00D64DD7 /* GVDescriptionWindow.m in Sources */,
 				DA19897C12B45BDA00D64DD7 /* AKBytesFormatter.m in Sources */,
 				DA198D5C12B6B47E00D64DD7 /* TBGraphWindowController.m in Sources */,
+				DA06937612BD9774008B1584 /* GVViewCollection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

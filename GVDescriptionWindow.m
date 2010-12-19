@@ -34,14 +34,7 @@
 #pragma mark -
 #pragma mark private methods
 @interface GVDescriptionWindow ()
-<<<<<<< HEAD
-@property (retain, nonatomic) NSString *_dateString;
-@property (retain, nonatomic) NSString *_dataString;
-- (void)_updateViewSize;
 - (float)_widthOfString:(NSString *)string withFont:(NSFont *)font;
-=======
-- (CGFloat)_widthOfString:(NSString *)string withFont:(NSFont *)font;
->>>>>>> Preliminary in/out graph view.
 - (NSTextField *)_newTextFieldWithFrame:(NSRect)frameRect;
 @end
 
@@ -86,7 +79,6 @@
 	[dateTextField release], dateTextField = nil;
 	[detailTextField release], detailTextField = nil;
 	[view release], view = nil;
-	
 	[super dealloc];
 }
 
@@ -99,39 +91,12 @@
 		[_dateFormatter setDateStyle:NSDateFormatterNoStyle];
 		[_dateFormatter setTimeStyle:NSDateFormatterShortStyle];
 	}
-<<<<<<< HEAD
-	self._dateString = [_dateFormatter stringFromDate:_date];
-	
-	// set text label
-	[dateTextField setTitleWithMnemonic:self._dateString];
-}
-- (void)setData:(float)newData {
-	if (_data == newData) return;
-	_data = newData;
-
-	NSNumber *number = [NSNumber numberWithFloat:newData];
-	self._dataString = [AKBytesFormatter convertBytesWithNumber:number];
-	self._dataString = [self._dataString stringByAppendingString:@"/s"];
-	// set text label
-	[dataTextField setTitleWithMnemonic:self._dataString];
-	
-	[self _updateViewSize];
-}
-
-#pragma mark -
-#pragma mark private
-- (void)_updateViewSize {
-	
-	float dateWidth = [self _widthOfString:self._dateString withFont:[NSFont fontWithName:@"Helvetica" size:12.0f]];
-	float dataWidth = [self _widthOfString:self._dataString withFont:[NSFont fontWithName:@"Helvetica" size:14]];
-=======
 	NSString *dateString = [_dateFormatter stringFromDate:date];
 	[dateTextField setTitleWithMnemonic:dateString];
 	[detailTextField setTitleWithMnemonic:detailString];
 	// update view size
-	float dateWidth = [self _widthOfString:dateString withFont:[NSFont fontWithName:@"Helvetica" size:12]];
-	float dataWidth = [self _widthOfString:detailString withFont:[NSFont fontWithName:@"Helvetica" size:14]];
->>>>>>> Preliminary in/out graph view.
+	float dateWidth = [self _widthOfString:dateString withFont:[NSFont fontWithName:@"Helvetica" size:12.0f]];
+	float dataWidth = [self _widthOfString:detailString withFont:[NSFont fontWithName:@"Helvetica" size:14.0f]];
 	float maxWidth;
 	if (dateWidth > dataWidth) maxWidth = dateWidth;
 	else maxWidth = dataWidth;
@@ -140,14 +105,10 @@
 	[view setFrame:rect];
 	[super _redisplay];
 }
-<<<<<<< HEAD
-- (float)_widthOfString:(NSString *)string withFont:(NSFont *)font {
-=======
 
 #pragma mark -
 #pragma mark private
-- (CGFloat)_widthOfString:(NSString *)string withFont:(NSFont *)font {
->>>>>>> Preliminary in/out graph view.
+- (float)_widthOfString:(NSString *)string withFont:(NSFont *)font {
 	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, nil];
 	NSAttributedString *aString = [[[NSAttributedString alloc] initWithString:string attributes:attributes] autorelease];
 	return (float)aString.size.width;

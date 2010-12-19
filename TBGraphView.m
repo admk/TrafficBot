@@ -13,30 +13,9 @@
 
 #import "TBGraphView.h"
 #import "GVDescriptionWindow.h"
+#import "GVViewCollection.h"
 #import "NSDate+AKMidnight.h"
 #import "AKBytesFormatter.h"
-
-#pragma mark -
-@interface GVIndicatorView : NSView @end
-@implementation GVIndicatorView
-- (void)drawRect:(NSRect)dirtyRect {
-	// path
-	NSBezierPath* path = [NSBezierPath bezierPath];
-	[path moveToPoint:NSMakePoint(10, 0)];
-	[path lineToPoint:NSMakePoint(10, self.bounds.size.height - VIEW_INSET)];
-	// shadow
-	NSShadow *aShadow = [[[NSShadow alloc] init] autorelease];
-	[aShadow setShadowColor:[NSColor blackColor]];
-	[aShadow setShadowOffset:NSMakeSize(0, -2)];
-	[aShadow setShadowBlurRadius:4];
-	[aShadow set];
-	[path fill];
-	// stroke
-	[[NSColor colorWithCalibratedRed:100.0/255 green:200.0/255 blue:1 alpha:1] set];
-	[path setLineWidth:2];
-	[path stroke];
-}
-@end
 
 #pragma mark -
 @interface TBGraphView ()
@@ -356,13 +335,28 @@
 	float xPos = [self _horizontalPositionForDate:date];
 	NSPoint viewPos = { xPos, self.bounds.size.height - VIEW_INSET };
 	NSPoint windowPos = [self convertPoint:viewPos toView:self.window.contentView];
-	// peg
+	// indicator
 	NSRect indicatorRect = NSMakeRect( viewPos.x - 10, VIEW_INSET, 20, self.bounds.size.height - VIEW_INSET);
 	if (!_indicatorView) {
 		_indicatorView = [[GVIndicatorView alloc] initWithFrame:indicatorRect];
 	}
 	_indicatorView.frame = indicatorRect;
 	[self addSubview:_indicatorView];
+	// peg
+	NSPoint inPegPoint = [self _pointForDate:date withDictionary:self._inDiffDict];
+	NSPoint outPegPoint = [self _pointForDate:date withDictionary:self._outDiffDict];
+	NSRect inPegRect = NSMakeRect(inPegPoint.x - 8, inPegPoint.y - 8, 16, 16);
+	NSRect outPegRect = NSMakeRect(outPegPoint.x - 8, outPegPoint.y - 8, 16, 16);
+	if (!_inPegView) {
+		_inPegView = [[GVPegView alloc] initWithFrame:inPegRect];
+	}
+	if (!_outPegView) {
+		_outPegView = [[GVPegView alloc] initWithFrame:outPegRect];
+	}
+	_inPegView.frame = inPegRect;
+	_outPegView.frame = outPegRect;
+	[self addSubview:_inPegView];
+	[self addSubview:_outPegView];
 	// description string
 	NSString *inString = [AKBytesFormatter convertBytesWithNumber:[self._inDiffDict objectForKey:date] decimals:YES];
 	NSString *outString = [AKBytesFormatter convertBytesWithNumber:[self._outDiffDict objectForKey:date] decimals:YES];
@@ -378,6 +372,8 @@
 }
 - (void)_dismissDescription {
 	[descriptionWindow orderOut:self];
+	[_inPegView removeFromSuperview];
+	[_outPegView removeFromSuperview];
 	[_indicatorView removeFromSuperview];
 }
 
