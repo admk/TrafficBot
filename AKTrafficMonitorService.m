@@ -257,8 +257,6 @@ static AKTrafficMonitorService *sharedService = nil;
 - (void)_shouldLogAndUpdateTrafficData:(id)info {
 	
 	NSDictionary *reading = [self _readDataUsage];
-	DLog(@"reading: %@", reading);
-
 	TMS_ULL_T nowIn = ULLFromNumber([reading objectForKey:@"in"]);
 	TMS_ULL_T nowOut = ULLFromNumber([reading objectForKey:@"out"]);
 	
