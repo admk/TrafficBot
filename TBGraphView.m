@@ -8,7 +8,7 @@
 
 #define VIEW_INSET 20.0f
 #define MAX_ON_SCREEN_DATA 4800
-#define MIN_DATA 2
+#define MIN_DATA 3
 #define HAS_NO_DATA [self._sortedDates count] < MIN_DATA
 
 #import "TBGraphView.h"
