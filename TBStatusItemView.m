@@ -34,7 +34,7 @@
 #pragma mark -
 #pragma mark drawing
 - (void)drawRect:(NSRect)rect {
-    // draw background if appropriate
+    // draw background if highlighted
     if (_highlighted) {
         [[NSColor selectedMenuItemColor] set];
         NSRectFill(rect);
@@ -43,14 +43,14 @@
 	path = [self _appendGaugeGlyphToPath:path withFrame:self.bounds theta:30 lambda:30 inset:4 atHeight:-1];
 	path = [self _appendGaugeGlyphToPath:path withFrame:self.bounds theta:30 lambda:30-(self.percentage/100*30*2) inset:7 atHeight:0];
 	[path setWindingRule:NSEvenOddWindingRule];
-	
+	// draw disabled view if not monitoring
 	if (!self.monitoring) {
 		// gradient fill
 		[[NSColor colorWithCalibratedWhite:.5 alpha:.5] set];
 		[path fill];
 		return;
 	}
-	
+	// draw in white if highlighted
 	if (_highlighted) {
 		[[NSColor whiteColor] set];
 		[path fill];
@@ -64,7 +64,15 @@
 		[aShadow set];
 		[path fill];
 		// gradient fill
-		NSGradient *gradient = [[[NSGradient alloc] initWithStartingColor:[NSColor blackColor] endingColor:[NSColor darkGrayColor]] autorelease];
+		NSGradient *gradient;
+		if (self.percentage < self.criticalPercentage) {
+			gradient = [[[NSGradient alloc] initWithStartingColor:[NSColor blackColor] endingColor:[NSColor darkGrayColor]] autorelease];
+		}
+		else {
+			NSColor *gradientColor1 = [NSColor colorWithCalibratedRed:1.0f green:0 blue:0 alpha:1]; 
+			NSColor *gradientColor2 = [NSColor colorWithCalibratedRed:1.0f green:128.0f/255.0f blue:128.0f/255.0f alpha:1];
+			gradient = [[[NSGradient alloc] initWithStartingColor:gradientColor1 endingColor:gradientColor2] autorelease];
+		}
 		[gradient drawInBezierPath:path angle:-90];
 	}
 }
@@ -108,6 +116,10 @@
 	_percentage = newPercentage;
 	[self setNeedsDisplay:YES];
 }
+- (void)setCriticalPercentage:(float)newPercentage {
+	_criticalPercentage = newPercentage;
+	[self setNeedsDisplay:YES];
+}
 
 #pragma mark -
 #pragma mark private
@@ -134,5 +146,6 @@
 	return path;
 }
 @synthesize controller;
-@synthesize percentage = _percentage, monitoring = _monitoring;
+@synthesize percentage = _percentage, criticalPercentage = _criticalPercentage;
+@synthesize monitoring = _monitoring;
 @end

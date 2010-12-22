@@ -58,10 +58,12 @@
 	  toObject:[NSUserDefaultsController sharedUserDefaultsController] 
    withKeyPath:[@"values." stringByAppendingString:Property(limit)]
 	   options:nil];
-	[self.statusItemView bind:@"monitoring" 
-					 toObject:[NSUserDefaultsController sharedUserDefaultsController]  
-				  withKeyPath:@"values.monitoring" 
-					  options:nil];
+	NSArray *bindings = [NSArray arrayWithObjects:@"monitoring", Property(criticalPercentage), nil];
+	for (NSString *bindingKey in bindings)
+		[self.statusItemView bind:bindingKey
+						 toObject:[NSUserDefaultsController sharedUserDefaultsController]
+					  withKeyPath:[@"values." stringByAppendingString:bindingKey]
+						  options:nil];
 }
 - (void)showMenu:(id)sender {
 #ifdef DEBUG

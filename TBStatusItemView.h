@@ -21,6 +21,7 @@
 @private
     BOOL	_highlighted;
 	float	_percentage;
+	float	_criticalPercentage;
 	BOOL	_monitoring;
 }
 
@@ -28,6 +29,7 @@
 
 @property (assign, getter=isMonitoring) BOOL monitoring;
 @property (assign) float percentage;
+@property (assign) float criticalPercentage;
 
 - (id)initWithFrame:(NSRect)frame controller:(id<TBStatusItemViewDelegate>)inController;
 
