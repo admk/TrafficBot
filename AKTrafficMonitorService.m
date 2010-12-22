@@ -364,7 +364,6 @@ static AKTrafficMonitorService *sharedService = nil;
 #pragma mark file management
 - (BOOL)_writeToRollingLogFile:(NSDictionary *)tLog {
 	// save log file
-	DLog(@"writing log to file, entry count: %d", [tLog count]);
 	BOOL success = [tLog writeToFile:[self _rollingLogFilePath] atomically:YES];
 	ZAssert(success, @"failed to write log");
 	return success;
@@ -372,7 +371,6 @@ static AKTrafficMonitorService *sharedService = nil;
 - (BOOL)_writeToFixedLogFile:(NSDictionary *)tLog {
 	ZAssert([[tLog allKeys] count] == 1, @"log file must have exactly one entry for a fixed period monitoring");
 	// save log file
-	DLog(@"writing log to file, entry count: %d", [tLog count]);
 	BOOL success = [tLog writeToFile:[self _fixedLogFilePath] atomically:YES];
 	ZAssert(success, @"failed to write log");
 	return success;
