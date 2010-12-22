@@ -38,7 +38,7 @@
 	// path
 	NSBezierPath* path = [NSBezierPath bezierPath];
 	[path moveToPoint:NSMakePoint(10, 0)];
-	[path lineToPoint:NSMakePoint(10, self.bounds.size.height - 10)];
+	[path lineToPoint:NSMakePoint(10, self.bounds.size.height - 20)];
 	// shadow
 	NSShadow *aShadow = [[[NSShadow alloc] init] autorelease];
 	[aShadow setShadowColor:[NSColor blackColor]];

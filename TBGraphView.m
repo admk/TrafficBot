@@ -203,7 +203,10 @@
 	}
 	
 	// update view
-	[self _showDescriptionForDate:self._mouseDate];
+	if ([descriptionWindow isVisible]) {
+		// refresh description window only if necessary
+		[self _showDescriptionForDate:self._mouseDate];
+	}
 	self._imageRep = [self _imageRepresenation];
 	[self setNeedsDisplay:YES];
 }
@@ -299,11 +302,11 @@
 	NSColor *color1 = [NSColor colorWithCalibratedRed:[color redComponent] 
 												green:[color greenComponent] 
 												 blue:[color blueComponent] 
-												alpha:.5];
+												alpha:.5*[color alphaComponent]];
 	NSColor *color2 = [NSColor colorWithCalibratedRed:[color redComponent] 
 												green:[color greenComponent] 
 												 blue:[color blueComponent] 
-												alpha:.1];
+												alpha:.1*[color alphaComponent]];
 	NSGradient *gradient = [[[NSGradient alloc] initWithStartingColor:color1 endingColor:color2] autorelease];
 	// fill
 	NSPoint endPoint = {self.bounds.size.width - VIEW_INSET, VIEW_INSET};
@@ -319,9 +322,9 @@
 	}
 	else {
 		[self _drawDates];
-		NSColor *inColor = [NSColor colorWithCalibratedRed:145.0/255 green:206.0/255 blue:230.0/255 alpha:1];
+		NSColor *inColor = [NSColor colorWithCalibratedRed:145.0/255 green:206.0/255 blue:230.0/255 alpha:.7];
 		[self _drawGraphWithPath:[self _bezierPathWithDict:self._inDiffDict] withColor:inColor];
-		NSColor *outColor = [NSColor colorWithCalibratedRed:1 green:172/255.0 blue:0 alpha:1];
+		NSColor *outColor = [NSColor colorWithCalibratedRed:1 green:172/255.0 blue:0 alpha:.7];
 		[self _drawGraphWithPath:[self _bezierPathWithDict:self._outDiffDict] withColor:outColor];
 	}
 	[image unlockFocus];
