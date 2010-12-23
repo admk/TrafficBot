@@ -104,6 +104,7 @@
 	[self setNeedsDisplay:YES];
 }
 - (void)setPercentage:(float)newPercentage {
+	ZAssert(newPercentage <= 100, @"percentage must be less than 100");
 	_percentage = newPercentage;
 	[self setNeedsDisplay:YES];
 }
