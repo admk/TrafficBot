@@ -64,16 +64,13 @@
 		[aShadow set];
 		[path fill];
 		// gradient fill
-		NSGradient *gradient;
-		if (self.percentage < self.criticalPercentage) {
-			gradient = [[[NSGradient alloc] initWithStartingColor:[NSColor blackColor] endingColor:[NSColor darkGrayColor]] autorelease];
-		}
-		else {
-			NSColor *gradientColor1 = [NSColor colorWithCalibratedRed:1.0f green:0 blue:0 alpha:1]; 
-			NSColor *gradientColor2 = [NSColor colorWithCalibratedRed:1.0f green:128.0f/255.0f blue:128.0f/255.0f alpha:1];
-			gradient = [[[NSGradient alloc] initWithStartingColor:gradientColor1 endingColor:gradientColor2] autorelease];
-		}
+		NSGradient *gradient = [[[NSGradient alloc] initWithStartingColor:[NSColor blackColor] endingColor:[NSColor darkGrayColor]] autorelease];
 		[gradient drawInBezierPath:path angle:-90];
+		// critical drawing
+		if (self.percentage >= self.criticalPercentage) {
+			[[NSColor colorWithCalibratedRed:1.0f green:0 blue:0 alpha:.3] set];
+			[path fill];
+		}
 	}
 }
 #pragma mark -
@@ -117,6 +114,7 @@
 	[self setNeedsDisplay:YES];
 }
 - (void)setCriticalPercentage:(float)newPercentage {
+	ZAssert(newPercentage <= 100, @"criticalPercentage must be less than 100");
 	_criticalPercentage = newPercentage;
 	[self setNeedsDisplay:YES];
 }
