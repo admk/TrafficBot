@@ -73,15 +73,15 @@
 	_statusItemRect = [sender convertRect:[sender bounds] toView:nil];
 	_statusItemRect.origin = point;
 	if ([[self.window class] isNotEqualTo:[MAAttachedWindow class]]) {
-		MAAttachedWindow *window = [[MAAttachedWindow alloc] initWithView:self.contentView 
-											 attachedToPoint:_statusItemRect.origin 
-													inWindow:nil 
-													  onSide:MAPositionBottom 
-												  atDistance:3.0f];
+		MAAttachedWindow *window = [[[MAAttachedWindow alloc] initWithView:self.contentView 
+														   attachedToPoint:_statusItemRect.origin 
+																  inWindow:nil 
+																	onSide:MAPositionBottom 
+																atDistance:3.0f] autorelease];
 		[window setArrowHeight:10];
 		[window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
-		[window makeKeyAndOrderFront:self];
 		self.window = window;
+		[self.window makeKeyAndOrderFront:self];
 	}
 	else {
 		[(MAAttachedWindow *)self.window setPoint:point];

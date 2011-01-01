@@ -133,7 +133,7 @@
 	NSRect originalFrame = [self.window frame];
 
 	while (YES) {		
-		
+		// wait for new events
 		NSEvent *newEvent = [self.window nextEventMatchingMask:(NSLeftMouseDraggedMask | NSLeftMouseUpMask)];
 		if ([newEvent type] == NSLeftMouseUp) {
 			// user gave up left mouse

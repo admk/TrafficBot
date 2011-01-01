@@ -41,12 +41,12 @@
 	// shows graph view
 	_zoomRect = [sender convertRect:[sender bounds] toView:nil];
 	_zoomRect.origin = point;
-	if (!self.window) {
-		MAAttachedWindow *window = [[MAAttachedWindow alloc] initWithView:self.contentView 
-														  attachedToPoint:_zoomRect.origin 
-																 inWindow:nil 
-																   onSide:MAPositionBottom 
-															   atDistance:3.0f];
+	if ([[self.window class] isNotEqualTo:[MAAttachedWindow class]]) {
+		MAAttachedWindow *window = [[[MAAttachedWindow alloc] initWithView:self.contentView 
+														   attachedToPoint:_zoomRect.origin 
+																  inWindow:nil 
+																	onSide:MAPositionBottom 
+																atDistance:3.0f] autorelease];
 		[window setArrowHeight:10];
 		[window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
 		[window setAcceptsMouseMovedEvents:YES];
