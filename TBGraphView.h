@@ -15,7 +15,7 @@
 
 @class GVPegView;
 @class GVDescriptionWindow;
-@interface TBGraphView : NSView {
+@interface TBGraphView : NSView <NSCoding> {
 
 	__weak id<TBGraphViewDelegate> delegate;
 	GVDescriptionWindow *descriptionWindow;	

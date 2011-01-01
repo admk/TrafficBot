@@ -86,6 +86,18 @@
 }
 
 #pragma mark -
+#pragma mark NSCoding
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	self = [super initWithCoder:aDecoder];
+	if (!self) return nil;
+	self.dataDict = [aDecoder decodeObjectForKey:Property(dataDict)];
+	return self;
+}
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+	[aCoder encodeObject:self.dataDict forKey:Property(dataDict)];
+}
+
+#pragma mark -
 #pragma mark drawRect
 - (void)drawRect:(NSRect)dirtyRect {
 	if (!self._imageRep) self._imageRep = [self _imageRepresenation];
