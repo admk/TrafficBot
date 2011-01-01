@@ -15,7 +15,7 @@
 
 @interface TBGraphWindowController ()
 @property (retain) NSWindow *_flipFromWindow;
-- (void)_refreshView:(TBGraphView *)view;
+- (void)_refreshView;
 - (void)_didReceiveNotificationFromTrafficMonitorService:(NSNotification *)notification;
 @end
 
@@ -30,15 +30,15 @@
 	[draggedPanel setLevel:NSNormalWindowLevel];
 	[draggedPanel setAcceptsMouseMovedEvents:YES];
 	[draggedPanel setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];	
-	[self _refreshView:self.graphView];
+	[self _refreshView];
 	[[AKTrafficMonitorService sharedService] addObserver:self selector:@selector(_didReceiveNotificationFromTrafficMonitorService:)];
 }
 
 #pragma mark -
 #pragma mark ui
 - (void)flip:(id)sender fromWindow:(NSWindow *)aWindow animate:(BOOL)animate {
-	
-	[self _refreshView:self.graphView];
+    
+	[draggedPanel orderOut:sender];
 	
 	// shows graph view
 	if ([[self.window class] isNotEqualTo:[MAAttachedWindow class]]) {
@@ -67,6 +67,16 @@
 		[aWindow orderOut:sender];
 		[self.window makeKeyAndOrderFront:sender];
 	}
+	
+	if (![[self.contentView subviews] containsObject:self.graphView]) {
+		NSRect viewRect = self.contentView.bounds;
+		viewRect.size.height -= 20;
+		self.graphView.frame = viewRect;
+		[self.contentView addSubview:self.graphView];
+	}
+	[self _refreshView];
+
+	[aWindow flipToWindow:self.window];
 	self._flipFromWindow = aWindow;
 	
 	// graph view accepts mouse events
@@ -92,36 +102,34 @@
 #pragma mark -
 #pragma mark protocol
 - (void)showDraggedWindowWithFrame:(NSRect)frame {
-	[draggedPanel makeFirstResponder:self.draggedGraphView];
+	draggedPanel.contentView = self.graphView;
+	[draggedPanel makeFirstResponder:self.graphView];
 	[draggedPanel setFrame:frame display:NO];
 	[draggedPanel makeKeyAndOrderFront:self];
 	[[NSApp delegate] dismissGraphWindow:self];
-	[self _refreshView:self.draggedGraphView];
+	[self _refreshView];
 }
 
 #pragma mark -
 #pragma mark private
 #pragma mark refresh view
-- (void)_refreshView:(TBGraphView *)view {
+- (void)_refreshView {
 	// calculate total
 	NSDictionary *dict = [[AKTrafficMonitorService sharedService] rollingLogFile];
 	NSMutableDictionary *graphDict = [[[NSMutableDictionary alloc] initWithCapacity:[dict count]] autorelease];
 	for (NSString *dateString in [dict allKeys]) {
 		[graphDict setObject:[dict objectForKey:dateString] forKey:[NSDate dateWithString:dateString]];
 	}
-	view.dataDict = graphDict;
+	graphView.dataDict = graphDict;
 }
 #pragma mark monitor service notifications
 - (void)_didReceiveNotificationFromTrafficMonitorService:(NSNotification *)notification {
 	if ([[notification name] isEqual:AKTrafficMonitorStatisticsDidUpdateNotification]) {
-		if ([self.window isVisible]) {
-			[self _refreshView:self.graphView];
-		}
-		if ([self.draggedPanel isVisible]) {
-			[self _refreshView:self.draggedGraphView];	
+		if ([self.window isVisible] || [self.draggedPanel isVisible]) {
+			[self _refreshView];
 		}
 	}
 }
-@synthesize graphView, contentView, draggedPanel, draggedGraphView;
+@synthesize graphView, contentView, draggedPanel;
 @synthesize _flipFromWindow;
 @end

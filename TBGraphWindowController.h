@@ -14,8 +14,6 @@
 	NSView		*contentView;
 	TBGraphView *graphView;
 	NSPanel		*draggedPanel;
-	TBGraphView *draggedGraphView;
-	
 @private
 	NSWindow	*_flipFromWindow;
 	
@@ -24,7 +22,6 @@
 @property (assign) IBOutlet NSView		*contentView;
 @property (assign) IBOutlet TBGraphView *graphView;
 @property (assign) IBOutlet NSPanel		*draggedPanel;
-@property (assign) IBOutlet TBGraphView *draggedGraphView;
 
 - (void)flip:(id)sender fromWindow:(NSWindow *)aWindow animate:(BOOL)animate;
 - (void)dismiss:(id)sender;
