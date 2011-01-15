@@ -307,7 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				B16F06A01276197700D13C0B /* Status Item */,
-				B16F06A11276198600D13C0B /* Status View */,
+				B16F06A11276198600D13C0B /* Status Window */,
 				DA198A8512B55C9100D64DD7 /* Graph Window */,
 				B1F44958127E191B0020735E /* Preferences Window */,
 			);
@@ -325,14 +325,14 @@
 			name = "Status Item";
 			sourceTree = "<group>";
 		};
-		B16F06A11276198600D13C0B /* Status View */ = {
+		B16F06A11276198600D13C0B /* Status Window */ = {
 			isa = PBXGroup;
 			children = (
 				B16F069112760D4E00D13C0B /* TBStatusWindowController.h */,
 				B16F069212760D4E00D13C0B /* TBStatusWindowController.m */,
 				B16F0C3E1278704900D13C0B /* Gauge View */,
 			);
-			name = "Status View";
+			name = "Status Window";
 			sourceTree = "<group>";
 		};
 		B16F0867127749C200D13C0B /* Core Services */ = {

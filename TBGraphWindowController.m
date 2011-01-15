@@ -27,6 +27,7 @@
 }
 
 - (void)awakeFromNib {
+	[draggedPanel setLevel:NSNormalWindowLevel];
 	[draggedPanel setAcceptsMouseMovedEvents:YES];
 	[draggedPanel setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];	
 	[self _refreshView:self.graphView];
