@@ -38,6 +38,10 @@
 	[super dealloc];
 }
 - (void)awakeFromNib {
+	// not monitoring view
+	[notMonitoringView setFrame:self.contentView.bounds];
+	notMonitoringView.infoString = NSLocalizedString(@"TrafficBot is not monitoring.", @"not monitoring");
+	[self.contentView addSubview:notMonitoringView];
 	// bindings & notifications
 	NSArray *bindings = [NSArray arrayWithObjects:
 						 @"monitoring", Property(limit), nil];
@@ -51,8 +55,6 @@
 				toObject:[NSUserDefaultsController sharedUserDefaultsController]
 			 withKeyPath:@"values.criticalPercentage" 
 				 options:nil];
-	// not monitoring view
-	[notMonitoringView setFrame:self.contentView.bounds];
 }
 #pragma mark -
 #pragma mark setters & getters
