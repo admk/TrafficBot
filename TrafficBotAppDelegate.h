@@ -23,6 +23,8 @@
 }
 
 - (void)showPreferencesWindow:(id)sender;
+- (void)showFirstLaunchWindow:(id)sender atPoint:(NSPoint)point;
+- (void)dismissFirstLaunchWindow:(id)sender;
 - (void)showStatusWindow:(id)sender atPoint:(NSPoint)point;
 - (void)dismissStatusWindow:(id)sender;
 - (void)showGraphWindow:(id)sender atPoint:(NSPoint)point;

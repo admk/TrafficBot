@@ -8,13 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class MAAttachedWindow, AKGaugeView, TBGraphView;
+@class MAAttachedWindow, AKGaugeView, TBGraphView, TBSetupView;
 
 @interface TBStatusWindowController : NSWindowController {
 	
 	NSView		*contentView;
 	AKGaugeView	*gaugeView;
-	NSView		*notMonitoringView;
+	TBSetupView	*notMonitoringView;
 	NSTextField	*usageTextField;
 @private
 	NSRect		_statusItemRect;
@@ -24,7 +24,7 @@
 
 @property (assign) IBOutlet NSView		*contentView;
 @property (assign) IBOutlet AKGaugeView	*gaugeView;
-@property (assign) IBOutlet NSView		*notMonitoringView;
+@property (assign) IBOutlet TBSetupView	*notMonitoringView;
 @property (assign) IBOutlet NSTextField	*usageTextField;
 
 @property (assign, getter=isMonitoring) BOOL monitoring;

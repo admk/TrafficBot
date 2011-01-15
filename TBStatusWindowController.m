@@ -14,6 +14,7 @@
 #import "NSWindow+AKFlip.h"
 #import "AKGaugeView.h"
 #import "TBGraphView.h"
+#import "TBSetupView.h"
 #import "AKBytesFormatter.h"
 
 @interface TBStatusWindowController (Private)
@@ -28,6 +29,7 @@
 	self = [super initWithWindowNibName:windowNibName];
 	if (!self) return nil;
 	_monitoring = NO;
+	_limit = nil;
 	return self;
 }
 
@@ -49,6 +51,8 @@
 				toObject:[NSUserDefaultsController sharedUserDefaultsController]
 			 withKeyPath:@"values.criticalPercentage" 
 				 options:nil];
+	// not monitoring view
+	[notMonitoringView setFrame:self.contentView.bounds];
 }
 #pragma mark -
 #pragma mark setters & getters

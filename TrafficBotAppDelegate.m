@@ -69,6 +69,12 @@
 	[self dismissStatusWindow:sender];
 	[graphWindowController dismiss:sender];
 }
+- (void)showFirstLaunchWindow:(id)sender atPoint:(NSPoint)point {
+	
+}
+- (void)dismissFirstLaunchWindow:(id)sender {
+	
+}
 - (void)showStatusWindow:(id)sender atPoint:(NSPoint)point {
 	if (!statusWindowController)
 		statusWindowController = [[TBStatusWindowController alloc] initWithWindowNibName:@"TBStatusWindow"];
