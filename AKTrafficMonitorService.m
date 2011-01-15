@@ -67,6 +67,7 @@ static AKTrafficMonitorService *sharedService = nil;
 	_fixedPeriodRestartDate = nil;
 	_monitoring = NO;
 	_monitoringMode = tms_unreachable_mode;
+	_threshold = nil;
 	
     return self;
 }
@@ -147,7 +148,7 @@ static AKTrafficMonitorService *sharedService = nil;
 }
 #pragma mark property synthesize
 @synthesize monitoring = _monitoring, monitoringMode = _monitoringMode;
-@synthesize threshold;
+@synthesize threshold = _threshold;
 @synthesize rollingPeriodInterval = _rollingPeriodInterval;
 @synthesize fixedPeriodRestartDate = _fixedPeriodRestartDate;
 @synthesize _totalIn, _totalOut, _lastIn, _lastOut;
@@ -333,9 +334,9 @@ static AKTrafficMonitorService *sharedService = nil;
 	}
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
-	
+
 	NSNumber *total = NumberFromULL(self._totalIn + self._totalOut);
-	if (threshold && [total isGreaterThan:threshold])
+	if (self.threshold && [total isGreaterThan:self.threshold])
 		[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorThresholdDidExceedNotification object:nil userInfo:nil];
 }
 

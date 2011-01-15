@@ -32,7 +32,8 @@ typedef enum {
 	tms_mode_t		_monitoringMode;
 	NSTimeInterval	_rollingPeriodInterval;
 	NSDate			*_fixedPeriodRestartDate;
-
+	NSNumber		*_threshold;
+	
 	NSTimer			*_monitorTimer;
 }
 
