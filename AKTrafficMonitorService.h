@@ -10,6 +10,7 @@
 
 #define AKTrafficMonitorNeedsNewFixedPeriodRestartDateNotification @"AKTrafficMonitorNeedsNewFixedPeriodRestartDateNotification"
 #define AKTrafficMonitorStatisticsDidUpdateNotification @"AKTrafficMonitorStatisticsDidUpdateNotification"
+#define AKTrafficMonitorThresholdDidExceedNotification @"AKTrafficMonitorThresholdDidExceedNotification"
 
 #define TMS_ULL_T				u_int64_t
 #define NumberFromULL(ull)		( (NSNumber *)[NSNumber numberWithUnsignedLongLong:((TMS_ULL_T)(ull))] )
@@ -32,11 +33,6 @@ typedef enum {
 	NSTimeInterval	_rollingPeriodInterval;
 	NSDate			*_fixedPeriodRestartDate;
 
-	TMS_ULL_T		_totalIn;
-	TMS_ULL_T		_totalOut;
-	TMS_ULL_T		_lastIn;
-	TMS_ULL_T		_lastOut;
-	
 	NSTimer			*_monitorTimer;
 }
 
@@ -57,9 +53,14 @@ typedef enum {
 // log cumulative total until fresh start
 @property (nonatomic, retain) NSDate *fixedPeriodRestartDate;
 
+// threshold
+// if exceeded it will post a AKTrafficMonitorThresholdDidExceedNotification notification
+@property (nonatomic, retain) NSNumber *threshold;
+
 // stats
 @property (readonly) NSNumber *totalIn;
 @property (readonly) NSNumber *totalOut;
+@property (readonly) NSNumber *total;
 
 + (AKTrafficMonitorService *)sharedService;
 

@@ -27,5 +27,6 @@
 
 - (IBAction)updateRollingPeriodTimeInterval:(id)sender;
 - (IBAction)updateLimit:(id)sender;
+- (IBAction)updateThreshold:(id)sender;
 
 @end

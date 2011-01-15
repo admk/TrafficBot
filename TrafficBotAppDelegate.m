@@ -15,11 +15,6 @@
 #import "TBStatusItemController.h"
 #import "NSDate+AKMidnight.h"
 
-#define TMS_B_STRING		Property(rollingPeriodInterval), \
-							Property(fixedPeriodRestartDate), \
-							Property(monitoringMode), \
-							@"monitoring",
-#define TMS_BINDINGS		([NSArray arrayWithObjects: TMS_B_STRING	nil	])
 
 @interface TrafficBotAppDelegate (Private)
 - (void)_newRestartDate;
@@ -51,7 +46,13 @@
 	}
 	
 	// bindings & notifications
-	for (NSString *bindingKey in TMS_BINDINGS)
+	NSArray *bindings = [NSArray arrayWithObjects:
+						 Property(rollingPeriodInterval),
+						 Property(fixedPeriodRestartDate),
+						 Property(monitoringMode),
+						 Property(threshold),
+						 @"monitoring", nil];
+	for (NSString *bindingKey in bindings)
 		[[AKTrafficMonitorService sharedService] bind:bindingKey 
 		  toObject:[NSUserDefaultsController sharedUserDefaultsController] 
 	   withKeyPath:[@"values." stringByAppendingString:bindingKey]
@@ -149,6 +150,9 @@
 		// update restart date
 		[self _newRestartDate];
 	}
+	if ([[notification name] isEqual:AKTrafficMonitorThresholdDidExceedNotification]) {
+		DLog(@"received: %@", notification);
+	}	
 }
 
 @end

@@ -12,11 +12,12 @@
 #include <net/if.h>
 #include <net/route.h>
 
-#define ALL_NOTIFICATIONS	[NSArray arrayWithObjects:\
-							 AKTrafficMonitorNeedsNewFixedPeriodRestartDateNotification,\
-							 AKTrafficMonitorStatisticsDidUpdateNotification, nil]
+#define ALL_NOTIFICATIONS	[NSArray arrayWithObjects: \
+							 AKTrafficMonitorNeedsNewFixedPeriodRestartDateNotification, \
+							 AKTrafficMonitorStatisticsDidUpdateNotification, \
+							 AKTrafficMonitorThresholdDidExceedNotification, nil]
 
-@interface AKTrafficMonitorService (Private)
+@interface AKTrafficMonitorService ()
 
 @property (getter = _lastIn,	setter = _setLastIn:	)	TMS_ULL_T _lastIn;
 @property (getter = _lastOut,	setter = _setLastOut:	)	TMS_ULL_T _lastOut;
@@ -58,10 +59,10 @@ static AKTrafficMonitorService *sharedService = nil;
 	self = [super init];
 	if (!self) return nil;
 	
-	_lastIn = 0;
-	_lastOut = 0;
-	_totalIn = 0;
-	_totalOut = 0;
+	self._lastIn = 0;
+	self._lastOut = 0;
+	self._totalIn = 0;
+	self._totalOut = 0;
 	_rollingPeriodInterval = 0;
 	_fixedPeriodRestartDate = nil;
 	_monitoring = NO;
@@ -129,6 +130,9 @@ static AKTrafficMonitorService *sharedService = nil;
 - (NSNumber *)totalOut {
 	return NumberFromULL(self._totalOut);
 }
+- (NSNumber *)total {
+	return NumberFromULL(self._totalIn + self._totalOut);
+}
 
 #pragma mark -
 #pragma mark boilerplate
@@ -143,15 +147,13 @@ static AKTrafficMonitorService *sharedService = nil;
 }
 #pragma mark property synthesize
 @synthesize monitoring = _monitoring, monitoringMode = _monitoringMode;
+@synthesize threshold;
 @synthesize rollingPeriodInterval = _rollingPeriodInterval;
 @synthesize fixedPeriodRestartDate = _fixedPeriodRestartDate;
-@end
-
+@synthesize _totalIn, _totalOut, _lastIn, _lastOut;
 
 #pragma mark -
 #pragma mark private
-
-@implementation AKTrafficMonitorService (Private)
 
 #pragma mark -
 #pragma mark monitoring
@@ -331,6 +333,10 @@ static AKTrafficMonitorService *sharedService = nil;
 	}
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
+	
+	NSNumber *total = NumberFromULL(self._totalIn + self._totalOut);
+	if (threshold && [total isGreaterThan:threshold])
+		[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorThresholdDidExceedNotification object:nil userInfo:nil];
 }
 
 - (NSDictionary *)_readDataUsage {
@@ -407,13 +413,5 @@ static AKTrafficMonitorService *sharedService = nil;
 	DLog(@"\"%@\" = %@", key, value);
 	[super setValue:value forKey:key];
 }
-- (TMS_ULL_T)_lastIn						{ return _lastIn;		}
-- (TMS_ULL_T)_lastOut						{ return _lastOut;		}
-- (TMS_ULL_T)_totalIn						{ return _totalIn;		}
-- (TMS_ULL_T)_totalOut						{ return _totalIn;		}
-- (void)_setLastIn:		(TMS_ULL_T)inVal	{ _lastIn	= inVal;	}
-- (void)_setLastOut:	(TMS_ULL_T)inVal	{ _lastOut	= inVal;	}
-- (void)_setTotalIn:	(TMS_ULL_T)inVal	{ _totalIn	= inVal;	}
-- (void)_setTotalOut:	(TMS_ULL_T)inVal	{ _totalOut	= inVal;	}
 
 @end

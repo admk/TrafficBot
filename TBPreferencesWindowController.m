@@ -72,16 +72,27 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	float factor = [[defaults valueForKey:@"rollingPeriodFactor"] floatValue];
 	float multiplier = [[defaults valueForKey:@"rollingPeriodMultiplier"] floatValue];
-	NSNumber *interval = NumberFromULL(factor * multiplier);
-	[[NSUserDefaults standardUserDefaults] setValue:interval forKey:@"rollingPeriodInterval"];
+	NSNumber *interval = [NSNumber numberWithFloat:(factor * multiplier)];
+	[defaults setValue:interval forKey:@"rollingPeriodInterval"];
 }
 
 - (IBAction)updateLimit:(id)sender {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	TMS_ULL_T factor = [[defaults valueForKey:@"limitFactor"] floatValue];
-	TMS_ULL_T multiplier = [[defaults valueForKey:@"limitMultiplier"] floatValue];
-	NSNumber *limit = NumberFromULL(factor * multiplier);
-	[[NSUserDefaults standardUserDefaults] setValue:limit forKey:@"limit"];
+	float factor = [[defaults valueForKey:@"limitFactor"] floatValue];
+	float multiplier = [[defaults valueForKey:@"limitMultiplier"] floatValue];
+	NSNumber *limit = [NSNumber numberWithFloat:(factor * multiplier)];
+	[defaults setValue:limit forKey:@"limit"];
+	// limit affects threshold too
+	[self updateThreshold:sender];
+}
+
+- (IBAction)updateThreshold:(id)sender {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	BOOL shouldNotify = [defaults boolForKey:@"shouldNotify"];
+	float criticalPercentage = [[defaults valueForKey:@"criticalPercentage"] floatValue];
+	float limit = [[defaults valueForKey:@"limit"] floatValue];
+	NSNumber *threshold = shouldNotify ? [NSNumber numberWithFloat:(criticalPercentage * limit / 100.0f)] : [NSNumber numberWithFloat:INFINITY];
+	[defaults setValue:threshold forKey:@"threshold"];
 }
 
 @end
