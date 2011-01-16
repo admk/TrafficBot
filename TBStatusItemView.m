@@ -83,9 +83,7 @@
 	}
 	else {
 		[self highlight:nil];
-		NSRect frame = [[self window] frame];
-		NSPoint point = NSMakePoint(NSMidX(frame), NSMinY(frame));
-		[[NSApp delegate] showStatusWindow:self atPoint:point];
+		[[NSApp delegate] showStatusWindow:self];
     }
 }
 - (void)rightMouseDown:(NSEvent *)theEvent {

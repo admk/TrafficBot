@@ -36,7 +36,7 @@
 	[_setupButton setImage:image];
 	[_setupButton setAlternateImage:[NSImage imageNamed:@"Set Up Button Pressed.png"]];
 	NSRect bFrame = NSMakeRect((int)(self.bounds.size.width / 2 - image.size.width / 2),
-							   (int)(self.bounds.size.height / 2 - image.size.height / 2) - 20, 
+							   (int)(self.bounds.size.height / 2 - image.size.height / 2) - 15, 
 							   image.size.width, image.size.height);
 	[_setupButton setFrame:bFrame];
 	[_setupButton setTarget:[NSApp delegate]];
@@ -52,8 +52,14 @@
 	
     // background
 	NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:5 yRadius:5];
-	NSGradient *gradient = [[NSGradient alloc] initWithColorsAndLocations:[NSColor clearColor], 0.0f, [NSColor blackColor], .3f, nil];
-	[gradient drawInBezierPath:path angle:-90];
+	if (!self.backgroundColor) {
+		NSGradient *gradient = [[NSGradient alloc] initWithColorsAndLocations:[NSColor clearColor], 0.0f, [NSColor blackColor], .3f, nil];
+		[gradient drawInBezierPath:path angle:-90];
+	}
+	else {
+		[self.backgroundColor set];
+		[path fill];
+	}
 	
 	// string
 	if (!self.infoString) {
@@ -63,7 +69,7 @@
 	NSAffineTransform *xform = [NSAffineTransform transform];
 	// fill path
 	[xform translateXBy:(self.bounds.size.width / 2 - psPath.bounds.size.width / 2)
-					yBy:(self.bounds.size.height / 2 - psPath.bounds.size.height / 2 + 10)];
+					yBy:(self.bounds.size.height / 2 - psPath.bounds.size.height / 2 + 20)];
 	[xform concat];
 	[[NSColor whiteColor] set];
 	[psPath fill];
@@ -71,6 +77,12 @@
 
 #pragma mark -
 #pragma mark setters & getters
+- (void)setBackgroundColor:(NSColor *)color {
+	if (_backgroundColor == color) return;
+	[_backgroundColor release];
+	_backgroundColor = [color retain];
+	[self setNeedsDisplay:YES];
+}
 - (void)setInfoString:(NSString *)string {
 	if (_infoString == string) return;
 	[_infoString release];
@@ -79,4 +91,5 @@
 }
 
 @synthesize infoString = _infoString;
+@synthesize backgroundColor = _backgroundColor;
 @end

@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class TBPreferencesWindowController;
+@class TBFirstLaunchWindowController;
 @class TBStatusWindowController, TBGraphWindowController;
 @class TBStatusItemController;
 
@@ -16,18 +17,22 @@
 	
 	// ui
 	IBOutlet TBStatusItemController	*statusItemController;
-	TBStatusWindowController		*statusWindowController;
+	TBFirstLaunchWindowController	*firstLaunchWindowController;
+	TBStatusWindowController			*statusWindowController;
 	TBGraphWindowController			*graphWindowController;
 	TBPreferencesWindowController	*preferencesWindowController;
 	
 }
 
+- (NSRect)statusItemFrame;
+- (NSPoint)statusItemPoint;
+
 - (void)showPreferencesWindow:(id)sender;
-- (void)showFirstLaunchWindow:(id)sender atPoint:(NSPoint)point;
+- (void)showFirstLaunchWindow:(id)sender;
 - (void)dismissFirstLaunchWindow:(id)sender;
-- (void)showStatusWindow:(id)sender atPoint:(NSPoint)point;
+- (void)showStatusWindow:(id)sender;
 - (void)dismissStatusWindow:(id)sender;
-- (void)showGraphWindow:(id)sender atPoint:(NSPoint)point;
+- (void)showGraphWindow:(id)sender;
 - (void)dismissGraphWindow:(id)sender;
 
 @end

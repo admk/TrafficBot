@@ -90,6 +90,8 @@
 		DA4BF13B12B29EFE0070618E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4BF13A12B29EFE0070618E /* QuartzCore.framework */; };
 		DA6D3BE112B959D0003D5F61 /* TBStatusWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */; };
 		DAB7E22612E2408E006ED7C8 /* TBSetupView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB7E22512E2408E006ED7C8 /* TBSetupView.m */; };
+		DAB7E48312E34B0B006ED7C8 /* TBFirstLaunchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB7E48212E34B0B006ED7C8 /* TBFirstLaunchWindowController.m */; };
+		DAB7E48612E34B4D006ED7C8 /* TBFirstLaunchWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAB7E48512E34B4D006ED7C8 /* TBFirstLaunchWindow.xib */; };
 		DABFB45D129F21AB00AE41FF /* General.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45A129F21AB00AE41FF /* General.png */; };
 		DABFB45E129F21AB00AE41FF /* Monitor.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45B129F21AB00AE41FF /* Monitor.png */; };
 		DABFB45F129F21AB00AE41FF /* Splash Green.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45C129F21AB00AE41FF /* Splash Green.png */; };
@@ -169,6 +171,9 @@
 		DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBStatusWindow.xib; sourceTree = "<group>"; };
 		DAB7E22412E2408E006ED7C8 /* TBSetupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBSetupView.h; sourceTree = "<group>"; };
 		DAB7E22512E2408E006ED7C8 /* TBSetupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBSetupView.m; sourceTree = "<group>"; };
+		DAB7E48112E34B0B006ED7C8 /* TBFirstLaunchWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBFirstLaunchWindowController.h; sourceTree = "<group>"; };
+		DAB7E48212E34B0B006ED7C8 /* TBFirstLaunchWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBFirstLaunchWindowController.m; sourceTree = "<group>"; };
+		DAB7E48512E34B4D006ED7C8 /* TBFirstLaunchWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBFirstLaunchWindow.xib; sourceTree = "<group>"; };
 		DABFB45A129F21AB00AE41FF /* General.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = General.png; path = Images/General.png; sourceTree = "<group>"; };
 		DABFB45B129F21AB00AE41FF /* Monitor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Monitor.png; path = Images/Monitor.png; sourceTree = "<group>"; };
 		DABFB45C129F21AB00AE41FF /* Splash Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Splash Green.png"; path = "Images/Splash Green.png"; sourceTree = "<group>"; };
@@ -275,10 +280,7 @@
 				B16F0C3F1278705600D13C0B /* Images */,
 				8D1107310486CEB800E47090 /* TrafficBot-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
-				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
-				DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */,
-				DA198D5412B6B41A00D64DD7 /* TBGraphWindow.xib */,
-				B16F068B1275E53C00D13C0B /* TBPreferencesWindow.xib */,
+				DAB7E48412E34B1E006ED7C8 /* Nibs */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -307,11 +309,12 @@
 		B16F069F12760E6000D13C0B /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				DAB7E22312E24035006ED7C8 /* Setup View */,
 				B16F06A01276197700D13C0B /* Status Item */,
 				B16F06A11276198600D13C0B /* Status Window */,
+				DAB7E48012E34ACE006ED7C8 /* First Launch Window */,
 				DA198A8512B55C9100D64DD7 /* Graph Window */,
 				B1F44958127E191B0020735E /* Preferences Window */,
+				DAB7E22312E24035006ED7C8 /* Setup View */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -508,6 +511,27 @@
 			name = "Setup View";
 			sourceTree = "<group>";
 		};
+		DAB7E48012E34ACE006ED7C8 /* First Launch Window */ = {
+			isa = PBXGroup;
+			children = (
+				DAB7E48112E34B0B006ED7C8 /* TBFirstLaunchWindowController.h */,
+				DAB7E48212E34B0B006ED7C8 /* TBFirstLaunchWindowController.m */,
+			);
+			name = "First Launch Window";
+			sourceTree = "<group>";
+		};
+		DAB7E48412E34B1E006ED7C8 /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
+				DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */,
+				DA198D5412B6B41A00D64DD7 /* TBGraphWindow.xib */,
+				B16F068B1275E53C00D13C0B /* TBPreferencesWindow.xib */,
+				DAB7E48512E34B4D006ED7C8 /* TBFirstLaunchWindow.xib */,
+			);
+			name = Nibs;
+			sourceTree = "<group>";
+		};
 		DABFB4D412A041E100AE41FF /* NSDate+AKMidnight */ = {
 			isa = PBXGroup;
 			children = (
@@ -619,6 +643,7 @@
 				DA049FD812B853FF00ECA24C /* Info Alt.png in Resources */,
 				DA049FD912B853FF00ECA24C /* Info.png in Resources */,
 				DA6D3BE112B959D0003D5F61 /* TBStatusWindow.xib in Resources */,
+				DAB7E48612E34B4D006ED7C8 /* TBFirstLaunchWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,6 +720,7 @@
 				DA198D5C12B6B47E00D64DD7 /* TBGraphWindowController.m in Sources */,
 				DA06937612BD9774008B1584 /* GVViewCollection.m in Sources */,
 				DAB7E22612E2408E006ED7C8 /* TBSetupView.m in Sources */,
+				DAB7E48312E34B0B006ED7C8 /* TBFirstLaunchWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

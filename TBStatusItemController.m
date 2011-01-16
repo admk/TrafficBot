@@ -23,7 +23,6 @@
 - (id)init {
 	self = [super init];
     if (!self) return nil;
-	
     return self;
 }
 - (void)dealloc {

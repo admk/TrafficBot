@@ -14,23 +14,21 @@
 	
 	NSView		*contentView;
 	AKGaugeView	*gaugeView;
-	TBSetupView	*notMonitoringView;
 	NSTextField	*usageTextField;
 @private
-	NSRect		_statusItemRect;
+	TBSetupView	*_notMonitoringView;
 	BOOL		_monitoring;
 	NSNumber	*_limit;
 }
 
 @property (assign) IBOutlet NSView		*contentView;
 @property (assign) IBOutlet AKGaugeView	*gaugeView;
-@property (assign) IBOutlet TBSetupView	*notMonitoringView;
 @property (assign) IBOutlet NSTextField	*usageTextField;
 
 @property (assign, getter=isMonitoring) BOOL monitoring;
 @property (retain, nonatomic) NSNumber *limit;
 
-- (void)show:(id)sender atPoint:(NSPoint)point;
+- (void)show:(id)sender;
 - (void)dismiss:(id)sender;
 - (IBAction)info:(id)sender;
 - (IBAction)preferences:(id)sender;

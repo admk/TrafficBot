@@ -12,10 +12,12 @@
 @interface TBSetupView : NSView {
 
 @private
-	NSString *_infoString;
-	NSButton *_setupButton;
+	NSColor		*_backgroundColor;
+	NSString	*_infoString;
+	NSButton	*_setupButton;
 }
 
+@property (nonatomic, retain) NSColor *backgroundColor;
 @property (nonatomic, retain) NSString *infoString;
 
 @end

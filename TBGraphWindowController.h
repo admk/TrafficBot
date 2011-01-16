@@ -15,15 +15,13 @@
 	TBGraphView *graphView;
 	NSPanel		*draggedPanel;
 	TBGraphView *draggedGraphView;
-@private
-	NSRect		_zoomRect;
 }
 @property (assign) IBOutlet NSView		*contentView;
 @property (assign) IBOutlet TBGraphView *graphView;
 @property (assign) IBOutlet NSPanel		*draggedPanel;
 @property (assign) IBOutlet TBGraphView *draggedGraphView;
 
-- (void)flip:(id)sender fromWindow:(NSWindow *)aWindow atPoint:(NSPoint)point;
+- (void)flip:(id)sender fromWindow:(NSWindow *)aWindow;
 - (void)dismiss:(id)sender;
 - (IBAction)flipBack:(id)sender;
 

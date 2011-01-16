@@ -32,16 +32,18 @@
 	_limit = nil;
 	return self;
 }
-
 - (void)dealloc {
     [usageTextField release], usageTextField = nil;
 	[super dealloc];
 }
+#pragma mark -
+#pragma mark nib loading
 - (void)awakeFromNib {
 	// not monitoring view
-	[notMonitoringView setFrame:self.contentView.bounds];
-	notMonitoringView.infoString = NSLocalizedString(@"TrafficBot is not monitoring.", @"not monitoring");
-	[self.contentView addSubview:notMonitoringView];
+	if (!_notMonitoringView)
+		_notMonitoringView = [[TBSetupView alloc] initWithFrame:self.contentView.bounds];
+	_notMonitoringView.infoString = NSLocalizedString(@"TrafficBot is not monitoring.", @"not monitoring");
+	[self.contentView addSubview:_notMonitoringView];
 	// bindings & notifications
 	NSArray *bindings = [NSArray arrayWithObjects:
 						 @"monitoring", Property(limit), nil];
@@ -60,9 +62,9 @@
 #pragma mark setters & getters
 - (void)setMonitoring:(BOOL)inBool {
 	_monitoring = inBool;
-	[notMonitoringView removeFromSuperview];
+	[_notMonitoringView removeFromSuperview];
 	if (_monitoring) return;
-	[self.contentView addSubview:notMonitoringView];
+	[self.contentView addSubview:_notMonitoringView];
 }
 - (void)setLimit:(NSNumber *)newLimit {
 	if ([_limit isEqualToNumber:newLimit]) return;
@@ -72,40 +74,38 @@
 }
 #pragma mark -
 #pragma mark ui methods
-- (void)show:(id)sender atPoint:(NSPoint)point {
-	
-	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+- (void)show:(id)sender {
 	// shows status view
-	_statusItemRect = [sender convertRect:[sender bounds] toView:nil];
-	_statusItemRect.origin = point;
 	if ([[self.window class] isNotEqualTo:[MAAttachedWindow class]]) {
 		MAAttachedWindow *window = [[[MAAttachedWindow alloc] initWithView:self.contentView 
-														   attachedToPoint:_statusItemRect.origin 
+														   attachedToPoint:NSZeroPoint
 																  inWindow:nil 
 																	onSide:MAPositionBottom 
 																atDistance:3.0f] autorelease];
 		[window setArrowHeight:10];
 		[window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
 		self.window = window;
-		[self.window makeKeyAndOrderFront:self];
+		// force window on screen to avoid glitch
+		[window setAlphaValue:0];
+		[window orderFront:sender];
+		[window orderOut:sender];
+		[window setAlphaValue:1];
 	}
-	else {
-		[(MAAttachedWindow *)self.window setPoint:point];
-		[self.window zoomOnFromRect:_statusItemRect];
-	}
+	[(MAAttachedWindow *)self.window setPoint:[[NSApp delegate] statusItemPoint]];
+	[self.window zoomOnFromRect:[[NSApp delegate] statusItemFrame]];
 	[self _refreshStatusView];
 }
 - (void)dismiss:(id)sender {
-	[self.window zoomOffToRect:_statusItemRect];
+	[self.window zoomOffToRect:[[NSApp delegate] statusItemFrame]];
 	[gaugeView setPercentage:0 animated:NO];
 }
 - (IBAction)info:(id)sender {
-	[[NSApp delegate] showGraphWindow:sender atPoint:_statusItemRect.origin];
+	[[NSApp delegate] showGraphWindow:sender];
 }
 - (IBAction)preferences:(id)sender {
 	[[NSApp delegate] showPreferencesWindow:self];
 }
-@synthesize contentView, gaugeView, notMonitoringView, usageTextField;
+@synthesize contentView, gaugeView, usageTextField;
 @synthesize monitoring = _monitoring, limit = _limit;
 @end
 #pragma mark -

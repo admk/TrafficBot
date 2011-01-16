@@ -230,12 +230,6 @@
 				<int key="NSViewLayerContentsRedrawPolicy">2</int>
 				<string key="NSClassName">NSView</string>
 			</object>
-			<object class="NSCustomView" id="1025076953">
-				<nil key="NSNextResponder"/>
-				<int key="NSvFlags">268</int>
-				<string key="NSFrame">{{41, 154}, {163, 96}}</string>
-				<string key="NSClassName">TBSetupView</string>
-			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<array class="NSMutableArray" key="connectionRecords">
@@ -286,14 +280,6 @@
 						<reference key="destination" ref="53322221"/>
 					</object>
 					<int key="connectionID">34</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">notMonitoringView</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="1025076953"/>
-					</object>
-					<int key="connectionID">36</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -435,12 +421,6 @@
 						<reference key="object" ref="128530505"/>
 						<reference key="parent" ref="53322221"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">35</int>
-						<reference key="object" ref="1025076953"/>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">Not Monitoring View</string>
-					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -519,7 +499,6 @@
 				<string key="3.editorWindowContentRectSynchronizationRect">{{217, 442}, {480, 272}}</string>
 				<string key="31.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="32.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="35.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
@@ -552,20 +531,13 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">TBSetupView</string>
-					<string key="superclassName">NSView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">TBSetupView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
 					<string key="className">TBStatusWindowController</string>
 					<string key="superclassName">NSWindowController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="dismiss:">id</string>
 						<string key="info:">id</string>
 						<string key="preferences:">id</string>
+						<string key="show:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="dismiss:">
@@ -580,11 +552,14 @@
 							<string key="name">preferences:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="show:">
+							<string key="name">show:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="contentView">NSView</string>
 						<string key="gaugeView">AKGaugeView</string>
-						<string key="notMonitoringView">TBSetupView</string>
 						<string key="usageTextField">NSTextField</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -595,10 +570,6 @@
 						<object class="IBToOneOutletInfo" key="gaugeView">
 							<string key="name">gaugeView</string>
 							<string key="candidateClassName">AKGaugeView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="notMonitoringView">
-							<string key="name">notMonitoringView</string>
-							<string key="candidateClassName">TBSetupView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="usageTextField">
 							<string key="name">usageTextField</string>

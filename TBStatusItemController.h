@@ -20,7 +20,7 @@
 	NSNumber	*_limit;
 }
 
-@property (retain) TBStatusItemView *statusItemView;
+@property (retain, nonatomic) TBStatusItemView *statusItemView;
 
 @property (retain, nonatomic) NSNumber *limit;
 

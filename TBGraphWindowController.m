@@ -36,15 +36,12 @@
 
 #pragma mark -
 #pragma mark ui
-- (void)flip:(id)sender fromWindow:(NSWindow *)aWindow atPoint:(NSPoint)point {
-	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+- (void)flip:(id)sender fromWindow:(NSWindow *)aWindow {
 	[self _refreshView:self.graphView];
 	// shows graph view
-	_zoomRect = [sender convertRect:[sender bounds] toView:nil];
-	_zoomRect.origin = point;
 	if ([[self.window class] isNotEqualTo:[MAAttachedWindow class]]) {
 		MAAttachedWindow *window = [[[MAAttachedWindow alloc] initWithView:self.contentView 
-														   attachedToPoint:_zoomRect.origin 
+														   attachedToPoint:[[NSApp delegate] statusItemPoint]
 																  inWindow:nil 
 																	onSide:MAPositionBottom 
 																atDistance:3.0f] autorelease];
@@ -54,14 +51,14 @@
 		self.window = window;
 	}
 	else {
-		[(MAAttachedWindow *)self.window setPoint:point];
+		[(MAAttachedWindow *)self.window setPoint:[[NSApp delegate] statusItemPoint]];
 	}
 	[aWindow flipToWindow:self.window];
 	self._flipFromWindow = aWindow;
 	[self.window makeFirstResponder:self.graphView];
 }
 - (void)dismiss:(id)sender {
-	[self.window zoomOffToRect:_zoomRect];
+	[self.window zoomOffToRect:[[NSApp delegate] statusItemFrame]];
 }
 - (IBAction)flipBack:(id)sender {
 	[self.window flipBackToWindow:self._flipFromWindow];

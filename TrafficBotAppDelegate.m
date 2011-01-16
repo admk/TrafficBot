@@ -9,6 +9,7 @@
 #import "TrafficBotAppDelegate.h"
 #import "AKTrafficMonitorService.h"
 #import "TBPreferencesWindowController.h"
+#import "TBFirstLaunchWindowController.h"
 #import "TBStatusWindowController.h"
 #import "TBGraphWindowController.h"
 #import "TBStatusItemController.h"
@@ -41,12 +42,24 @@
 	NSDictionary *defaultsDict = [NSDictionary dictionaryWithContentsOfFile:defaultsPath];
 	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultsDict];
 	
+	// first launch
+#ifndef DEBUG
+	BOOL firstLaunch = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"];
+#else
+	BOOL firstLaunch = YES;
+#endif
+	if (firstLaunch) {
+		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
+		[self showFirstLaunchWindow:self];
+		[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(dismissFirstLaunchWindow:) userInfo:nil repeats:NO];
+	}
+	
+	// bindings & notifications
 	for (NSString *bindingKey in TMS_BINDINGS)
 		[[AKTrafficMonitorService sharedService] bind:bindingKey 
 		  toObject:[NSUserDefaultsController sharedUserDefaultsController] 
 	   withKeyPath:[@"values." stringByAppendingString:bindingKey]
 		   options:nil];
-	
 	[[AKTrafficMonitorService sharedService] addObserver:self selector:@selector(_didReceiveNotificationFromTrafficMonitorService:)];
 }
 - (void)applicationDidResignActive:(NSNotification *)notification {
@@ -61,33 +74,47 @@
 
 #pragma mark -
 #pragma mark ui methods
+- (NSRect)statusItemFrame {
+	return statusItemController.statusItemView.window.frame;
+}
+- (NSPoint)statusItemPoint {
+	NSRect frame = [self statusItemFrame];
+	return (NSPoint){ NSMidX(frame), NSMinY(frame) };
+}
 - (void)showPreferencesWindow:(id)sender {
 	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 	if (!preferencesWindowController)
 		preferencesWindowController = [[TBPreferencesWindowController alloc] init];
 	[preferencesWindowController showWindow:nil];
 	[self dismissStatusWindow:sender];
+	[self dismissFirstLaunchWindow:sender];
 	[graphWindowController dismiss:sender];
 }
-- (void)showFirstLaunchWindow:(id)sender atPoint:(NSPoint)point {
-	
+- (void)showFirstLaunchWindow:(id)sender {
+	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+	if (!firstLaunchWindowController)
+		firstLaunchWindowController = [[TBFirstLaunchWindowController alloc] initWithWindowNibName:@"TBFirstLaunchWindow"];
+	[firstLaunchWindowController show:sender];
 }
 - (void)dismissFirstLaunchWindow:(id)sender {
-	
+	[firstLaunchWindowController dismiss:sender];
 }
-- (void)showStatusWindow:(id)sender atPoint:(NSPoint)point {
+- (void)showStatusWindow:(id)sender {
+	[self dismissFirstLaunchWindow:sender];
+	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 	if (!statusWindowController)
 		statusWindowController = [[TBStatusWindowController alloc] initWithWindowNibName:@"TBStatusWindow"];
-	[statusWindowController show:sender atPoint:point];
+	[statusWindowController show:sender];
 }
 - (void)dismissStatusWindow:(id)sender {
 	[statusWindowController dismiss:sender];
 	[statusItemController dismissHighlight:sender];
 }
-- (void)showGraphWindow:(id)sender atPoint:(NSPoint)point {
+- (void)showGraphWindow:(id)sender {
+	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 	if (!graphWindowController)
 		graphWindowController = [[TBGraphWindowController alloc] initWithWindowNibName:@"TBGraphWindow"];
-	[graphWindowController flip:sender fromWindow:statusWindowController.window atPoint:point];
+	[graphWindowController flip:sender fromWindow:statusWindowController.window];
 }
 - (void)dismissGraphWindow:(id)sender {
 	[graphWindowController dismiss:sender];
