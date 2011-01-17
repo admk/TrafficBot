@@ -192,7 +192,7 @@
 		DA4BE76812AC8CDF0070618E /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaunchAtLoginController.h; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/Launch At Login Controller/LaunchAtLoginController.h"; sourceTree = "<group>"; };
 		DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaunchAtLoginController.m; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/Launch At Login Controller/LaunchAtLoginController.m"; sourceTree = "<group>"; };
 		DA4BE80012AD786B0070618E /* AKDebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKDebugMacros.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Macros/AKDebugMacros.h"; sourceTree = "<absolute>"; };
-		DA4BE83612AD85380070618E /* UKHelperMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UKHelperMacros.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Macros/UKHelperMacros.h"; sourceTree = "<absolute>"; };
+		DA4BE83612AD85380070618E /* AKUKHelperMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKUKHelperMacros.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Macros/AKUKHelperMacros.h"; sourceTree = "<absolute>"; };
 		DA4BEBB912B0485B0070618E /* AKScopeReleased.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKScopeReleased.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Macros/AKScopeReleased.h"; sourceTree = "<absolute>"; };
 		DA4BF12112B2930C0070618E /* NSWindow+AKFlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSWindow+AKFlip.h"; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (AKFlip)/NSWindow+AKFlip.h"; sourceTree = "<group>"; };
 		DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSWindow+AKFlip.m"; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (AKFlip)/NSWindow+AKFlip.m"; sourceTree = "<group>"; };
@@ -300,7 +300,7 @@
 				DA4BE80012AD786B0070618E /* AKDebugMacros.h */,
 				DA4BEBB912B0485B0070618E /* AKScopeReleased.h */,
 				B16F0FB512798BEE00D13C0B /* DMCommonMacros.h */,
-				DA4BE83612AD85380070618E /* UKHelperMacros.h */,
+				DA4BE83612AD85380070618E /* AKUKHelperMacros.h */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";

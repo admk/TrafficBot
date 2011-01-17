@@ -19,7 +19,7 @@
 	// ui
 	IBOutlet TBStatusItemController	*statusItemController;
 	TBFirstLaunchWindowController	*firstLaunchWindowController;
-	TBStatusWindowController			*statusWindowController;
+	TBStatusWindowController		*statusWindowController;
 	TBGraphWindowController			*graphWindowController;
 	TBPreferencesWindowController	*preferencesWindowController;
 	
