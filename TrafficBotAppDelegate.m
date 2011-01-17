@@ -18,6 +18,7 @@
 
 @interface TrafficBotAppDelegate (Private)
 - (void)_newRestartDate;
+- (void)_sendGrowlNotificationWithTitle:(NSString *)title description:(NSString *)description notificationName:(NSString *)name;
 - (void)_didReceiveNotificationFromTrafficMonitorService:(NSNotification *)notification;
 @end
 
@@ -58,6 +59,9 @@
 	   withKeyPath:[@"values." stringByAppendingString:bindingKey]
 		   options:nil];
 	[[AKTrafficMonitorService sharedService] addObserver:self selector:@selector(_didReceiveNotificationFromTrafficMonitorService:)];
+	
+	// growl
+	[GrowlApplicationBridge setGrowlDelegate:self];
 }
 - (void)applicationDidResignActive:(NSNotification *)notification {
 #ifndef DEBUG
@@ -143,6 +147,35 @@
 	DLog(@"new restart date: %@", [restartDate description]);
 	[[NSUserDefaults standardUserDefaults] setValue:restartDate forKey:Property(fixedPeriodRestartDate)];
 }
+
+#pragma mark -
+#pragma mark growl
+#define GROWL_LIMIT_REMINDER @"Limit Reminder"
+#define GROWL_LIMIT_EXCEEDED @"Limit Exceeded"
+- (NSDictionary *)registrationDictionaryForGrowl {
+	NSArray* notifications = [NSArray arrayWithObjects:GROWL_LIMIT_REMINDER, GROWL_LIMIT_EXCEEDED, nil];
+	return [NSDictionary dictionaryWithObjectsAndKeys:
+			[NSNumber numberWithInt:1], GROWL_TICKET_VERSION,
+			notifications, GROWL_NOTIFICATIONS_DEFAULT,
+			notifications, GROWL_NOTIFICATIONS_ALL, nil];
+}
+- (NSString *)applicationNameForGrowl {
+	return @"TrafficBot";
+}
+- (void)growlNotificationWasClicked:(id)clickContext {
+	
+}
+- (void)_sendGrowlNotificationWithTitle:(NSString *)title description:(NSString *)description notificationName:(NSString *)name {
+	[GrowlApplicationBridge notifyWithTitle:title
+								description:description
+						   notificationName:name
+								   iconData:nil
+								   priority:0
+								   isSticky:NO
+							   clickContext:name];
+}
+
+#pragma mark -
 #pragma mark monitor service notifications
 - (void)_didReceiveNotificationFromTrafficMonitorService:(NSNotification *)notification {
 	if ([[notification name] isEqual:AKTrafficMonitorNeedsNewFixedPeriodRestartDateNotification]) {

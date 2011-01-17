@@ -7,13 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Growl/Growl.h>
 
 @class TBPreferencesWindowController;
 @class TBFirstLaunchWindowController;
 @class TBStatusWindowController, TBGraphWindowController;
 @class TBStatusItemController;
 
-@interface TrafficBotAppDelegate : NSObject <NSApplicationDelegate> {
+@interface TrafficBotAppDelegate : NSObject <NSApplicationDelegate, GrowlApplicationBridgeDelegate> {
 	
 	// ui
 	IBOutlet TBStatusItemController	*statusItemController;

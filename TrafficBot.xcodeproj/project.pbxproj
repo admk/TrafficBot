@@ -92,6 +92,10 @@
 		DAB7E22612E2408E006ED7C8 /* TBSetupView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB7E22512E2408E006ED7C8 /* TBSetupView.m */; };
 		DAB7E48312E34B0B006ED7C8 /* TBFirstLaunchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB7E48212E34B0B006ED7C8 /* TBFirstLaunchWindowController.m */; };
 		DAB7E48612E34B4D006ED7C8 /* TBFirstLaunchWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAB7E48512E34B4D006ED7C8 /* TBFirstLaunchWindow.xib */; };
+		DAB7E78B12E3E06E006ED7C8 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB7E78A12E3E06E006ED7C8 /* Growl.framework */; };
+		DAB7E78C12E3E06E006ED7C8 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB7E78A12E3E06E006ED7C8 /* Growl.framework */; };
+		DAB7E79412E3E076006ED7C8 /* Growl.framework in Copy Libraries */ = {isa = PBXBuildFile; fileRef = DAB7E78A12E3E06E006ED7C8 /* Growl.framework */; };
+		DAB7E79512E3E079006ED7C8 /* Growl.framework in Copy Libraries */ = {isa = PBXBuildFile; fileRef = DAB7E78A12E3E06E006ED7C8 /* Growl.framework */; };
 		DABFB45D129F21AB00AE41FF /* General.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45A129F21AB00AE41FF /* General.png */; };
 		DABFB45E129F21AB00AE41FF /* Monitor.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45B129F21AB00AE41FF /* Monitor.png */; };
 		DABFB45F129F21AB00AE41FF /* Splash Green.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45C129F21AB00AE41FF /* Splash Green.png */; };
@@ -99,6 +103,31 @@
 		DABFB4B0129F2CF100AE41FF /* TBDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = DABFB4AF129F2CF100AE41FF /* TBDefaults.plist */; };
 		DABFB4D712A0421A00AE41FF /* NSDate+AKMidnight.m in Sources */ = {isa = PBXBuildFile; fileRef = DABFB4D612A0421A00AE41FF /* NSDate+AKMidnight.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DAB7E70612E3D5BB006ED7C8 /* Copy Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DAB7E79412E3E076006ED7C8 /* Growl.framework in Copy Libraries */,
+			);
+			name = "Copy Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAB7E70712E3D5BB006ED7C8 /* Copy Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DAB7E79512E3E079006ED7C8 /* Growl.framework in Copy Libraries */,
+			);
+			name = "Copy Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -174,6 +203,7 @@
 		DAB7E48112E34B0B006ED7C8 /* TBFirstLaunchWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBFirstLaunchWindowController.h; sourceTree = "<group>"; };
 		DAB7E48212E34B0B006ED7C8 /* TBFirstLaunchWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBFirstLaunchWindowController.m; sourceTree = "<group>"; };
 		DAB7E48512E34B4D006ED7C8 /* TBFirstLaunchWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBFirstLaunchWindow.xib; sourceTree = "<group>"; };
+		DAB7E78A12E3E06E006ED7C8 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		DABFB45A129F21AB00AE41FF /* General.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = General.png; path = Images/General.png; sourceTree = "<group>"; };
 		DABFB45B129F21AB00AE41FF /* Monitor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Monitor.png; path = Images/Monitor.png; sourceTree = "<group>"; };
 		DABFB45C129F21AB00AE41FF /* Splash Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Splash Green.png"; path = "Images/Splash Green.png"; sourceTree = "<group>"; };
@@ -192,6 +222,7 @@
 				B16F08A61277636900D13C0B /* Carbon.framework in Frameworks */,
 				DA35AC1412AC2AA6009C02D2 /* FScript.framework in Frameworks */,
 				DA4BF13B12B29EFE0070618E /* QuartzCore.framework in Frameworks */,
+				DAB7E78C12E3E06E006ED7C8 /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +232,7 @@
 			files = (
 				DA35AD2712AC2ADA009C02D2 /* Cocoa.framework in Frameworks */,
 				DA35AD2812AC2ADA009C02D2 /* Carbon.framework in Frameworks */,
+				DAB7E78B12E3E06E006ED7C8 /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +253,8 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DAB7E78A12E3E06E006ED7C8 /* Growl.framework */,
+				DA4BF13A12B29EFE0070618E /* QuartzCore.framework */,
 				B16F08A51277636900D13C0B /* Carbon.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				DA35AC1312AC2AA6009C02D2 /* FScript.framework */,
@@ -255,7 +289,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				DA4BF13A12B29EFE0070618E /* QuartzCore.framework */,
 			);
 			name = TrafficBot;
 			sourceTree = "<group>";
@@ -560,6 +593,7 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
+				DAB7E70612E3D5BB006ED7C8 /* Copy Libraries */,
 			);
 			buildRules = (
 			);
@@ -579,6 +613,7 @@
 				DA35AD0512AC2ADA009C02D2 /* Resources */,
 				DA35AD1912AC2ADA009C02D2 /* Sources */,
 				DA35AD2612AC2ADA009C02D2 /* Frameworks */,
+				DAB7E70712E3D5BB006ED7C8 /* Copy Libraries */,
 			);
 			buildRules = (
 			);
@@ -776,6 +811,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -793,6 +832,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TrafficBot_Prefix.pch;
@@ -868,6 +911,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -885,6 +932,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TrafficBot_Prefix.pch;
