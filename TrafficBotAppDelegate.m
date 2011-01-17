@@ -51,7 +51,6 @@
 						 Property(rollingPeriodInterval),
 						 Property(fixedPeriodRestartDate),
 						 Property(monitoringMode),
-						 Property(threshold),
 						 @"monitoring", nil];
 	for (NSString *bindingKey in bindings)
 		[[AKTrafficMonitorService sharedService] bind:bindingKey 
@@ -60,7 +59,8 @@
 		   options:nil];
 	[[AKTrafficMonitorService sharedService] addObserver:self selector:@selector(_didReceiveNotificationFromTrafficMonitorService:)];
 	
-	// growl
+	// threshold notifications
+	[self refreshThresholds];
 	[GrowlApplicationBridge setGrowlDelegate:self];
 }
 - (void)applicationDidResignActive:(NSNotification *)notification {
@@ -121,6 +121,20 @@
 	[graphWindowController dismiss:sender];
 	[statusItemController dismissHighlight:sender];
 }
+
+#pragma mark -
+#pragma mark thresholds
+#define LIMIT_REMINDER @"Limit Reminder"
+#define LIMIT_EXCEEDED @"Limit Exceeded"
+- (void)refreshThresholds {
+	float criticalPercentage = [Defaults(criticalPercentage) floatValue];
+	float limit = [Defaults(limit) floatValue];
+	NSNumber *threshold = [NSNumber numberWithFloat:(criticalPercentage * limit / 100.0f)];
+	[[AKTrafficMonitorService sharedService] unregisterAllThresholds];
+	[[AKTrafficMonitorService sharedService] registerThresholdWithValue:threshold context:LIMIT_REMINDER];
+	[[AKTrafficMonitorService sharedService] registerThresholdWithValue:Defaults(limit) context:LIMIT_EXCEEDED];
+}
+
 @end
 
 #pragma mark -
@@ -128,32 +142,21 @@
 #pragma mark AKTrafficMonitorService
 - (void)_newRestartDate {
 	NSDate *restartDate = [NSDate date];
-	NSNumber *interval = [[NSUserDefaults standardUserDefaults] objectForKey:@"fixedPeriodInterval"];
-	long fixedPeriodInterval = [interval longValue];
+	long fixedPeriodInterval = [Defaults(fixedPeriodInterval) longValue];
 	switch (fixedPeriodInterval) {
-		case 3600:
-			restartDate = [restartDate nextHour];
-			break;
-		case 86400:
-			restartDate = [restartDate midnightTomorrow];
-			break;
-		case 2592000:
-			restartDate = [restartDate midnightNextMonth];
-			break;
-		default:
-			ALog(@"invalid fixedPeriodInterval: %l", fixedPeriodInterval);
-			break;
+		case 3600:		restartDate = [restartDate nextHour];			break;
+		case 86400:		restartDate = [restartDate midnightTomorrow];	break;
+		case 2592000:	restartDate = [restartDate midnightNextMonth];	break;
+		default: ALog(@"invalid fixedPeriodInterval: %l", fixedPeriodInterval); break;
 	}
 	DLog(@"new restart date: %@", [restartDate description]);
-	[[NSUserDefaults standardUserDefaults] setValue:restartDate forKey:Property(fixedPeriodRestartDate)];
+	SetDefaults(restartDate, fixedPeriodRestartDate);
 }
 
 #pragma mark -
 #pragma mark growl
-#define GROWL_LIMIT_REMINDER @"Limit Reminder"
-#define GROWL_LIMIT_EXCEEDED @"Limit Exceeded"
 - (NSDictionary *)registrationDictionaryForGrowl {
-	NSArray* notifications = [NSArray arrayWithObjects:GROWL_LIMIT_REMINDER, GROWL_LIMIT_EXCEEDED, nil];
+	NSArray* notifications = [NSArray arrayWithObjects:LIMIT_REMINDER, LIMIT_EXCEEDED, nil];
 	return [NSDictionary dictionaryWithObjectsAndKeys:
 			[NSNumber numberWithInt:1], GROWL_TICKET_VERSION,
 			notifications, GROWL_NOTIFICATIONS_DEFAULT,

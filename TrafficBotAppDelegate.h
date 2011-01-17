@@ -36,4 +36,6 @@
 - (void)showGraphWindow:(id)sender;
 - (void)dismissGraphWindow:(id)sender;
 
+- (void)refreshThresholds;
+
 @end

@@ -67,7 +67,7 @@ static AKTrafficMonitorService *sharedService = nil;
 	_fixedPeriodRestartDate = nil;
 	_monitoring = NO;
 	_monitoringMode = tms_unreachable_mode;
-	_threshold = nil;
+	_thresholds = nil;
 	
     return self;
 }
@@ -93,6 +93,17 @@ static AKTrafficMonitorService *sharedService = nil;
 	ZAssert(!tag, @"NSWorkspaceRecycleOperation failed with tag %ld", tag);
 	// notify
 	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
+}
+
+#pragma mark -
+#pragma mark thresholds
+- (void)registerThresholdWithValue:(NSNumber *)value context:(NSString *)context {
+	if (!self.thresholds)
+		self.thresholds = [NSMutableDictionary dictionary];
+	[self.thresholds setObject:value forKey:context];
+}
+- (void)unregisterAllThresholds {
+	self.thresholds = nil;
 }
 
 #pragma mark -
@@ -136,7 +147,6 @@ static AKTrafficMonitorService *sharedService = nil;
 }
 
 #pragma mark -
-#pragma mark boilerplate
 #pragma mark notification
 - (void)addObserver:(id)inObserver selector:(SEL)inSelector {
 	for (NSString *notificationName in ALL_NOTIFICATIONS)
@@ -146,9 +156,12 @@ static AKTrafficMonitorService *sharedService = nil;
 	for (NSString *notificationName in ALL_NOTIFICATIONS)
 		[[NSNotificationCenter defaultCenter] removeObserver:inObserver name:notificationName object:nil];
 }
+
+#pragma mark -
+#pragma mark boilerplate
 #pragma mark property synthesize
 @synthesize monitoring = _monitoring, monitoringMode = _monitoringMode;
-@synthesize threshold = _threshold;
+@synthesize thresholds = _thresholds;
 @synthesize rollingPeriodInterval = _rollingPeriodInterval;
 @synthesize fixedPeriodRestartDate = _fixedPeriodRestartDate;
 @synthesize _totalIn, _totalOut, _lastIn, _lastOut;
@@ -335,9 +348,18 @@ static AKTrafficMonitorService *sharedService = nil;
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
 
-	NSNumber *total = NumberFromULL(self._totalIn + self._totalOut);
-	if (self.threshold && [total isGreaterThan:self.threshold])
-		[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorThresholdDidExceedNotification object:nil userInfo:nil];
+	// thresholds
+	if (self.thresholds) {
+		NSNumber *cTotal = NumberFromULL(self._totalIn + self._totalOut);
+		for (NSString *thresholdKey in [self.thresholds allKeys]) {
+			NSNumber *cThreshold = [self.thresholds objectForKey:thresholdKey];
+			if ([cTotal isGreaterThan:cThreshold]) {
+				NSDictionary *infoDict = [NSDictionary dictionaryWithObject:cThreshold forKey:thresholdKey];
+				[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorThresholdDidExceedNotification object:nil userInfo:infoDict];
+				[self.thresholds removeObjectForKey:thresholdKey];
+			}
+		}
+	}
 }
 
 - (NSDictionary *)_readDataUsage {

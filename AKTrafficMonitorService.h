@@ -32,7 +32,7 @@ typedef enum {
 	tms_mode_t		_monitoringMode;
 	NSTimeInterval	_rollingPeriodInterval;
 	NSDate			*_fixedPeriodRestartDate;
-	NSNumber		*_threshold;
+	NSMutableDictionary	*_thresholds;
 	
 	NSTimer			*_monitorTimer;
 }
@@ -54,9 +54,12 @@ typedef enum {
 // log cumulative total until fresh start
 @property (nonatomic, retain) NSDate *fixedPeriodRestartDate;
 
-// threshold
-// if exceeded it will post a AKTrafficMonitorThresholdDidExceedNotification notification
-@property (nonatomic, retain) NSNumber *threshold;
+// thresholds
+// objects - {
+//		(NSString *) a context for the notification
+//			-> (NSNumber *) a threshold value
+// if the threshold value is exceeded it will post a AKTrafficMonitorThresholdDidExceedNotification
+@property (nonatomic, retain) NSMutableDictionary *thresholds;
 
 // stats
 @property (readonly) NSNumber *totalIn;
@@ -68,6 +71,10 @@ typedef enum {
 // notifications
 - (void)addObserver:(id)inObserver selector:(SEL)inSelector;
 - (void)removeObserver:(id)inObserver;
+
+// thresholds
+- (void)registerThresholdWithValue:(NSNumber *)value context:(NSString *)context;
+- (void)unregisterAllThresholds;
 
 // dictionary representation of log files
 - (NSMutableDictionary *)rollingLogFile;

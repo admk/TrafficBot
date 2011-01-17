@@ -8,6 +8,7 @@
 
 #import "TBPreferencesWindowController.h"
 #import "AKTrafficMonitorService.h"
+#import "TrafficBotAppDelegate.h"
 
 @implementation TBPreferencesWindowController
 
@@ -60,6 +61,7 @@
 
 - (IBAction)clearStatistics:(id)sender {
 	[[AKTrafficMonitorService sharedService] clearStatistics];
+	[self updateThresholds:sender];
 }
 
 - (IBAction)resetAllPrefs:(id)sender{
@@ -81,15 +83,11 @@
 	NSNumber *limit = [NSNumber numberWithFloat:(factor * multiplier)];
 	SetDefaults(limit, limit);
 	// limit affects threshold too
-	[self updateThreshold:sender];
+	[self updateThresholds:sender];
 }
 
-- (IBAction)updateThreshold:(id)sender {
-	BOOL shouldNotify = [[NSUserDefaults standardUserDefaults] boolForKey:@"shouldNotify"];
-	float criticalPercentage = [Defaults(criticalPercentage) floatValue];
-	float limit = [Defaults(limit) floatValue];
-	NSNumber *threshold = shouldNotify ? [NSNumber numberWithFloat:(criticalPercentage * limit / 100.0f)] : [NSNumber numberWithFloat:INFINITY];
-	SetDefaults(threshold, threshold);
+- (IBAction)updateThresholds:(id)sender {
+	[[NSApp delegate] refreshThresholds];
 }
 
 @end
