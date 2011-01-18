@@ -188,6 +188,17 @@
 	}
 	if ([[notification name] isEqual:AKTrafficMonitorThresholdDidExceedNotification]) {
 		DLog(@"received: %@", notification);
+		NSDictionary *infoDict = [notification userInfo];
+		NSString *context = [[infoDict allKeys] objectAtIndex:0];
+		if ([context isEqual:LIMIT_REMINDER]) {
+			float criticalPercentage = [Defaults(criticalPercentage) floatValue];
+			NSString *title = [NSString stringWithFormat:@"You have used %.0f%% of your limit.", criticalPercentage];
+			[self _sendGrowlNotificationWithTitle:title description:nil notificationName:LIMIT_REMINDER];
+		}
+		else if ([context isEqual:LIMIT_EXCEEDED]) {
+			NSString *title = [NSString stringWithFormat:@"You have used all of your limit."];
+			[self _sendGrowlNotificationWithTitle:title description:nil notificationName:LIMIT_EXCEEDED];
+		}
 	}	
 }
 
