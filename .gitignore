@@ -14,4 +14,3 @@ build/*
 xcuserdata
 profile
 *.moved-aside
-*.framework
