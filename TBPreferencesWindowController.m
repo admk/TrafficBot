@@ -18,6 +18,8 @@
 	return self;
 }
 - (void)awakeFromNib {
+	[self.window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
+	// window sizing
 	NSRect frame = generalView.frame;
 	frame.size.height = 75; // offset for the toolbar
     [self.window setFrame:frame display:NO animate:NO];
