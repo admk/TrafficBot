@@ -61,7 +61,6 @@
 
 - (IBAction)clearStatistics:(id)sender {
 	[[AKTrafficMonitorService sharedService] clearStatistics];
-	[self updateThresholds:sender];
 }
 
 - (IBAction)resetAllPrefs:(id)sender{

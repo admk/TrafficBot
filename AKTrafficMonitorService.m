@@ -19,10 +19,11 @@
 
 @interface AKTrafficMonitorService ()
 
-@property (getter = _lastIn,	setter = _setLastIn:	)	TMS_ULL_T _lastIn;
-@property (getter = _lastOut,	setter = _setLastOut:	)	TMS_ULL_T _lastOut;
-@property (getter = _totalIn,	setter = _setTotalIn:	)	TMS_ULL_T _totalIn;
-@property (getter = _totalOut,	setter = _setTotalOut:	)	TMS_ULL_T _totalOut;
+@property (assign) TMS_ULL_T _lastIn;
+@property (assign) TMS_ULL_T _lastOut;
+@property (assign) TMS_ULL_T _totalIn;
+@property (assign) TMS_ULL_T _totalOut;
+@property (assign) TMS_ULL_T _lastTotal;
 
 - (void)_startMonitoring;
 - (void)_stopMonitoring;
@@ -30,7 +31,7 @@
 - (NSTimeInterval)_timerInterval;
 - (void)_reinitialiseIfMonitoring;
 
-- (void)_shouldLogAndUpdateTrafficData:(id)info;
+- (void)_logAndUpdateTrafficData:(id)info;
 - (NSDictionary *)_readDataUsage;
 
 - (NSString *)_rollingLogFilePath;
@@ -63,6 +64,7 @@ static AKTrafficMonitorService *sharedService = nil;
 	self._lastOut = 0;
 	self._totalIn = 0;
 	self._totalOut = 0;
+	self._lastTotal = 0;
 	_rollingPeriodInterval = 0;
 	_fixedPeriodRestartDate = nil;
 	_monitoring = NO;
@@ -158,15 +160,6 @@ static AKTrafficMonitorService *sharedService = nil;
 }
 
 #pragma mark -
-#pragma mark boilerplate
-#pragma mark property synthesize
-@synthesize monitoring = _monitoring, monitoringMode = _monitoringMode;
-@synthesize thresholds = _thresholds;
-@synthesize rollingPeriodInterval = _rollingPeriodInterval;
-@synthesize fixedPeriodRestartDate = _fixedPeriodRestartDate;
-@synthesize _totalIn, _totalOut, _lastIn, _lastOut;
-
-#pragma mark -
 #pragma mark private
 
 #pragma mark -
@@ -235,7 +228,7 @@ static AKTrafficMonitorService *sharedService = nil;
 	
 	// timer
 	if (!_monitorTimer)
-		_monitorTimer = [NSTimer scheduledTimerWithTimeInterval:[self _timerInterval] target:self selector:@selector(_shouldLogAndUpdateTrafficData:) userInfo:nil repeats:YES];
+		_monitorTimer = [NSTimer scheduledTimerWithTimeInterval:[self _timerInterval] target:self selector:@selector(_logAndUpdateTrafficData:) userInfo:nil repeats:YES];
 	[_monitorTimer fire];
 }
 - (void)_stopMonitoring {
@@ -270,7 +263,7 @@ static AKTrafficMonitorService *sharedService = nil;
 
 #pragma mark -
 #pragma mark traffic data
-- (void)_shouldLogAndUpdateTrafficData:(id)info {
+- (void)_logAndUpdateTrafficData:(id)info {
 	
 	NSDictionary *reading = [self _readDataUsage];
 	TMS_ULL_T nowIn = ULLFromNumber([reading objectForKey:@"in"]);
@@ -280,14 +273,14 @@ static AKTrafficMonitorService *sharedService = nil;
 	TMS_ULL_T diffIn = nowIn - self._lastIn;
 	TMS_ULL_T diffOut = nowOut - self._lastOut;
 	
-	// updates last readings
-	self._lastIn = ULLFromNumber([reading objectForKey:@"in"]);
-	self._lastOut = ULLFromNumber([reading objectForKey:@"out"]);
-	
 	// accumulate the differences
 	self._totalIn += diffIn;
 	self._totalOut += diffOut;
-		
+	
+	// updates last readings
+	self._lastIn = nowIn;
+	self._lastOut = nowOut;
+	
 	// rolling log
 	NSMutableDictionary *rollingLog = [self rollingLogFile];
 	for (NSString *dateString in [rollingLog allKeys]) {
@@ -347,18 +340,19 @@ static AKTrafficMonitorService *sharedService = nil;
 	}
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
-
+	
 	// thresholds
 	if (self.thresholds) {
-		NSNumber *cTotal = NumberFromULL(self._totalIn + self._totalOut);
+		TMS_ULL_T cTotal = self._totalIn + self._totalOut;
 		for (NSString *thresholdKey in [self.thresholds allKeys]) {
-			NSNumber *cThreshold = [self.thresholds objectForKey:thresholdKey];
-			if ([cTotal isGreaterThan:cThreshold]) {
-				NSDictionary *infoDict = [NSDictionary dictionaryWithObject:cThreshold forKey:thresholdKey];
+			NSNumber *tNumber = [self.thresholds objectForKey:thresholdKey];
+			TMS_ULL_T threshold = ULLFromNumber(tNumber);
+			if (self._lastTotal <= threshold && threshold <= cTotal) {
+				NSDictionary *infoDict = [NSDictionary dictionaryWithObject:tNumber forKey:thresholdKey];
 				[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorThresholdDidExceedNotification object:nil userInfo:infoDict];
-				[self.thresholds removeObjectForKey:thresholdKey];
 			}
 		}
+		self._lastTotal = cTotal;
 	}
 }
 
@@ -436,5 +430,14 @@ static AKTrafficMonitorService *sharedService = nil;
 	DLog(@"\"%@\" = %@", key, value);
 	[super setValue:value forKey:key];
 }
+
+#pragma mark -
+#pragma mark boilerplate
+#pragma mark property synthesize
+@synthesize monitoring = _monitoring, monitoringMode = _monitoringMode;
+@synthesize thresholds = _thresholds;
+@synthesize rollingPeriodInterval = _rollingPeriodInterval;
+@synthesize fixedPeriodRestartDate = _fixedPeriodRestartDate;
+@synthesize _totalIn, _totalOut, _lastIn, _lastOut, _lastTotal;
 
 @end
