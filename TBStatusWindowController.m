@@ -17,6 +17,25 @@
 #import "TBSetupView.h"
 #import "AKBytesFormatter.h"
 
+#define VIEW_CORNER_RADIUS ((float)6.5)
+#define VIEW_GRADIENT_COLOR_1 [NSColor colorWithCalibratedRed:100.0/255 green:200.0/255 blue:1 alpha:1]
+#define VIEW_GRADIENT_COLOR_2 [NSColor colorWithCalibratedRed:0 green:100.0/255 blue:171.0/255 alpha:1]
+
+#pragma mark -
+#pragma mark description window content view
+@interface SWView : NSView
+@end
+@implementation SWView : NSView
+- (void)drawRect:(NSRect)dirtyRect {
+	NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:VIEW_CORNER_RADIUS yRadius:VIEW_CORNER_RADIUS];
+	NSGradient* gradient = [[[NSGradient alloc] initWithColorsAndLocations:
+							 VIEW_GRADIENT_COLOR_1, 0.0f, VIEW_GRADIENT_COLOR_2, 0.2f, nil] autorelease];
+	[gradient drawInBezierPath:path angle:-90];
+}
+@end
+
+#pragma mark -
+#pragma mark private methods
 @interface TBStatusWindowController (Private)
 - (void)_refreshStatusView;
 - (void)_didReceiveNotificationFromTrafficMonitorService:(NSNotification *)notification;
@@ -77,11 +96,16 @@
 - (void)show:(id)sender {
 	// shows status view
 	if ([[self.window class] isNotEqualTo:[MAAttachedWindow class]]) {
-		MAAttachedWindow *window = [[[MAAttachedWindow alloc] initWithView:self.contentView 
+		SWView *swView = [[SWView alloc] initWithFrame:self.contentView.frame];
+		[swView addSubview:self.contentView];
+		MAAttachedWindow *window = [[[MAAttachedWindow alloc] initWithView:swView 
 														   attachedToPoint:NSZeroPoint
 																  inWindow:nil 
 																	onSide:MAPositionBottom 
 																atDistance:3.0f] autorelease];
+		[window setBackgroundColor:VIEW_GRADIENT_COLOR_1];
+		[window setBorderWidth:1];
+		[window setBorderColor:[NSColor colorWithCalibratedWhite:0 alpha:.5]];
 		[window setArrowHeight:10];
 		[window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
 		self.window = window;
