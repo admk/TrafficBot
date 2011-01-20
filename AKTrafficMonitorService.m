@@ -226,6 +226,9 @@ static AKTrafficMonitorService *sharedService = nil;
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
 	
+	// threshold update
+	self._lastTotal = self._totalIn + self._totalOut;
+	
 	// timer
 	if (!_monitorTimer)
 		_monitorTimer = [NSTimer scheduledTimerWithTimeInterval:[self _timerInterval] target:self selector:@selector(_logAndUpdateTrafficData:) userInfo:nil repeats:YES];
