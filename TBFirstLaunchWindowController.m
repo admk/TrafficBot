@@ -33,6 +33,9 @@
 																  inWindow:nil 
 																	onSide:MAPositionBottom 
 																atDistance:25.0f] autorelease];
+		[window setViewMargin:1];
+		[window setBorderWidth:1];
+		[window setBorderColor:[NSColor colorWithCalibratedWhite:1 alpha:.2]];
 		[window setArrowHeight:10];
 		[window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
 		[window setLevel:NSFloatingWindowLevel];
