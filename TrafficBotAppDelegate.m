@@ -80,7 +80,10 @@
 }
 - (NSPoint)statusItemPoint {
 	NSRect frame = [self statusItemFrame];
-	return (NSPoint){ NSMidX(frame), NSMinY(frame) };
+	NSPoint fPoint = { NSMidX(frame), NSMinY(frame) };
+	fPoint.x = round(fPoint.x);
+	fPoint.y = round(fPoint.y);
+	return fPoint;
 }
 - (void)showPreferencesWindow:(id)sender {
 	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
