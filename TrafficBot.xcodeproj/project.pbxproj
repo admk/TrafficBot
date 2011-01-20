@@ -36,10 +36,6 @@
 		DA049FC212B8534600ECA24C /* Gauge.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FC012B8534600ECA24C /* Gauge.png */; };
 		DA049FC312B8534600ECA24C /* Gauge Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FBF12B8534600ECA24C /* Gauge Pressed.png */; };
 		DA049FC412B8534600ECA24C /* Gauge.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FC012B8534600ECA24C /* Gauge.png */; };
-		DA049FD812B853FF00ECA24C /* Info Alt.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FD612B853FF00ECA24C /* Info Alt.png */; };
-		DA049FD912B853FF00ECA24C /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FD712B853FF00ECA24C /* Info.png */; };
-		DA049FDA12B853FF00ECA24C /* Info Alt.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FD612B853FF00ECA24C /* Info Alt.png */; };
-		DA049FDB12B853FF00ECA24C /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FD712B853FF00ECA24C /* Info.png */; };
 		DA06937612BD9774008B1584 /* GVViewCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = DA06937512BD9774008B1584 /* GVViewCollection.m */; };
 		DA19893E12B459FD00D64DD7 /* TBGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19893B12B459FD00D64DD7 /* TBGraphView.m */; };
 		DA19893F12B459FD00D64DD7 /* GVDescriptionWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19893D12B459FD00D64DD7 /* GVDescriptionWindow.m */; };
@@ -96,6 +92,10 @@
 		DAB7E78C12E3E06E006ED7C8 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB7E78A12E3E06E006ED7C8 /* Growl.framework */; };
 		DAB7E79412E3E076006ED7C8 /* Growl.framework in Copy Libraries */ = {isa = PBXBuildFile; fileRef = DAB7E78A12E3E06E006ED7C8 /* Growl.framework */; };
 		DAB7E79512E3E079006ED7C8 /* Growl.framework in Copy Libraries */ = {isa = PBXBuildFile; fileRef = DAB7E78A12E3E06E006ED7C8 /* Growl.framework */; };
+		DAB7EB8712E8FD8B006ED7C8 /* Graph Button Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EB8512E8FD8B006ED7C8 /* Graph Button Pressed.png */; };
+		DAB7EB8812E8FD8B006ED7C8 /* Graph Button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EB8612E8FD8B006ED7C8 /* Graph Button.png */; };
+		DAB7EB8912E8FD8B006ED7C8 /* Graph Button Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EB8512E8FD8B006ED7C8 /* Graph Button Pressed.png */; };
+		DAB7EB8A12E8FD8B006ED7C8 /* Graph Button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EB8612E8FD8B006ED7C8 /* Graph Button.png */; };
 		DABFB45D129F21AB00AE41FF /* General.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45A129F21AB00AE41FF /* General.png */; };
 		DABFB45E129F21AB00AE41FF /* Monitor.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45B129F21AB00AE41FF /* Monitor.png */; };
 		DABFB45F129F21AB00AE41FF /* Splash Green.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45C129F21AB00AE41FF /* Splash Green.png */; };
@@ -174,8 +174,6 @@
 		B1F44B51127F30530020735E /* Set Up Button Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Up Button Pressed.png"; path = "Images/Set Up Button Pressed.png"; sourceTree = "<group>"; };
 		DA049FBF12B8534600ECA24C /* Gauge Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gauge Pressed.png"; path = "Images/Gauge Pressed.png"; sourceTree = "<group>"; };
 		DA049FC012B8534600ECA24C /* Gauge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Gauge.png; path = Images/Gauge.png; sourceTree = "<group>"; };
-		DA049FD612B853FF00ECA24C /* Info Alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Info Alt.png"; path = "Images/Info Alt.png"; sourceTree = "<group>"; };
-		DA049FD712B853FF00ECA24C /* Info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Info.png; path = Images/Info.png; sourceTree = "<group>"; };
 		DA06937412BD9774008B1584 /* GVViewCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVViewCollection.h; sourceTree = "<group>"; };
 		DA06937512BD9774008B1584 /* GVViewCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVViewCollection.m; sourceTree = "<group>"; };
 		DA19893A12B459FD00D64DD7 /* TBGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGraphView.h; sourceTree = "<group>"; };
@@ -204,6 +202,8 @@
 		DAB7E48212E34B0B006ED7C8 /* TBFirstLaunchWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBFirstLaunchWindowController.m; sourceTree = "<group>"; };
 		DAB7E48512E34B4D006ED7C8 /* TBFirstLaunchWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBFirstLaunchWindow.xib; sourceTree = "<group>"; };
 		DAB7E78A12E3E06E006ED7C8 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
+		DAB7EB8512E8FD8B006ED7C8 /* Graph Button Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Graph Button Pressed.png"; path = "Images/Graph Button Pressed.png"; sourceTree = "<group>"; };
+		DAB7EB8612E8FD8B006ED7C8 /* Graph Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Graph Button.png"; path = "Images/Graph Button.png"; sourceTree = "<group>"; };
 		DABFB45A129F21AB00AE41FF /* General.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = General.png; path = Images/General.png; sourceTree = "<group>"; };
 		DABFB45B129F21AB00AE41FF /* Monitor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Monitor.png; path = Images/Monitor.png; sourceTree = "<group>"; };
 		DABFB45C129F21AB00AE41FF /* Splash Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Splash Green.png"; path = "Images/Splash Green.png"; sourceTree = "<group>"; };
@@ -410,10 +410,10 @@
 				B16F0F141278FBAA00D13C0B /* Cog.png */,
 				B16F0F281278FD0F00D13C0B /* Dark Cog.png */,
 				B16F0C83127877C200D13C0B /* Status View Title Bar.png */,
+				DAB7EB8512E8FD8B006ED7C8 /* Graph Button Pressed.png */,
+				DAB7EB8612E8FD8B006ED7C8 /* Graph Button.png */,
 				DA049FBF12B8534600ECA24C /* Gauge Pressed.png */,
 				DA049FC012B8534600ECA24C /* Gauge.png */,
-				DA049FD612B853FF00ECA24C /* Info Alt.png */,
-				DA049FD712B853FF00ECA24C /* Info.png */,
 			);
 			name = "Status View";
 			sourceTree = "<group>";
@@ -675,10 +675,10 @@
 				DA198D5512B6B41A00D64DD7 /* TBGraphWindow.xib in Resources */,
 				DA049FC112B8534600ECA24C /* Gauge Pressed.png in Resources */,
 				DA049FC212B8534600ECA24C /* Gauge.png in Resources */,
-				DA049FD812B853FF00ECA24C /* Info Alt.png in Resources */,
-				DA049FD912B853FF00ECA24C /* Info.png in Resources */,
 				DA6D3BE112B959D0003D5F61 /* TBStatusWindow.xib in Resources */,
 				DAB7E48612E34B4D006ED7C8 /* TBFirstLaunchWindow.xib in Resources */,
+				DAB7EB8912E8FD8B006ED7C8 /* Graph Button Pressed.png in Resources */,
+				DAB7EB8A12E8FD8B006ED7C8 /* Graph Button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,8 +706,8 @@
 				DA198D5612B6B41A00D64DD7 /* TBGraphWindow.xib in Resources */,
 				DA049FC312B8534600ECA24C /* Gauge Pressed.png in Resources */,
 				DA049FC412B8534600ECA24C /* Gauge.png in Resources */,
-				DA049FDA12B853FF00ECA24C /* Info Alt.png in Resources */,
-				DA049FDB12B853FF00ECA24C /* Info.png in Resources */,
+				DAB7EB8712E8FD8B006ED7C8 /* Graph Button Pressed.png in Resources */,
+				DAB7EB8812E8FD8B006ED7C8 /* Graph Button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

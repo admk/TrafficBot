@@ -11,15 +11,14 @@
 #import "TrafficBotAppDelegate.h"
 #import "MAAttachedWindow.h"
 #import "NSWindow+NoodleEffects.h"
-#import "NSWindow+AKFlip.h"
 #import "AKGaugeView.h"
 #import "TBGraphView.h"
 #import "TBSetupView.h"
 #import "AKBytesFormatter.h"
 
 #define VIEW_CORNER_RADIUS ((float)6.5)
-#define VIEW_GRADIENT_COLOR_1 [NSColor colorWithCalibratedRed:100.0/255 green:200.0/255 blue:1 alpha:1]
-#define VIEW_GRADIENT_COLOR_2 [NSColor colorWithCalibratedRed:0 green:100.0/255 blue:171.0/255 alpha:1]
+#define VIEW_GRADIENT_COLOR_1 [NSColor colorWithCalibratedWhite:0.3f alpha:.6]
+#define VIEW_GRADIENT_COLOR_2 [NSColor colorWithCalibratedWhite:0.0f alpha:.6]
 
 #pragma mark -
 #pragma mark description window content view
@@ -104,10 +103,12 @@
 																	onSide:MAPositionBottom 
 																atDistance:3.0f] autorelease];
 		[window setBackgroundColor:VIEW_GRADIENT_COLOR_1];
+		[window setViewMargin:1];
 		[window setBorderWidth:1];
-		[window setBorderColor:[NSColor colorWithCalibratedWhite:0 alpha:.5]];
+		[window setBorderColor:[NSColor colorWithCalibratedWhite:1 alpha:.2]];
 		[window setArrowHeight:10];
 		[window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
+		[window setLevel:NSFloatingWindowLevel];
 		self.window = window;
 		// force window on screen to avoid glitch
 		[window setAlphaValue:0];
