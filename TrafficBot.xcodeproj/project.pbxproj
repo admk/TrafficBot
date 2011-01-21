@@ -96,6 +96,8 @@
 		DAB7EB8812E8FD8B006ED7C8 /* Graph Button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EB8612E8FD8B006ED7C8 /* Graph Button.png */; };
 		DAB7EB8912E8FD8B006ED7C8 /* Graph Button Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EB8512E8FD8B006ED7C8 /* Graph Button Pressed.png */; };
 		DAB7EB8A12E8FD8B006ED7C8 /* Graph Button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EB8612E8FD8B006ED7C8 /* Graph Button.png */; };
+		DAB7EC2A12E904BA006ED7C8 /* GraphWindowBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EC2912E904BA006ED7C8 /* GraphWindowBackground.png */; };
+		DAB7EC2B12E904BA006ED7C8 /* GraphWindowBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EC2912E904BA006ED7C8 /* GraphWindowBackground.png */; };
 		DABFB45D129F21AB00AE41FF /* General.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45A129F21AB00AE41FF /* General.png */; };
 		DABFB45E129F21AB00AE41FF /* Monitor.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45B129F21AB00AE41FF /* Monitor.png */; };
 		DABFB45F129F21AB00AE41FF /* Splash Green.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45C129F21AB00AE41FF /* Splash Green.png */; };
@@ -204,6 +206,7 @@
 		DAB7E78A12E3E06E006ED7C8 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		DAB7EB8512E8FD8B006ED7C8 /* Graph Button Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Graph Button Pressed.png"; path = "Images/Graph Button Pressed.png"; sourceTree = "<group>"; };
 		DAB7EB8612E8FD8B006ED7C8 /* Graph Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Graph Button.png"; path = "Images/Graph Button.png"; sourceTree = "<group>"; };
+		DAB7EC2912E904BA006ED7C8 /* GraphWindowBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GraphWindowBackground.png; path = Images/GraphWindowBackground.png; sourceTree = "<group>"; };
 		DABFB45A129F21AB00AE41FF /* General.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = General.png; path = Images/General.png; sourceTree = "<group>"; };
 		DABFB45B129F21AB00AE41FF /* Monitor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Monitor.png; path = Images/Monitor.png; sourceTree = "<group>"; };
 		DABFB45C129F21AB00AE41FF /* Splash Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Splash Green.png"; path = "Images/Splash Green.png"; sourceTree = "<group>"; };
@@ -394,6 +397,7 @@
 		B16F0C3F1278705600D13C0B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DAB7EC2912E904BA006ED7C8 /* GraphWindowBackground.png */,
 				B1063270127FAABF0041B919 /* Preferences Window */,
 				B16F0C611278770500D13C0B /* Status View */,
 			);
@@ -679,6 +683,7 @@
 				DAB7E48612E34B4D006ED7C8 /* TBFirstLaunchWindow.xib in Resources */,
 				DAB7EB8912E8FD8B006ED7C8 /* Graph Button Pressed.png in Resources */,
 				DAB7EB8A12E8FD8B006ED7C8 /* Graph Button.png in Resources */,
+				DAB7EC2B12E904BA006ED7C8 /* GraphWindowBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,6 +713,7 @@
 				DA049FC412B8534600ECA24C /* Gauge.png in Resources */,
 				DAB7EB8712E8FD8B006ED7C8 /* Graph Button Pressed.png in Resources */,
 				DAB7EB8812E8FD8B006ED7C8 /* Graph Button.png in Resources */,
+				DAB7EC2A12E904BA006ED7C8 /* GraphWindowBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

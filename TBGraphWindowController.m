@@ -45,6 +45,7 @@
 																  inWindow:nil 
 																	onSide:MAPositionBottom 
 																atDistance:3.0f] autorelease];
+		[window setBackgroundImage:[NSImage imageNamed:@"GraphWindowBackground.png"]];
 		[window setArrowHeight:10];
 		[window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
 		[window setAcceptsMouseMovedEvents:YES];
