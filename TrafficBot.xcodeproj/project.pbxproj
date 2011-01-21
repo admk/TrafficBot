@@ -21,7 +21,6 @@
 		B16F0C421278708300D13C0B /* Gauge Pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0C401278708300D13C0B /* Gauge Pointer.png */; };
 		B16F0C431278708300D13C0B /* Gauge Face.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0C411278708300D13C0B /* Gauge Face.png */; };
 		B16F0C461278709C00D13C0B /* AKGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F0C451278709C00D13C0B /* AKGaugeView.m */; };
-		B16F0C84127877C200D13C0B /* Status View Title Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0C83127877C200D13C0B /* Status View Title Bar.png */; };
 		B16F0E941278CE6B00D13C0B /* AKTrafficMonitorService.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F0E931278CE6B00D13C0B /* AKTrafficMonitorService.m */; };
 		B16F0F151278FBAA00D13C0B /* Cog.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0F141278FBAA00D13C0B /* Cog.png */; };
 		B16F0F291278FD0F00D13C0B /* Dark Cog.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0F281278FD0F00D13C0B /* Dark Cog.png */; };
@@ -53,7 +52,6 @@
 		DA35AD0912AC2ADA009C02D2 /* TBPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16F068B1275E53C00D13C0B /* TBPreferencesWindow.xib */; };
 		DA35AD0B12AC2ADA009C02D2 /* Gauge Pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0C401278708300D13C0B /* Gauge Pointer.png */; };
 		DA35AD0C12AC2ADA009C02D2 /* Gauge Face.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0C411278708300D13C0B /* Gauge Face.png */; };
-		DA35AD0D12AC2ADA009C02D2 /* Status View Title Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0C83127877C200D13C0B /* Status View Title Bar.png */; };
 		DA35AD0E12AC2ADA009C02D2 /* Cog.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0F141278FBAA00D13C0B /* Cog.png */; };
 		DA35AD0F12AC2ADA009C02D2 /* Dark Cog.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0F281278FD0F00D13C0B /* Dark Cog.png */; };
 		DA35AD1012AC2ADA009C02D2 /* Updates.tiff in Resources */ = {isa = PBXBuildFile; fileRef = B1F44975127E1D4B0020735E /* Updates.tiff */; };
@@ -158,7 +156,6 @@
 		B16F0C411278708300D13C0B /* Gauge Face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gauge Face.png"; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Private Utilites/Gauge View/Gauge Face.png"; sourceTree = "<absolute>"; };
 		B16F0C441278709C00D13C0B /* AKGaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKGaugeView.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Private Utilites/Gauge View/AKGaugeView.h"; sourceTree = "<absolute>"; };
 		B16F0C451278709C00D13C0B /* AKGaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKGaugeView.m; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Private Utilites/Gauge View/AKGaugeView.m"; sourceTree = "<absolute>"; };
-		B16F0C83127877C200D13C0B /* Status View Title Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Status View Title Bar.png"; path = "Images/Status View Title Bar.png"; sourceTree = "<group>"; };
 		B16F0E921278CE6B00D13C0B /* AKTrafficMonitorService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTrafficMonitorService.h; sourceTree = "<group>"; };
 		B16F0E931278CE6B00D13C0B /* AKTrafficMonitorService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AKTrafficMonitorService.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B16F0F141278FBAA00D13C0B /* Cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Cog.png; path = Images/Cog.png; sourceTree = "<group>"; };
@@ -413,7 +410,6 @@
 				B1F44B3B127F2E820020735E /* Not Monitoring Background.png */,
 				B16F0F141278FBAA00D13C0B /* Cog.png */,
 				B16F0F281278FD0F00D13C0B /* Dark Cog.png */,
-				B16F0C83127877C200D13C0B /* Status View Title Bar.png */,
 				DAB7EB8512E8FD8B006ED7C8 /* Graph Button Pressed.png */,
 				DAB7EB8612E8FD8B006ED7C8 /* Graph Button.png */,
 				DA049FBF12B8534600ECA24C /* Gauge Pressed.png */,
@@ -664,7 +660,6 @@
 				B16F068C1275E53C00D13C0B /* TBPreferencesWindow.xib in Resources */,
 				B16F0C421278708300D13C0B /* Gauge Pointer.png in Resources */,
 				B16F0C431278708300D13C0B /* Gauge Face.png in Resources */,
-				B16F0C84127877C200D13C0B /* Status View Title Bar.png in Resources */,
 				B16F0F151278FBAA00D13C0B /* Cog.png in Resources */,
 				B16F0F291278FD0F00D13C0B /* Dark Cog.png in Resources */,
 				B1F44976127E1D4B0020735E /* Updates.tiff in Resources */,
@@ -696,7 +691,6 @@
 				DA35AD0912AC2ADA009C02D2 /* TBPreferencesWindow.xib in Resources */,
 				DA35AD0B12AC2ADA009C02D2 /* Gauge Pointer.png in Resources */,
 				DA35AD0C12AC2ADA009C02D2 /* Gauge Face.png in Resources */,
-				DA35AD0D12AC2ADA009C02D2 /* Status View Title Bar.png in Resources */,
 				DA35AD0E12AC2ADA009C02D2 /* Cog.png in Resources */,
 				DA35AD0F12AC2ADA009C02D2 /* Dark Cog.png in Resources */,
 				DA35AD1012AC2ADA009C02D2 /* Updates.tiff in Resources */,
