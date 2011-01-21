@@ -65,7 +65,7 @@
 }
 - (void)applicationDidResignActive:(NSNotification *)notification {
 #ifndef DEBUG
-	[self dismissStatusView:self];
+	[self dismissStatusWindow:self];
 	[self dismissGraphWindow:self];
 #endif
 }
@@ -81,8 +81,6 @@
 - (NSPoint)statusItemPoint {
 	NSRect frame = [self statusItemFrame];
 	NSPoint fPoint = { NSMidX(frame), NSMinY(frame) };
-	fPoint.x = round(fPoint.x);
-	fPoint.y = round(fPoint.y);
 	return fPoint;
 }
 - (void)showPreferencesWindow:(id)sender {

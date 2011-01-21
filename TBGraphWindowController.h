@@ -15,6 +15,9 @@
 	TBGraphView *graphView;
 	NSPanel		*draggedPanel;
 	TBGraphView *draggedGraphView;
+	
+@private
+	NSWindow	*_flipFromWindow;
 }
 @property (assign) IBOutlet NSView		*contentView;
 @property (assign) IBOutlet TBGraphView *graphView;

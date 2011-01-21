@@ -33,68 +33,24 @@
 		B1F44B53127F30530020735E /* Set Up Button Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B51127F30530020735E /* Set Up Button Pressed.png */; };
 		DA049FC112B8534600ECA24C /* Gauge Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FBF12B8534600ECA24C /* Gauge Pressed.png */; };
 		DA049FC212B8534600ECA24C /* Gauge.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FC012B8534600ECA24C /* Gauge.png */; };
-		DA049FC312B8534600ECA24C /* Gauge Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FBF12B8534600ECA24C /* Gauge Pressed.png */; };
-		DA049FC412B8534600ECA24C /* Gauge.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FC012B8534600ECA24C /* Gauge.png */; };
 		DA06937612BD9774008B1584 /* GVViewCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = DA06937512BD9774008B1584 /* GVViewCollection.m */; };
 		DA19893E12B459FD00D64DD7 /* TBGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19893B12B459FD00D64DD7 /* TBGraphView.m */; };
 		DA19893F12B459FD00D64DD7 /* GVDescriptionWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19893D12B459FD00D64DD7 /* GVDescriptionWindow.m */; };
-		DA19894012B459FD00D64DD7 /* TBGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19893B12B459FD00D64DD7 /* TBGraphView.m */; };
-		DA19894112B459FD00D64DD7 /* GVDescriptionWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19893D12B459FD00D64DD7 /* GVDescriptionWindow.m */; };
 		DA19897C12B45BDA00D64DD7 /* AKBytesFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19897B12B45BDA00D64DD7 /* AKBytesFormatter.m */; };
-		DA19897D12B45BDA00D64DD7 /* AKBytesFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19897B12B45BDA00D64DD7 /* AKBytesFormatter.m */; };
 		DA198D5512B6B41A00D64DD7 /* TBGraphWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA198D5412B6B41A00D64DD7 /* TBGraphWindow.xib */; };
-		DA198D5612B6B41A00D64DD7 /* TBGraphWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA198D5412B6B41A00D64DD7 /* TBGraphWindow.xib */; };
 		DA198D5C12B6B47E00D64DD7 /* TBGraphWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA198D5B12B6B47E00D64DD7 /* TBGraphWindowController.m */; };
-		DA198D5D12B6B47E00D64DD7 /* TBGraphWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA198D5B12B6B47E00D64DD7 /* TBGraphWindowController.m */; };
-		DA35AC1412AC2AA6009C02D2 /* FScript.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA35AC1312AC2AA6009C02D2 /* FScript.framework */; };
-		DA35AD0612AC2ADA009C02D2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
-		DA35AD0712AC2ADA009C02D2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
-		DA35AD0912AC2ADA009C02D2 /* TBPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16F068B1275E53C00D13C0B /* TBPreferencesWindow.xib */; };
-		DA35AD0B12AC2ADA009C02D2 /* Gauge Pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0C401278708300D13C0B /* Gauge Pointer.png */; };
-		DA35AD0C12AC2ADA009C02D2 /* Gauge Face.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0C411278708300D13C0B /* Gauge Face.png */; };
-		DA35AD0E12AC2ADA009C02D2 /* Cog.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0F141278FBAA00D13C0B /* Cog.png */; };
-		DA35AD0F12AC2ADA009C02D2 /* Dark Cog.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0F281278FD0F00D13C0B /* Dark Cog.png */; };
-		DA35AD1012AC2ADA009C02D2 /* Updates.tiff in Resources */ = {isa = PBXBuildFile; fileRef = B1F44975127E1D4B0020735E /* Updates.tiff */; };
-		DA35AD1112AC2ADA009C02D2 /* Not Monitoring Background.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B3B127F2E820020735E /* Not Monitoring Background.png */; };
-		DA35AD1212AC2ADA009C02D2 /* Set Up Button.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B50127F30530020735E /* Set Up Button.png */; };
-		DA35AD1312AC2ADA009C02D2 /* Set Up Button Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B51127F30530020735E /* Set Up Button Pressed.png */; };
-		DA35AD1412AC2ADA009C02D2 /* General.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45A129F21AB00AE41FF /* General.png */; };
-		DA35AD1512AC2ADA009C02D2 /* Monitor.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45B129F21AB00AE41FF /* Monitor.png */; };
-		DA35AD1612AC2ADA009C02D2 /* Splash Green.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45C129F21AB00AE41FF /* Splash Green.png */; };
-		DA35AD1712AC2ADA009C02D2 /* Advanced.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB460129F21FA00AE41FF /* Advanced.png */; };
-		DA35AD1812AC2ADA009C02D2 /* TBDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = DABFB4AF129F2CF100AE41FF /* TBDefaults.plist */; };
-		DA35AD1A12AC2ADA009C02D2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
-		DA35AD1B12AC2ADA009C02D2 /* TrafficBotAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* TrafficBotAppDelegate.m */; };
-		DA35AD1C12AC2ADA009C02D2 /* TBStatusWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F069212760D4E00D13C0B /* TBStatusWindowController.m */; };
-		DA35AD1D12AC2ADA009C02D2 /* TBStatusItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F06A3127619A400D13C0B /* TBStatusItemController.m */; };
-		DA35AD1E12AC2ADA009C02D2 /* TBStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F06C61276211D00D13C0B /* TBStatusItemView.m */; };
-		DA35AD1F12AC2ADA009C02D2 /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F084912772C8200D13C0B /* MAAttachedWindow.m */; };
-		DA35AD2012AC2ADA009C02D2 /* AKGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F0C451278709C00D13C0B /* AKGaugeView.m */; };
-		DA35AD2112AC2ADA009C02D2 /* AKTrafficMonitorService.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F0E931278CE6B00D13C0B /* AKTrafficMonitorService.m */; };
-		DA35AD2212AC2ADA009C02D2 /* APDrawingCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F1089127A09D000D13C0B /* APDrawingCategories.m */; };
-		DA35AD2312AC2ADA009C02D2 /* TBPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F44961127E195F0020735E /* TBPreferencesWindowController.m */; };
-		DA35AD2412AC2ADA009C02D2 /* NSWindow+NoodleEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F449AF127E352B0020735E /* NSWindow+NoodleEffects.m */; };
-		DA35AD2512AC2ADA009C02D2 /* NSDate+AKMidnight.m in Sources */ = {isa = PBXBuildFile; fileRef = DABFB4D612A0421A00AE41FF /* NSDate+AKMidnight.m */; };
-		DA35AD2712AC2ADA009C02D2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		DA35AD2812AC2ADA009C02D2 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B16F08A51277636900D13C0B /* Carbon.framework */; };
+		DA35AC1412AC2AA6009C02D2 /* FScript.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA35AC1312AC2AA6009C02D2 /* FScript.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DA4BE76A12AC8CDF0070618E /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */; };
-		DA4BE76B12AC8CDF0070618E /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */; };
 		DA4BF12312B2930C0070618E /* NSWindow+AKFlip.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */; };
-		DA4BF12412B2930C0070618E /* NSWindow+AKFlip.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */; };
 		DA4BF13B12B29EFE0070618E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4BF13A12B29EFE0070618E /* QuartzCore.framework */; };
 		DA6D3BE112B959D0003D5F61 /* TBStatusWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */; };
 		DAB7E22612E2408E006ED7C8 /* TBSetupView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB7E22512E2408E006ED7C8 /* TBSetupView.m */; };
 		DAB7E48312E34B0B006ED7C8 /* TBFirstLaunchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB7E48212E34B0B006ED7C8 /* TBFirstLaunchWindowController.m */; };
 		DAB7E48612E34B4D006ED7C8 /* TBFirstLaunchWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAB7E48512E34B4D006ED7C8 /* TBFirstLaunchWindow.xib */; };
-		DAB7E78B12E3E06E006ED7C8 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB7E78A12E3E06E006ED7C8 /* Growl.framework */; };
 		DAB7E78C12E3E06E006ED7C8 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB7E78A12E3E06E006ED7C8 /* Growl.framework */; };
 		DAB7E79412E3E076006ED7C8 /* Growl.framework in Copy Libraries */ = {isa = PBXBuildFile; fileRef = DAB7E78A12E3E06E006ED7C8 /* Growl.framework */; };
-		DAB7E79512E3E079006ED7C8 /* Growl.framework in Copy Libraries */ = {isa = PBXBuildFile; fileRef = DAB7E78A12E3E06E006ED7C8 /* Growl.framework */; };
-		DAB7EB8712E8FD8B006ED7C8 /* Graph Button Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EB8512E8FD8B006ED7C8 /* Graph Button Pressed.png */; };
-		DAB7EB8812E8FD8B006ED7C8 /* Graph Button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EB8612E8FD8B006ED7C8 /* Graph Button.png */; };
 		DAB7EB8912E8FD8B006ED7C8 /* Graph Button Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EB8512E8FD8B006ED7C8 /* Graph Button Pressed.png */; };
 		DAB7EB8A12E8FD8B006ED7C8 /* Graph Button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EB8612E8FD8B006ED7C8 /* Graph Button.png */; };
-		DAB7EC2A12E904BA006ED7C8 /* GraphWindowBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EC2912E904BA006ED7C8 /* GraphWindowBackground.png */; };
 		DAB7EC2B12E904BA006ED7C8 /* GraphWindowBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EC2912E904BA006ED7C8 /* GraphWindowBackground.png */; };
 		DABFB45D129F21AB00AE41FF /* General.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45A129F21AB00AE41FF /* General.png */; };
 		DABFB45E129F21AB00AE41FF /* Monitor.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45B129F21AB00AE41FF /* Monitor.png */; };
@@ -112,17 +68,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				DAB7E79412E3E076006ED7C8 /* Growl.framework in Copy Libraries */,
-			);
-			name = "Copy Libraries";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DAB7E70712E3D5BB006ED7C8 /* Copy Libraries */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				DAB7E79512E3E079006ED7C8 /* Growl.framework in Copy Libraries */,
 			);
 			name = "Copy Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,7 +130,6 @@
 		DA198D5A12B6B47E00D64DD7 /* TBGraphWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGraphWindowController.h; sourceTree = "<group>"; };
 		DA198D5B12B6B47E00D64DD7 /* TBGraphWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGraphWindowController.m; sourceTree = "<group>"; };
 		DA35AC1312AC2AA6009C02D2 /* FScript.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FScript.framework; path = Library/Frameworks/FScript.framework; sourceTree = SDKROOT; };
-		DA35AD2D12AC2ADA009C02D2 /* TrafficBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrafficBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4BE76812AC8CDF0070618E /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaunchAtLoginController.h; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/Launch At Login Controller/LaunchAtLoginController.h"; sourceTree = "<group>"; };
 		DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaunchAtLoginController.m; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/Launch At Login Controller/LaunchAtLoginController.m"; sourceTree = "<group>"; };
 		DA4BE80012AD786B0070618E /* AKDebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKDebugMacros.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Macros/AKDebugMacros.h"; sourceTree = "<absolute>"; };
@@ -223,16 +167,6 @@
 				DA35AC1412AC2AA6009C02D2 /* FScript.framework in Frameworks */,
 				DA4BF13B12B29EFE0070618E /* QuartzCore.framework in Frameworks */,
 				DAB7E78C12E3E06E006ED7C8 /* Growl.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DA35AD2612AC2ADA009C02D2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DA35AD2712AC2ADA009C02D2 /* Cocoa.framework in Frameworks */,
-				DA35AD2812AC2ADA009C02D2 /* Carbon.framework in Frameworks */,
-				DAB7E78B12E3E06E006ED7C8 /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +210,6 @@
 			isa = PBXGroup;
 			children = (
 				8D1107320486CEB800E47090 /* TrafficBot.app */,
-				DA35AD2D12AC2ADA009C02D2 /* TrafficBot.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -605,26 +538,6 @@
 			productReference = 8D1107320486CEB800E47090 /* TrafficBot.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DA35AD0312AC2ADA009C02D2 /* TrafficBot release */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DA35AD2A12AC2ADA009C02D2 /* Build configuration list for PBXNativeTarget "TrafficBot release" */;
-			buildPhases = (
-				DA35AD0412AC2ADA009C02D2 /* Increment Bundle Version */,
-				DA35AD0512AC2ADA009C02D2 /* Resources */,
-				DA35AD1912AC2ADA009C02D2 /* Sources */,
-				DA35AD2612AC2ADA009C02D2 /* Frameworks */,
-				DAB7E70712E3D5BB006ED7C8 /* Copy Libraries */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "TrafficBot release";
-			productInstallPath = "$(HOME)/Applications";
-			productName = TrafficBot;
-			productReference = DA35AD2D12AC2ADA009C02D2 /* TrafficBot.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -645,7 +558,6 @@
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* TrafficBot */,
-				DA35AD0312AC2ADA009C02D2 /* TrafficBot release */,
 			);
 		};
 /* End PBXProject section */
@@ -682,53 +594,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA35AD0512AC2ADA009C02D2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DA35AD0612AC2ADA009C02D2 /* InfoPlist.strings in Resources */,
-				DA35AD0712AC2ADA009C02D2 /* MainMenu.xib in Resources */,
-				DA35AD0912AC2ADA009C02D2 /* TBPreferencesWindow.xib in Resources */,
-				DA35AD0B12AC2ADA009C02D2 /* Gauge Pointer.png in Resources */,
-				DA35AD0C12AC2ADA009C02D2 /* Gauge Face.png in Resources */,
-				DA35AD0E12AC2ADA009C02D2 /* Cog.png in Resources */,
-				DA35AD0F12AC2ADA009C02D2 /* Dark Cog.png in Resources */,
-				DA35AD1012AC2ADA009C02D2 /* Updates.tiff in Resources */,
-				DA35AD1112AC2ADA009C02D2 /* Not Monitoring Background.png in Resources */,
-				DA35AD1212AC2ADA009C02D2 /* Set Up Button.png in Resources */,
-				DA35AD1312AC2ADA009C02D2 /* Set Up Button Pressed.png in Resources */,
-				DA35AD1412AC2ADA009C02D2 /* General.png in Resources */,
-				DA35AD1512AC2ADA009C02D2 /* Monitor.png in Resources */,
-				DA35AD1612AC2ADA009C02D2 /* Splash Green.png in Resources */,
-				DA35AD1712AC2ADA009C02D2 /* Advanced.png in Resources */,
-				DA35AD1812AC2ADA009C02D2 /* TBDefaults.plist in Resources */,
-				DA198D5612B6B41A00D64DD7 /* TBGraphWindow.xib in Resources */,
-				DA049FC312B8534600ECA24C /* Gauge Pressed.png in Resources */,
-				DA049FC412B8534600ECA24C /* Gauge.png in Resources */,
-				DAB7EB8712E8FD8B006ED7C8 /* Graph Button Pressed.png in Resources */,
-				DAB7EB8812E8FD8B006ED7C8 /* Graph Button.png in Resources */,
-				DAB7EC2A12E904BA006ED7C8 /* GraphWindowBackground.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		DA35AD0412AC2ADA009C02D2 /* Increment Bundle Version */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Increment Bundle Version";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nbuildPlist=\"${PRODUCT_NAME}-Info.plist\"\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $buildPlist)\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set CFBundleVersion $buildNumber\" $buildPlist";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D11072C0486CEB800E47090 /* Sources */ = {
@@ -756,31 +622,6 @@
 				DA06937612BD9774008B1584 /* GVViewCollection.m in Sources */,
 				DAB7E22612E2408E006ED7C8 /* TBSetupView.m in Sources */,
 				DAB7E48312E34B0B006ED7C8 /* TBFirstLaunchWindowController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DA35AD1912AC2ADA009C02D2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DA35AD1A12AC2ADA009C02D2 /* main.m in Sources */,
-				DA35AD1B12AC2ADA009C02D2 /* TrafficBotAppDelegate.m in Sources */,
-				DA35AD1C12AC2ADA009C02D2 /* TBStatusWindowController.m in Sources */,
-				DA35AD1D12AC2ADA009C02D2 /* TBStatusItemController.m in Sources */,
-				DA35AD1E12AC2ADA009C02D2 /* TBStatusItemView.m in Sources */,
-				DA35AD1F12AC2ADA009C02D2 /* MAAttachedWindow.m in Sources */,
-				DA35AD2012AC2ADA009C02D2 /* AKGaugeView.m in Sources */,
-				DA35AD2112AC2ADA009C02D2 /* AKTrafficMonitorService.m in Sources */,
-				DA35AD2212AC2ADA009C02D2 /* APDrawingCategories.m in Sources */,
-				DA35AD2312AC2ADA009C02D2 /* TBPreferencesWindowController.m in Sources */,
-				DA35AD2412AC2ADA009C02D2 /* NSWindow+NoodleEffects.m in Sources */,
-				DA35AD2512AC2ADA009C02D2 /* NSDate+AKMidnight.m in Sources */,
-				DA4BE76B12AC8CDF0070618E /* LaunchAtLoginController.m in Sources */,
-				DA4BF12412B2930C0070618E /* NSWindow+AKFlip.m in Sources */,
-				DA19894012B459FD00D64DD7 /* TBGraphView.m in Sources */,
-				DA19894112B459FD00D64DD7 /* GVDescriptionWindow.m in Sources */,
-				DA19897D12B45BDA00D64DD7 /* AKBytesFormatter.m in Sources */,
-				DA198D5D12B6B47E00D64DD7 /* TBGraphWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,9 +662,11 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TrafficBot_Prefix.pch;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				INFOPLIST_FILE = "TrafficBot-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = TrafficBot;
+				RUN_CLANG_STATIC_ANALYZER = NO;
 			};
 			name = Debug;
 		};
@@ -839,9 +682,11 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TrafficBot_Prefix.pch;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				INFOPLIST_FILE = "TrafficBot-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = TrafficBot;
+				RUN_CLANG_STATIC_ANALYZER = NO;
 			};
 			name = Release;
 		};
@@ -906,45 +751,6 @@
 			};
 			name = Release;
 		};
-		DA35AD2B12AC2ADA009C02D2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TrafficBot_Prefix.pch;
-				INFOPLIST_FILE = "TrafficBot-Info copy.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = TrafficBot;
-			};
-			name = Debug;
-		};
-		DA35AD2C12AC2ADA009C02D2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-				);
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TrafficBot_Prefix.pch;
-				INFOPLIST_FILE = "TrafficBot-Info copy.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = TrafficBot;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -962,15 +768,6 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DA35AD2A12AC2ADA009C02D2 /* Build configuration list for PBXNativeTarget "TrafficBot release" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DA35AD2B12AC2ADA009C02D2 /* Debug */,
-				DA35AD2C12AC2ADA009C02D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

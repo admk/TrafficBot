@@ -35,6 +35,12 @@ typedef enum {
 	NSMutableDictionary	*_thresholds;
 	
 	NSTimer			*_monitorTimer;
+	
+	TMS_ULL_T		_lastIn;
+	TMS_ULL_T		_lastOut;
+	TMS_ULL_T		_totalIn;
+	TMS_ULL_T		_totalOut;
+	TMS_ULL_T		_lastTotal;
 }
 
 // toggle monitoring by setting it

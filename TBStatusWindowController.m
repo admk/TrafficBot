@@ -95,7 +95,7 @@
 - (void)show:(id)sender {
 	// shows status view
 	if ([[self.window class] isNotEqualTo:[MAAttachedWindow class]]) {
-		SWView *swView = [[SWView alloc] initWithFrame:self.contentView.frame];
+		SWView *swView = [[[SWView alloc] initWithFrame:self.contentView.frame] autorelease];
 		[swView addSubview:self.contentView];
 		MAAttachedWindow *window = [[[MAAttachedWindow alloc] initWithView:swView 
 														   attachedToPoint:NSZeroPoint

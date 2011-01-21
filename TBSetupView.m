@@ -55,7 +55,7 @@
     // background
 	NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:VIEW_CORNER_RADIUS yRadius:VIEW_CORNER_RADIUS];
 	if (!self.backgroundColor) {
-		NSGradient *gradient = [[NSGradient alloc] initWithColorsAndLocations:[NSColor clearColor], 0.0f, [NSColor blackColor], .3f, nil];
+		NSGradient *gradient = [[[NSGradient alloc] initWithColorsAndLocations:[NSColor clearColor], 0.0f, [NSColor blackColor], .3f, nil] autorelease];
 		[gradient drawInBezierPath:path angle:-90];
 	}
 	else {

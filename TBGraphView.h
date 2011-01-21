@@ -27,6 +27,14 @@
 	GVPegView		*_outPegView;
 	GVIndicatorView	*_indicatorView;
 	NSDateFormatter *_dateFormatter;
+	
+	NSDictionary	*_inDiffDict;
+	NSDictionary	*_outDiffDict;
+	NSImage			*_imageRep;
+	NSArray			*_sortedDates;
+	NSDate			*_firstDate;
+	NSDate			*_lastDate;
+	NSDate			*_mouseDate;
 }
 @property (assign) id<TBGraphViewDelegate> delegate;
 @property (retain, nonatomic) NSDictionary *dataDict;
