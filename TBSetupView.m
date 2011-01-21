@@ -10,6 +10,8 @@
 #import "TrafficBotAppDelegate.h"
 #import "APDrawingCategories.h"
 
+#define VIEW_CORNER_RADIUS (7.5f)
+
 @implementation TBSetupView
 
 - (id)initWithFrame:(NSRect)frame {
@@ -51,7 +53,7 @@
 - (void)drawRect:(NSRect)dirtyRect {
 	
     // background
-	NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:5 yRadius:5];
+	NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:VIEW_CORNER_RADIUS yRadius:VIEW_CORNER_RADIUS];
 	if (!self.backgroundColor) {
 		NSGradient *gradient = [[NSGradient alloc] initWithColorsAndLocations:[NSColor clearColor], 0.0f, [NSColor blackColor], .3f, nil];
 		[gradient drawInBezierPath:path angle:-90];
