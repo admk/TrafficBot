@@ -55,20 +55,18 @@ static AKTrafficMonitorService *sharedService = nil;
 	self = [super init];
 	if (!self) return nil;
 	
-	_lastIn = 0;
-	_lastOut = 0;
-	_diffIn = 0;
-	_diffOut = 0;
-	_nowIn = 0;
-	_nowOut = 0;
-	_totalIn = 0;
-	_totalOut = 0;
+	_lastRec = TMSZeroRec;
+	_stashedRec = TMSZeroRec;
+	_nowRec = TMSZeroRec;
+	_totalRec = TMSZeroRec;
+	
 	_lastTotal = 0;
+	_thresholds = nil;
+
 	_rollingPeriodInterval = 0;
 	_fixedPeriodRestartDate = nil;
 	_monitoring = NO;
 	_monitoringMode = tms_unreachable_mode;
-	_thresholds = nil;
 	
     return self;
 }
@@ -86,8 +84,7 @@ static AKTrafficMonitorService *sharedService = nil;
 	return [self _dictionaryWithFile:[self _fixedLogFilePath]];
 }
 - (void)clearStatistics {
-	_totalIn = 0;
-	_totalOut = 0;
+	_totalRec = TMSZeroRec;
 	// reset all log files
 	NSInteger tag;
 	[[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceDestroyOperation source:[[self _logsPath] stringByDeletingLastPathComponent] destination:@"" files:[NSArray arrayWithObject:[[self _logsPath] lastPathComponent]] tag:&tag];
@@ -124,13 +121,13 @@ static AKTrafficMonitorService *sharedService = nil;
 	[self _reinitialiseIfMonitoring];
 }
 - (NSNumber *)totalIn {
-	return NumberFromTMSDT(_totalIn + _diffIn);
+	return NumberFromTMSDT(_totalRec.kin + _stashedRec.kin);
 }
 - (NSNumber *)totalOut {
-	return NumberFromTMSDT(_totalOut + _diffOut);
+	return NumberFromTMSDT(_totalRec.kout + _stashedRec.kout);
 }
 - (NSNumber *)total {
-	return NumberFromTMSDT(_totalIn + _totalOut + _diffIn + _diffOut);
+	return NumberFromTMSDT(TMSTotal(_totalRec) + TMSTotal(_stashedRec));
 }
 
 #pragma mark -
@@ -157,12 +154,11 @@ static AKTrafficMonitorService *sharedService = nil;
 	
 	// initialise readings
 	NSDictionary *initReading = [self _readDataUsage];
-	_lastIn = TMSDTFromNumber([initReading objectForKey:@"in"]);
-	_lastOut = TMSDTFromNumber([initReading objectForKey:@"out"]);
+	_lastRec.kin = TMSDTFromNumber([initReading objectForKey:@"in"]);
+	_lastRec.kout = TMSDTFromNumber([initReading objectForKey:@"out"]);
 	
 	// initialise results
-	_totalIn = 0;
-	_totalOut = 0;
+	_totalRec = TMSZeroRec;
 	
 	switch (self.monitoringMode) {
 			
@@ -175,8 +171,8 @@ static AKTrafficMonitorService *sharedService = nil;
 				if ([date timeIntervalSinceNow] < -self.rollingPeriodInterval)
 					[tLog removeObjectForKey:dateString];
 				else {
-					_totalIn += TMSDTFromNumber([[tLog objectForKey:dateString] objectForKey:@"in"]);
-					_totalOut += TMSDTFromNumber([[tLog objectForKey:dateString] objectForKey:@"out"]);
+					_totalRec.kin += TMSDTFromNumber([[tLog objectForKey:dateString] objectForKey:@"in"]);
+					_totalRec.kout += TMSDTFromNumber([[tLog objectForKey:dateString] objectForKey:@"out"]);
 				}
 			}
 			[self _writeToRollingLogFile:tLog];
@@ -187,13 +183,12 @@ static AKTrafficMonitorService *sharedService = nil;
 			if ([self.fixedPeriodRestartDate timeIntervalSinceNow] > 0) {
 				NSString *dateString = [[tLog allKeys] objectAtIndex:0];
 				NSDictionary *entry = [tLog objectForKey:dateString];
-				_totalIn = TMSDTFromNumber([entry objectForKey:@"in"]);
-				_totalOut = TMSDTFromNumber([entry objectForKey:@"out"]);
+				_totalRec.kin = TMSDTFromNumber([entry objectForKey:@"in"]);
+				_totalRec.kout = TMSDTFromNumber([entry objectForKey:@"out"]);
 			}
 			else {
 				DLog(@"fixed period monitor date expired.");
-				_totalIn = 0;
-				_totalOut = 0;
+				_totalRec = TMSZeroRec;
 				[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorNeedsNewFixedPeriodRestartDateNotification object:nil userInfo:nil];
 			}
 		} break;
@@ -202,8 +197,8 @@ static AKTrafficMonitorService *sharedService = nil;
 			NSMutableDictionary *tLog = [self fixedLogFile];
 			NSString *dateString = [[tLog allKeys] objectAtIndex:0];
 			NSDictionary *entry = [tLog objectForKey:dateString];
-			_totalIn = TMSDTFromNumber([entry objectForKey:@"in"]);
-			_totalOut = TMSDTFromNumber([entry objectForKey:@"out"]);			
+			_totalRec.kin = TMSDTFromNumber([entry objectForKey:@"in"]);
+			_totalRec.kout = TMSDTFromNumber([entry objectForKey:@"out"]);			
 		} break;
 
 		default: ALog(@"unrecognised mode"); break;
@@ -212,7 +207,7 @@ static AKTrafficMonitorService *sharedService = nil;
 	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
 	
 	// threshold update
-	_lastTotal = _totalIn + _totalOut;
+	_lastTotal = _totalRec.kin + _totalRec.kout;
 	
 	// timer
 	if (!_monitorTimer)
@@ -258,14 +253,14 @@ static AKTrafficMonitorService *sharedService = nil;
 - (void)_updateTraffic:(id)info {
 	
 	NSDictionary *reading = [self _readDataUsage];
-	_nowIn = TMSDTFromNumber([reading objectForKey:@"in"]);
-	_nowOut = TMSDTFromNumber([reading objectForKey:@"out"]);
+	_nowRec.kin = TMSDTFromNumber([reading objectForKey:@"in"]);
+	_nowRec.kout = TMSDTFromNumber([reading objectForKey:@"out"]);
 
-	_diffIn = _nowIn - _lastIn;
-	_diffOut = _nowOut - _lastOut;
+	_stashedRec.kin = _nowRec.kin - _lastRec.kin;
+	_stashedRec.kout = _nowRec.kout - _lastRec.kout;
 	
 	// should not notify if no change
-	if (_diffIn == 0 && _diffOut == 0) return;
+	if (TMSRecIsZero(_stashedRec)) return;
 	
 	// notify
 	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
@@ -273,8 +268,8 @@ static AKTrafficMonitorService *sharedService = nil;
 - (void)_logTrafficData:(id)info {
 	
 	// accumulate the differences
-	_totalIn += _diffIn;
-	_totalOut += _diffOut;
+	_totalRec.kin += _stashedRec.kin;
+	_totalRec.kout += _stashedRec.kout;
 	
 	// rolling log
 	NSMutableDictionary *rollingLog = [self rollingLogFile];
@@ -284,8 +279,8 @@ static AKTrafficMonitorService *sharedService = nil;
 		if ([date timeIntervalSinceNow] < -self.rollingPeriodInterval) {
 			// rolling total needs to minus expired entries
 			if (self.monitoringMode == tms_rolling_mode) {
-				_totalIn -= TMSDTFromNumber([[rollingLog objectForKey:dateString] objectForKey:@"in"]);
-				_totalIn -= TMSDTFromNumber([[rollingLog objectForKey:dateString] objectForKey:@"out"]);
+				_totalRec.kin -= TMSDTFromNumber([[rollingLog objectForKey:dateString] objectForKey:@"in"]);
+				_totalRec.kout -= TMSDTFromNumber([[rollingLog objectForKey:dateString] objectForKey:@"out"]);
 			}
 			// remove deprecated log entry
 			[rollingLog removeObjectForKey:dateString];
@@ -296,11 +291,11 @@ static AKTrafficMonitorService *sharedService = nil;
 			
 		case tms_rolling_mode: {
 			// should not log if no change
-			if (_diffIn == 0 && _diffOut == 0) return;
+			if (TMSRecIsZero(_stashedRec)) return;
 			// log current entry for rolling log
 			NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
-								   NumberFromTMSDT(_diffIn), @"in", 
-								   NumberFromTMSDT(_diffOut), @"out", nil];
+								   NumberFromTMSDT(_stashedRec.kin), @"in", 
+								   NumberFromTMSDT(_stashedRec.kout), @"out", nil];
 			[rollingLog setObject:entry forKey:[[NSDate date] description]];
 			[self _writeToRollingLogFile:rollingLog];
 		} break;
@@ -309,8 +304,8 @@ static AKTrafficMonitorService *sharedService = nil;
 			if ([self.fixedPeriodRestartDate timeIntervalSinceNow] > 0) {
 				// log only total
 				NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
-									   NumberFromTMSDT(_totalIn), @"in", 
-									   NumberFromTMSDT(_totalOut), @"out", nil];
+									   NumberFromTMSDT(_totalRec.kin), @"in", 
+									   NumberFromTMSDT(_totalRec.kout), @"out", nil];
 				NSDictionary *tLog = [NSDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]];
 				[self _writeToFixedLogFile:tLog];
 			}
@@ -325,8 +320,8 @@ static AKTrafficMonitorService *sharedService = nil;
 		case tms_indefinite_mode: {
 			// log only total
 			NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
-								   NumberFromTMSDT(_totalIn), @"in", 
-								   NumberFromTMSDT(_totalOut), @"out", nil];
+								   NumberFromTMSDT(_totalRec.kin), @"in", 
+								   NumberFromTMSDT(_totalRec.kout), @"out", nil];
 			NSDictionary *tLog = [NSDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]];
 			[self _writeToFixedLogFile:tLog];
 		} break;
@@ -334,25 +329,19 @@ static AKTrafficMonitorService *sharedService = nil;
 		default: ALog(@"unrecognised mode"); break;
 	}
 	
-	
 	// no negative total values
-	if (_totalIn < 0) _totalIn = 0;
-	if (_totalOut < 0) _totalOut = 0;
-		
-	// reset differences
-	_diffIn = 0;
-	_diffOut = 0;
+	if (_totalRec.kin < 0) _totalRec.kin = 0;
+	if (_totalRec.kout < 0) _totalRec.kout = 0;
 	
-	// updates last readings
-	_lastIn = _nowIn;
-	_lastOut = _nowOut;
+	_stashedRec = TMSZeroRec; // reset differences
+	_lastRec = _nowRec; // updates last readings
 	
 	// notify
 	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
 	
 	// thresholds
 	if (self.thresholds) {
-		TMS_D_T cTotal = _totalIn + _totalOut;
+		TMS_D_T cTotal = TMSTotal(_totalRec);
 		for (NSString *thresholdKey in [self.thresholds allKeys]) {
 			NSNumber *tNumber = [self.thresholds objectForKey:thresholdKey];
 			TMS_D_T threshold = TMSDTFromNumber(tNumber);
