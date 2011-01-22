@@ -171,9 +171,9 @@
 	NSNumber *total = [NSNumber numberWithUnsignedLongLong:ullTotal];
 	[usageTextField setTitleWithMnemonic:
 	 [NSString stringWithFormat:@"In: %@\nOut: %@\nTotal: %@",
-	  [AKBytesFormatter convertBytesWithNumber:totalIn decimals:NO],
-	  [AKBytesFormatter convertBytesWithNumber:totalOut decimals:NO],
-	  [AKBytesFormatter convertBytesWithNumber:total decimals:NO]]];
+	  [AKBytesFormatter convertBytesWithNumber:totalIn floatingDecimalsWithLength:4],
+	  [AKBytesFormatter convertBytesWithNumber:totalOut floatingDecimalsWithLength:4],
+	  [AKBytesFormatter convertBytesWithNumber:total floatingDecimalsWithLength:4]]];
 }
 #pragma mark monitor service notifications
 - (void)_didReceiveNotificationFromTrafficMonitorService:(NSNotification *)notification {

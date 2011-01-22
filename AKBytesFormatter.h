@@ -20,7 +20,12 @@ typedef enum {
 
 + (NSString *)convertBytesWithNumber:(NSNumber *)number;
 + (NSString *)convertBytesWithNumber:(NSNumber *)number decimals:(BOOL)decimals;
++ (NSString *)convertBytesWithNumber:(NSNumber *)number floatingDecimalsWithLength:(int)length;
+
++ (NSString *)convertBytesWithNumber:(NSNumber *)number toUnit:(AKBytesFormatterUnit)unit floatingDecimalsWithLength:(int)length;
 + (NSString *)convertBytesWithNumber:(NSNumber *)number toUnit:(AKBytesFormatterUnit)unit decimals:(BOOL)decimals;
+
 + (AKBytesFormatterUnit)bestUnitForNumber:(NSNumber *)number;
++ (NSString *)stringForUnit:(AKBytesFormatterUnit)unit;
 
 @end
