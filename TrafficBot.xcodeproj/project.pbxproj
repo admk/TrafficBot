@@ -288,10 +288,9 @@
 		B16F06A01276197700D13C0B /* Status Item */ = {
 			isa = PBXGroup;
 			children = (
-				B16F06C51276211D00D13C0B /* TBStatusItemView.h */,
-				B16F06C61276211D00D13C0B /* TBStatusItemView.m */,
 				B16F06A2127619A400D13C0B /* TBStatusItemController.h */,
 				B16F06A3127619A400D13C0B /* TBStatusItemController.m */,
+				DAB7F08112EB33EE006ED7C8 /* Gauge Icon View */,
 			);
 			name = "Status Item";
 			sourceTree = "<group>";
@@ -496,6 +495,15 @@
 				DAB7E48512E34B4D006ED7C8 /* TBFirstLaunchWindow.xib */,
 			);
 			name = Nibs;
+			sourceTree = "<group>";
+		};
+		DAB7F08112EB33EE006ED7C8 /* Gauge Icon View */ = {
+			isa = PBXGroup;
+			children = (
+				B16F06C51276211D00D13C0B /* TBStatusItemView.h */,
+				B16F06C61276211D00D13C0B /* TBStatusItemView.m */,
+			);
+			name = "Gauge Icon View";
 			sourceTree = "<group>";
 		};
 		DABFB4D412A041E100AE41FF /* NSDate+AKMidnight */ = {

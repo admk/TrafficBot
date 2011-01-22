@@ -148,7 +148,7 @@
 					<object class="NSTextField" id="588551446">
 						<reference key="NSNextResponder" ref="145210694"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{153, 16}, {83, 51}}</string>
+						<string key="NSFrame">{{153, 16}, {88, 51}}</string>
 						<reference key="NSSuperview" ref="145210694"/>
 						<int key="NSViewLayerContentsRedrawPolicy">2</int>
 						<bool key="NSEnabled">YES</bool>
