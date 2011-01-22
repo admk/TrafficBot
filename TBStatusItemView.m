@@ -29,6 +29,7 @@
 	controller = inController;
 	_monitoring = NO;
 	_percentage = 0;
+	_criticalPercentage = 0;
     return self;
 }
 #pragma mark -

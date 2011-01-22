@@ -22,8 +22,8 @@
 #pragma mark init & dealloc
 - (id)init {
 	self = [super init];
-    if (!self) return nil;
-    return self;
+	if (!self) return nil;
+	return self;
 }
 - (void)dealloc {
 	[statusItemView release], statusItemView = nil;
@@ -97,7 +97,7 @@
 		self.statusItemView.percentage = 0;
 	}
 	else {
-		TMS_ULL_T ullTotal = ULLFromNumber(totalIn) + ULLFromNumber(totalOut);
+		TMS_D_T ullTotal = TMSDTFromNumber(totalIn) + TMSDTFromNumber(totalOut);
 		float percentage = (float)ullTotal / [self.limit floatValue] * 100;
 		if (percentage > 100) {
 			self.statusItemView.percentage = 100;

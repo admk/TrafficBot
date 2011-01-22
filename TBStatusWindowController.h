@@ -12,14 +12,14 @@
 
 @interface TBStatusWindowController : NSWindowController {
 	
-	NSView		*contentView;
-	AKGaugeView	*gaugeView;
+	NSView			*contentView;
+	AKGaugeView			*gaugeView;
 	IBOutlet NSTextField	*usageTextField;
 	IBOutlet NSButton		*graphButton;
 @private
-	TBSetupView	*_notMonitoringView;
-	BOOL		_monitoring;
-	NSNumber	*_limit;
+	TBSetupView			*_notMonitoringView;
+	BOOL				_monitoring;
+	NSNumber			*_limit;
 }
 
 @property (assign) IBOutlet NSView		*contentView;

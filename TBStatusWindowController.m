@@ -142,15 +142,16 @@
 	
 	BOOL animated = [self.window isVisible];
 	
-	// update display
 	NSNumber *totalIn = [[AKTrafficMonitorService sharedService] totalIn];
 	NSNumber *totalOut = [[AKTrafficMonitorService sharedService] totalOut];
 	[self _setUsageWithTotalIn:totalIn totalOut:totalOut];
+	
+	// update display
 	if ([self.limit intValue] == 0) {
 		[gaugeView setPercentage:0 animated:NO];
 	}
 	else {
-		TMS_ULL_T ullTotal = ULLFromNumber(totalIn) + ULLFromNumber(totalOut);
+		TMS_D_T ullTotal = TMSDTFromNumber(totalIn) + TMSDTFromNumber(totalOut);
 		float percentage = (float)ullTotal / [self.limit floatValue] * 100;
 		if (percentage > 100) {
 			[gaugeView setPercentage:100 animated:animated];
@@ -167,8 +168,8 @@
 		[graphButton setHidden:YES];
 }
 - (void)_setUsageWithTotalIn:(NSNumber *)totalIn totalOut:(NSNumber *)totalOut {
-	TMS_ULL_T ullTotal = [totalIn unsignedLongLongValue] + [totalOut unsignedLongLongValue];
-	NSNumber *total = [NSNumber numberWithUnsignedLongLong:ullTotal];
+	TMS_D_T ullTotal = TMSDTFromNumber(totalIn) + TMSDTFromNumber(totalOut);
+	NSNumber *total = NumberFromTMSDT(ullTotal);
 	[usageTextField setTitleWithMnemonic:
 	 [NSString stringWithFormat:@"In: %@\nOut: %@\nTotal: %@",
 	  [AKBytesFormatter convertBytesWithNumber:totalIn floatingDecimalsWithLength:4],

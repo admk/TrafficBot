@@ -12,9 +12,9 @@
 #define AKTrafficMonitorStatisticsDidUpdateNotification @"AKTrafficMonitorStatisticsDidUpdateNotification"
 #define AKTrafficMonitorThresholdDidExceedNotification @"AKTrafficMonitorThresholdDidExceedNotification"
 
-#define TMS_ULL_T				int64_t
-#define NumberFromULL(ull)		( (NSNumber *)[NSNumber numberWithLongLong:((TMS_ULL_T)(ull))] )
-#define ULLFromNumber(number)	( (TMS_ULL_T)[((NSNumber *)(number)) longLongValue] )
+#define TMS_D_T				int64_t
+#define NumberFromTMSDT(ull)		( (NSNumber *)[NSNumber numberWithLongLong:((TMS_D_T)(ull))] )
+#define TMSDTFromNumber(number)	( (TMS_D_T)[((NSNumber *)(number)) longLongValue] )
 
 typedef enum {
 	tms_rolling_mode = 0,
@@ -37,15 +37,15 @@ typedef enum {
 	NSTimer			*_monitorTimer;
 	NSTimer			*_logTimer;
 	
-	TMS_ULL_T		_lastIn;
-	TMS_ULL_T		_lastOut;
-	TMS_ULL_T		_diffIn;
-	TMS_ULL_T		_diffOut;
-	TMS_ULL_T		_nowIn;
-	TMS_ULL_T		_nowOut;
-	TMS_ULL_T		_totalIn;
-	TMS_ULL_T		_totalOut;
-	TMS_ULL_T		_lastTotal;
+	TMS_D_T		_lastIn;
+	TMS_D_T		_lastOut;
+	TMS_D_T		_diffIn;
+	TMS_D_T		_diffOut;
+	TMS_D_T		_nowIn;
+	TMS_D_T		_nowOut;
+	TMS_D_T		_totalIn;
+	TMS_D_T		_totalOut;
+	TMS_D_T		_lastTotal;
 }
 
 // toggle monitoring by setting it
