@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 
+@class TBSummaryGenerator, AKSummaryView;
 @interface TBPreferencesWindowController : NSWindowController {
 	
 	IBOutlet NSToolbar *pToolbar;
@@ -16,11 +17,15 @@
 	IBOutlet NSView *generalView;
 	IBOutlet NSView *advancedView;
 	
+	IBOutlet AKSummaryView *summaryView;
+		
 @private
 	__weak NSView *_preferencesView;
+	TBSummaryGenerator *_summaryGenerator;
 }
 
 // IBAction methods
+- (IBAction)continueToSetup:(id)sender;
 - (IBAction)didSelectToolbarItem:(id)sender;
 - (IBAction)clearStatistics:(id)sender;
 - (IBAction)resetAllPrefs:(id)sender;

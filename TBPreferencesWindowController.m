@@ -9,6 +9,20 @@
 #import "TBPreferencesWindowController.h"
 #import "AKTrafficMonitorService.h"
 #import "TrafficBotAppDelegate.h"
+#import "AKSummaryView.h"
+#import "TBSummaryGenerator.h"
+
+#define SUMMARY_PANE	@"Status"
+#define GENERAL_PANE	@"General"
+#define ADVACNED_PANE	@"Advanced"
+
+
+@interface TBPreferencesWindowController ()
+
+- (void)_selectPane:(NSString *)pane;
+
+@end
+
 
 @implementation TBPreferencesWindowController
 
@@ -19,31 +33,69 @@
 	return self;
 }
 - (void)awakeFromNib {
-	[self.window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
+	
+	// summary generator
+	if (!_summaryGenerator)
+	{
+		_summaryGenerator = [[TBSummaryGenerator alloc] init];
+		// bindings & notifications
+		NSArray *bindings = [NSArray arrayWithObjects:
+							 Property(rollingPeriodFactor),
+							 Property(rollingPeriodMultiplier),
+							 Property(fixedPeriodInterval),
+							 Property(shouldNotify),
+							 Property(criticalPercentage),
+							 Property(limit),
+							 Property(monitoringMode),
+							 Property(monitoring), nil];
+		for (NSString *bindingKey in bindings)
+			[_summaryGenerator bind:bindingKey 
+						   toObject:[NSUserDefaultsController sharedUserDefaultsController] 
+						withKeyPath:[@"values." stringByAppendingString:bindingKey]
+							options:nil];
+	}
+	
+	// summary view
+	NSShadow *vShadow = [[[NSShadow alloc] init] autorelease];
+	[vShadow setShadowColor:[NSColor blackColor]];
+	[vShadow setShadowBlurRadius:3];
+	[vShadow setShadowOffset:NSMakeSize(0, -1)];
+	[summaryView setShadow:vShadow];
+	[summaryView setBackgroundImage:[NSImage imageNamed:@"GraphWindowBackground.png"]];
+	[summaryView setTextColor:[NSColor whiteColor]];
+	[summaryView bind:Property(summaryString)
+			 toObject:_summaryGenerator
+		  withKeyPath:Property(summaryString)
+			  options:nil];
+	
 	// window sizing
+	[self.window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
 	NSRect frame = generalView.frame;
 	frame.size.height = 75; // offset for the toolbar
     [self.window setFrame:frame display:NO animate:NO];
 	[self.window center];	
 }
 - (void)windowDidLoad {
-	[pToolbar setSelectedItemIdentifier:@"Status"];
-	[self didSelectToolbarItem:@"Status"];
+	[self _selectPane:SUMMARY_PANE];
 }
 
 #pragma mark -
 #pragma mark IBAction methods
+
+- (IBAction)continueToSetup:(id)sender {
+	[self _selectPane:GENERAL_PANE];
+}
 
 - (IBAction)didSelectToolbarItem:(id)sender {
 	
 	NSView *oldPreferencesView = _preferencesView;
 	
 	NSString *identifier = [pToolbar selectedItemIdentifier];
-	if ([identifier isEqual:@"Status"])
+	if ([identifier isEqual:SUMMARY_PANE])
 		_preferencesView = statusView;
-	else if ([identifier isEqual:@"General"])
+	else if ([identifier isEqual:GENERAL_PANE])
 		_preferencesView = generalView;
-	else if ([identifier isEqual:@"Advanced"])
+	else if ([identifier isEqual:ADVACNED_PANE])
 		_preferencesView = advancedView;
 	
 	if (oldPreferencesView == _preferencesView) return;
@@ -87,6 +139,14 @@
 
 - (IBAction)updateThresholds:(id)sender {
 	[[NSApp delegate] refreshThresholds];
+}
+
+
+#pragma mark -
+#pragma mark private
+- (void)_selectPane:(NSString *)pane {
+	[pToolbar setSelectedItemIdentifier:pane];
+	[self didSelectToolbarItem:pane];
 }
 
 @end
