@@ -91,7 +91,7 @@
 			
 			return [NSString stringWithFormat:
 								NSLocalizedString(@"I'm monitoring your total usage from\n"
-												  @"the last %@ to now.", @"rolling"), timeString];
+												  @"the last %@ to now (rolling period).", @"rolling"), timeString];
 		}
 		case tms_fixed_mode:
 		{
@@ -104,8 +104,8 @@
 				default:		unitString = @"next Mars calendar year"; break;
 			}
 			return [NSString stringWithFormat:
-								NSLocalizedString(@"I'm monitoring your total usage\n"
-												  @"until %@.", @"fixed"), unitString];
+					NSLocalizedString(@"I'm monitoring your total usage\n"
+									  @"until %@.", @"fixed"), unitString];
 		}
 		case tms_indefinite_mode:
 			return NSLocalizedString(@"I'm monitoring indefinitely\n"

@@ -45,6 +45,7 @@
 		DA4BF13B12B29EFE0070618E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4BF13A12B29EFE0070618E /* QuartzCore.framework */; };
 		DA66D91F12EB511D0065454C /* AKSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA66D91E12EB511D0065454C /* AKSummaryView.m */; };
 		DA66D92812EB52030065454C /* TBSummaryGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = DA66D92712EB52030065454C /* TBSummaryGenerator.m */; };
+		DA66DAA512EB737C0065454C /* Caution.png in Resources */ = {isa = PBXBuildFile; fileRef = DA66DAA412EB737C0065454C /* Caution.png */; };
 		DA6D3BE112B959D0003D5F61 /* TBStatusWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */; };
 		DAB7E22612E2408E006ED7C8 /* TBSetupView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB7E22512E2408E006ED7C8 /* TBSetupView.m */; };
 		DAB7E48312E34B0B006ED7C8 /* TBFirstLaunchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB7E48212E34B0B006ED7C8 /* TBFirstLaunchWindowController.m */; };
@@ -144,6 +145,7 @@
 		DA66D91E12EB511D0065454C /* AKSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKSummaryView.m; path = "../../Documents/Dropbox/Sorcery/Private Utilites/Summary View/AKSummaryView.m"; sourceTree = SOURCE_ROOT; };
 		DA66D92612EB52030065454C /* TBSummaryGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBSummaryGenerator.h; sourceTree = "<group>"; };
 		DA66D92712EB52030065454C /* TBSummaryGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBSummaryGenerator.m; sourceTree = "<group>"; };
+		DA66DAA412EB737C0065454C /* Caution.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Caution.png; sourceTree = "<group>"; };
 		DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBStatusWindow.xib; sourceTree = "<group>"; };
 		DAB7E22412E2408E006ED7C8 /* TBSetupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBSetupView.h; sourceTree = "<group>"; };
 		DAB7E22512E2408E006ED7C8 /* TBSetupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBSetupView.m; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 		B1063270127FAABF0041B919 /* Preferences Window */ = {
 			isa = PBXGroup;
 			children = (
+				DA66DAA412EB737C0065454C /* Caution.png */,
 				DABFB460129F21FA00AE41FF /* Advanced.png */,
 				B1F44975127E1D4B0020735E /* Updates.tiff */,
 				DABFB45A129F21AB00AE41FF /* General.png */,
@@ -617,6 +620,7 @@
 				DAB7EB8912E8FD8B006ED7C8 /* Graph Button Pressed.png in Resources */,
 				DAB7EB8A12E8FD8B006ED7C8 /* Graph Button.png in Resources */,
 				DAB7EC2B12E904BA006ED7C8 /* GraphWindowBackground.png in Resources */,
+				DA66DAA512EB737C0065454C /* Caution.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

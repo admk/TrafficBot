@@ -26,6 +26,7 @@
 
 @implementation TBPreferencesWindowController
 
+
 - (id)init {
 	self = [super initWithWindowNibName:@"TBPreferencesWindow"];
 	if (!self) return nil;
@@ -78,6 +79,7 @@
 - (void)windowDidLoad {
 	[self _selectPane:SUMMARY_PANE];
 }
+
 
 #pragma mark -
 #pragma mark IBAction methods
