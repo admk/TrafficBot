@@ -12,9 +12,9 @@
 #define AKTrafficMonitorStatisticsDidUpdateNotification @"AKTrafficMonitorStatisticsDidUpdateNotification"
 #define AKTrafficMonitorThresholdDidExceedNotification @"AKTrafficMonitorThresholdDidExceedNotification"
 
-#define TMS_ULL_T				u_int64_t
-#define NumberFromULL(ull)		( (NSNumber *)[NSNumber numberWithUnsignedLongLong:((TMS_ULL_T)(ull))] )
-#define ULLFromNumber(number)	( (TMS_ULL_T)[((NSNumber *)(number)) unsignedLongLongValue] )
+#define TMS_ULL_T				int64_t
+#define NumberFromULL(ull)		( (NSNumber *)[NSNumber numberWithLongLong:((TMS_ULL_T)(ull))] )
+#define ULLFromNumber(number)	( (TMS_ULL_T)[((NSNumber *)(number)) longLongValue] )
 
 typedef enum {
 	tms_rolling_mode = 0,
@@ -35,9 +35,14 @@ typedef enum {
 	NSMutableDictionary	*_thresholds;
 	
 	NSTimer			*_monitorTimer;
+	NSTimer			*_logTimer;
 	
 	TMS_ULL_T		_lastIn;
 	TMS_ULL_T		_lastOut;
+	TMS_ULL_T		_diffIn;
+	TMS_ULL_T		_diffOut;
+	TMS_ULL_T		_nowIn;
+	TMS_ULL_T		_nowOut;
 	TMS_ULL_T		_totalIn;
 	TMS_ULL_T		_totalOut;
 	TMS_ULL_T		_lastTotal;

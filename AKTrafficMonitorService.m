@@ -25,7 +25,8 @@
 - (NSTimeInterval)_timerInterval;
 - (void)_reinitialiseIfMonitoring;
 
-- (void)_logAndUpdateTrafficData:(id)info;
+- (void)_updateTraffic:(id)info;
+- (void)_logTrafficData:(id)info;
 - (NSDictionary *)_readDataUsage;
 
 - (NSString *)_rollingLogFilePath;
@@ -56,6 +57,10 @@ static AKTrafficMonitorService *sharedService = nil;
 	
 	_lastIn = 0;
 	_lastOut = 0;
+	_diffIn = 0;
+	_diffOut = 0;
+	_nowIn = 0;
+	_nowOut = 0;
 	_totalIn = 0;
 	_totalOut = 0;
 	_lastTotal = 0;
@@ -133,13 +138,13 @@ static AKTrafficMonitorService *sharedService = nil;
 	_fixedPeriodRestartDate = [date retain];
 }
 - (NSNumber *)totalIn {
-	return NumberFromULL(_totalIn);
+	return NumberFromULL(_totalIn + _diffIn);
 }
 - (NSNumber *)totalOut {
-	return NumberFromULL(_totalOut);
+	return NumberFromULL(_totalOut + _diffOut);
 }
 - (NSNumber *)total {
-	return NumberFromULL(_totalIn + _totalOut);
+	return NumberFromULL(_totalIn + _totalOut + _diffIn + _diffOut);
 }
 
 #pragma mark -
@@ -225,10 +230,14 @@ static AKTrafficMonitorService *sharedService = nil;
 	
 	// timer
 	if (!_monitorTimer)
-		_monitorTimer = [NSTimer scheduledTimerWithTimeInterval:[self _timerInterval] target:self selector:@selector(_logAndUpdateTrafficData:) userInfo:nil repeats:YES];
+		_monitorTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(_updateTraffic:) userInfo:nil repeats:YES];
+	if (!_logTimer)
+		_logTimer = [NSTimer scheduledTimerWithTimeInterval:[self _timerInterval] target:self selector:@selector(_logTrafficData:) userInfo:nil repeats:YES];
+	[_logTimer fire];
 	[_monitorTimer fire];
 }
 - (void)_stopMonitoring {
+	[_logTimer invalidate], _logTimer = nil;
 	[_monitorTimer invalidate], _monitorTimer = nil;
 }
 
@@ -260,23 +269,26 @@ static AKTrafficMonitorService *sharedService = nil;
 
 #pragma mark -
 #pragma mark traffic data
-- (void)_logAndUpdateTrafficData:(id)info {
+- (void)_updateTraffic:(id)info {
 	
 	NSDictionary *reading = [self _readDataUsage];
-	TMS_ULL_T nowIn = ULLFromNumber([reading objectForKey:@"in"]);
-	TMS_ULL_T nowOut = ULLFromNumber([reading objectForKey:@"out"]);
+	_nowIn = ULLFromNumber([reading objectForKey:@"in"]);
+	_nowOut = ULLFromNumber([reading objectForKey:@"out"]);
+
+	_diffIn = _nowIn - _lastIn;
+	_diffOut = _nowOut - _lastOut;
 	
-	// calculate the differences
-	TMS_ULL_T diffIn = nowIn - _lastIn;
-	TMS_ULL_T diffOut = nowOut - _lastOut;
+	// should not notify if no change
+	if (_diffIn == 0 && _diffOut == 0) return;
+	
+	// notify
+	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
+}
+- (void)_logTrafficData:(id)info {
 	
 	// accumulate the differences
-	_totalIn += diffIn;
-	_totalOut += diffOut;
-	
-	// updates last readings
-	_lastIn = nowIn;
-	_lastOut = nowOut;
+	_totalIn += _diffIn;
+	_totalOut += _diffOut;
 	
 	// rolling log
 	NSMutableDictionary *rollingLog = [self rollingLogFile];
@@ -298,11 +310,11 @@ static AKTrafficMonitorService *sharedService = nil;
 			
 		case tms_rolling_mode: {
 			// should not log if no change
-			if (diffIn == 0 && diffOut == 0) return;
+			if (_diffIn == 0 && _diffOut == 0) return;
 			// log current entry for rolling log
 			NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
-								   NumberFromULL(diffIn), @"in", 
-								   NumberFromULL(diffOut), @"out", nil];
+								   NumberFromULL(_diffIn), @"in", 
+								   NumberFromULL(_diffOut), @"out", nil];
 			[rollingLog setObject:entry forKey:[[NSDate date] description]];
 			[self _writeToRollingLogFile:rollingLog];
 		} break;
@@ -336,6 +348,12 @@ static AKTrafficMonitorService *sharedService = nil;
 		default: ALog(@"unrecognised mode"); break;
 	}
 	
+	
+	// no negative total values
+	if (_totalIn < 0) _totalIn = 0;
+	if (_totalOut < 0) _totalOut = 0;
+	
+	// notify
 	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
 	
 	// thresholds
@@ -351,6 +369,14 @@ static AKTrafficMonitorService *sharedService = nil;
 		}
 		_lastTotal = cTotal;
 	}
+	
+	// reset differences
+	_diffIn = 0;
+	_diffOut = 0;
+	
+	// updates last readings
+	_lastIn = _nowIn;
+	_lastOut = _nowOut;
 }
 
 - (NSDictionary *)_readDataUsage {
