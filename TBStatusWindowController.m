@@ -81,6 +81,7 @@
 - (void)setMonitoring:(BOOL)inBool {
 	_monitoring = inBool;
 	[_notMonitoringView removeFromSuperview];
+	[self _refreshStatusView];
 	if (_monitoring) return;
 	[self.contentView addSubview:_notMonitoringView];
 }
@@ -130,7 +131,7 @@
 - (IBAction)preferences:(id)sender {
 	[[NSApp delegate] showPreferencesWindow:self];
 }
-@synthesize contentView, gaugeView, usageTextField;
+@synthesize contentView, gaugeView;
 @synthesize monitoring = _monitoring, limit = _limit;
 @end
 #pragma mark -
@@ -157,6 +158,13 @@
 		}
 		[gaugeView setPercentage:percentage animated:animated];
 	}
+	
+	// display graph button only when necessary
+	BOOL hasData = [[[AKTrafficMonitorService sharedService] rollingLogFile] count] > 4;
+	if (self.monitoring && hasData)
+		[graphButton setHidden:NO];
+	else
+		[graphButton setHidden:YES];
 }
 - (void)_setUsageWithTotalIn:(NSNumber *)totalIn totalOut:(NSNumber *)totalOut {
 	TMS_ULL_T ullTotal = [totalIn unsignedLongLongValue] + [totalOut unsignedLongLongValue];

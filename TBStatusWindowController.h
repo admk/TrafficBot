@@ -14,7 +14,8 @@
 	
 	NSView		*contentView;
 	AKGaugeView	*gaugeView;
-	NSTextField	*usageTextField;
+	IBOutlet NSTextField	*usageTextField;
+	IBOutlet NSButton		*graphButton;
 @private
 	TBSetupView	*_notMonitoringView;
 	BOOL		_monitoring;
@@ -23,7 +24,6 @@
 
 @property (assign) IBOutlet NSView		*contentView;
 @property (assign) IBOutlet AKGaugeView	*gaugeView;
-@property (assign) IBOutlet NSTextField	*usageTextField;
 
 @property (assign, getter=isMonitoring) BOOL monitoring;
 @property (retain, nonatomic) NSNumber *limit;

@@ -232,9 +232,6 @@
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSUserDefaultsController" id="90390776">
-				<array class="NSMutableArray" key="NSDeclaredKeys">
-					<string>monitoring</string>
-				</array>
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
 		</array>
@@ -291,26 +288,6 @@
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">hidden: values.monitoring</string>
-						<reference key="source" ref="53322221"/>
-						<reference key="destination" ref="90390776"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="53322221"/>
-							<reference key="NSDestination" ref="90390776"/>
-							<string key="NSLabel">hidden: values.monitoring</string>
-							<string key="NSBinding">hidden</string>
-							<string key="NSKeyPath">values.monitoring</string>
-							<object class="NSDictionary" key="NSOptions">
-								<string key="NS.key.0">NSValueTransformerName</string>
-								<string key="NS.object.0">NSNegateBoolean</string>
-							</object>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">44</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">hidden: values.monitoring</string>
 						<reference key="source" ref="349733224"/>
 						<reference key="destination" ref="90390776"/>
 						<object class="NSNibBindingConnector" key="connector">
@@ -327,6 +304,14 @@
 						</object>
 					</object>
 					<int key="connectionID">47</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">graphButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="53322221"/>
+					</object>
+					<int key="connectionID">48</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -527,7 +512,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">47</int>
+			<int key="maxID">48</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -583,6 +568,7 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="contentView">NSView</string>
 						<string key="gaugeView">AKGaugeView</string>
+						<string key="graphButton">NSButton</string>
 						<string key="usageTextField">NSTextField</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -593,6 +579,10 @@
 						<object class="IBToOneOutletInfo" key="gaugeView">
 							<string key="name">gaugeView</string>
 							<string key="candidateClassName">AKGaugeView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="graphButton">
+							<string key="name">graphButton</string>
+							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="usageTextField">
 							<string key="name">usageTextField</string>
