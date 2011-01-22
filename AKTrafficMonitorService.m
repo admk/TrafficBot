@@ -109,33 +109,19 @@ static AKTrafficMonitorService *sharedService = nil;
 
 #pragma mark -
 #pragma mark setters & getters
-- (BOOL)isMonitoring {
-	return _monitoring;
-}
 - (void)setMonitoring:(BOOL)inBool {
 	_monitoring = inBool;
 	if (_monitoring) [self _startMonitoring];
 	else [self _stopMonitoring];
-}
-- (tms_mode_t)monitoringMode {
-	return _monitoringMode;
 }
 - (void)setMonitoringMode:(tms_mode_t)mode {
 	if (_monitoringMode == mode) return;
 	_monitoringMode = mode;
 	[self _reinitialiseIfMonitoring];
 }
-- (NSTimeInterval)rollingPeriodInterval {
-	return _rollingPeriodInterval;
-}
 - (void)setRollingPeriodInterval:(NSTimeInterval)interval {
 	_rollingPeriodInterval = interval;
 	[self _reinitialiseIfMonitoring];
-}
-- (void)setFixedPeriodRestartDate:(NSDate *)date {
-	if ([_fixedPeriodRestartDate isEqualToDate:date]) return;
-	[_fixedPeriodRestartDate release];
-	_fixedPeriodRestartDate = [date retain];
 }
 - (NSNumber *)totalIn {
 	return NumberFromTMSDT(_totalIn + _diffIn);
