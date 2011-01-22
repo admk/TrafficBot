@@ -48,6 +48,7 @@
 		[window setBackgroundImage:[NSImage imageNamed:@"GraphWindowBackground.png"]];
 		[window setArrowHeight:10];
 		[window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
+		[window setLevel:NSFloatingWindowLevel];
 		[window setAcceptsMouseMovedEvents:YES];
 		self.window = window;
 	}
