@@ -43,11 +43,7 @@
 	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultsDict];
 	
 	// first launch
-#ifndef DEBUG
 	BOOL firstLaunch = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"];
-#else
-	BOOL firstLaunch = YES;
-#endif
 	if (firstLaunch) {
 		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
 		[self showFirstLaunchWindow:self];
