@@ -19,12 +19,6 @@
 
 @interface AKTrafficMonitorService ()
 
-@property (assign) TMS_ULL_T _lastIn;
-@property (assign) TMS_ULL_T _lastOut;
-@property (assign) TMS_ULL_T _totalIn;
-@property (assign) TMS_ULL_T _totalOut;
-@property (assign) TMS_ULL_T _lastTotal;
-
 - (void)_startMonitoring;
 - (void)_stopMonitoring;
 
@@ -60,11 +54,11 @@ static AKTrafficMonitorService *sharedService = nil;
 	self = [super init];
 	if (!self) return nil;
 	
-	self._lastIn = 0;
-	self._lastOut = 0;
-	self._totalIn = 0;
-	self._totalOut = 0;
-	self._lastTotal = 0;
+	_lastIn = 0;
+	_lastOut = 0;
+	_totalIn = 0;
+	_totalOut = 0;
+	_lastTotal = 0;
 	_rollingPeriodInterval = 0;
 	_fixedPeriodRestartDate = nil;
 	_monitoring = NO;
@@ -87,8 +81,8 @@ static AKTrafficMonitorService *sharedService = nil;
 	return [self _dictionaryWithFile:[self _fixedLogFilePath]];
 }
 - (void)clearStatistics {
-	self._totalIn = 0;
-	self._totalOut = 0;
+	_totalIn = 0;
+	_totalOut = 0;
 	// reset all log files
 	NSInteger tag;
 	[[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceDestroyOperation source:[[self _logsPath] stringByDeletingLastPathComponent] destination:@"" files:[NSArray arrayWithObject:[[self _logsPath] lastPathComponent]] tag:&tag];
@@ -139,13 +133,13 @@ static AKTrafficMonitorService *sharedService = nil;
 	_fixedPeriodRestartDate = [date retain];
 }
 - (NSNumber *)totalIn {
-	return NumberFromULL(self._totalIn);
+	return NumberFromULL(_totalIn);
 }
 - (NSNumber *)totalOut {
-	return NumberFromULL(self._totalOut);
+	return NumberFromULL(_totalOut);
 }
 - (NSNumber *)total {
-	return NumberFromULL(self._totalIn + self._totalOut);
+	return NumberFromULL(_totalIn + _totalOut);
 }
 
 #pragma mark -
@@ -172,12 +166,12 @@ static AKTrafficMonitorService *sharedService = nil;
 	
 	// initialise readings
 	NSDictionary *initReading = [self _readDataUsage];
-	self._lastIn = ULLFromNumber([initReading objectForKey:@"in"]);
-	self._lastOut = ULLFromNumber([initReading objectForKey:@"out"]);
+	_lastIn = ULLFromNumber([initReading objectForKey:@"in"]);
+	_lastOut = ULLFromNumber([initReading objectForKey:@"out"]);
 	
 	// initialise results
-	self._totalIn = 0;
-	self._totalOut = 0;
+	_totalIn = 0;
+	_totalOut = 0;
 	
 	switch (self.monitoringMode) {
 			
@@ -190,8 +184,8 @@ static AKTrafficMonitorService *sharedService = nil;
 				if ([date timeIntervalSinceNow] < -self.rollingPeriodInterval)
 					[tLog removeObjectForKey:dateString];
 				else {
-					self._totalIn += ULLFromNumber([[tLog objectForKey:dateString] objectForKey:@"in"]);
-					self._totalOut += ULLFromNumber([[tLog objectForKey:dateString] objectForKey:@"out"]);
+					_totalIn += ULLFromNumber([[tLog objectForKey:dateString] objectForKey:@"in"]);
+					_totalOut += ULLFromNumber([[tLog objectForKey:dateString] objectForKey:@"out"]);
 				}
 			}
 			[self _writeToRollingLogFile:tLog];
@@ -202,13 +196,13 @@ static AKTrafficMonitorService *sharedService = nil;
 			if ([self.fixedPeriodRestartDate timeIntervalSinceNow] > 0) {
 				NSString *dateString = [[tLog allKeys] objectAtIndex:0];
 				NSDictionary *entry = [tLog objectForKey:dateString];
-				self._totalIn = ULLFromNumber([entry objectForKey:@"in"]);
-				self._totalOut = ULLFromNumber([entry objectForKey:@"out"]);
+				_totalIn = ULLFromNumber([entry objectForKey:@"in"]);
+				_totalOut = ULLFromNumber([entry objectForKey:@"out"]);
 			}
 			else {
 				DLog(@"fixed period monitor date expired.");
-				self._totalIn = 0;
-				self._totalOut = 0;
+				_totalIn = 0;
+				_totalOut = 0;
 				[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorNeedsNewFixedPeriodRestartDateNotification object:nil userInfo:nil];
 			}
 		} break;
@@ -217,8 +211,8 @@ static AKTrafficMonitorService *sharedService = nil;
 			NSMutableDictionary *tLog = [self fixedLogFile];
 			NSString *dateString = [[tLog allKeys] objectAtIndex:0];
 			NSDictionary *entry = [tLog objectForKey:dateString];
-			self._totalIn = ULLFromNumber([entry objectForKey:@"in"]);
-			self._totalOut = ULLFromNumber([entry objectForKey:@"out"]);			
+			_totalIn = ULLFromNumber([entry objectForKey:@"in"]);
+			_totalOut = ULLFromNumber([entry objectForKey:@"out"]);			
 		} break;
 
 		default: ALog(@"unrecognised mode"); break;
@@ -227,7 +221,7 @@ static AKTrafficMonitorService *sharedService = nil;
 	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
 	
 	// threshold update
-	self._lastTotal = self._totalIn + self._totalOut;
+	_lastTotal = _totalIn + _totalOut;
 	
 	// timer
 	if (!_monitorTimer)
@@ -273,16 +267,16 @@ static AKTrafficMonitorService *sharedService = nil;
 	TMS_ULL_T nowOut = ULLFromNumber([reading objectForKey:@"out"]);
 	
 	// calculate the differences
-	TMS_ULL_T diffIn = nowIn - self._lastIn;
-	TMS_ULL_T diffOut = nowOut - self._lastOut;
+	TMS_ULL_T diffIn = nowIn - _lastIn;
+	TMS_ULL_T diffOut = nowOut - _lastOut;
 	
 	// accumulate the differences
-	self._totalIn += diffIn;
-	self._totalOut += diffOut;
+	_totalIn += diffIn;
+	_totalOut += diffOut;
 	
 	// updates last readings
-	self._lastIn = nowIn;
-	self._lastOut = nowOut;
+	_lastIn = nowIn;
+	_lastOut = nowOut;
 	
 	// rolling log
 	NSMutableDictionary *rollingLog = [self rollingLogFile];
@@ -292,8 +286,8 @@ static AKTrafficMonitorService *sharedService = nil;
 		if ([date timeIntervalSinceNow] < -self.rollingPeriodInterval) {
 			// rolling total needs to minus expired entries
 			if (self.monitoringMode == tms_rolling_mode) {
-				self._totalIn -= ULLFromNumber([[rollingLog objectForKey:dateString] objectForKey:@"in"]);
-				self._totalIn -= ULLFromNumber([[rollingLog objectForKey:dateString] objectForKey:@"out"]);
+				_totalIn -= ULLFromNumber([[rollingLog objectForKey:dateString] objectForKey:@"in"]);
+				_totalIn -= ULLFromNumber([[rollingLog objectForKey:dateString] objectForKey:@"out"]);
 			}
 			// remove deprecated log entry
 			[rollingLog removeObjectForKey:dateString];
@@ -317,8 +311,8 @@ static AKTrafficMonitorService *sharedService = nil;
 			if ([self.fixedPeriodRestartDate timeIntervalSinceNow] > 0) {
 				// log only total
 				NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
-									   NumberFromULL(self._totalIn), @"in", 
-									   NumberFromULL(self._totalOut), @"out", nil];
+									   NumberFromULL(_totalIn), @"in", 
+									   NumberFromULL(_totalOut), @"out", nil];
 				NSDictionary *tLog = [NSDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]];
 				[self _writeToFixedLogFile:tLog];
 			}
@@ -333,8 +327,8 @@ static AKTrafficMonitorService *sharedService = nil;
 		case tms_indefinite_mode: {
 			// log only total
 			NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
-								   NumberFromULL(self._totalIn), @"in", 
-								   NumberFromULL(self._totalOut), @"out", nil];
+								   NumberFromULL(_totalIn), @"in", 
+								   NumberFromULL(_totalOut), @"out", nil];
 			NSDictionary *tLog = [NSDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]];
 			[self _writeToFixedLogFile:tLog];
 		} break;
@@ -346,16 +340,16 @@ static AKTrafficMonitorService *sharedService = nil;
 	
 	// thresholds
 	if (self.thresholds) {
-		TMS_ULL_T cTotal = self._totalIn + self._totalOut;
+		TMS_ULL_T cTotal = _totalIn + _totalOut;
 		for (NSString *thresholdKey in [self.thresholds allKeys]) {
 			NSNumber *tNumber = [self.thresholds objectForKey:thresholdKey];
 			TMS_ULL_T threshold = ULLFromNumber(tNumber);
-			if (self._lastTotal <= threshold && threshold <= cTotal) {
+			if (_lastTotal <= threshold && threshold <= cTotal) {
 				NSDictionary *infoDict = [NSDictionary dictionaryWithObject:tNumber forKey:thresholdKey];
 				[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorThresholdDidExceedNotification object:nil userInfo:infoDict];
 			}
 		}
-		self._lastTotal = cTotal;
+		_lastTotal = cTotal;
 	}
 }
 
@@ -441,6 +435,5 @@ static AKTrafficMonitorService *sharedService = nil;
 @synthesize thresholds = _thresholds;
 @synthesize rollingPeriodInterval = _rollingPeriodInterval;
 @synthesize fixedPeriodRestartDate = _fixedPeriodRestartDate;
-@synthesize _totalIn, _totalOut, _lastIn, _lastOut, _lastTotal;
 
 @end
