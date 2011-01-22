@@ -140,7 +140,7 @@
 #pragma mark status view
 - (void)_refreshStatusView {
 	
-	BOOL animated = [self.window isVisible];
+	if (![self.window isVisible]) return;
 	
 	NSNumber *totalIn = [[AKTrafficMonitorService sharedService] totalIn];
 	NSNumber *totalOut = [[AKTrafficMonitorService sharedService] totalOut];
@@ -154,10 +154,10 @@
 		TMS_D_T ullTotal = TMSDTFromNumber(totalIn) + TMSDTFromNumber(totalOut);
 		float percentage = (float)ullTotal / [self.limit floatValue] * 100;
 		if (percentage > 100) {
-			[gaugeView setPercentage:100 animated:animated];
+			[gaugeView setPercentage:100];
 			return;
 		}
-		[gaugeView setPercentage:percentage animated:animated];
+		[gaugeView setPercentage:percentage];
 	}
 	
 	// display graph button only when necessary
