@@ -352,6 +352,14 @@ static AKTrafficMonitorService *sharedService = nil;
 	// no negative total values
 	if (_totalIn < 0) _totalIn = 0;
 	if (_totalOut < 0) _totalOut = 0;
+		
+	// reset differences
+	_diffIn = 0;
+	_diffOut = 0;
+	
+	// updates last readings
+	_lastIn = _nowIn;
+	_lastOut = _nowOut;
 	
 	// notify
 	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
@@ -369,14 +377,6 @@ static AKTrafficMonitorService *sharedService = nil;
 		}
 		_lastTotal = cTotal;
 	}
-	
-	// reset differences
-	_diffIn = 0;
-	_diffOut = 0;
-	
-	// updates last readings
-	_lastIn = _nowIn;
-	_lastOut = _nowOut;
 }
 
 - (NSDictionary *)_readDataUsage {
