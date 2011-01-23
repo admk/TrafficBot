@@ -26,7 +26,6 @@
 		B16F0F291278FD0F00D13C0B /* Dark Cog.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0F281278FD0F00D13C0B /* Dark Cog.png */; };
 		B16F108A127A09D000D13C0B /* APDrawingCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F1089127A09D000D13C0B /* APDrawingCategories.m */; };
 		B1F44962127E195F0020735E /* TBPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F44961127E195F0020735E /* TBPreferencesWindowController.m */; };
-		B1F44976127E1D4B0020735E /* Updates.tiff in Resources */ = {isa = PBXBuildFile; fileRef = B1F44975127E1D4B0020735E /* Updates.tiff */; };
 		B1F449B0127E352B0020735E /* NSWindow+NoodleEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F449AF127E352B0020735E /* NSWindow+NoodleEffects.m */; };
 		B1F44B3C127F2E820020735E /* Not Monitoring Background.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B3B127F2E820020735E /* Not Monitoring Background.png */; };
 		B1F44B52127F30530020735E /* Set Up Button.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B50127F30530020735E /* Set Up Button.png */; };
@@ -47,6 +46,7 @@
 		DA66D92812EB52030065454C /* TBSummaryGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = DA66D92712EB52030065454C /* TBSummaryGenerator.m */; };
 		DA66DAA512EB737C0065454C /* Caution.png in Resources */ = {isa = PBXBuildFile; fileRef = DA66DAA412EB737C0065454C /* Caution.png */; };
 		DA66DB2B12EBE0A60065454C /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = DA66DB2A12EBE0A60065454C /* Icon.icns */; };
+		DA66DB3812ECA0490065454C /* Hint.png in Resources */ = {isa = PBXBuildFile; fileRef = DA66DB3712ECA0490065454C /* Hint.png */; };
 		DA6D3BE112B959D0003D5F61 /* TBStatusWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */; };
 		DAB7E22612E2408E006ED7C8 /* TBSetupView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB7E22512E2408E006ED7C8 /* TBSetupView.m */; };
 		DAB7E48312E34B0B006ED7C8 /* TBFirstLaunchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB7E48212E34B0B006ED7C8 /* TBFirstLaunchWindowController.m */; };
@@ -58,7 +58,6 @@
 		DAB7EC2B12E904BA006ED7C8 /* GraphWindowBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EC2912E904BA006ED7C8 /* GraphWindowBackground.png */; };
 		DABFB45D129F21AB00AE41FF /* General.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45A129F21AB00AE41FF /* General.png */; };
 		DABFB45E129F21AB00AE41FF /* Monitor.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45B129F21AB00AE41FF /* Monitor.png */; };
-		DABFB45F129F21AB00AE41FF /* Splash Green.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45C129F21AB00AE41FF /* Splash Green.png */; };
 		DABFB461129F21FA00AE41FF /* Advanced.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB460129F21FA00AE41FF /* Advanced.png */; };
 		DABFB4B0129F2CF100AE41FF /* TBDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = DABFB4AF129F2CF100AE41FF /* TBDefaults.plist */; };
 		DABFB4D712A0421A00AE41FF /* NSDate+AKMidnight.m in Sources */ = {isa = PBXBuildFile; fileRef = DABFB4D612A0421A00AE41FF /* NSDate+AKMidnight.m */; };
@@ -114,7 +113,6 @@
 		B16F1089127A09D000D13C0B /* APDrawingCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APDrawingCategories.m; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Drawing Categories/APDrawingCategories.m"; sourceTree = "<absolute>"; };
 		B1F44960127E195F0020735E /* TBPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBPreferencesWindowController.h; sourceTree = "<group>"; };
 		B1F44961127E195F0020735E /* TBPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBPreferencesWindowController.m; sourceTree = "<group>"; };
-		B1F44975127E1D4B0020735E /* Updates.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = Updates.tiff; path = Images/Updates.tiff; sourceTree = "<group>"; };
 		B1F449AE127E352B0020735E /* NSWindow+NoodleEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSWindow+NoodleEffects.h"; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (NoodleEffects)/NSWindow+NoodleEffects.h"; sourceTree = "<absolute>"; };
 		B1F449AF127E352B0020735E /* NSWindow+NoodleEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSWindow+NoodleEffects.m"; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (NoodleEffects)/NSWindow+NoodleEffects.m"; sourceTree = "<absolute>"; };
 		B1F44B3B127F2E820020735E /* Not Monitoring Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Not Monitoring Background.png"; path = "Images/Not Monitoring Background.png"; sourceTree = "<group>"; };
@@ -148,6 +146,7 @@
 		DA66D92712EB52030065454C /* TBSummaryGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBSummaryGenerator.m; sourceTree = "<group>"; };
 		DA66DAA412EB737C0065454C /* Caution.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Caution.png; sourceTree = "<group>"; };
 		DA66DB2A12EBE0A60065454C /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Icon.icns; path = Images/Icon.icns; sourceTree = "<group>"; };
+		DA66DB3712ECA0490065454C /* Hint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Hint.png; path = Images/Hint.png; sourceTree = "<group>"; };
 		DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBStatusWindow.xib; sourceTree = "<group>"; };
 		DAB7E22412E2408E006ED7C8 /* TBSetupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBSetupView.h; sourceTree = "<group>"; };
 		DAB7E22512E2408E006ED7C8 /* TBSetupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBSetupView.m; sourceTree = "<group>"; };
@@ -160,7 +159,6 @@
 		DAB7EC2912E904BA006ED7C8 /* GraphWindowBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GraphWindowBackground.png; path = Images/GraphWindowBackground.png; sourceTree = "<group>"; };
 		DABFB45A129F21AB00AE41FF /* General.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = General.png; path = Images/General.png; sourceTree = "<group>"; };
 		DABFB45B129F21AB00AE41FF /* Monitor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Monitor.png; path = Images/Monitor.png; sourceTree = "<group>"; };
-		DABFB45C129F21AB00AE41FF /* Splash Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Splash Green.png"; path = "Images/Splash Green.png"; sourceTree = "<group>"; };
 		DABFB460129F21FA00AE41FF /* Advanced.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Advanced.png; path = Images/Advanced.png; sourceTree = "<group>"; };
 		DABFB4AF129F2CF100AE41FF /* TBDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = TBDefaults.plist; sourceTree = "<group>"; };
 		DABFB4D512A0421A00AE41FF /* NSDate+AKMidnight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+AKMidnight.h"; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/NSDate (AKMidnight)/NSDate+AKMidnight.h"; sourceTree = "<group>"; };
@@ -273,12 +271,11 @@
 		B1063270127FAABF0041B919 /* Preferences Window */ = {
 			isa = PBXGroup;
 			children = (
+				DA66DB3712ECA0490065454C /* Hint.png */,
 				DA66DAA412EB737C0065454C /* Caution.png */,
 				DABFB460129F21FA00AE41FF /* Advanced.png */,
-				B1F44975127E1D4B0020735E /* Updates.tiff */,
 				DABFB45A129F21AB00AE41FF /* General.png */,
 				DABFB45B129F21AB00AE41FF /* Monitor.png */,
-				DABFB45C129F21AB00AE41FF /* Splash Green.png */,
 			);
 			name = "Preferences Window";
 			sourceTree = "<group>";
@@ -606,13 +603,11 @@
 				B16F0C431278708300D13C0B /* Gauge Face.png in Resources */,
 				B16F0F151278FBAA00D13C0B /* Cog.png in Resources */,
 				B16F0F291278FD0F00D13C0B /* Dark Cog.png in Resources */,
-				B1F44976127E1D4B0020735E /* Updates.tiff in Resources */,
 				B1F44B3C127F2E820020735E /* Not Monitoring Background.png in Resources */,
 				B1F44B52127F30530020735E /* Set Up Button.png in Resources */,
 				B1F44B53127F30530020735E /* Set Up Button Pressed.png in Resources */,
 				DABFB45D129F21AB00AE41FF /* General.png in Resources */,
 				DABFB45E129F21AB00AE41FF /* Monitor.png in Resources */,
-				DABFB45F129F21AB00AE41FF /* Splash Green.png in Resources */,
 				DABFB461129F21FA00AE41FF /* Advanced.png in Resources */,
 				DABFB4B0129F2CF100AE41FF /* TBDefaults.plist in Resources */,
 				DA198D5512B6B41A00D64DD7 /* TBGraphWindow.xib in Resources */,
@@ -625,6 +620,7 @@
 				DAB7EC2B12E904BA006ED7C8 /* GraphWindowBackground.png in Resources */,
 				DA66DAA512EB737C0065454C /* Caution.png in Resources */,
 				DA66DB2B12EBE0A60065454C /* Icon.icns in Resources */,
+				DA66DB3812ECA0490065454C /* Hint.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

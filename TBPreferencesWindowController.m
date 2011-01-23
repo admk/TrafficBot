@@ -12,8 +12,9 @@
 #import "AKSummaryView.h"
 #import "TBSummaryGenerator.h"
 
-#define SUMMARY_PANE	@"Status"
+#define SUMMARY_PANE	@"Summary"
 #define GENERAL_PANE	@"General"
+#define MONITORING_PANE	@"Monitoring"
 #define ADVACNED_PANE	@"Advanced"
 
 
@@ -85,7 +86,7 @@
 #pragma mark IBAction methods
 
 - (IBAction)continueToSetup:(id)sender {
-	[self _selectPane:GENERAL_PANE];
+	[self _selectPane:MONITORING_PANE];
 }
 
 - (IBAction)didSelectToolbarItem:(id)sender {
@@ -97,6 +98,8 @@
 		_preferencesView = statusView;
 	else if ([identifier isEqual:GENERAL_PANE])
 		_preferencesView = generalView;
+	else if ([identifier isEqual:MONITORING_PANE])
+		_preferencesView = monitoringView;
 	else if ([identifier isEqual:ADVACNED_PANE])
 		_preferencesView = advancedView;
 	

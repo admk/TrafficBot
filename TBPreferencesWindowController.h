@@ -15,6 +15,7 @@
 	IBOutlet NSToolbar *pToolbar;
 	IBOutlet NSView *statusView;
 	IBOutlet NSView *generalView;
+	IBOutlet NSView *monitoringView;
 	IBOutlet NSView *advancedView;
 	
 	IBOutlet AKSummaryView *summaryView;
