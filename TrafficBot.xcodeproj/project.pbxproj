@@ -46,6 +46,7 @@
 		DA66D91F12EB511D0065454C /* AKSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA66D91E12EB511D0065454C /* AKSummaryView.m */; };
 		DA66D92812EB52030065454C /* TBSummaryGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = DA66D92712EB52030065454C /* TBSummaryGenerator.m */; };
 		DA66DAA512EB737C0065454C /* Caution.png in Resources */ = {isa = PBXBuildFile; fileRef = DA66DAA412EB737C0065454C /* Caution.png */; };
+		DA66DB2B12EBE0A60065454C /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = DA66DB2A12EBE0A60065454C /* Icon.icns */; };
 		DA6D3BE112B959D0003D5F61 /* TBStatusWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */; };
 		DAB7E22612E2408E006ED7C8 /* TBSetupView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB7E22512E2408E006ED7C8 /* TBSetupView.m */; };
 		DAB7E48312E34B0B006ED7C8 /* TBFirstLaunchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB7E48212E34B0B006ED7C8 /* TBFirstLaunchWindowController.m */; };
@@ -146,6 +147,7 @@
 		DA66D92612EB52030065454C /* TBSummaryGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBSummaryGenerator.h; sourceTree = "<group>"; };
 		DA66D92712EB52030065454C /* TBSummaryGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBSummaryGenerator.m; sourceTree = "<group>"; };
 		DA66DAA412EB737C0065454C /* Caution.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Caution.png; sourceTree = "<group>"; };
+		DA66DB2A12EBE0A60065454C /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Icon.icns; path = Images/Icon.icns; sourceTree = "<group>"; };
 		DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBStatusWindow.xib; sourceTree = "<group>"; };
 		DAB7E22412E2408E006ED7C8 /* TBSetupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBSetupView.h; sourceTree = "<group>"; };
 		DAB7E22512E2408E006ED7C8 /* TBSetupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBSetupView.m; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 		B16F0C3F1278705600D13C0B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DA66DB2A12EBE0A60065454C /* Icon.icns */,
 				DAB7EC2912E904BA006ED7C8 /* GraphWindowBackground.png */,
 				B1063270127FAABF0041B919 /* Preferences Window */,
 				B16F0C611278770500D13C0B /* Status View */,
@@ -621,6 +624,7 @@
 				DAB7EB8A12E8FD8B006ED7C8 /* Graph Button.png in Resources */,
 				DAB7EC2B12E904BA006ED7C8 /* GraphWindowBackground.png in Resources */,
 				DA66DAA512EB737C0065454C /* Caution.png in Resources */,
+				DA66DB2B12EBE0A60065454C /* Icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
