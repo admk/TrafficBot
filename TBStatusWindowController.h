@@ -12,14 +12,17 @@
 
 @interface TBStatusWindowController : NSWindowController {
 	
-	NSView			*contentView;
-	AKGaugeView			*gaugeView;
+	NSView		*contentView;
+	AKGaugeView	*gaugeView;
 	IBOutlet NSTextField	*usageTextField;
 	IBOutlet NSButton		*graphButton;
+	
 @private
-	TBSetupView			*_notMonitoringView;
-	BOOL				_monitoring;
-	NSNumber			*_limit;
+	TBSetupView	*_notMonitoringView;
+	BOOL		_monitoring;
+	NSNumber	*_limit;
+	
+	BOOL		_shouldAnimateGauge;
 }
 
 @property (assign) IBOutlet NSView		*contentView;
@@ -27,6 +30,8 @@
 
 @property (assign, getter=isMonitoring) BOOL monitoring;
 @property (retain, nonatomic) NSNumber *limit;
+
+@property (assign) BOOL shouldAnimateGauge;
 
 - (void)show:(id)sender;
 - (void)dismiss:(id)sender;

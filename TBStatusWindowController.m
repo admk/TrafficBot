@@ -48,6 +48,7 @@
 	if (!self) return nil;
 	_monitoring = NO;
 	_limit = nil;
+	_shouldAnimateGauge = NO;
 	return self;
 }
 - (void)dealloc {
@@ -64,7 +65,9 @@
 	[self.contentView addSubview:_notMonitoringView];
 	// bindings & notifications
 	NSArray *bindings = [NSArray arrayWithObjects:
-						 @"monitoring", Property(limit), nil];
+						 @"monitoring",
+						 Property(limit),
+						 nil];
 	for (NSString *bindingKey in bindings)
 		[self bind:bindingKey 
 		  toObject:[NSUserDefaultsController sharedUserDefaultsController] 
@@ -90,6 +93,13 @@
 	[_limit release];
 	_limit = [newLimit retain];
 	[self _refreshStatusView];
+}
+- (void)setShouldAnimateGauge:(BOOL)inBool {
+	_shouldAnimateGauge = inBool;
+	if (inBool) {
+		[gaugeView setPercentage:0 animated:NO];
+		[self _refreshStatusView];
+	}
 }
 #pragma mark -
 #pragma mark ui methods
@@ -123,7 +133,10 @@
 }
 - (void)dismiss:(id)sender {
 	[self.window zoomOffToRect:[[NSApp delegate] statusItemFrame]];
-	[gaugeView setPercentage:0 animated:NO];
+	if (self.shouldAnimateGauge) {
+		// reset gauge reading to animate
+		[gaugeView setPercentage:0 animated:NO];
+	}
 }
 - (IBAction)info:(id)sender {
 	[[NSApp delegate] showGraphWindow:sender];
@@ -133,6 +146,7 @@
 }
 @synthesize contentView, gaugeView;
 @synthesize monitoring = _monitoring, limit = _limit;
+@synthesize shouldAnimateGauge = _shouldAnimateGauge;
 @end
 #pragma mark -
 @implementation TBStatusWindowController (Private)
@@ -154,10 +168,10 @@
 		TMS_D_T ullTotal = TMSDTFromNumber(totalIn) + TMSDTFromNumber(totalOut);
 		float percentage = (float)ullTotal / [self.limit floatValue] * 100;
 		if (percentage > 100) {
-			[gaugeView setPercentage:100];
+			[gaugeView setPercentage:100 animated:self.shouldAnimateGauge];
 			return;
 		}
-		[gaugeView setPercentage:percentage];
+		[gaugeView setPercentage:percentage animated:self.shouldAnimateGauge];
 	}
 	
 	// display graph button only when necessary

@@ -104,8 +104,13 @@
 - (void)showStatusWindow:(id)sender {
 	[self dismissFirstLaunchWindow:sender];
 	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-	if (!statusWindowController)
+	if (!statusWindowController) {
 		statusWindowController = [[TBStatusWindowController alloc] initWithWindowNibName:@"TBStatusWindow"];
+		[statusWindowController bind:Property(shouldAnimateGauge) 
+							toObject:[NSUserDefaultsController sharedUserDefaultsController] 
+						 withKeyPath:[@"values." stringByAppendingString:Property(shouldAnimateGauge)]
+							 options:nil];
+	}
 	[statusWindowController show:sender];
 }
 - (void)dismissStatusWindow:(id)sender {
