@@ -23,6 +23,7 @@
 	NSNumber	*_limit;
 	
 	BOOL		_shouldAnimateGauge;
+	BOOL		_animate;
 }
 
 @property (assign) IBOutlet NSView		*contentView;
@@ -33,9 +34,9 @@
 
 @property (assign) BOOL shouldAnimateGauge;
 
-- (void)show:(id)sender;
+- (void)show:(id)sender animate:(BOOL)animate;
 - (void)dismiss:(id)sender;
-- (IBAction)info:(id)sender;
+- (IBAction)showGraphWindow:(id)sender;
 - (IBAction)preferences:(id)sender;
 
 @end

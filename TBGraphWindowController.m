@@ -36,8 +36,10 @@
 
 #pragma mark -
 #pragma mark ui
-- (void)flip:(id)sender fromWindow:(NSWindow *)aWindow {
+- (void)flip:(id)sender fromWindow:(NSWindow *)aWindow animate:(BOOL)animate {
+	
 	[self _refreshView:self.graphView];
+	
 	// shows graph view
 	if ([[self.window class] isNotEqualTo:[MAAttachedWindow class]]) {
 		MAAttachedWindow *window = [[[MAAttachedWindow alloc] initWithView:self.contentView 
@@ -55,15 +57,37 @@
 	else {
 		[(MAAttachedWindow *)self.window setPoint:[[NSApp delegate] statusItemPoint]];
 	}
-	[aWindow flipToWindow:self.window];
+	
+	// animation
+	_animate = animate;
+	if (_animate) {
+		[aWindow flipToWindow:self.window];
+	}
+	else {
+		[aWindow orderOut:sender];
+		[self.window makeKeyAndOrderFront:sender];
+	}
 	self._flipFromWindow = aWindow;
+	
+	// graph view accepts mouse events
 	[self.window makeFirstResponder:self.graphView];
 }
 - (void)dismiss:(id)sender {
-	[self.window zoomOffToRect:[[NSApp delegate] statusItemFrame]];
+	if (_animate) {
+		[self.window zoomOffToRect:[[NSApp delegate] statusItemFrame]];
+	}
+	else {
+		[self.window orderOut:sender];
+	}
 }
 - (IBAction)flipBack:(id)sender {
-	[self.window flipBackToWindow:self._flipFromWindow];
+	if (_animate) {
+		[self.window flipBackToWindow:self._flipFromWindow];
+	}
+	else {
+		[self.window orderOut:sender];
+		[self._flipFromWindow makeKeyAndOrderFront:sender];
+	}
 }
 #pragma mark -
 #pragma mark protocol

@@ -18,13 +18,15 @@
 	
 @private
 	NSWindow	*_flipFromWindow;
+	
+	BOOL		_animate;
 }
 @property (assign) IBOutlet NSView		*contentView;
 @property (assign) IBOutlet TBGraphView *graphView;
 @property (assign) IBOutlet NSPanel		*draggedPanel;
 @property (assign) IBOutlet TBGraphView *draggedGraphView;
 
-- (void)flip:(id)sender fromWindow:(NSWindow *)aWindow;
+- (void)flip:(id)sender fromWindow:(NSWindow *)aWindow animate:(BOOL)animate;
 - (void)dismiss:(id)sender;
 - (IBAction)flipBack:(id)sender;
 

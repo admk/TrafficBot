@@ -103,7 +103,7 @@
 }
 #pragma mark -
 #pragma mark ui methods
-- (void)show:(id)sender {
+- (void)show:(id)sender animate:(BOOL)animate {
 	// shows status view
 	if ([[self.window class] isNotEqualTo:[MAAttachedWindow class]]) {
 		SWView *swView = [[[SWView alloc] initWithFrame:self.contentView.frame] autorelease];
@@ -128,17 +128,32 @@
 		[window setAlphaValue:1];
 	}
 	[(MAAttachedWindow *)self.window setPoint:[[NSApp delegate] statusItemPoint]];
-	[self.window zoomOnFromRect:[[NSApp delegate] statusItemFrame]];
+	// animation
+	_animate = animate;
+	if (_animate) {
+		[self.window zoomOnFromRect:[[NSApp delegate] statusItemFrame]];
+	}
+	else {
+		[self.window makeKeyAndOrderFront:sender];
+	}
+	// update display
 	[self _refreshStatusView];
 }
 - (void)dismiss:(id)sender {
-	[self.window zoomOffToRect:[[NSApp delegate] statusItemFrame]];
+	// dismiss status window
+	if (_animate) {
+		[self.window zoomOffToRect:[[NSApp delegate] statusItemFrame]];
+	}
+	else {
+		[self.window orderOut:sender];
+	}
+	// gauge animation
 	if (self.shouldAnimateGauge) {
 		// reset gauge reading to animate
 		[gaugeView setPercentage:0 animated:NO];
 	}
 }
-- (IBAction)info:(id)sender {
+- (IBAction)showGraphWindow:(id)sender {
 	[[NSApp delegate] showGraphWindow:sender];
 }
 - (IBAction)preferences:(id)sender {

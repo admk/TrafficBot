@@ -111,7 +111,7 @@
 						 withKeyPath:[@"values." stringByAppendingString:Property(shouldAnimateGauge)]
 							 options:nil];
 	}
-	[statusWindowController show:sender];
+	[statusWindowController show:sender animate:BOOLDefaults(shouldAnimateWindowTransitions)];
 }
 - (void)dismissStatusWindow:(id)sender {
 	[statusWindowController dismiss:sender];
@@ -121,7 +121,7 @@
 	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 	if (!graphWindowController)
 		graphWindowController = [[TBGraphWindowController alloc] initWithWindowNibName:@"TBGraphWindow"];
-	[graphWindowController flip:sender fromWindow:statusWindowController.window];
+	[graphWindowController flip:sender fromWindow:statusWindowController.window animate:BOOLDefaults(shouldAnimateWindowTransitions)];
 }
 - (void)dismissGraphWindow:(id)sender {
 	[graphWindowController dismiss:sender];
