@@ -330,6 +330,7 @@ static AKTrafficMonitorService *sharedService = nil;
 	}
 	
 	// no negative total values
+	ZAssert(_totalRec.kin >= 0 && _totalRec.kout >= 0, @"_totalRec values should be greater than zero.");
 	if (_totalRec.kin < 0) _totalRec.kin = 0;
 	if (_totalRec.kout < 0) _totalRec.kout = 0;
 	
