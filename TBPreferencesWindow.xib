@@ -11,10 +11,10 @@
 			<string key="NS.object.0">804</string>
 		</object>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
-			<integer value="1"/>
-			<integer value="60"/>
 			<integer value="478"/>
 			<integer value="59"/>
+			<integer value="2"/>
+			<integer value="60"/>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -125,7 +125,7 @@
 							<nil key="NSToolbarItemView"/>
 							<object class="NSCustomResource" key="NSToolbarItemImage">
 								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">Advanced</string>
+								<string key="NSResourceName">NSAdvanced</string>
 							</object>
 							<nil key="NSToolbarItemTarget"/>
 							<nil key="NSToolbarItemAction"/>
@@ -165,7 +165,7 @@
 				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
 			</object>
 			<object class="NSCustomView" id="112118614">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSButton" id="185169719">
@@ -173,7 +173,6 @@
 						<int key="NSvFlags">288</int>
 						<string key="NSFrame">{{299, 20}, {10, 18}}</string>
 						<reference key="NSSuperview" ref="112118614"/>
-						<reference key="NSWindow"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="893125052">
 							<int key="NSCellFlags">67239424</int>
@@ -202,7 +201,6 @@
 						<int key="NSvFlags">288</int>
 						<string key="NSFrame">{{172, 22}, {126, 18}}</string>
 						<reference key="NSSuperview" ref="112118614"/>
-						<reference key="NSWindow"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="816211406">
 							<int key="NSCellFlags">67239424</int>
@@ -227,13 +225,10 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 58}, {481, 148}}</string>
 						<reference key="NSSuperview" ref="112118614"/>
-						<reference key="NSWindow"/>
 						<string key="NSClassName">AKSummaryView</string>
 					</object>
 				</array>
 				<string key="NSFrameSize">{481, 206}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSCustomView" id="112506140">
@@ -432,7 +427,6 @@
 				</array>
 				<string key="NSFrameSize">{480, 158}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSNextKeyView"/>
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSCustomView" id="647462964">
@@ -1409,10 +1403,6 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSUserDefaultsController" id="910727094">
-				<array class="NSMutableArray" key="NSDeclaredKeys">
-					<string>shouldAnimateWindowTransitions</string>
-					<string>shouldAnimateGauge</string>
-				</array>
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
 			<object class="NSCustomObject" id="281120995">
@@ -3611,10 +3601,10 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 		<string key="IBDocument.LastKnownRelativeProjectPath">TrafficBot.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="Advanced">{32, 32}</string>
 			<string key="Caution">{16, 16}</string>
 			<string key="Hint">{32, 32}</string>
 			<string key="Monitor">{32, 32}</string>
+			<string key="NSAdvanced">{32, 32}</string>
 			<string key="NSFollowLinkFreestandingTemplate">{10, 10}</string>
 			<string key="NSMenuCheckmark">{9, 8}</string>
 			<string key="NSMenuMixedState">{7, 2}</string>

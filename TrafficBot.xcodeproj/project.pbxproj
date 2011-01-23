@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		1DDD58160DA1D0A300B32029 /* TBMainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* TBMainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* TrafficBotAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* TrafficBotAppDelegate.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -27,7 +27,6 @@
 		B16F108A127A09D000D13C0B /* APDrawingCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F1089127A09D000D13C0B /* APDrawingCategories.m */; };
 		B1F44962127E195F0020735E /* TBPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F44961127E195F0020735E /* TBPreferencesWindowController.m */; };
 		B1F449B0127E352B0020735E /* NSWindow+NoodleEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F449AF127E352B0020735E /* NSWindow+NoodleEffects.m */; };
-		B1F44B3C127F2E820020735E /* Not Monitoring Background.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B3B127F2E820020735E /* Not Monitoring Background.png */; };
 		B1F44B52127F30530020735E /* Set Up Button.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B50127F30530020735E /* Set Up Button.png */; };
 		B1F44B53127F30530020735E /* Set Up Button Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B51127F30530020735E /* Set Up Button Pressed.png */; };
 		DA049FC112B8534600ECA24C /* Gauge Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FBF12B8534600ECA24C /* Gauge Pressed.png */; };
@@ -47,6 +46,7 @@
 		DA66DAA512EB737C0065454C /* Caution.png in Resources */ = {isa = PBXBuildFile; fileRef = DA66DAA412EB737C0065454C /* Caution.png */; };
 		DA66DB2B12EBE0A60065454C /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = DA66DB2A12EBE0A60065454C /* Icon.icns */; };
 		DA66DB3812ECA0490065454C /* Hint.png in Resources */ = {isa = PBXBuildFile; fileRef = DA66DB3712ECA0490065454C /* Hint.png */; };
+		DA66DBFF12ECAEDB0065454C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DA66DBFE12ECAEDB0065454C /* Credits.rtf */; };
 		DA6D3BE112B959D0003D5F61 /* TBStatusWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */; };
 		DAB7E22612E2408E006ED7C8 /* TBSetupView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB7E22512E2408E006ED7C8 /* TBSetupView.m */; };
 		DAB7E48312E34B0B006ED7C8 /* TBFirstLaunchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB7E48212E34B0B006ED7C8 /* TBFirstLaunchWindowController.m */; };
@@ -56,9 +56,7 @@
 		DAB7EB8912E8FD8B006ED7C8 /* Graph Button Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EB8512E8FD8B006ED7C8 /* Graph Button Pressed.png */; };
 		DAB7EB8A12E8FD8B006ED7C8 /* Graph Button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EB8612E8FD8B006ED7C8 /* Graph Button.png */; };
 		DAB7EC2B12E904BA006ED7C8 /* GraphWindowBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EC2912E904BA006ED7C8 /* GraphWindowBackground.png */; };
-		DABFB45D129F21AB00AE41FF /* General.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45A129F21AB00AE41FF /* General.png */; };
 		DABFB45E129F21AB00AE41FF /* Monitor.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45B129F21AB00AE41FF /* Monitor.png */; };
-		DABFB461129F21FA00AE41FF /* Advanced.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB460129F21FA00AE41FF /* Advanced.png */; };
 		DABFB4B0129F2CF100AE41FF /* TBDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = DABFB4AF129F2CF100AE41FF /* TBDefaults.plist */; };
 		DABFB4D712A0421A00AE41FF /* NSDate+AKMidnight.m in Sources */ = {isa = PBXBuildFile; fileRef = DABFB4D612A0421A00AE41FF /* NSDate+AKMidnight.m */; };
 /* End PBXBuildFile section */
@@ -81,7 +79,7 @@
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
-		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/TBMainMenu.xib; sourceTree = "<group>"; };
 		256AC3D80F4B6AC300CF3369 /* TrafficBotAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrafficBotAppDelegate.h; sourceTree = "<group>"; };
 		256AC3D90F4B6AC300CF3369 /* TrafficBotAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TrafficBotAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		256AC3F00F4B6AF500CF3369 /* TrafficBot_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrafficBot_Prefix.pch; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 		B1F44961127E195F0020735E /* TBPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBPreferencesWindowController.m; sourceTree = "<group>"; };
 		B1F449AE127E352B0020735E /* NSWindow+NoodleEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSWindow+NoodleEffects.h"; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (NoodleEffects)/NSWindow+NoodleEffects.h"; sourceTree = "<absolute>"; };
 		B1F449AF127E352B0020735E /* NSWindow+NoodleEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSWindow+NoodleEffects.m"; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (NoodleEffects)/NSWindow+NoodleEffects.m"; sourceTree = "<absolute>"; };
-		B1F44B3B127F2E820020735E /* Not Monitoring Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Not Monitoring Background.png"; path = "Images/Not Monitoring Background.png"; sourceTree = "<group>"; };
 		B1F44B50127F30530020735E /* Set Up Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Up Button.png"; path = "Images/Set Up Button.png"; sourceTree = "<group>"; };
 		B1F44B51127F30530020735E /* Set Up Button Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Up Button Pressed.png"; path = "Images/Set Up Button Pressed.png"; sourceTree = "<group>"; };
 		DA049FBF12B8534600ECA24C /* Gauge Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gauge Pressed.png"; path = "Images/Gauge Pressed.png"; sourceTree = "<group>"; };
@@ -147,6 +144,7 @@
 		DA66DAA412EB737C0065454C /* Caution.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Caution.png; sourceTree = "<group>"; };
 		DA66DB2A12EBE0A60065454C /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Icon.icns; path = Images/Icon.icns; sourceTree = "<group>"; };
 		DA66DB3712ECA0490065454C /* Hint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Hint.png; path = Images/Hint.png; sourceTree = "<group>"; };
+		DA66DBFE12ECAEDB0065454C /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBStatusWindow.xib; sourceTree = "<group>"; };
 		DAB7E22412E2408E006ED7C8 /* TBSetupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBSetupView.h; sourceTree = "<group>"; };
 		DAB7E22512E2408E006ED7C8 /* TBSetupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBSetupView.m; sourceTree = "<group>"; };
@@ -157,9 +155,7 @@
 		DAB7EB8512E8FD8B006ED7C8 /* Graph Button Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Graph Button Pressed.png"; path = "Images/Graph Button Pressed.png"; sourceTree = "<group>"; };
 		DAB7EB8612E8FD8B006ED7C8 /* Graph Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Graph Button.png"; path = "Images/Graph Button.png"; sourceTree = "<group>"; };
 		DAB7EC2912E904BA006ED7C8 /* GraphWindowBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GraphWindowBackground.png; path = Images/GraphWindowBackground.png; sourceTree = "<group>"; };
-		DABFB45A129F21AB00AE41FF /* General.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = General.png; path = Images/General.png; sourceTree = "<group>"; };
 		DABFB45B129F21AB00AE41FF /* Monitor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Monitor.png; path = Images/Monitor.png; sourceTree = "<group>"; };
-		DABFB460129F21FA00AE41FF /* Advanced.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Advanced.png; path = Images/Advanced.png; sourceTree = "<group>"; };
 		DABFB4AF129F2CF100AE41FF /* TBDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = TBDefaults.plist; sourceTree = "<group>"; };
 		DABFB4D512A0421A00AE41FF /* NSDate+AKMidnight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+AKMidnight.h"; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/NSDate (AKMidnight)/NSDate+AKMidnight.h"; sourceTree = "<group>"; };
 		DABFB4D612A0421A00AE41FF /* NSDate+AKMidnight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+AKMidnight.m"; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/NSDate (AKMidnight)/NSDate+AKMidnight.m"; sourceTree = "<group>"; };
@@ -253,6 +249,7 @@
 				DABFB4AF129F2CF100AE41FF /* TBDefaults.plist */,
 				B16F0C3F1278705600D13C0B /* Images */,
 				8D1107310486CEB800E47090 /* TrafficBot-Info.plist */,
+				DA66DBFE12ECAEDB0065454C /* Credits.rtf */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				DAB7E48412E34B1E006ED7C8 /* Nibs */,
 			);
@@ -271,10 +268,8 @@
 		B1063270127FAABF0041B919 /* Preferences Window */ = {
 			isa = PBXGroup;
 			children = (
-				DA66DB3712ECA0490065454C /* Hint.png */,
 				DA66DAA412EB737C0065454C /* Caution.png */,
-				DABFB460129F21FA00AE41FF /* Advanced.png */,
-				DABFB45A129F21AB00AE41FF /* General.png */,
+				DA66DB3712ECA0490065454C /* Hint.png */,
 				DABFB45B129F21AB00AE41FF /* Monitor.png */,
 			);
 			name = "Preferences Window";
@@ -346,11 +341,10 @@
 			isa = PBXGroup;
 			children = (
 				DA4BE81312AD7DC00070618E /* Gauge View */,
-				B1F44B50127F30530020735E /* Set Up Button.png */,
 				B1F44B51127F30530020735E /* Set Up Button Pressed.png */,
-				B1F44B3B127F2E820020735E /* Not Monitoring Background.png */,
-				B16F0F141278FBAA00D13C0B /* Cog.png */,
+				B1F44B50127F30530020735E /* Set Up Button.png */,
 				B16F0F281278FD0F00D13C0B /* Dark Cog.png */,
+				B16F0F141278FBAA00D13C0B /* Cog.png */,
 				DAB7EB8512E8FD8B006ED7C8 /* Graph Button Pressed.png */,
 				DAB7EB8612E8FD8B006ED7C8 /* Graph Button.png */,
 				DA049FBF12B8534600ECA24C /* Gauge Pressed.png */,
@@ -509,7 +503,7 @@
 		DAB7E48412E34B1E006ED7C8 /* Nibs */ = {
 			isa = PBXGroup;
 			children = (
-				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
+				1DDD58140DA1D0A300B32029 /* TBMainMenu.xib */,
 				DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */,
 				DA198D5412B6B41A00D64DD7 /* TBGraphWindow.xib */,
 				B16F068B1275E53C00D13C0B /* TBPreferencesWindow.xib */,
@@ -597,18 +591,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
-				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
+				1DDD58160DA1D0A300B32029 /* TBMainMenu.xib in Resources */,
 				B16F068C1275E53C00D13C0B /* TBPreferencesWindow.xib in Resources */,
 				B16F0C421278708300D13C0B /* Gauge Pointer.png in Resources */,
 				B16F0C431278708300D13C0B /* Gauge Face.png in Resources */,
 				B16F0F151278FBAA00D13C0B /* Cog.png in Resources */,
 				B16F0F291278FD0F00D13C0B /* Dark Cog.png in Resources */,
-				B1F44B3C127F2E820020735E /* Not Monitoring Background.png in Resources */,
 				B1F44B52127F30530020735E /* Set Up Button.png in Resources */,
 				B1F44B53127F30530020735E /* Set Up Button Pressed.png in Resources */,
-				DABFB45D129F21AB00AE41FF /* General.png in Resources */,
 				DABFB45E129F21AB00AE41FF /* Monitor.png in Resources */,
-				DABFB461129F21FA00AE41FF /* Advanced.png in Resources */,
 				DABFB4B0129F2CF100AE41FF /* TBDefaults.plist in Resources */,
 				DA198D5512B6B41A00D64DD7 /* TBGraphWindow.xib in Resources */,
 				DA049FC112B8534600ECA24C /* Gauge Pressed.png in Resources */,
@@ -621,6 +612,7 @@
 				DA66DAA512EB737C0065454C /* Caution.png in Resources */,
 				DA66DB2B12EBE0A60065454C /* Icon.icns in Resources */,
 				DA66DB3812ECA0490065454C /* Hint.png in Resources */,
+				DA66DBFF12ECAEDB0065454C /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,12 +660,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		1DDD58140DA1D0A300B32029 /* MainMenu.xib */ = {
+		1DDD58140DA1D0A300B32029 /* TBMainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1DDD58150DA1D0A300B32029 /* English */,
 			);
-			name = MainMenu.xib;
+			name = TBMainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
