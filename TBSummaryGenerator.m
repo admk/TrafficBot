@@ -98,18 +98,18 @@
 			NSString *unitString = nil;
 			switch (self.fixedPeriodInterval)
 			{
-				case 3600:		unitString = NSLocalizedString(@"next hour", @"next hour");		break;
-				case 86400:		unitString = NSLocalizedString(@"tomorrow", @"tomorrow");		break;
-				case 2592000:	unitString = NSLocalizedString(@"next month", @"next month");	break;
+				case 3600:		unitString = NSLocalizedString(@"the next hour", @"next hour");		break;
+				case 86400:		unitString = NSLocalizedString(@"tomorrow", @"tomorrow");			break;
+				case 2592000:	unitString = NSLocalizedString(@"the next month", @"next month");	break;
 				default:		unitString = @"next Mars calendar year"; break;
 			}
 			return [NSString stringWithFormat:
 					NSLocalizedString(@"I'm monitoring your total usage\n"
-									  @"until %@.", @"fixed"), unitString];
+									  @"from now to %@.", @"fixed"), unitString];
 		}
 		case tms_indefinite_mode:
 			return NSLocalizedString(@"I'm monitoring indefinitely\n"
-												 @"until manual reset.", @"indefinite");
+									 @"until manual reset.", @"indefinite");
 			
 		default:
 			return @"Oops. Something went wrong.";		

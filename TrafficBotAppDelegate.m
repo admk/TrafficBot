@@ -180,7 +180,7 @@
 						   notificationName:name
 								   iconData:nil
 								   priority:0
-								   isSticky:NO
+								   isSticky:BOOLDefaults(notificationIsSticky)
 							   clickContext:name];
 }
 
