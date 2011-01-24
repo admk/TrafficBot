@@ -60,6 +60,7 @@
 	
 	// animation
 	_animate = animate;
+	self._flipFromWindow = aWindow;
 	if (_animate) {
 		[aWindow flipToWindow:self.window];
 	}
@@ -75,9 +76,6 @@
 		[self.contentView addSubview:self.graphView];
 	}
 	[self _refreshView];
-
-	[aWindow flipToWindow:self.window];
-	self._flipFromWindow = aWindow;
 	
 	// graph view accepts mouse events
 	[self.window makeFirstResponder:self.graphView];
