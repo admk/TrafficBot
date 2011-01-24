@@ -49,7 +49,9 @@ typedef struct {
 	tms_rec_t		_lastRec;
 	tms_rec_t		_stashedRec;
 	tms_rec_t		_nowRec;
+	tms_rec_t		_prevNowRec;
 	tms_rec_t		_totalRec;
+	tms_rec_t		_speedRec;
 	TMS_D_T			_lastTotal;
 }
 
@@ -81,6 +83,9 @@ typedef struct {
 @property (readonly) NSNumber *totalIn;
 @property (readonly) NSNumber *totalOut;
 @property (readonly) NSNumber *total;
+@property (readonly) NSNumber *inSpeed;
+@property (readonly) NSNumber *outSpeed;
+@property (readonly) NSNumber *totalSpeed;
 
 + (AKTrafficMonitorService *)sharedService;
 

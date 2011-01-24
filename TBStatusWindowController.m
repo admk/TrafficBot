@@ -38,7 +38,7 @@
 @interface TBStatusWindowController (Private)
 - (void)_refreshStatusView;
 - (void)_didReceiveNotificationFromTrafficMonitorService:(NSNotification *)notification;
-- (void)_setUsageWithTotalIn:(NSNumber *)totalIn totalOut:(NSNumber *)totalOut;
+- (void)_setUsageDescription;
 @end
 
 #pragma mark -
@@ -173,7 +173,7 @@
 	
 	NSNumber *totalIn = [[AKTrafficMonitorService sharedService] totalIn];
 	NSNumber *totalOut = [[AKTrafficMonitorService sharedService] totalOut];
-	[self _setUsageWithTotalIn:totalIn totalOut:totalOut];
+	[self _setUsageDescription];
 	
 	// update display
 	if ([self.limit intValue] == 0) {
@@ -196,14 +196,18 @@
 	else
 		[graphButton setHidden:YES];
 }
-- (void)_setUsageWithTotalIn:(NSNumber *)totalIn totalOut:(NSNumber *)totalOut {
-	TMS_D_T ullTotal = TMSDTFromNumber(totalIn) + TMSDTFromNumber(totalOut);
-	NSNumber *total = NumberFromTMSDT(ullTotal);
+- (void)_setUsageDescription {
+	
+	AKTrafficMonitorService *tms = [AKTrafficMonitorService sharedService];
+	
 	[usageTextField setTitleWithMnemonic:
-	 [NSString stringWithFormat:@"In: %@\nOut: %@\nTotal: %@",
-	  [AKBytesFormatter convertBytesWithNumber:totalIn floatingDecimalsWithLength:4],
-	  [AKBytesFormatter convertBytesWithNumber:totalOut floatingDecimalsWithLength:4],
-	  [AKBytesFormatter convertBytesWithNumber:total floatingDecimalsWithLength:4]]];
+	 [NSString stringWithFormat:NSLocalizedString(@"In: %@ (%@/s)\nOut: %@ (%@/s)\nTotal: %@ (%@/s)", @"stats"),
+	  [AKBytesFormatter convertBytesWithNumber:[tms totalIn] floatingDecimalsWithLength:4],
+	  [AKBytesFormatter convertBytesWithNumber:[tms inSpeed] decimals:NO],
+	  [AKBytesFormatter convertBytesWithNumber:[tms totalOut] floatingDecimalsWithLength:4],
+	  [AKBytesFormatter convertBytesWithNumber:[tms outSpeed] decimals:NO],
+	  [AKBytesFormatter convertBytesWithNumber:[tms total] floatingDecimalsWithLength:4],
+	  [AKBytesFormatter convertBytesWithNumber:[tms totalSpeed] decimals:NO]]];
 }
 #pragma mark monitor service notifications
 - (void)_didReceiveNotificationFromTrafficMonitorService:(NSNotification *)notification {

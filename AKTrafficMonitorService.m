@@ -58,7 +58,9 @@ static AKTrafficMonitorService *sharedService = nil;
 	_lastRec = TMSZeroRec;
 	_stashedRec = TMSZeroRec;
 	_nowRec = TMSZeroRec;
+	_prevNowRec = TMSZeroRec;
 	_totalRec = TMSZeroRec;
+	_speedRec = TMSZeroRec;
 	
 	_lastTotal = 0;
 	_thresholds = nil;
@@ -120,6 +122,7 @@ static AKTrafficMonitorService *sharedService = nil;
 	_rollingPeriodInterval = interval;
 	[self _reinitialiseIfMonitoring];
 }
+
 - (NSNumber *)totalIn {
 	return NumberFromTMSDT(_totalRec.kin + _stashedRec.kin);
 }
@@ -128,6 +131,15 @@ static AKTrafficMonitorService *sharedService = nil;
 }
 - (NSNumber *)total {
 	return NumberFromTMSDT(TMSTotal(_totalRec) + TMSTotal(_stashedRec));
+}
+- (NSNumber *)inSpeed {
+	return NumberFromTMSDT(_speedRec.kin);
+}
+- (NSNumber *)outSpeed {
+	return NumberFromTMSDT(_speedRec.kout);
+}
+- (NSNumber *)totalSpeed {
+	return NumberFromTMSDT(TMSTotal(_speedRec));
 }
 
 #pragma mark -
@@ -146,6 +158,7 @@ static AKTrafficMonitorService *sharedService = nil;
 
 #pragma mark -
 #pragma mark monitoring
+#define TMS_MONITOR_INTERVAL 1
 - (void)_startMonitoring {
 
 	// empty checking
@@ -156,6 +169,7 @@ static AKTrafficMonitorService *sharedService = nil;
 	NSDictionary *initReading = [self _readDataUsage];
 	_lastRec.kin = TMSDTFromNumber([initReading objectForKey:@"in"]);
 	_lastRec.kout = TMSDTFromNumber([initReading objectForKey:@"out"]);
+	_prevNowRec = _nowRec = _lastRec;
 	
 	// initialise results
 	_totalRec = TMSZeroRec;
@@ -211,7 +225,7 @@ static AKTrafficMonitorService *sharedService = nil;
 	
 	// timer
 	if (!_monitorTimer)
-		_monitorTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(_updateTraffic:) userInfo:nil repeats:YES];
+		_monitorTimer = [NSTimer scheduledTimerWithTimeInterval:TMS_MONITOR_INTERVAL target:self selector:@selector(_updateTraffic:) userInfo:nil repeats:YES];
 	if (!_logTimer)
 		_logTimer = [NSTimer scheduledTimerWithTimeInterval:[self _timerInterval] target:self selector:@selector(_logTrafficData:) userInfo:nil repeats:YES];
 	[_monitorTimer fire];
@@ -252,10 +266,14 @@ static AKTrafficMonitorService *sharedService = nil;
 #pragma mark traffic data
 - (void)_updateTraffic:(id)info {
 	
+	_prevNowRec = _nowRec;
 	NSDictionary *reading = [self _readDataUsage];
 	_nowRec.kin = TMSDTFromNumber([reading objectForKey:@"in"]);
 	_nowRec.kout = TMSDTFromNumber([reading objectForKey:@"out"]);
 
+	_speedRec.kin = (_nowRec.kin - _prevNowRec.kin) / TMS_MONITOR_INTERVAL;
+	_speedRec.kout = (_nowRec.kout - _prevNowRec.kout) / TMS_MONITOR_INTERVAL;
+	
 	_stashedRec.kin = _nowRec.kin - _lastRec.kin;
 	_stashedRec.kout = _nowRec.kout - _lastRec.kout;
 	
