@@ -102,9 +102,9 @@
 #pragma mark -
 #pragma mark protocol
 - (void)showDraggedWindowWithFrame:(NSRect)frame {
+	[draggedPanel setFrame:frame display:YES];
 	draggedPanel.contentView = self.graphView;
 	[draggedPanel makeFirstResponder:self.graphView];
-	[draggedPanel setFrame:frame display:NO];
 	[draggedPanel makeKeyAndOrderFront:self];
 	[[NSApp delegate] dismissGraphWindow:self];
 	[self _refreshView];
@@ -125,7 +125,7 @@
 #pragma mark monitor service notifications
 - (void)_didReceiveNotificationFromTrafficMonitorService:(NSNotification *)notification {
 	if ([[notification name] isEqual:AKTrafficMonitorStatisticsDidUpdateNotification]) {
-		if ([self.window isVisible] || [self.draggedPanel isVisible]) {
+		if ([self.graphView.window isVisible]) {
 			[self _refreshView];
 		}
 	}

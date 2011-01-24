@@ -119,7 +119,9 @@
 			if ([self.window respondsToSelector:@selector(setHasArrow:)]) {
 				[(MAAttachedWindow *)self.window setHasArrow:YES];
 			}
-			[delegate showDraggedWindowWithFrame:self.window.frame];
+			if ([delegate respondsToSelector:@selector(showDraggedWindowWithFrame:)]) {
+				[delegate showDraggedWindowWithFrame:self.window.frame];
+			}
 			return;
 		}
 		
@@ -337,7 +339,9 @@
 	// points
 	float xPos = [self _horizontalPositionForDate:date];
 	NSPoint viewPos = { xPos, self.bounds.size.height - VIEW_INSET };
-	NSPoint windowPos = [self convertPoint:viewPos toView:self.window.contentView];
+	NSPoint windowPos = viewPos;
+	windowPos.x += self.window.frame.origin.x;
+	windowPos.y += self.window.frame.origin.y;
 	// indicator
 	NSRect indicatorRect = NSMakeRect( viewPos.x - 10, VIEW_INSET, 20, self.bounds.size.height - VIEW_INSET);
 	if (!_indicatorView) {
@@ -366,7 +370,7 @@
 	NSString *detailString = [NSString stringWithFormat:@"In: %@/s, Out: %@/s", inString, outString];
 	// window
 	if (!descriptionWindow) {
-		descriptionWindow = [[GVDescriptionWindow alloc] initWithPoint:windowPos inWindow:self.window];
+		descriptionWindow = [[GVDescriptionWindow alloc] initWithPoint:windowPos inWindow:nil];
 	}
 	[descriptionWindow setPoint:windowPos];
 	[descriptionWindow updateViewWithDate:date detail:detailString];
