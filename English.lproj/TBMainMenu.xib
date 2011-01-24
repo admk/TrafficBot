@@ -60,6 +60,14 @@
 							<string key="NSResourceName">NSMenuMixedState</string>
 						</object>
 					</object>
+					<object class="NSMenuItem" id="958119634">
+						<reference key="NSMenu" ref="1058980350"/>
+						<string key="NSTitle">About TrafficBot</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="920781352"/>
+						<reference key="NSMixedImage" ref="364785349"/>
+					</object>
 					<object class="NSMenuItem" id="467394798">
 						<reference key="NSMenu" ref="1058980350"/>
 						<bool key="NSIsDisabled">YES</bool>
@@ -79,19 +87,10 @@
 						<reference key="NSOnImage" ref="920781352"/>
 						<reference key="NSMixedImage" ref="364785349"/>
 					</object>
-					<object class="NSMenuItem" id="958119634">
-						<reference key="NSMenu" ref="1058980350"/>
-						<string key="NSTitle">About TrafficBot</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="920781352"/>
-						<reference key="NSMixedImage" ref="364785349"/>
-					</object>
 					<object class="NSMenuItem" id="59968815">
 						<reference key="NSMenu" ref="1058980350"/>
-						<string key="NSTitle">Quit TrafficBot</string>
-						<string key="NSKeyEquiv">q</string>
-						<int key="NSKeyEquivModMask">1048576</int>
+						<string key="NSTitle">Quit</string>
+						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="920781352"/>
 						<reference key="NSMixedImage" ref="364785349"/>
@@ -193,9 +192,9 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="409677087"/>
 							<reference ref="467394798"/>
-							<reference ref="958119634"/>
 							<reference ref="59968815"/>
 							<reference ref="754829804"/>
+							<reference ref="958119634"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -248,7 +247,7 @@
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{853, 650}, {237, 93}}</string>
+					<string>{{572, 602}, {237, 93}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -274,7 +273,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">598</int>
+			<int key="maxID">621</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
