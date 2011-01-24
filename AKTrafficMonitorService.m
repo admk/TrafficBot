@@ -214,8 +214,8 @@ static AKTrafficMonitorService *sharedService = nil;
 		_monitorTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(_updateTraffic:) userInfo:nil repeats:YES];
 	if (!_logTimer)
 		_logTimer = [NSTimer scheduledTimerWithTimeInterval:[self _timerInterval] target:self selector:@selector(_logTrafficData:) userInfo:nil repeats:YES];
-	[_logTimer fire];
 	[_monitorTimer fire];
+	[_logTimer fire];
 }
 - (void)_stopMonitoring {
 	[_logTimer invalidate], _logTimer = nil;
