@@ -48,8 +48,7 @@
 					<object class="NSMenuItem" id="409677087">
 						<reference key="NSMenu" ref="1058980350"/>
 						<string key="NSTitle">Preferences...</string>
-						<string key="NSKeyEquiv">,</string>
-						<int key="NSKeyEquivModMask">1048576</int>
+						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<object class="NSCustomResource" key="NSOnImage" id="920781352">
 							<string key="NSClassName">NSImage</string>
@@ -247,7 +246,7 @@
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{572, 602}, {237, 93}}</string>
+					<string>{{572, 602}, {213, 93}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
