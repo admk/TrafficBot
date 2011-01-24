@@ -28,7 +28,7 @@
 @property (retain, nonatomic) NSDate *_lastDate;
 @property (retain, nonatomic) NSDate *_mouseDate;
 
-- (NSBezierPath *)_bezierPathWithDict:(NSDictionary *)dict;
+- (NSArray *)_bezierPathsWithDict:(NSDictionary *)dict;
 - (NSImage *)_imageRepresenation;
 
 - (void)_showDescriptionForDate:(NSDate *)date;
@@ -216,16 +216,27 @@
 #pragma mark -
 #pragma mark private
 #pragma mark bezier path
-- (NSBezierPath *)_bezierPathWithDict:(NSDictionary *)dict {
-	NSBezierPath *path = [NSBezierPath bezierPath];
-	[path moveToPoint:[self _pointForDate:[self._sortedDates objectAtIndex:0] withDictionary:dict]];
+#define GV_BREAK_INTERVAL 3600
+- (NSArray *)_bezierPathsWithDict:(NSDictionary *)dict {
+	NSMutableArray *pathArray = [NSMutableArray array];
+	NSBezierPath *path = nil;
+	NSDate *prevDate = [NSDate distantPast];
 	for (NSDate *date in self._sortedDates) {
 		AKScopeAutoreleased();
-		[path lineToPoint:[self _pointForDate:date withDictionary:dict]];
+		if ([date timeIntervalSinceDate:prevDate] <= GV_BREAK_INTERVAL) {
+			[path lineToPoint:[self _pointForDate:date withDictionary:dict]];
+		}
+		else {
+			path =  [NSBezierPath bezierPath];
+			[pathArray addObject:path];
+			[path setLineWidth:2];
+			[path setLineJoinStyle:NSRoundLineJoinStyle];
+			[path moveToPoint:[self _pointForDate:date withDictionary:dict]];
+		}
+
+		prevDate = date;
 	}
-	[path setLineWidth:2];
-	[path setLineJoinStyle:NSRoundLineJoinStyle];
-	return path;
+	return pathArray;
 }
 
 #pragma mark drawing parts
@@ -324,10 +335,14 @@
 	}
 	else {
 		[self _drawDates];
+		
 		NSColor *inColor = [NSColor colorWithCalibratedRed:145.0/255 green:206.0/255 blue:230.0/255 alpha:.7];
-		[self _drawGraphWithPath:[self _bezierPathWithDict:self._inDiffDict] withColor:inColor];
+		for (NSBezierPath *path in [self _bezierPathsWithDict:self._inDiffDict])
+			[self _drawGraphWithPath:path withColor:inColor];
+		
 		NSColor *outColor = [NSColor colorWithCalibratedRed:1 green:172/255.0 blue:0 alpha:.7];
-		[self _drawGraphWithPath:[self _bezierPathWithDict:self._outDiffDict] withColor:outColor];
+		for (NSBezierPath *path in [self _bezierPathsWithDict:self._outDiffDict])
+			[self _drawGraphWithPath:path withColor:outColor];
 	}
 	[image unlockFocus];
 	return image;
