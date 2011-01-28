@@ -95,8 +95,8 @@
 		B16F06A3127619A400D13C0B /* TBStatusItemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBStatusItemController.m; sourceTree = "<group>"; };
 		B16F06C51276211D00D13C0B /* TBStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBStatusItemView.h; sourceTree = "<group>"; };
 		B16F06C61276211D00D13C0B /* TBStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBStatusItemView.m; sourceTree = "<group>"; };
-		B16F084812772C8200D13C0B /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MAAttachedWindow.h; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/Attached Window/MAAttachedWindow.h"; sourceTree = "<group>"; };
-		B16F084912772C8200D13C0B /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MAAttachedWindow.m; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/Attached Window/MAAttachedWindow.m"; sourceTree = "<group>"; };
+		B16F084812772C8200D13C0B /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
+		B16F084912772C8200D13C0B /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		B16F08A51277636900D13C0B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		B16F0C401278708300D13C0B /* Gauge Pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gauge Pointer.png"; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Private Utilites/Gauge View/Gauge Pointer.png"; sourceTree = "<absolute>"; };
 		B16F0C411278708300D13C0B /* Gauge Face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gauge Face.png"; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Private Utilites/Gauge View/Gauge Face.png"; sourceTree = "<absolute>"; };
@@ -129,16 +129,16 @@
 		DA198D5A12B6B47E00D64DD7 /* TBGraphWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGraphWindowController.h; sourceTree = "<group>"; };
 		DA198D5B12B6B47E00D64DD7 /* TBGraphWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGraphWindowController.m; sourceTree = "<group>"; };
 		DA35AC1312AC2AA6009C02D2 /* FScript.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FScript.framework; path = Library/Frameworks/FScript.framework; sourceTree = SDKROOT; };
-		DA4BE76812AC8CDF0070618E /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaunchAtLoginController.h; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/Launch At Login Controller/LaunchAtLoginController.h"; sourceTree = "<group>"; };
-		DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaunchAtLoginController.m; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/Launch At Login Controller/LaunchAtLoginController.m"; sourceTree = "<group>"; };
+		DA4BE76812AC8CDF0070618E /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
+		DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
 		DA4BE80012AD786B0070618E /* AKDebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKDebugMacros.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Macros/AKDebugMacros.h"; sourceTree = "<absolute>"; };
 		DA4BE83612AD85380070618E /* AKUKHelperMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKUKHelperMacros.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Macros/AKUKHelperMacros.h"; sourceTree = "<absolute>"; };
 		DA4BEBB912B0485B0070618E /* AKScopeReleased.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKScopeReleased.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Macros/AKScopeReleased.h"; sourceTree = "<absolute>"; };
-		DA4BF12112B2930C0070618E /* NSWindow+AKFlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSWindow+AKFlip.h"; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (AKFlip)/NSWindow+AKFlip.h"; sourceTree = "<group>"; };
-		DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSWindow+AKFlip.m"; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (AKFlip)/NSWindow+AKFlip.m"; sourceTree = "<group>"; };
+		DA4BF12112B2930C0070618E /* NSWindow+AKFlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+AKFlip.h"; sourceTree = "<group>"; };
+		DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+AKFlip.m"; sourceTree = "<group>"; };
 		DA4BF13A12B29EFE0070618E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		DA66D91D12EB511D0065454C /* AKSummaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKSummaryView.h; path = "../../Documents/Dropbox/Sorcery/Private Utilites/Summary View/AKSummaryView.h"; sourceTree = SOURCE_ROOT; };
-		DA66D91E12EB511D0065454C /* AKSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKSummaryView.m; path = "../../Documents/Dropbox/Sorcery/Private Utilites/Summary View/AKSummaryView.m"; sourceTree = SOURCE_ROOT; };
+		DA66D91D12EB511D0065454C /* AKSummaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKSummaryView.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Private Utilites/Summary View/AKSummaryView.h"; sourceTree = "<absolute>"; };
+		DA66D91E12EB511D0065454C /* AKSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKSummaryView.m; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Private Utilites/Summary View/AKSummaryView.m"; sourceTree = "<absolute>"; };
 		DA66D92612EB52030065454C /* TBSummaryGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBSummaryGenerator.h; sourceTree = "<group>"; };
 		DA66D92712EB52030065454C /* TBSummaryGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBSummaryGenerator.m; sourceTree = "<group>"; };
 		DA66DAA412EB737C0065454C /* Caution.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Caution.png; sourceTree = "<group>"; };
@@ -157,8 +157,8 @@
 		DAB7EC2912E904BA006ED7C8 /* GraphWindowBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GraphWindowBackground.png; path = Images/GraphWindowBackground.png; sourceTree = "<group>"; };
 		DABFB45B129F21AB00AE41FF /* Monitor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Monitor.png; path = Images/Monitor.png; sourceTree = "<group>"; };
 		DABFB4AF129F2CF100AE41FF /* TBDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = TBDefaults.plist; sourceTree = "<group>"; };
-		DABFB4D512A0421A00AE41FF /* NSDate+AKMidnight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+AKMidnight.h"; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/NSDate (AKMidnight)/NSDate+AKMidnight.h"; sourceTree = "<group>"; };
-		DABFB4D612A0421A00AE41FF /* NSDate+AKMidnight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+AKMidnight.m"; path = "../../Documents/Dropbox/Sorcery/Cocoa Utilities/NSDate (AKMidnight)/NSDate+AKMidnight.m"; sourceTree = "<group>"; };
+		DABFB4D512A0421A00AE41FF /* NSDate+AKMidnight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+AKMidnight.h"; sourceTree = "<group>"; };
+		DABFB4D612A0421A00AE41FF /* NSDate+AKMidnight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+AKMidnight.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,10 +402,10 @@
 		B1F44A5D127F031B0020735E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				DA4BE75E12AC8CAD0070618E /* Start at Login */,
+				DA4BE75E12AC8CAD0070618E /* Launch At Login Controller */,
 				DAFADFAC12AB24B50027CEE8 /* Attached Window */,
-				DABFB4D412A041E100AE41FF /* NSDate+AKMidnight */,
-				DA4BF12712B2962F0070618E /* NSWindow+AKFlip */,
+				DABFB4D412A041E100AE41FF /* NSDate (AKMidnight) */,
+				DA4BF12712B2962F0070618E /* NSWindow (AKFlip) */,
 				B1F449B5127E356F0020735E /* NSWindow+NoodleEffects */,
 				B16F1087127A09B600D13C0B /* Drawing */,
 			);
@@ -444,14 +444,15 @@
 			name = "Graph Window";
 			sourceTree = "<group>";
 		};
-		DA4BE75E12AC8CAD0070618E /* Start at Login */ = {
+		DA4BE75E12AC8CAD0070618E /* Launch At Login Controller */ = {
 			isa = PBXGroup;
 			children = (
 				DA4BE76812AC8CDF0070618E /* LaunchAtLoginController.h */,
 				DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */,
 			);
-			name = "Start at Login";
-			sourceTree = "<group>";
+			name = "Launch At Login Controller";
+			path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Launch At Login Controller";
+			sourceTree = "<absolute>";
 		};
 		DA4BE81312AD7DC00070618E /* Gauge View */ = {
 			isa = PBXGroup;
@@ -462,14 +463,15 @@
 			name = "Gauge View";
 			sourceTree = "<group>";
 		};
-		DA4BF12712B2962F0070618E /* NSWindow+AKFlip */ = {
+		DA4BF12712B2962F0070618E /* NSWindow (AKFlip) */ = {
 			isa = PBXGroup;
 			children = (
 				DA4BF12112B2930C0070618E /* NSWindow+AKFlip.h */,
 				DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */,
 			);
-			name = "NSWindow+AKFlip";
-			sourceTree = "<group>";
+			name = "NSWindow (AKFlip)";
+			path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (AKFlip)";
+			sourceTree = "<absolute>";
 		};
 		DA66D91B12EB51040065454C /* Summary View */ = {
 			isa = PBXGroup;
@@ -521,14 +523,15 @@
 			name = "Gauge Icon View";
 			sourceTree = "<group>";
 		};
-		DABFB4D412A041E100AE41FF /* NSDate+AKMidnight */ = {
+		DABFB4D412A041E100AE41FF /* NSDate (AKMidnight) */ = {
 			isa = PBXGroup;
 			children = (
 				DABFB4D512A0421A00AE41FF /* NSDate+AKMidnight.h */,
 				DABFB4D612A0421A00AE41FF /* NSDate+AKMidnight.m */,
 			);
-			name = "NSDate+AKMidnight";
-			sourceTree = "<group>";
+			name = "NSDate (AKMidnight)";
+			path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/NSDate (AKMidnight)";
+			sourceTree = "<absolute>";
 		};
 		DAFADFAC12AB24B50027CEE8 /* Attached Window */ = {
 			isa = PBXGroup;
@@ -537,7 +540,8 @@
 				B16F084912772C8200D13C0B /* MAAttachedWindow.m */,
 			);
 			name = "Attached Window";
-			sourceTree = "<group>";
+			path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Attached Window";
+			sourceTree = "<absolute>";
 		};
 /* End PBXGroup section */
 
