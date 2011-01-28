@@ -155,7 +155,7 @@
 						<object class="NSTextFieldCell" key="NSCell" id="341265570">
 							<int key="NSCellFlags">-2080244160</int>
 							<int key="NSCellFlags2">4200448</int>
-							<string key="NSContents">In: NaN Out: NaN Total: NaN</string>
+							<string key="NSContents">In: Out: Total:</string>
 							<object class="NSFont" key="NSSupport">
 								<string key="NSName">HelveticaNeue-Bold</string>
 								<double key="NSSize">11</double>
@@ -521,21 +521,21 @@
 					<string key="superclassName">NSView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../../Documents/Dropbox/Sorcery/Private Utilites/Gauge View/AKGaugeView.h</string>
+						<string key="minorKey">../../Dropbox/Sorcery/Private Utilites/Gauge View/AKGaugeView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">NSWindow</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../../Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (AKFlip)/NSWindow+AKFlip.h</string>
+						<string key="minorKey">../../Dropbox/Sorcery/Cocoa Utilities/NSWindow (AKFlip)/NSWindow+AKFlip.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">NSWindow</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../../Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (NoodleEffects)/NSWindow+NoodleEffects.h</string>
+						<string key="minorKey">../../Dropbox/Sorcery/Cocoa Utilities/NSWindow (NoodleEffects)/NSWindow+NoodleEffects.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
