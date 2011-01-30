@@ -10,6 +10,7 @@
 
 #define AKTrafficMonitorNeedsNewFixedPeriodRestartDateNotification @"AKTrafficMonitorNeedsNewFixedPeriodRestartDateNotification"
 #define AKTrafficMonitorStatisticsDidUpdateNotification @"AKTrafficMonitorStatisticsDidUpdateNotification"
+#define AKTrafficMonitorLogsDidUpdateNotification @"AKTrafficMonitorLogsDidUpdateNotification"
 #define AKTrafficMonitorThresholdDidExceedNotification @"AKTrafficMonitorThresholdDidExceedNotification"
 
 #define TMS_D_T		int64_t

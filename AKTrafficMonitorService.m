@@ -15,6 +15,7 @@
 #define ALL_NOTIFICATIONS	[NSArray arrayWithObjects: \
 							 AKTrafficMonitorNeedsNewFixedPeriodRestartDateNotification, \
 							 AKTrafficMonitorStatisticsDidUpdateNotification, \
+							 AKTrafficMonitorLogsDidUpdateNotification, \
 							 AKTrafficMonitorThresholdDidExceedNotification, nil]
 
 @interface AKTrafficMonitorService ()
@@ -356,7 +357,7 @@ static AKTrafficMonitorService *sharedService = nil;
 	_lastRec = _nowRec; // updates last readings
 	
 	// notify
-	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
+	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorLogsDidUpdateNotification object:nil userInfo:nil];
 	
 	// thresholds
 	if (self.thresholds) {

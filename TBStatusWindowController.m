@@ -212,7 +212,8 @@
 }
 #pragma mark monitor service notifications
 - (void)_didReceiveNotificationFromTrafficMonitorService:(NSNotification *)notification {
-	if ([[notification name] isEqual:AKTrafficMonitorStatisticsDidUpdateNotification]) {
+	if ([[notification name] isEqual:AKTrafficMonitorStatisticsDidUpdateNotification] ||
+		[[notification name] isEqual:AKTrafficMonitorLogsDidUpdateNotification]) {
 		// stats did update
 		[self _refreshStatusView];
 	}
