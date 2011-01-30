@@ -35,8 +35,12 @@
 	NSDate			*_firstDate;
 	NSDate			*_lastDate;
 	NSDate			*_mouseDate;
+	
+	BOOL			_logScale;
 }
 @property (assign) id<TBGraphViewDelegate> delegate;
 @property (retain, nonatomic) NSDictionary *dataDict;
+
+@property (assign) BOOL logScale;
 
 @end

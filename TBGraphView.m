@@ -47,6 +47,7 @@
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (!self) return nil;
+	_logScale = NO;
     return self;
 }
 - (void)dealloc {
@@ -213,6 +214,12 @@
 	[self setNeedsDisplay:YES];
 }
 
+- (void)setLogScale:(BOOL)inBool {
+	_logScale = inBool;
+	self._imageRep = [self _imageRepresenation];
+	[self setNeedsDisplay:YES];
+}
+
 #pragma mark -
 #pragma mark private
 #pragma mark bezier path
@@ -227,14 +234,27 @@
 			[path lineToPoint:[self _pointForDate:date withDictionary:dict]];
 		}
 		else {
-			path =  [NSBezierPath bezierPath];
+			// last path did end
+			if (path) {
+				NSPoint endPoint = [self _pointForDate:prevDate withDictionary:dict];
+				endPoint.y = VIEW_INSET;
+				[path lineToPoint:endPoint];
+			}
+			path = [NSBezierPath bezierPath];
 			[pathArray addObject:path];
 			[path setLineWidth:2];
 			[path setLineJoinStyle:NSRoundLineJoinStyle];
-			[path moveToPoint:[self _pointForDate:date withDictionary:dict]];
+			NSPoint startPoint = [self _pointForDate:date withDictionary:dict];
+			startPoint.y = VIEW_INSET;
+			[path moveToPoint:startPoint];
 		}
-
 		prevDate = date;
+	}
+	// final path did end
+	if (path) {
+		NSPoint endPoint = [self _pointForDate:prevDate withDictionary:dict];
+		endPoint.y = VIEW_INSET;
+		[path lineToPoint:endPoint];
 	}
 	return pathArray;
 }
@@ -322,9 +342,6 @@
 												alpha:.1*[color alphaComponent]];
 	NSGradient *gradient = [[[NSGradient alloc] initWithStartingColor:color1 endingColor:color2] autorelease];
 	// fill
-	NSPoint endPoint = [path currentPoint];
-	endPoint.y = VIEW_INSET;
-	[path lineToPoint:endPoint];
 	[gradient drawInBezierPath:path angle:-90.0];
 }
 - (NSImage *)_imageRepresenation {
@@ -408,12 +425,18 @@
 	};
 }
 - (float)_horizontalPositionForDate:(NSDate *)date {
-	float propotion = (float)[date timeIntervalSinceDate:self._firstDate] / _dateRange;
-	return propotion * ((float)self.bounds.size.width - VIEW_INSET * 2) + VIEW_INSET;
+	float proportion = (float)[date timeIntervalSinceDate:self._firstDate] / _dateRange;
+	return proportion * ((float)self.bounds.size.width - VIEW_INSET * 2) + VIEW_INSET;
 }
 - (float)_verticalPositionForDate:(NSDate *)date withDictionary:(NSDictionary *)dict {
-	float propotion = [[dict objectForKey:date] floatValue] / _yMax;
-	return propotion * ((float)self.bounds.size.height - VIEW_INSET * 3) + VIEW_INSET;
+	float proportion = 0;
+	if (self.logScale) {
+		proportion = log10f([[dict objectForKey:date] floatValue]+1) / log10f(_yMax);
+	}
+	else {
+		proportion = [[dict objectForKey:date] floatValue] / _yMax;
+	}
+	return proportion * ((float)self.bounds.size.height - VIEW_INSET * 3) + VIEW_INSET;
 }
 - (NSDate *)_nearestDateForPoint:(NSPoint)point {
 	float xProp = (float)(point.x / self.bounds.size.width);
@@ -430,5 +453,6 @@
 @synthesize _inDiffDict, _outDiffDict;
 @synthesize _imageRep;
 @synthesize _mouseDate, _sortedDates, _firstDate, _lastDate;
+@synthesize logScale = _logScale;
 @end
 
