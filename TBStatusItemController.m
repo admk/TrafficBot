@@ -93,7 +93,7 @@
 	// update display
 	NSNumber *totalIn = [[AKTrafficMonitorService sharedService] totalIn];
 	NSNumber *totalOut = [[AKTrafficMonitorService sharedService] totalOut];
-	if ([self.limit intValue] == 0) {
+	if ([self.limit unsignedLongLongValue] == 0) {
 		self.statusItemView.percentage = 0;
 	}
 	else {

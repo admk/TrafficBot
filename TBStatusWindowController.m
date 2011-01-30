@@ -176,7 +176,7 @@
 	[self _setUsageDescription];
 	
 	// update display
-	if ([self.limit intValue] == 0) {
+	if ([self.limit unsignedLongLongValue] == 0) {
 		[gaugeView setPercentage:0 animated:NO];
 	}
 	else {
