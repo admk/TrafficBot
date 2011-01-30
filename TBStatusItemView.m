@@ -88,6 +88,9 @@
     }
 }
 - (void)rightMouseDown:(NSEvent *)theEvent {
+	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+	[[NSApp delegate] dismissStatusWindow:nil];
+	[[NSApp delegate] dismissGraphWindow:nil];
 	[controller showMenu:self];
 }
 #pragma mark -
