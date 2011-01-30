@@ -322,7 +322,8 @@
 												alpha:.1*[color alphaComponent]];
 	NSGradient *gradient = [[[NSGradient alloc] initWithStartingColor:color1 endingColor:color2] autorelease];
 	// fill
-	NSPoint endPoint = {self.bounds.size.width - VIEW_INSET, VIEW_INSET};
+	NSPoint endPoint = [path currentPoint];
+	endPoint.y = VIEW_INSET;
 	[path lineToPoint:endPoint];
 	[gradient drawInBezierPath:path angle:-90.0];
 }
