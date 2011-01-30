@@ -20,6 +20,9 @@
 
 @interface TBPreferencesWindowController ()
 
+- (void)clearStatisticsAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo;
+- (void)resetAllPrefsAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo;
+
 - (void)_selectPane:(NSString *)pane;
 
 @end
@@ -117,10 +120,30 @@
 }
 
 - (IBAction)clearStatistics:(id)sender {
+	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+	[alert addButtonWithTitle:@"OK"];
+	[alert addButtonWithTitle:@"Cancel"];
+	[alert setMessageText:@"Clear statistics"];
+	[alert setInformativeText:@"Are you sure you want to clear all statistics? All recent logs will be lost."];
+	[alert setAlertStyle:NSInformationalAlertStyle];
+	[alert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:@selector(clearStatisticsAlertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+}
+- (void)clearStatisticsAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo {
+	if (returnCode != NSAlertFirstButtonReturn) return;
 	[[AKTrafficMonitorService sharedService] clearStatistics];
 }
 
 - (IBAction)resetAllPrefs:(id)sender{
+	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+	[alert addButtonWithTitle:@"OK"];
+	[alert addButtonWithTitle:@"Cancel"];
+	[alert setMessageText:@"Reset All Preferences"];
+	[alert setInformativeText:@"Are you sure you want to reset your preferences?"];
+	[alert setAlertStyle:NSInformationalAlertStyle];
+	[alert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:@selector(resetAllPrefsAlertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+}
+- (void)resetAllPrefsAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo {
+	if (returnCode != NSAlertFirstButtonReturn) return;
 	[[NSUserDefaults standardUserDefaults] removePersistentDomainForName:[[NSBundle mainBundle] bundleIdentifier]];
 }
 
