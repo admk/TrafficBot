@@ -184,9 +184,10 @@
 		float percentage = (float)ullTotal / [self.limit floatValue] * 100;
 		if (percentage > 100) {
 			[gaugeView setPercentage:100 animated:self.shouldAnimateGauge];
-			return;
 		}
-		[gaugeView setPercentage:percentage animated:self.shouldAnimateGauge];
+		else {
+			[gaugeView setPercentage:percentage animated:self.shouldAnimateGauge];
+		}
 	}
 	
 	// display graph button only when necessary
