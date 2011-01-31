@@ -23,6 +23,8 @@
 - (void)clearStatisticsAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 - (void)resetAllPrefsAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 
+- (void)didSelectPathItem:(id)sender;
+
 - (void)_selectPane:(NSString *)pane;
 
 @end
@@ -80,8 +82,7 @@
     [self.window setFrame:frame display:NO animate:NO];
 	[self.window center];	
 	
-	// path control
-	[pathControl setURL:[NSURL URLWithString:Defaults(runURL)]];
+	[pathControl setURL:[NSURL fileURLWithPath:Defaults(runURL)]];
 }
 - (void)windowDidLoad {
 	[self _selectPane:SUMMARY_PANE];
@@ -135,18 +136,36 @@
 	[openPanel setTitle:@"Choose an executable file"];
 	[openPanel setPrompt:@"Choose"];
 }
-- (NSDragOperation)pathControl:(NSPathControl *)pathControl validateDrop:(id <NSDraggingInfo>)info {
-	return NSDragOperationCopy;
+- (void)pathControl:(NSPathControl *)myPathControl willPopUpMenu:(NSMenu *)menu {
+	NSMenuItem *sleepMacItem = [[[NSMenuItem allocWithZone:[NSMenu menuZone]]
+								 initWithTitle:@"Sleep Mac"
+								 action:@selector(didSelectPathItem:)
+								 keyEquivalent:@""] autorelease];
+	[sleepMacItem setTarget:self];
+	[menu addItem:[NSMenuItem separatorItem]];
+	[menu addItem:sleepMacItem];
 }
--(BOOL)pathControl:(NSPathControl *)myPathControl acceptDrop:(id <NSDraggingInfo>)info {
+- (void)didSelectPathItem:(id)sender {
+	if ([[sender title] isEqual:@"Sleep Mac"]) {
+		NSString *urlString = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Sleep Mac.scpt"];
+		NSURL *url = [NSURL fileURLWithPath:urlString];
+		[pathControl setURL:url];
+		SetDefaults(urlString, runURL);
+	}
+}
+- (NSDragOperation)pathControl:(NSPathControl *)myPathControl validateDrop:(id <NSDraggingInfo>)info {
 	NSURL *url = [NSURL URLFromPasteboard:[info draggingPasteboard]];
 	BOOL isDirectory = NO;
 	BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:[url path] isDirectory:&isDirectory];
 	if (fileExists && (!isDirectory || [[url path] hasSuffix:@".app"])) {
-		[myPathControl setURL:url];
-		return YES;
+		return NSDragOperationCopy;
 	}
-	return NO;
+	return NSDragOperationNone;
+}
+-(BOOL)pathControl:(NSPathControl *)myPathControl acceptDrop:(id <NSDraggingInfo>)info {
+	NSURL *url = [NSURL URLFromPasteboard:[info draggingPasteboard]];
+	[myPathControl setURL:url];
+	return YES;
 }
 - (IBAction)runPathDidChange:(NSPathControl *)myPathControl {
 	SetDefaults([[myPathControl URL] path], runURL);

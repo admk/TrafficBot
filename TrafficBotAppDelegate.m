@@ -210,7 +210,15 @@
 			}
 			if (BOOLDefaults(shouldRun)) {
 				// run executable file
-				[[NSWorkspace sharedWorkspace] openFile:Defaults(runURL)];
+				NSString *urlString = Defaults(runURL);
+				NSString *ext = [urlString pathExtension];
+				if ([ext isEqual:@"scpt"]) {
+					NSAppleScript *script = [[[NSAppleScript alloc] initWithContentsOfURL:[NSURL fileURLWithPath:urlString] error:NULL] autorelease];
+					[script executeAndReturnError:NULL];
+				}
+				else {
+					[[NSWorkspace sharedWorkspace] openFile:urlString];
+				}
 			}
 		}
 		else if ([context isEqual:LIMIT_EXCEEDED]) {

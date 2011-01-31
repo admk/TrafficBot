@@ -47,6 +47,7 @@
 		DA66DB2B12EBE0A60065454C /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = DA66DB2A12EBE0A60065454C /* Icon.icns */; };
 		DA66DB3812ECA0490065454C /* Hint.png in Resources */ = {isa = PBXBuildFile; fileRef = DA66DB3712ECA0490065454C /* Hint.png */; };
 		DA66DBFF12ECAEDB0065454C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DA66DBFE12ECAEDB0065454C /* Credits.rtf */; };
+		DA6933EE12F7739C0052DEC6 /* Sleep Mac.scpt in Resources */ = {isa = PBXBuildFile; fileRef = DA69338412F76FC40052DEC6 /* Sleep Mac.scpt */; };
 		DA6D3BE112B959D0003D5F61 /* TBStatusWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */; };
 		DAB7E22612E2408E006ED7C8 /* TBSetupView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB7E22512E2408E006ED7C8 /* TBSetupView.m */; };
 		DAB7E48312E34B0B006ED7C8 /* TBFirstLaunchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB7E48212E34B0B006ED7C8 /* TBFirstLaunchWindowController.m */; };
@@ -145,6 +146,7 @@
 		DA66DB2A12EBE0A60065454C /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Icon.icns; path = Images/Icon.icns; sourceTree = "<group>"; };
 		DA66DB3712ECA0490065454C /* Hint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Hint.png; path = Images/Hint.png; sourceTree = "<group>"; };
 		DA66DBFE12ECAEDB0065454C /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		DA69338412F76FC40052DEC6 /* Sleep Mac.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.scpt; path = "Sleep Mac.scpt"; sourceTree = "<group>"; };
 		DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBStatusWindow.xib; sourceTree = "<group>"; };
 		DAB7E22412E2408E006ED7C8 /* TBSetupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBSetupView.h; sourceTree = "<group>"; };
 		DAB7E22512E2408E006ED7C8 /* TBSetupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBSetupView.m; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				DABFB4AF129F2CF100AE41FF /* TBDefaults.plist */,
+				DA69338412F76FC40052DEC6 /* Sleep Mac.scpt */,
 				B16F0C3F1278705600D13C0B /* Images */,
 				8D1107310486CEB800E47090 /* TrafficBot-Info.plist */,
 				DA66DBFE12ECAEDB0065454C /* Credits.rtf */,
@@ -594,6 +597,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA6933EE12F7739C0052DEC6 /* Sleep Mac.scpt in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* TBMainMenu.xib in Resources */,
 				B16F068C1275E53C00D13C0B /* TBPreferencesWindow.xib in Resources */,
