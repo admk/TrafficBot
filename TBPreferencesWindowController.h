@@ -10,7 +10,7 @@
 
 
 @class TBSummaryGenerator, AKSummaryView;
-@interface TBPreferencesWindowController : NSWindowController {
+@interface TBPreferencesWindowController : NSWindowController <NSPathControlDelegate> {
 	
 	IBOutlet NSToolbar *pToolbar;
 	IBOutlet NSView *statusView;
@@ -19,7 +19,9 @@
 	IBOutlet NSView *advancedView;
 	
 	IBOutlet AKSummaryView *summaryView;
-		
+
+	IBOutlet NSPathControl *pathControl;
+
 @private
 	__weak NSView *_preferencesView;
 	TBSummaryGenerator *_summaryGenerator;
@@ -34,5 +36,7 @@
 - (IBAction)updateRollingPeriodTimeInterval:(id)sender;
 - (IBAction)updateLimit:(id)sender;
 - (IBAction)updateThresholds:(id)sender;
+
+- (IBAction)runPathDidChange:(NSPathControl *)myPathControl;
 
 @end

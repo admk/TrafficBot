@@ -79,6 +79,9 @@
 	frame.size.height = 75; // offset for the toolbar
     [self.window setFrame:frame display:NO animate:NO];
 	[self.window center];	
+	
+	// path control
+	[pathControl setURL:[NSURL URLWithString:Defaults(runURL)]];
 }
 - (void)windowDidLoad {
 	[self _selectPane:SUMMARY_PANE];
@@ -119,6 +122,58 @@
 	[self.window.contentView addSubview:_preferencesView];
 }
 
+#pragma mark -
+#pragma mark monitoring
+
+#pragma mark path control
+- (void)pathControl:(NSPathControl *)myPathControl willDisplayOpenPanel:(NSOpenPanel *)openPanel {
+	// change the wind title and choose buttons titles
+	[openPanel setAllowsMultipleSelection:NO];
+	[openPanel setCanChooseDirectories:NO];
+	[openPanel setCanChooseFiles:YES];
+	[openPanel setResolvesAliases:YES];
+	[openPanel setTitle:@"Choose an executable file"];
+	[openPanel setPrompt:@"Choose"];
+}
+- (NSDragOperation)pathControl:(NSPathControl *)pathControl validateDrop:(id <NSDraggingInfo>)info {
+	return NSDragOperationCopy;
+}
+-(BOOL)pathControl:(NSPathControl *)myPathControl acceptDrop:(id <NSDraggingInfo>)info {
+	NSURL *url = [NSURL URLFromPasteboard:[info draggingPasteboard]];
+	BOOL isDirectory = NO;
+	BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:[url path] isDirectory:&isDirectory];
+	if (fileExists && (!isDirectory || [[url path] hasSuffix:@".app"])) {
+		[myPathControl setURL:url];
+		return YES;
+	}
+	return NO;
+}
+- (IBAction)runPathDidChange:(NSPathControl *)myPathControl {
+	SetDefaults([[myPathControl URL] path], runURL);
+}
+
+#pragma mark defaults update
+- (IBAction)updateRollingPeriodTimeInterval:(id)sender {
+	float factor = [Defaults(rollingPeriodFactor) floatValue];
+	float multiplier = [Defaults(rollingPeriodMultiplier) floatValue];
+	NSNumber *interval = [NSNumber numberWithFloat:(factor * multiplier)];
+	SetDefaults(interval, rollingPeriodInterval);
+}
+- (IBAction)updateLimit:(id)sender {
+	float factor = [Defaults(limitFactor) floatValue];
+	float multiplier = [Defaults(limitMultiplier) floatValue];
+	NSNumber *limit = [NSNumber numberWithFloat:(factor * multiplier)];
+	SetDefaults(limit, limit);
+	// limit affects threshold too
+	[self updateThresholds:sender];
+}
+- (IBAction)updateThresholds:(id)sender {
+	[[NSApp delegate] refreshThresholds];
+}
+
+#pragma mark -
+#pragma mark advanced
+
 - (IBAction)clearStatistics:(id)sender {
 	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	[alert addButtonWithTitle:@"OK"];
@@ -146,29 +201,6 @@
 	if (returnCode != NSAlertFirstButtonReturn) return;
 	[[NSUserDefaults standardUserDefaults] removePersistentDomainForName:[[NSBundle mainBundle] bundleIdentifier]];
 }
-
-#pragma mark defaults update
-
-- (IBAction)updateRollingPeriodTimeInterval:(id)sender {
-	float factor = [Defaults(rollingPeriodFactor) floatValue];
-	float multiplier = [Defaults(rollingPeriodMultiplier) floatValue];
-	NSNumber *interval = [NSNumber numberWithFloat:(factor * multiplier)];
-	SetDefaults(interval, rollingPeriodInterval);
-}
-
-- (IBAction)updateLimit:(id)sender {
-	float factor = [Defaults(limitFactor) floatValue];
-	float multiplier = [Defaults(limitMultiplier) floatValue];
-	NSNumber *limit = [NSNumber numberWithFloat:(factor * multiplier)];
-	SetDefaults(limit, limit);
-	// limit affects threshold too
-	[self updateThresholds:sender];
-}
-
-- (IBAction)updateThresholds:(id)sender {
-	[[NSApp delegate] refreshThresholds];
-}
-
 
 #pragma mark -
 #pragma mark private

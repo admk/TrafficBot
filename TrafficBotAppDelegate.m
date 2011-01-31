@@ -193,21 +193,35 @@
 		[self _newRestartDate];
 	}
 	if ([[notification name] isEqual:AKTrafficMonitorThresholdDidExceedNotification]) {
+		
 		DLog(@"received: %@", notification);
 		NSDictionary *infoDict = [notification userInfo];
 		NSString *context = [[infoDict allKeys] objectAtIndex:0];
+		
 		if ([context isEqual:LIMIT_REMINDER]) {
-			float criticalPercentage = [Defaults(criticalPercentage) floatValue];
-			NSString *title = [NSString stringWithFormat:
-							   NSLocalizedString(@"You have used %.0f%% of your limit.", LIMIT_REMINDER),
-							   criticalPercentage];
-			[self _sendGrowlNotificationWithTitle:title description:nil notificationName:LIMIT_REMINDER];
+			
+			if (BOOLDefaults(shouldNotify)) {
+				// send notification
+				float criticalPercentage = [Defaults(criticalPercentage) floatValue];
+				NSString *title = [NSString stringWithFormat:
+								   NSLocalizedString(@"You have used %.0f%% of your limit.", LIMIT_REMINDER),
+								   criticalPercentage];
+				[self _sendGrowlNotificationWithTitle:title description:nil notificationName:LIMIT_REMINDER];
+			}
+			if (BOOLDefaults(shouldRun)) {
+				// run executable file
+				[[NSWorkspace sharedWorkspace] openFile:Defaults(runURL)];
+			}
 		}
 		else if ([context isEqual:LIMIT_EXCEEDED]) {
-			NSString *title = NSLocalizedString(@"You have used all of your limit.", LIMIT_EXCEEDED);
-			[self _sendGrowlNotificationWithTitle:title description:nil notificationName:LIMIT_EXCEEDED];
-		}
-	}	
+			
+			if (BOOLDefaults(shouldNotify)) {
+				// send notification
+				NSString *title = NSLocalizedString(@"You have used all of your limit.", LIMIT_EXCEEDED);
+				[self _sendGrowlNotificationWithTitle:title description:nil notificationName:LIMIT_EXCEEDED];
+			}
+		}	
+	}
 }
 
 @end
