@@ -47,7 +47,7 @@
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (!self) return nil;
-	_logScale = NO;
+	_logScale = YES;
     return self;
 }
 - (void)dealloc {
@@ -242,7 +242,7 @@
 			}
 			path = [NSBezierPath bezierPath];
 			[pathArray addObject:path];
-			[path setLineWidth:2];
+			[path setLineWidth:1];
 			[path setLineJoinStyle:NSRoundLineJoinStyle];
 			NSPoint startPoint = [self _pointForDate:date withDictionary:dict];
 			startPoint.y = VIEW_INSET;
@@ -347,7 +347,9 @@
 - (NSImage *)_imageRepresenation {
 	NSImage *image = [[[NSImage alloc] initWithSize:self.bounds.size] autorelease];
 	[image lockFocus];
-	[self _drawGrid];
+	if (!self.logScale) {
+		[self _drawGrid];
+	}
 	if (HAS_NO_DATA) {
 		[self _drawNoData];
 	}

@@ -32,6 +32,10 @@
 	[draggedPanel setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];	
 	[self _refreshView];
 	[[AKTrafficMonitorService sharedService] addObserver:self selector:@selector(_didReceiveNotificationFromTrafficMonitorService:)];
+	[self.graphView bind:Property(logScale)
+				toObject:[NSUserDefaultsController sharedUserDefaultsController]
+			 withKeyPath:[@"values." stringByAppendingString:Property(logScale)]
+				 options:nil];
 }
 
 #pragma mark -
