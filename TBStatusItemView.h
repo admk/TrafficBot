@@ -27,9 +27,9 @@
 
 @property (assign) id<TBStatusItemViewDelegate> controller;
 
-@property (assign, getter=isMonitoring) BOOL monitoring;
-@property (assign) float percentage;
-@property (assign) float criticalPercentage;
+@property (nonatomic, assign, getter=isMonitoring) BOOL monitoring;
+@property (nonatomic, assign) float percentage;
+@property (nonatomic, assign) float criticalPercentage;
 
 - (id)initWithFrame:(NSRect)frame controller:(id<TBStatusItemViewDelegate>)inController;
 
