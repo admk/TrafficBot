@@ -91,7 +91,11 @@
 	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 	[[NSApp delegate] dismissStatusWindow:nil];
 	[[NSApp delegate] dismissGraphWindow:nil];
+
+	[self highlight:nil];
 	[controller showMenu:self];
+	// menu blocks ui refresh, it will dismiss asa menu is dismissed
+	[self performSelector:@selector(dismissHighlight:) withObject:nil afterDelay:0.0f];
 }
 #pragma mark -
 #pragma mark highlight

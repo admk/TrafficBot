@@ -76,7 +76,8 @@
 		[fsMenuItem release];
 	}
 #endif // DEBUG
-	[statusItem popUpStatusItemMenu:menu];
+	
+	[statusItem performSelector:@selector(popUpStatusItemMenu:) withObject:menu afterDelay:0.0f];
 }
 - (IBAction)about:(id)sender {
 	[[NSApplication sharedApplication] orderFrontStandardAboutPanel:sender];
