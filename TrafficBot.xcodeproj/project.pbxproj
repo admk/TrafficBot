@@ -32,6 +32,10 @@
 		DA049FC112B8534600ECA24C /* Gauge Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FBF12B8534600ECA24C /* Gauge Pressed.png */; };
 		DA049FC212B8534600ECA24C /* Gauge.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FC012B8534600ECA24C /* Gauge.png */; };
 		DA06937612BD9774008B1584 /* GVViewCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = DA06937512BD9774008B1584 /* GVViewCollection.m */; };
+		DA0B21FA1310325100F375B6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA0B21F91310325100F375B6 /* IOKit.framework */; };
+		DA0B21FE1310325B00F375B6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA0B21FD1310325B00F375B6 /* Security.framework */; };
+		DA0B22021310326700F375B6 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA0B22011310326700F375B6 /* libcrypto.dylib */; };
+		DA0B22051310328800F375B6 /* NPReceiptVerification.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0B22041310328800F375B6 /* NPReceiptVerification.m */; };
 		DA19893E12B459FD00D64DD7 /* TBGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19893B12B459FD00D64DD7 /* TBGraphView.m */; };
 		DA19893F12B459FD00D64DD7 /* GVDescriptionWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19893D12B459FD00D64DD7 /* GVDescriptionWindow.m */; };
 		DA19897C12B45BDA00D64DD7 /* AKBytesFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19897B12B45BDA00D64DD7 /* AKBytesFormatter.m */; };
@@ -120,6 +124,11 @@
 		DA049FC012B8534600ECA24C /* Gauge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Gauge.png; path = Images/Gauge.png; sourceTree = "<group>"; };
 		DA06937412BD9774008B1584 /* GVViewCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVViewCollection.h; sourceTree = "<group>"; };
 		DA06937512BD9774008B1584 /* GVViewCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVViewCollection.m; sourceTree = "<group>"; };
+		DA0B21F91310325100F375B6 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		DA0B21FD1310325B00F375B6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		DA0B22011310326700F375B6 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
+		DA0B22031310328800F375B6 /* NPReceiptVerification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPReceiptVerification.h; sourceTree = "<group>"; };
+		DA0B22041310328800F375B6 /* NPReceiptVerification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPReceiptVerification.m; sourceTree = "<group>"; };
 		DA19893A12B459FD00D64DD7 /* TBGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGraphView.h; sourceTree = "<group>"; };
 		DA19893B12B459FD00D64DD7 /* TBGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGraphView.m; sourceTree = "<group>"; };
 		DA19893C12B459FD00D64DD7 /* GVDescriptionWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVDescriptionWindow.h; sourceTree = "<group>"; };
@@ -173,6 +182,9 @@
 				DA35AC1412AC2AA6009C02D2 /* FScript.framework in Frameworks */,
 				DA4BF13B12B29EFE0070618E /* QuartzCore.framework in Frameworks */,
 				DAB7E78C12E3E06E006ED7C8 /* Growl.framework in Frameworks */,
+				DA0B21FA1310325100F375B6 /* IOKit.framework in Frameworks */,
+				DA0B21FE1310325B00F375B6 /* Security.framework in Frameworks */,
+				DA0B22021310326700F375B6 /* libcrypto.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +210,9 @@
 				B16F08A51277636900D13C0B /* Carbon.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				DA35AC1312AC2AA6009C02D2 /* FScript.framework */,
+				DA0B21F91310325100F375B6 /* IOKit.framework */,
+				DA0B21FD1310325B00F375B6 /* Security.framework */,
+				DA0B22011310326700F375B6 /* libcrypto.dylib */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -235,6 +250,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				DA0B22031310328800F375B6 /* NPReceiptVerification.h */,
+				DA0B22041310328800F375B6 /* NPReceiptVerification.m */,
 				256AC3F00F4B6AF500CF3369 /* TrafficBot_Prefix.pch */,
 				DA4BE80012AD786B0070618E /* AKDebugMacros.h */,
 				DA4BEBB912B0485B0070618E /* AKScopeReleased.h */,
@@ -654,6 +671,7 @@
 				DAB7E48312E34B0B006ED7C8 /* TBFirstLaunchWindowController.m in Sources */,
 				DA66D91F12EB511D0065454C /* AKSummaryView.m in Sources */,
 				DA66D92812EB52030065454C /* TBSummaryGenerator.m in Sources */,
+				DA0B22051310328800F375B6 /* NPReceiptVerification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -726,6 +744,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Xitong Gao";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
@@ -750,6 +769,7 @@
 				PREBINDING = NO;
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = macosx10.6;
+				VALID_ARCHS = "i386 x86_64";
 				WARNING_CFLAGS = "";
 			};
 			name = Debug;
@@ -758,6 +778,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Xitong Gao";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -779,6 +800,7 @@
 				PREBINDING = NO;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx10.6;
+				VALID_ARCHS = "i386 x86_64";
 				WARNING_CFLAGS = "";
 			};
 			name = Release;
