@@ -15,7 +15,6 @@
 	NSView		*contentView;
 	AKGaugeView	*gaugeView;
 	IBOutlet NSTextField	*usageTextField;
-	IBOutlet NSButton		*graphButton;
 	
 @private
 	TBSetupView	*_notMonitoringView;

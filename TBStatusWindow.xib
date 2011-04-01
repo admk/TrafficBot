@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
 		<string key="IBDocument.SystemVersion">10J567</string>
-		<string key="IBDocument.InterfaceBuilderVersion">804</string>
+		<string key="IBDocument.InterfaceBuilderVersion">823</string>
 		<string key="IBDocument.AppKitVersion">1038.35</string>
 		<string key="IBDocument.HIToolboxVersion">462.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">804</string>
+			<string key="NS.object.0">823</string>
 		</object>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<integer value="3"/>
@@ -298,14 +298,6 @@
 					<int key="connectionID">47</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">graphButton</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="53322221"/>
-					</object>
-					<int key="connectionID">48</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">showGraphWindow:</string>
 						<reference key="source" ref="1001"/>
@@ -563,7 +555,6 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="contentView">NSView</string>
 						<string key="gaugeView">AKGaugeView</string>
-						<string key="graphButton">NSButton</string>
 						<string key="usageTextField">NSTextField</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -574,10 +565,6 @@
 						<object class="IBToOneOutletInfo" key="gaugeView">
 							<string key="name">gaugeView</string>
 							<string key="candidateClassName">AKGaugeView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="graphButton">
-							<string key="name">graphButton</string>
-							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="usageTextField">
 							<string key="name">usageTextField</string>

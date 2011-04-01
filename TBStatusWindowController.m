@@ -189,13 +189,6 @@
 			[gaugeView setPercentage:percentage animated:self.shouldAnimateGauge];
 		}
 	}
-	
-	// display graph button only when necessary
-	BOOL hasData = [[[AKTrafficMonitorService sharedService] rollingLogFile] count] > 4;
-	if (self.monitoring && hasData)
-		[graphButton setHidden:NO];
-	else
-		[graphButton setHidden:YES];
 }
 - (void)_setUsageDescription {
 	

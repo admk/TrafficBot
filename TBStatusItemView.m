@@ -11,11 +11,11 @@
 
 #pragma mark private
 @interface TBStatusItemView ()
-- (NSBezierPath *)_appendGaugeGlyphToPath:(NSBezierPath *)path 
-								withFrame:(NSRect)frame 
-									theta:(float)theta 
-								   lambda:(float)lambda 
-									inset:(float)inset 
+- (NSBezierPath *)_appendGaugeGlyphToPath:(NSBezierPath *)path
+								withFrame:(NSRect)frame
+									theta:(float)theta
+								   lambda:(float)lambda
+									inset:(float)inset
 								 atHeight:(float)yOffset;
 @end
 
@@ -127,11 +127,11 @@
 
 #pragma mark -
 #pragma mark private
-- (NSBezierPath *)_appendGaugeGlyphToPath:(NSBezierPath *)path 
-								withFrame:(NSRect)frame 
-									theta:(float)theta 
-								   lambda:(float)lambda 
-									inset:(float)inset 
+- (NSBezierPath *)_appendGaugeGlyphToPath:(NSBezierPath *)path
+								withFrame:(NSRect)frame
+									theta:(float)theta
+								   lambda:(float)lambda
+									inset:(float)inset
 								 atHeight:(float)yOffset {
 	// math
 	float width = (float)frame.size.width - inset * 2.0f;
