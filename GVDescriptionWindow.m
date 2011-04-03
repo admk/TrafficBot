@@ -7,6 +7,7 @@
 //
 
 #import "GVDescriptionWindow.h"
+#import "NSFont+AKFallback.h"
 
 #define VIEW_CORNER_RADIUS ((float)5.0)
 #define VIEW_GRADIENT_COLOR_1 [NSColor colorWithCalibratedRed:100.0/255 green:200.0/255 blue:1 alpha:1]
@@ -53,7 +54,7 @@
 	view = [[DWView alloc] initWithFrame:NSMakeRect(0, 0, 50, 35)];
 	dateTextField = [self _newTextFieldWithFrame:NSMakeRect(0, 21, 50, 11)];
 	detailTextField = [self _newTextFieldWithFrame:NSMakeRect(0, 6, 50, 15)];
-	[detailTextField setFont:[NSFont fontWithName:@"Helvetica" size:14]];
+	[detailTextField setFont:[NSFont ak_fontWithName:@"Helvetica" size:14]];
 	[view addSubview:dateTextField], [view addSubview:detailTextField];
 	
 	[super initWithView:view attachedToPoint:point inWindow:window onSide:side atDistance:distance];
@@ -95,8 +96,8 @@
 	[dateTextField setTitleWithMnemonic:dateString];
 	[detailTextField setTitleWithMnemonic:detailString];
 	// update view size
-	float dateWidth = [self _widthOfString:dateString withFont:[NSFont fontWithName:@"Helvetica" size:12.0f]];
-	float dataWidth = [self _widthOfString:detailString withFont:[NSFont fontWithName:@"Helvetica" size:14.0f]];
+	float dateWidth = [self _widthOfString:dateString withFont:[NSFont ak_fontWithName:@"Helvetica" size:12.0f]];
+	float dataWidth = [self _widthOfString:detailString withFont:[NSFont ak_fontWithName:@"Helvetica" size:14.0f]];
 	float maxWidth;
 	if (dateWidth > dataWidth) maxWidth = dateWidth;
 	else maxWidth = dataWidth;

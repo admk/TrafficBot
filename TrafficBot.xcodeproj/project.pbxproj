@@ -61,6 +61,7 @@
 		DAB7EB8912E8FD8B006ED7C8 /* Graph Button Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EB8512E8FD8B006ED7C8 /* Graph Button Pressed.png */; };
 		DAB7EB8A12E8FD8B006ED7C8 /* Graph Button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EB8612E8FD8B006ED7C8 /* Graph Button.png */; };
 		DAB7EC2B12E904BA006ED7C8 /* GraphWindowBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB7EC2912E904BA006ED7C8 /* GraphWindowBackground.png */; };
+		DABEB80213480C4100063B84 /* NSFont+AKFallback.m in Sources */ = {isa = PBXBuildFile; fileRef = DABEB80113480C4100063B84 /* NSFont+AKFallback.m */; };
 		DABFB45E129F21AB00AE41FF /* Monitor.png in Resources */ = {isa = PBXBuildFile; fileRef = DABFB45B129F21AB00AE41FF /* Monitor.png */; };
 		DABFB4B0129F2CF100AE41FF /* TBDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = DABFB4AF129F2CF100AE41FF /* TBDefaults.plist */; };
 		DABFB4D712A0421A00AE41FF /* NSDate+AKMidnight.m in Sources */ = {isa = PBXBuildFile; fileRef = DABFB4D612A0421A00AE41FF /* NSDate+AKMidnight.m */; };
@@ -155,7 +156,7 @@
 		DA66DB2A12EBE0A60065454C /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Icon.icns; path = Images/Icon.icns; sourceTree = "<group>"; };
 		DA66DB3712ECA0490065454C /* Hint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Hint.png; path = Images/Hint.png; sourceTree = "<group>"; };
 		DA66DBFE12ECAEDB0065454C /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
-		DA69338412F76FC40052DEC6 /* Sleep Mac.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.scpt; path = "Sleep Mac.scpt"; sourceTree = "<group>"; };
+		DA69338412F76FC40052DEC6 /* Sleep Mac.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; path = "Sleep Mac.scpt"; sourceTree = "<group>"; };
 		DA6D3BE012B959D0003D5F61 /* TBStatusWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBStatusWindow.xib; sourceTree = "<group>"; };
 		DAB7E22412E2408E006ED7C8 /* TBSetupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBSetupView.h; sourceTree = "<group>"; };
 		DAB7E22512E2408E006ED7C8 /* TBSetupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBSetupView.m; sourceTree = "<group>"; };
@@ -166,6 +167,8 @@
 		DAB7EB8512E8FD8B006ED7C8 /* Graph Button Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Graph Button Pressed.png"; path = "Images/Graph Button Pressed.png"; sourceTree = "<group>"; };
 		DAB7EB8612E8FD8B006ED7C8 /* Graph Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Graph Button.png"; path = "Images/Graph Button.png"; sourceTree = "<group>"; };
 		DAB7EC2912E904BA006ED7C8 /* GraphWindowBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GraphWindowBackground.png; path = Images/GraphWindowBackground.png; sourceTree = "<group>"; };
+		DABEB80013480C4100063B84 /* NSFont+AKFallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFont+AKFallback.h"; path = "../../Dropbox/Sorcery/Cocoa Utilities/NSFont (AKFallBack)/NSFont+AKFallback.h"; sourceTree = "<group>"; };
+		DABEB80113480C4100063B84 /* NSFont+AKFallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFont+AKFallback.m"; path = "../../Dropbox/Sorcery/Cocoa Utilities/NSFont (AKFallBack)/NSFont+AKFallback.m"; sourceTree = "<group>"; };
 		DABFB45B129F21AB00AE41FF /* Monitor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Monitor.png; path = Images/Monitor.png; sourceTree = "<group>"; };
 		DABFB4AF129F2CF100AE41FF /* TBDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = TBDefaults.plist; sourceTree = "<group>"; };
 		DABFB4D512A0421A00AE41FF /* NSDate+AKMidnight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+AKMidnight.h"; sourceTree = "<group>"; };
@@ -422,6 +425,7 @@
 		B1F44A5D127F031B0020735E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				DABEB7FF13480C0E00063B84 /* NSFont (AKFallback) */,
 				DA4BE75E12AC8CAD0070618E /* Launch At Login Controller */,
 				DAFADFAC12AB24B50027CEE8 /* Attached Window */,
 				DABFB4D412A041E100AE41FF /* NSDate (AKMidnight) */,
@@ -541,6 +545,15 @@
 				B16F06C61276211D00D13C0B /* TBStatusItemView.m */,
 			);
 			name = "Gauge Icon View";
+			sourceTree = "<group>";
+		};
+		DABEB7FF13480C0E00063B84 /* NSFont (AKFallback) */ = {
+			isa = PBXGroup;
+			children = (
+				DABEB80013480C4100063B84 /* NSFont+AKFallback.h */,
+				DABEB80113480C4100063B84 /* NSFont+AKFallback.m */,
+			);
+			name = "NSFont (AKFallback)";
 			sourceTree = "<group>";
 		};
 		DABFB4D412A041E100AE41FF /* NSDate (AKMidnight) */ = {
@@ -672,6 +685,7 @@
 				DA66D91F12EB511D0065454C /* AKSummaryView.m in Sources */,
 				DA66D92812EB52030065454C /* TBSummaryGenerator.m in Sources */,
 				DA0B22051310328800F375B6 /* NPReceiptVerification.m in Sources */,
+				DABEB80213480C4100063B84 /* NSFont+AKFallback.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

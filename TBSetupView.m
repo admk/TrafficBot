@@ -9,6 +9,7 @@
 #import "TBSetupView.h"
 #import "TrafficBotAppDelegate.h"
 #import "APDrawingCategories.h"
+#import "NSFont+AKFallback.h"
 
 #define VIEW_CORNER_RADIUS (7.5f)
 
@@ -67,7 +68,7 @@
 	if (!self.infoString) {
 		self.infoString = @"Set up info goes here...";
 	}
-	NSBezierPath *psPath = [self.infoString bezierWithFont:[NSFont fontWithName:@"Helvetica Neue Bold" size:15]];
+	NSBezierPath *psPath = [self.infoString bezierWithFont:[NSFont ak_fontWithName:@"Helvetica Neue Bold" size:15]];
 	NSAffineTransform *xform = [NSAffineTransform transform];
 	// fill path
 	[xform translateXBy:(self.bounds.size.width / 2 - psPath.bounds.size.width / 2)

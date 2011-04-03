@@ -57,17 +57,17 @@ typedef struct {
 }
 
 // toggle monitoring by setting it
-@property (assign, getter=isMonitoring) BOOL monitoring;
+@property (assign, nonatomic, getter=isMonitoring) BOOL monitoring;
 
 // modes:
 // tms_rolling_mode:	a rolling period - traffic in the last x hours/days
 // tms_fixed_mode:		a fixed period - or monitor one fixed period, say, until midnight tomorrow?
 // tms_indefinite_mode: an indefinite period
-@property (assign) tms_mode_t monitoringMode;
+@property (assign, nonatomic) tms_mode_t monitoringMode;
 
 // time interval for rolling period
 // log total from now-rollingPeriodInterval to now
-@property (assign) NSTimeInterval rollingPeriodInterval;
+@property (assign, nonatomic) NSTimeInterval rollingPeriodInterval;
 
 // start date for fixed period
 // log cumulative total until fresh start

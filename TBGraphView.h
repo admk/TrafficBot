@@ -41,6 +41,6 @@
 @property (assign) id<TBGraphViewDelegate> delegate;
 @property (retain, nonatomic) NSDictionary *dataDict;
 
-@property (assign) BOOL logScale;
+@property (assign, nonatomic) BOOL logScale;
 
 @end

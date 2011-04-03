@@ -15,6 +15,7 @@
 #import "GVDescriptionWindow.h"
 #import "GVViewCollection.h"
 #import "NSDate+AKMidnight.h"
+#import "NSFont+AKFallback.h"
 #import "AKBytesFormatter.h"
 
 #pragma mark -
@@ -291,7 +292,7 @@
 		NSString *dateString = [_dateFormatter stringFromDate:date];
 		// draw
 		NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-									[NSFont fontWithName:@"Helvetica Light" size:11], NSFontAttributeName, 
+									[NSFont ak_fontWithName:@"Helvetica Light" size:11], NSFontAttributeName, 
 									[NSColor whiteColor], NSForegroundColorAttributeName, nil];
 		[dateString drawAtPoint:point withAttributes:attributes];
 	}
@@ -300,7 +301,7 @@
 	NSPoint point = { self.bounds.size.width / 2 - 120, self.bounds.size.height / 2 };
 	NSString *noDataString = @"No Data Available.";
 	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-								[NSFont fontWithName:@"Helvetica Light" size:32], NSFontAttributeName, 
+								[NSFont ak_fontWithName:@"Helvetica Light" size:32], NSFontAttributeName, 
 								[NSColor colorWithCalibratedWhite:1 alpha:.3], NSForegroundColorAttributeName, nil];
 	[noDataString drawAtPoint:point withAttributes:attributes];
 }
