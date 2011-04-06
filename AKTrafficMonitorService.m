@@ -176,7 +176,7 @@ static AKTrafficMonitorService *sharedService = nil;
 	_totalRec = TMSZeroRec;
 	
 	switch (self.monitoringMode) {
-			
+
 		case tms_rolling_mode: {
 			NSMutableDictionary *tLog = [self rollingLogFile];
 			for (NSString *dateString in [tLog allKeys]) {
@@ -192,7 +192,7 @@ static AKTrafficMonitorService *sharedService = nil;
 			}
 			[self _writeToRollingLogFile:tLog];
 		} break;
-			
+
 		case tms_fixed_mode: {
 			NSMutableDictionary *tLog = [self fixedLogFile];
 			if ([self.fixedPeriodRestartDate timeIntervalSinceNow] > 0) {
@@ -292,6 +292,14 @@ static AKTrafficMonitorService *sharedService = nil;
 	
 	// rolling log
 	NSMutableDictionary *rollingLog = [self rollingLogFile];
+	// log current entry for rolling log
+	if (!TMSRecIsZero(_stashedRec)) {
+		NSDictionary *rollingEntry = [NSDictionary dictionaryWithObjectsAndKeys:
+									  NumberFromTMSDT(_stashedRec.kin), @"in", 
+									  NumberFromTMSDT(_stashedRec.kout), @"out", nil];
+		[rollingLog setObject:rollingEntry forKey:[[NSDate date] description]];
+	}
+	// rolling elimination
 	for (NSString *dateString in [rollingLog allKeys]) {
 		AKScopeAutoreleased();
 		NSDate *date = [NSDate dateWithString:dateString];
@@ -305,20 +313,15 @@ static AKTrafficMonitorService *sharedService = nil;
 			[rollingLog removeObjectForKey:dateString];
 		}
 	}
-	
+	[self _writeToRollingLogFile:rollingLog];
+
 	switch (self.monitoringMode) {
-			
+
 		case tms_rolling_mode: {
 			// should not log if no change
 			if (TMSRecIsZero(_stashedRec)) return;
-			// log current entry for rolling log
-			NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
-								   NumberFromTMSDT(_stashedRec.kin), @"in", 
-								   NumberFromTMSDT(_stashedRec.kout), @"out", nil];
-			[rollingLog setObject:entry forKey:[[NSDate date] description]];
-			[self _writeToRollingLogFile:rollingLog];
 		} break;
-			
+
 		case tms_fixed_mode: {
 			if ([self.fixedPeriodRestartDate timeIntervalSinceNow] > 0) {
 				// log only total

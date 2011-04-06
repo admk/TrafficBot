@@ -51,7 +51,7 @@ static NSString * const kReceiptBundleIdentifier = @"com.example.SampleApp";
 static NSString * const kReceiptBundleVersion = @"1.0.2";
 #else
 static NSString * const kReceiptBundleIdentifier = @"com.akkloca.TrafficBot";\
-static NSString * const kReceiptBundleVersion = @"1.0.0";
+static NSString * const kReceiptBundleVersion = @"1.0.1";
 #endif
 
 static NSString * const kReceiptBundleIdentiferKey = @"BundleIdentifier";
