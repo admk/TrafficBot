@@ -239,8 +239,8 @@ static AKTrafficMonitorService *sharedService = nil;
 
 #pragma mark -
 #pragma mark constants
-#define TMS_MAX_NO_OF_LOG_ENTRIES 1440
-#define TMS_SHORTEST_UPDATE_INTERVAL 20
+#define TMS_MAX_NO_OF_LOG_ENTRIES 2880
+#define TMS_SHORTEST_UPDATE_INTERVAL 10
 - (NSTimeInterval)_timerInterval {
 #if DEBUG
 	return 5;
