@@ -106,8 +106,8 @@
 		B16F08A51277636900D13C0B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		B16F0C401278708300D13C0B /* Gauge Pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gauge Pointer.png"; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Private Utilites/Gauge View/Gauge Pointer.png"; sourceTree = "<absolute>"; };
 		B16F0C411278708300D13C0B /* Gauge Face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gauge Face.png"; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Private Utilites/Gauge View/Gauge Face.png"; sourceTree = "<absolute>"; };
-		B16F0C441278709C00D13C0B /* AKGaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKGaugeView.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Private Utilites/Gauge View/AKGaugeView.h"; sourceTree = "<absolute>"; };
-		B16F0C451278709C00D13C0B /* AKGaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKGaugeView.m; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Private Utilites/Gauge View/AKGaugeView.m"; sourceTree = "<absolute>"; };
+		B16F0C441278709C00D13C0B /* AKGaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKGaugeView.h; sourceTree = "<group>"; };
+		B16F0C451278709C00D13C0B /* AKGaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; path = AKGaugeView.m; sourceTree = "<group>"; };
 		B16F0E921278CE6B00D13C0B /* AKTrafficMonitorService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTrafficMonitorService.h; sourceTree = "<group>"; };
 		B16F0E931278CE6B00D13C0B /* AKTrafficMonitorService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AKTrafficMonitorService.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B16F0F141278FBAA00D13C0B /* Cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Cog.png; path = Images/Cog.png; sourceTree = "<group>"; };
@@ -148,8 +148,8 @@
 		DA4BF12112B2930C0070618E /* NSWindow+AKFlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+AKFlip.h"; sourceTree = "<group>"; };
 		DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+AKFlip.m"; sourceTree = "<group>"; };
 		DA4BF13A12B29EFE0070618E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		DA66D91D12EB511D0065454C /* AKSummaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKSummaryView.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Private Utilites/Summary View/AKSummaryView.h"; sourceTree = "<absolute>"; };
-		DA66D91E12EB511D0065454C /* AKSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKSummaryView.m; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Private Utilites/Summary View/AKSummaryView.m"; sourceTree = "<absolute>"; };
+		DA66D91D12EB511D0065454C /* AKSummaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKSummaryView.h; sourceTree = "<group>"; };
+		DA66D91E12EB511D0065454C /* AKSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKSummaryView.m; sourceTree = "<group>"; };
 		DA66D92612EB52030065454C /* TBSummaryGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBSummaryGenerator.h; sourceTree = "<group>"; };
 		DA66D92712EB52030065454C /* TBSummaryGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBSummaryGenerator.m; sourceTree = "<group>"; };
 		DA66DAA412EB737C0065454C /* Caution.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Caution.png; sourceTree = "<group>"; };
@@ -343,6 +343,7 @@
 				B16F0C451278709C00D13C0B /* AKGaugeView.m */,
 			);
 			name = "Gauge View";
+			path = "Private Utilites/Gauge View";
 			sourceTree = "<group>";
 		};
 		B16F0C3F1278705600D13C0B /* Images */ = {
@@ -396,6 +397,8 @@
 			children = (
 				B1F44960127E195F0020735E /* TBPreferencesWindowController.h */,
 				B1F44961127E195F0020735E /* TBPreferencesWindowController.m */,
+				DA66D92612EB52030065454C /* TBSummaryGenerator.h */,
+				DA66D92712EB52030065454C /* TBSummaryGenerator.m */,
 				DA66D91B12EB51040065454C /* Summary View */,
 			);
 			name = "Preferences Window";
@@ -511,12 +514,11 @@
 		DA66D91B12EB51040065454C /* Summary View */ = {
 			isa = PBXGroup;
 			children = (
-				DA66D92612EB52030065454C /* TBSummaryGenerator.h */,
-				DA66D92712EB52030065454C /* TBSummaryGenerator.m */,
 				DA66D91D12EB511D0065454C /* AKSummaryView.h */,
 				DA66D91E12EB511D0065454C /* AKSummaryView.m */,
 			);
 			name = "Summary View";
+			path = "Private Utilites/Summary View";
 			sourceTree = "<group>";
 		};
 		DAB7E22312E24035006ED7C8 /* Setup View */ = {
@@ -769,7 +771,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Xitong Gao";
+				CODE_SIGN_IDENTITY = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
