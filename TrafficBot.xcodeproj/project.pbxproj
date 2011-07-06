@@ -104,8 +104,8 @@
 		B16F084812772C8200D13C0B /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
 		B16F084912772C8200D13C0B /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		B16F08A51277636900D13C0B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
-		B16F0C401278708300D13C0B /* Gauge Pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gauge Pointer.png"; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Private Utilites/Gauge View/Gauge Pointer.png"; sourceTree = "<absolute>"; };
-		B16F0C411278708300D13C0B /* Gauge Face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gauge Face.png"; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Private Utilites/Gauge View/Gauge Face.png"; sourceTree = "<absolute>"; };
+		B16F0C401278708300D13C0B /* Gauge Pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gauge Pointer.png"; sourceTree = "<group>"; };
+		B16F0C411278708300D13C0B /* Gauge Face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gauge Face.png"; sourceTree = "<group>"; };
 		B16F0C441278709C00D13C0B /* AKGaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKGaugeView.h; sourceTree = "<group>"; };
 		B16F0C451278709C00D13C0B /* AKGaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKGaugeView.m; sourceTree = "<group>"; };
 		B16F0E921278CE6B00D13C0B /* AKTrafficMonitorService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTrafficMonitorService.h; sourceTree = "<group>"; };
@@ -499,6 +499,7 @@
 				B16F0C411278708300D13C0B /* Gauge Face.png */,
 			);
 			name = "Gauge View";
+			path = "Private Utilites/Gauge View";
 			sourceTree = "<group>";
 		};
 		DA4BF12712B2962F0070618E /* NSWindow (AKFlip) */ = {
