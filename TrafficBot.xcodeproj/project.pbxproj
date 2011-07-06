@@ -26,7 +26,7 @@
 		B16F0F291278FD0F00D13C0B /* Dark Cog.png in Resources */ = {isa = PBXBuildFile; fileRef = B16F0F281278FD0F00D13C0B /* Dark Cog.png */; };
 		B16F108A127A09D000D13C0B /* APDrawingCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = B16F1089127A09D000D13C0B /* APDrawingCategories.m */; };
 		B1F44962127E195F0020735E /* TBPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F44961127E195F0020735E /* TBPreferencesWindowController.m */; };
-		B1F449B0127E352B0020735E /* NSWindow+NoodleEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F449AF127E352B0020735E /* NSWindow+NoodleEffects.m */; };
+		B1F449B0127E352B0020735E /* NSWindow-NoodleEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F449AF127E352B0020735E /* NSWindow-NoodleEffects.m */; };
 		B1F44B52127F30530020735E /* Set Up Button.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B50127F30530020735E /* Set Up Button.png */; };
 		B1F44B53127F30530020735E /* Set Up Button Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B51127F30530020735E /* Set Up Button Pressed.png */; };
 		DA049FC112B8534600ECA24C /* Gauge Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FBF12B8534600ECA24C /* Gauge Pressed.png */; };
@@ -112,13 +112,13 @@
 		B16F0E931278CE6B00D13C0B /* AKTrafficMonitorService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AKTrafficMonitorService.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B16F0F141278FBAA00D13C0B /* Cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Cog.png; path = Images/Cog.png; sourceTree = "<group>"; };
 		B16F0F281278FD0F00D13C0B /* Dark Cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Dark Cog.png"; path = "Images/Dark Cog.png"; sourceTree = "<group>"; };
-		B16F0FB512798BEE00D13C0B /* DMCommonMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DMCommonMacros.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Macros/DMCommonMacros.h"; sourceTree = "<absolute>"; };
-		B16F1088127A09D000D13C0B /* APDrawingCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APDrawingCategories.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Drawing Categories/APDrawingCategories.h"; sourceTree = "<absolute>"; };
-		B16F1089127A09D000D13C0B /* APDrawingCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APDrawingCategories.m; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Drawing Categories/APDrawingCategories.m"; sourceTree = "<absolute>"; };
+		B16F0FB512798BEE00D13C0B /* DMCommonMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCommonMacros.h; sourceTree = "<group>"; };
+		B16F1088127A09D000D13C0B /* APDrawingCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APDrawingCategories.h; sourceTree = "<group>"; };
+		B16F1089127A09D000D13C0B /* APDrawingCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APDrawingCategories.m; sourceTree = "<group>"; };
 		B1F44960127E195F0020735E /* TBPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBPreferencesWindowController.h; sourceTree = "<group>"; };
 		B1F44961127E195F0020735E /* TBPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBPreferencesWindowController.m; sourceTree = "<group>"; };
-		B1F449AE127E352B0020735E /* NSWindow+NoodleEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSWindow+NoodleEffects.h"; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (NoodleEffects)/NSWindow+NoodleEffects.h"; sourceTree = "<absolute>"; };
-		B1F449AF127E352B0020735E /* NSWindow+NoodleEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSWindow+NoodleEffects.m"; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (NoodleEffects)/NSWindow+NoodleEffects.m"; sourceTree = "<absolute>"; };
+		B1F449AE127E352B0020735E /* NSWindow-NoodleEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow-NoodleEffects.h"; sourceTree = "<group>"; };
+		B1F449AF127E352B0020735E /* NSWindow-NoodleEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow-NoodleEffects.m"; sourceTree = "<group>"; };
 		B1F44B50127F30530020735E /* Set Up Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Up Button.png"; path = "Images/Set Up Button.png"; sourceTree = "<group>"; };
 		B1F44B51127F30530020735E /* Set Up Button Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Up Button Pressed.png"; path = "Images/Set Up Button Pressed.png"; sourceTree = "<group>"; };
 		DA049FBF12B8534600ECA24C /* Gauge Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gauge Pressed.png"; path = "Images/Gauge Pressed.png"; sourceTree = "<group>"; };
@@ -142,9 +142,9 @@
 		DA35AC1312AC2AA6009C02D2 /* FScript.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FScript.framework; path = Library/Frameworks/FScript.framework; sourceTree = SDKROOT; };
 		DA4BE76812AC8CDF0070618E /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
 		DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
-		DA4BE80012AD786B0070618E /* AKDebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKDebugMacros.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Macros/AKDebugMacros.h"; sourceTree = "<absolute>"; };
-		DA4BE83612AD85380070618E /* AKUKHelperMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKUKHelperMacros.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Macros/AKUKHelperMacros.h"; sourceTree = "<absolute>"; };
-		DA4BEBB912B0485B0070618E /* AKScopeReleased.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKScopeReleased.h; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Macros/AKScopeReleased.h"; sourceTree = "<absolute>"; };
+		DA4BE80012AD786B0070618E /* AKDebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKDebugMacros.h; sourceTree = "<group>"; };
+		DA4BE83612AD85380070618E /* AKUKHelperMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKUKHelperMacros.h; sourceTree = "<group>"; };
+		DA4BEBB912B0485B0070618E /* AKScopeReleased.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKScopeReleased.h; sourceTree = "<group>"; };
 		DA4BF12112B2930C0070618E /* NSWindow+AKFlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+AKFlip.h"; sourceTree = "<group>"; };
 		DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+AKFlip.m"; sourceTree = "<group>"; };
 		DA4BF13A12B29EFE0070618E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -167,8 +167,8 @@
 		DAB7EB8512E8FD8B006ED7C8 /* Graph Button Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Graph Button Pressed.png"; path = "Images/Graph Button Pressed.png"; sourceTree = "<group>"; };
 		DAB7EB8612E8FD8B006ED7C8 /* Graph Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Graph Button.png"; path = "Images/Graph Button.png"; sourceTree = "<group>"; };
 		DAB7EC2912E904BA006ED7C8 /* GraphWindowBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GraphWindowBackground.png; path = Images/GraphWindowBackground.png; sourceTree = "<group>"; };
-		DABEB80013480C4100063B84 /* NSFont+AKFallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFont+AKFallback.h"; path = "../../Dropbox/Sorcery/Cocoa Utilities/NSFont (AKFallBack)/NSFont+AKFallback.h"; sourceTree = "<group>"; };
-		DABEB80113480C4100063B84 /* NSFont+AKFallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFont+AKFallback.m"; path = "../../Dropbox/Sorcery/Cocoa Utilities/NSFont (AKFallBack)/NSFont+AKFallback.m"; sourceTree = "<group>"; };
+		DABEB80013480C4100063B84 /* NSFont+AKFallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFont+AKFallback.h"; path = "NSFont (AKFallBack)/NSFont+AKFallback.h"; sourceTree = "<group>"; };
+		DABEB80113480C4100063B84 /* NSFont+AKFallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFont+AKFallback.m"; path = "NSFont (AKFallBack)/NSFont+AKFallback.m"; sourceTree = "<group>"; };
 		DABFB45B129F21AB00AE41FF /* Monitor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Monitor.png; path = Images/Monitor.png; sourceTree = "<group>"; };
 		DABFB4AF129F2CF100AE41FF /* TBDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = TBDefaults.plist; sourceTree = "<group>"; };
 		DABFB4D512A0421A00AE41FF /* NSDate+AKMidnight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+AKMidnight.h"; sourceTree = "<group>"; };
@@ -256,10 +256,6 @@
 				DA0B22031310328800F375B6 /* NPReceiptVerification.h */,
 				DA0B22041310328800F375B6 /* NPReceiptVerification.m */,
 				256AC3F00F4B6AF500CF3369 /* TrafficBot_Prefix.pch */,
-				DA4BE80012AD786B0070618E /* AKDebugMacros.h */,
-				DA4BEBB912B0485B0070618E /* AKScopeReleased.h */,
-				B16F0FB512798BEE00D13C0B /* DMCommonMacros.h */,
-				DA4BE83612AD85380070618E /* AKUKHelperMacros.h */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -392,6 +388,7 @@
 				B16F1089127A09D000D13C0B /* APDrawingCategories.m */,
 			);
 			name = Drawing;
+			path = "Drawing Categories";
 			sourceTree = "<group>";
 		};
 		B1F44958127E191B0020735E /* Preferences Window */ = {
@@ -416,15 +413,17 @@
 		B1F449B5127E356F0020735E /* NSWindow+NoodleEffects */ = {
 			isa = PBXGroup;
 			children = (
-				B1F449AE127E352B0020735E /* NSWindow+NoodleEffects.h */,
-				B1F449AF127E352B0020735E /* NSWindow+NoodleEffects.m */,
+				B1F449AE127E352B0020735E /* NSWindow-NoodleEffects.h */,
+				B1F449AF127E352B0020735E /* NSWindow-NoodleEffects.m */,
 			);
 			name = "NSWindow+NoodleEffects";
+			path = NoodleKit;
 			sourceTree = "<group>";
 		};
 		B1F44A5D127F031B0020735E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B5A7AEF213C43DA50058EC62 /* Macros */,
 				DABEB7FF13480C0E00063B84 /* NSFont (AKFallback) */,
 				DA4BE75E12AC8CAD0070618E /* Launch At Login Controller */,
 				DAFADFAC12AB24B50027CEE8 /* Attached Window */,
@@ -434,6 +433,18 @@
 				B16F1087127A09B600D13C0B /* Drawing */,
 			);
 			name = Utilities;
+			path = "Cocoa-Utilities";
+			sourceTree = "<group>";
+		};
+		B5A7AEF213C43DA50058EC62 /* Macros */ = {
+			isa = PBXGroup;
+			children = (
+				DA4BE80012AD786B0070618E /* AKDebugMacros.h */,
+				DA4BEBB912B0485B0070618E /* AKScopeReleased.h */,
+				B16F0FB512798BEE00D13C0B /* DMCommonMacros.h */,
+				DA4BE83612AD85380070618E /* AKUKHelperMacros.h */,
+			);
+			path = Macros;
 			sourceTree = "<group>";
 		};
 		DA19893912B459F200D64DD7 /* Graph View */ = {
@@ -475,8 +486,8 @@
 				DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */,
 			);
 			name = "Launch At Login Controller";
-			path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Launch At Login Controller";
-			sourceTree = "<absolute>";
+			path = LaunchAtLoginController;
+			sourceTree = "<group>";
 		};
 		DA4BE81312AD7DC00070618E /* Gauge View */ = {
 			isa = PBXGroup;
@@ -494,7 +505,7 @@
 				DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */,
 			);
 			name = "NSWindow (AKFlip)";
-			path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/NSWindow (AKFlip)";
+			path = "/Users/admko/Desktop/TrafficBot/Cocoa-Utilities/NSWindow (AKFlip)";
 			sourceTree = "<absolute>";
 		};
 		DA66D91B12EB51040065454C /* Summary View */ = {
@@ -563,7 +574,7 @@
 				DABFB4D612A0421A00AE41FF /* NSDate+AKMidnight.m */,
 			);
 			name = "NSDate (AKMidnight)";
-			path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/NSDate (AKMidnight)";
+			path = "/Users/admko/Desktop/TrafficBot/Cocoa-Utilities/NSDate (AKMidnight)";
 			sourceTree = "<absolute>";
 		};
 		DAFADFAC12AB24B50027CEE8 /* Attached Window */ = {
@@ -573,7 +584,7 @@
 				B16F084912772C8200D13C0B /* MAAttachedWindow.m */,
 			);
 			name = "Attached Window";
-			path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Cocoa Utilities/Attached Window";
+			path = "/Users/admko/Desktop/TrafficBot/Cocoa-Utilities/Attached Window";
 			sourceTree = "<absolute>";
 		};
 /* End PBXGroup section */
@@ -671,7 +682,7 @@
 				B16F0E941278CE6B00D13C0B /* AKTrafficMonitorService.m in Sources */,
 				B16F108A127A09D000D13C0B /* APDrawingCategories.m in Sources */,
 				B1F44962127E195F0020735E /* TBPreferencesWindowController.m in Sources */,
-				B1F449B0127E352B0020735E /* NSWindow+NoodleEffects.m in Sources */,
+				B1F449B0127E352B0020735E /* NSWindow-NoodleEffects.m in Sources */,
 				DABFB4D712A0421A00AE41FF /* NSDate+AKMidnight.m in Sources */,
 				DA4BE76A12AC8CDF0070618E /* LaunchAtLoginController.m in Sources */,
 				DA4BF12312B2930C0070618E /* NSWindow+AKFlip.m in Sources */,
