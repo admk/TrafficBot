@@ -107,7 +107,7 @@
 		B16F0C401278708300D13C0B /* Gauge Pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gauge Pointer.png"; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Private Utilites/Gauge View/Gauge Pointer.png"; sourceTree = "<absolute>"; };
 		B16F0C411278708300D13C0B /* Gauge Face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gauge Face.png"; path = "/Users/AdamKo/Documents/Dropbox/Sorcery/Private Utilites/Gauge View/Gauge Face.png"; sourceTree = "<absolute>"; };
 		B16F0C441278709C00D13C0B /* AKGaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKGaugeView.h; sourceTree = "<group>"; };
-		B16F0C451278709C00D13C0B /* AKGaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; path = AKGaugeView.m; sourceTree = "<group>"; };
+		B16F0C451278709C00D13C0B /* AKGaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKGaugeView.m; sourceTree = "<group>"; };
 		B16F0E921278CE6B00D13C0B /* AKTrafficMonitorService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTrafficMonitorService.h; sourceTree = "<group>"; };
 		B16F0E931278CE6B00D13C0B /* AKTrafficMonitorService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AKTrafficMonitorService.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B16F0F141278FBAA00D13C0B /* Cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Cog.png; path = Images/Cog.png; sourceTree = "<group>"; };

@@ -63,16 +63,19 @@ static NSString * const kReceiptHashKey = @"Hash";
 @implementation NPReceiptVerification
 
 + (void)load {
+
+#ifdef DEBUG
+
+    return;
+
+#else
+
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
 	NSBundle *appBundle = [NSBundle mainBundle];
 	NSString *appPath = [appBundle bundlePath];
-	
-#ifdef DEBUG
-	NSString *masReceiptPath = [@"~/Documents/Persisted/Sorcery/receipt" stringByExpandingTildeInPath];
-#else
+
 	NSString *masReceiptPath = [[[appPath stringByAppendingPathComponent:@"Contents"] stringByAppendingPathComponent:@"_MASReceipt"] stringByAppendingPathComponent:@"receipt"];
-#endif
 	
 	//If the receipt file doesn't exist...
 	if (![[NSFileManager defaultManager] fileExistsAtPath:masReceiptPath]) {
@@ -128,12 +131,10 @@ static NSString * const kReceiptHashKey = @"Hash";
 		pool = (NSAutoreleasePool *)1;
 	}
 	
-#ifndef DEBUG
 	NSAssert([kReceiptBundleVersion isEqualToString:[appBundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"]], 
 			 @"CFBundleShortVersionString must match hardcoded version number!");
 	NSAssert([kReceiptBundleIdentifier isEqualToString:[appBundle bundleIdentifier]], 
 			 @"Bundle identifier must match hardcoded bundle identifier");
-#endif
 	
 	NSMutableData *input = [NSMutableData data];
 	[input appendData:guidData];
@@ -152,6 +153,8 @@ static NSString * const kReceiptHashKey = @"Hash";
 	}
 
 	[pool release];
+
+#endif
 }
 
 + (NSData *)appleRootCertificateData {
