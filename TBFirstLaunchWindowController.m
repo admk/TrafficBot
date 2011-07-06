@@ -9,7 +9,7 @@
 #import "TBFirstLaunchWindowController.h"
 #import "TBSetupView.h"
 #import "MAAttachedWindow.h"
-#import "NSWindow+NoodleEffects.h"
+#import "NSWindow-NoodleEffects.h"
 #import "TrafficBotAppDelegate.h"
 
 @implementation TBFirstLaunchWindowController

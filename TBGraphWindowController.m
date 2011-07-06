@@ -11,7 +11,7 @@
 #import "TrafficBotAppDelegate.h"
 #import "MAAttachedWindow.h"
 #import "NSWindow+AKFlip.h"
-#import "NSWindow+NoodleEffects.h"
+#import "NSWindow-NoodleEffects.h"
 
 @interface TBGraphWindowController ()
 @property (retain) NSWindow *_flipFromWindow;

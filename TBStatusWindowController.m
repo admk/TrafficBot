@@ -10,7 +10,7 @@
 #import "AKTrafficMonitorService.h"
 #import "TrafficBotAppDelegate.h"
 #import "MAAttachedWindow.h"
-#import "NSWindow+NoodleEffects.h"
+#import "NSWindow-NoodleEffects.h"
 #import "AKGaugeView.h"
 #import "TBGraphView.h"
 #import "TBSetupView.h"
