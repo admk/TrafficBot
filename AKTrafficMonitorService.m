@@ -149,6 +149,12 @@ static AKTrafficMonitorService *sharedService = nil;
 	if (_monitoring) [self _startMonitoring];
 	else [self _stopMonitoring];
 }
+- (void)setMonitoredInterfaces:(NSArray *)monitoredInterfaces {
+    if (_monitoredInterfaces == monitoredInterfaces) return;
+    [_monitoredInterfaces release];
+    _monitoredInterfaces = [monitoredInterfaces retain];
+    [self clearStatistics];
+}
 - (void)setMonitoringMode:(tms_mode_t)mode {
 	if (_monitoringMode == mode) return;
 	_monitoringMode = mode;
@@ -413,6 +419,10 @@ static AKTrafficMonitorService *sharedService = nil;
 }
 
 - (NSDictionary *)_readDataUsage {
+
+    BOOL shouldIncludeAll = (NULL == self.monitoredInterfaces) || 
+                            ([self.monitoredInterfaces containsObject:@"All"]);
+
 	int mib[] = {CTL_NET, PF_ROUTE, 0, 0, NET_RT_IFLIST2, 0};
 	size_t len;
 	if (sysctl(mib, 6, NULL, &len, NULL, 0) < 0)
@@ -422,6 +432,7 @@ static AKTrafficMonitorService *sharedService = nil;
 		fprintf(stderr, "sysctl: %s\n", strerror(errno));
 	char *buf_end = buf + len;
 	char *next = NULL;
+    char name[32];
 	TMS_D_T totalibytes = 0;
 	TMS_D_T totalobytes = 0;
 	for (next = buf; next < buf_end; ) {		
@@ -429,6 +440,17 @@ static AKTrafficMonitorService *sharedService = nil;
 		next += ifm->ifm_msglen;
 		if (ifm->ifm_type == RTM_IFINFO2) {
 			struct if_msghdr2 *if2m = (struct if_msghdr2 *)ifm;
+            struct sockaddr_dl *sdl = (struct sockaddr_dl *)(if2m + 1);
+            strncpy(name, sdl->sdl_data, sdl->sdl_nlen);
+            name[sdl->sdl_nlen] = 0;
+            if (!shouldIncludeAll) {
+                BOOL hasInterface = [self.monitoredInterfaces containsObject:
+                                     [NSString stringWithCString:name
+                                                        encoding:NSASCIIStringEncoding]];
+                if (!hasInterface) {
+                    continue;
+                }
+            }
 			totalibytes += if2m->ifm_data.ifi_ibytes;
 			totalobytes += if2m->ifm_data.ifi_obytes;
 		}

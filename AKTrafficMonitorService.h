@@ -61,7 +61,7 @@ typedef struct {
 @property (assign, nonatomic, getter=isMonitoring) BOOL monitoring;
 
 // monitoring interface
-// default value - "All"
+// NULL or has "All" monitors all interfaces
 @property (copy, nonatomic) NSArray *monitoredInterfaces;
 
 // modes:
