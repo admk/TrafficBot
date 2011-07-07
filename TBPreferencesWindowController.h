@@ -11,7 +11,7 @@
 
 @class TBSummaryGenerator, AKSummaryView;
 @interface TBPreferencesWindowController : NSWindowController
-        <NSPathControlDelegate, NSTableViewDataSource> {
+        <NSPathControlDelegate, NSTableViewDataSource, NSTableViewDelegate> {
 	
 	IBOutlet NSToolbar *pToolbar;
 	IBOutlet NSView *statusView;
@@ -29,7 +29,11 @@
 	__weak NSView *_preferencesView;
 	TBSummaryGenerator *_summaryGenerator;
     NSArray *_interfaceNameArray;
+
+    NSMutableArray *_includeInterfaces;
 }
+
+@property (retain, nonatomic) NSMutableArray *includeInterfaces;
 
 // IBAction methods
 - (IBAction)continueToSetup:(id)sender;
@@ -42,5 +46,8 @@
 - (IBAction)updateThresholds:(id)sender;
 
 - (IBAction)runPathDidChange:(NSPathControl *)myPathControl;
+
+// interfaces table view
+- (void)didClickCell:(id)sender;
 
 @end

@@ -38,11 +38,23 @@
 	if (!self) return nil;
 
     _interfaceNameArray = [[[AKTrafficMonitorService sharedService] networkInterfaceNames] retain];
+    _includeInterfaces = nil;
 
 	return self;
 }
 - (void)awakeFromNib {
-	
+
+    // bindings
+    [self bind:Property(includeInterfaces)
+      toObject:[NSUserDefaults standardUserDefaults]
+   withKeyPath:[@"values." stringByAppendingString:Property(includeInterfaces)]
+       options:nil];
+    [[NSUserDefaults standardUserDefaults]
+          bind:[@"values." stringByAppendingString:Property(includeInterfaces)]
+      toObject:self
+   withKeyPath:Property(includeInterfaces)
+       options:nil];
+
 	// summary generator
 	if (!_summaryGenerator)
 	{
@@ -83,7 +95,6 @@
     NSButtonCell *checkBoxCell = [[[NSButtonCell alloc] init] autorelease];
     [checkBoxCell setButtonType:NSSwitchButton];
     [tableColumn setDataCell:checkBoxCell];
-    [interfacesTableView setDataSource:self];
 	
 	// window sizing
 	[self.window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
@@ -239,9 +250,27 @@
 }
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
+    NSString *interfaceName = [_interfaceNameArray objectAtIndex:row];
     NSButtonCell *cell = [tableColumn dataCellForRow:row];
-    [cell setTitle:[_interfaceNameArray objectAtIndex:row]];
-    return [NSNumber numberWithBool:NO];
+    [cell setTitle:interfaceName];
+    [cell setTarget:self];
+    [cell setAction:@selector(didClickCell:)];
+    NSNumber *state = [NSNumber numberWithBool:
+                       [self.includeInterfaces containsObject:interfaceName]];
+    return state;
+}
+- (void)didClickCell:(id)sender
+{
+    NSString *interfaceName = [sender title];
+    if ([self.includeInterfaces containsObject:interfaceName])
+    {
+        [self.includeInterfaces removeObject:interfaceName];
+    }
+    else
+    {
+        [self.includeInterfaces addObject:interfaceName];
+    }
+    [interfacesTableView updateTrackingAreas];
 }
 
 #pragma mark -
@@ -251,4 +280,5 @@
 	[self didSelectToolbarItem:pane];
 }
 
+@synthesize includeInterfaces = _includeInterfaces;
 @end
