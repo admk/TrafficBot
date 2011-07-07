@@ -490,7 +490,8 @@ static AKTrafficMonitorService *sharedService = nil;
 #pragma mark -
 #pragma mark boilerplate
 #pragma mark property synthesize
-@synthesize monitoring = _monitoring, monitoringMode = _monitoringMode;
+@synthesize monitoring = _monitoring;
+@synthesize monitoredInterfaces = _monitoredInterfaces, monitoringMode = _monitoringMode;
 @synthesize thresholds = _thresholds;
 @synthesize rollingPeriodInterval = _rollingPeriodInterval;
 @synthesize fixedPeriodRestartDate = _fixedPeriodRestartDate;

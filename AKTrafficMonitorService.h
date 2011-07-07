@@ -39,6 +39,7 @@ typedef struct {
 
 	BOOL			_monitoring;
 	
+    NSArray         *_monitoredInterfaces;
 	tms_mode_t		_monitoringMode;
 	NSTimeInterval	_rollingPeriodInterval;
 	NSDate			*_fixedPeriodRestartDate;
@@ -58,6 +59,10 @@ typedef struct {
 
 // toggle monitoring by setting it
 @property (assign, nonatomic, getter=isMonitoring) BOOL monitoring;
+
+// monitoring interface
+// default value - "All"
+@property (copy, nonatomic) NSArray *monitoredInterfaces;
 
 // modes:
 // tms_rolling_mode:	a rolling period - traffic in the last x hours/days
