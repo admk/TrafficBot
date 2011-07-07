@@ -36,7 +36,9 @@
 - (id)init {
 	self = [super initWithWindowNibName:@"TBPreferencesWindow"];
 	if (!self) return nil;
-	
+
+    _interfaceNameArray = [[[AKTrafficMonitorService sharedService] networkInterfaceNames] retain];
+
 	return self;
 }
 - (void)awakeFromNib {
@@ -74,6 +76,14 @@
 			 toObject:_summaryGenerator
 		  withKeyPath:Property(summaryString)
 			  options:nil];
+
+    // advanced view
+    // monitor settings
+    NSTableColumn *tableColumn = [[interfacesTableView tableColumns] objectAtIndex:0];
+    NSButtonCell *checkBoxCell = [[[NSButtonCell alloc] init] autorelease];
+    [checkBoxCell setButtonType:NSSwitchButton];
+    [tableColumn setDataCell:checkBoxCell];
+    [interfacesTableView setDataSource:self];
 	
 	// window sizing
 	[self.window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
@@ -219,6 +229,19 @@
 - (void)resetAllPrefsAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo {
 	if (returnCode != NSAlertFirstButtonReturn) return;
 	[[NSUserDefaults standardUserDefaults] removePersistentDomainForName:[[NSBundle mainBundle] bundleIdentifier]];
+}
+
+#pragma mark -
+#pragma mark interfaces table view
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
+{
+    return [_interfaceNameArray count];
+}
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+    NSButtonCell *cell = [tableColumn dataCellForRow:row];
+    [cell setTitle:[_interfaceNameArray objectAtIndex:row]];
+    return [NSNumber numberWithBool:NO];
 }
 
 #pragma mark -
