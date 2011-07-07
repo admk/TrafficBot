@@ -41,7 +41,6 @@
 		DA19897C12B45BDA00D64DD7 /* AKBytesFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = DA19897B12B45BDA00D64DD7 /* AKBytesFormatter.m */; };
 		DA198D5512B6B41A00D64DD7 /* TBGraphWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA198D5412B6B41A00D64DD7 /* TBGraphWindow.xib */; };
 		DA198D5C12B6B47E00D64DD7 /* TBGraphWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA198D5B12B6B47E00D64DD7 /* TBGraphWindowController.m */; };
-		DA35AC1412AC2AA6009C02D2 /* FScript.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA35AC1312AC2AA6009C02D2 /* FScript.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DA4BE76A12AC8CDF0070618E /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */; };
 		DA4BF12312B2930C0070618E /* NSWindow+AKFlip.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */; };
 		DA4BF13B12B29EFE0070618E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4BF13A12B29EFE0070618E /* QuartzCore.framework */; };
@@ -139,7 +138,6 @@
 		DA198D5412B6B41A00D64DD7 /* TBGraphWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBGraphWindow.xib; sourceTree = "<group>"; };
 		DA198D5A12B6B47E00D64DD7 /* TBGraphWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBGraphWindowController.h; sourceTree = "<group>"; };
 		DA198D5B12B6B47E00D64DD7 /* TBGraphWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBGraphWindowController.m; sourceTree = "<group>"; };
-		DA35AC1312AC2AA6009C02D2 /* FScript.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FScript.framework; path = Library/Frameworks/FScript.framework; sourceTree = SDKROOT; };
 		DA4BE76812AC8CDF0070618E /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
 		DA4BE76912AC8CDF0070618E /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
 		DA4BE80012AD786B0070618E /* AKDebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKDebugMacros.h; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				B16F08A61277636900D13C0B /* Carbon.framework in Frameworks */,
-				DA35AC1412AC2AA6009C02D2 /* FScript.framework in Frameworks */,
 				DA4BF13B12B29EFE0070618E /* QuartzCore.framework in Frameworks */,
 				DAB7E78C12E3E06E006ED7C8 /* Growl.framework in Frameworks */,
 				DA0B21FA1310325100F375B6 /* IOKit.framework in Frameworks */,
@@ -212,7 +209,6 @@
 				DA4BF13A12B29EFE0070618E /* QuartzCore.framework */,
 				B16F08A51277636900D13C0B /* Carbon.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
-				DA35AC1312AC2AA6009C02D2 /* FScript.framework */,
 				DA0B21F91310325100F375B6 /* IOKit.framework */,
 				DA0B21FD1310325B00F375B6 /* Security.framework */,
 				DA0B22011310326700F375B6 /* libcrypto.dylib */,

@@ -6,7 +6,7 @@
 //  Copyright (c) 2010 Loca Apps. All rights reserved.
 //
 
-#ifdef DEBUG
+#ifdef DEBUG_FSCRIPT
 #import <FScript/FScript.h>
 #endif
 #import "TBStatusItemController.h"
@@ -65,7 +65,7 @@
 						  options:nil];
 }
 - (void)showMenu:(id)sender {
-#ifdef DEBUG
+#ifdef DEBUG_FSCRIPT
 	static FScriptMenuItem *fsMenuItem = nil;
 	if (!fsMenuItem)
 	{
