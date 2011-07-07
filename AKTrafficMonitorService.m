@@ -10,6 +10,7 @@
 #include <sys/sysctl.h>
 #include <netinet/in.h>
 #include <net/if.h>
+#include <net/if_dl.h>
 #include <net/route.h>
 
 #define ALL_NOTIFICATIONS	[NSArray arrayWithObjects: \
@@ -80,6 +81,7 @@ static AKTrafficMonitorService *sharedService = nil;
 }
 
 #pragma mark -
+#pragma mark file management
 - (NSMutableDictionary *)rollingLogFile {
 	return [self _dictionaryWithFile:[self _rollingLogFilePath]];
 }
@@ -94,6 +96,39 @@ static AKTrafficMonitorService *sharedService = nil;
 	ZAssert(!tag, @"NSWorkspaceRecycleOperation failed with tag %ld", tag);
 	// notify
 	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
+}
+
+#pragma mark -
+#pragma mark interfaces
+- (NSArray *)allNetworkInterfaceNames {
+    NSMutableArray *names = [NSMutableArray array];
+
+    int mib[] = {CTL_NET, PF_ROUTE, 0, 0, NET_RT_IFLIST2, 0};
+	size_t len;
+	if (sysctl(mib, 6, NULL, &len, NULL, 0) < 0)
+		fprintf(stderr, "sysctl: %s\n", strerror(errno));
+	char *buf = (char *)malloc(len);
+	if (sysctl(mib, 6, buf, &len, NULL, 0) < 0)
+		fprintf(stderr, "sysctl: %s\n", strerror(errno));
+	char *buf_end = buf + len;
+	char *next = NULL;
+    char name[32];
+	for (next = buf; next < buf_end; ) {		
+		struct if_msghdr *ifm = (struct if_msghdr *)next;
+		next += ifm->ifm_msglen;
+		if (ifm->ifm_type == RTM_IFINFO2) {
+			struct if_msghdr2 *if2m = (struct if_msghdr2 *)ifm;
+            struct sockaddr_dl *sdl = (struct sockaddr_dl *)(if2m + 1);
+            strncpy(name, sdl->sdl_data, sdl->sdl_nlen);
+            name[sdl->sdl_nlen] = 0;
+            NSString *nameStr = [NSString stringWithCString:name encoding:NSASCIIStringEncoding];
+            [names addObject:nameStr];
+            DLog(@"if name: %@", nameStr);
+		}
+	}
+	free(buf);
+
+    return names;
 }
 
 #pragma mark -

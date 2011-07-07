@@ -102,6 +102,9 @@ typedef struct {
 - (NSMutableDictionary *)rollingLogFile;
 - (NSMutableDictionary *)fixedLogFile;
 
+// all names of network interfaces
+- (NSArray *)allNetworkInterfaceNames;
+
 - (void)clearStatistics;
 
 @end
