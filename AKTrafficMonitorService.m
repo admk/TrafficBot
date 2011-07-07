@@ -420,8 +420,8 @@ static AKTrafficMonitorService *sharedService = nil;
 
 - (NSDictionary *)_readDataUsage {
 
-    BOOL shouldIncludeAll = (NULL == self.monitoredInterfaces) || 
-                            ([self.monitoredInterfaces containsObject:@"All"]);
+    BOOL shouldIncludeAll = (nil == self.monitoredInterfaces) || 
+                            ([self.monitoredInterfaces count] == 0);
 
 	int mib[] = {CTL_NET, PF_ROUTE, 0, 0, NET_RT_IFLIST2, 0};
 	size_t len;
