@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
-		<string key="IBDocument.SystemVersion">10J869</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1306</string>
-		<string key="IBDocument.AppKitVersion">1038.35</string>
-		<string key="IBDocument.HIToolboxVersion">461.00</string>
+		<string key="IBDocument.SystemVersion">11A511</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1615</string>
+		<string key="IBDocument.AppKitVersion">1138</string>
+		<string key="IBDocument.HIToolboxVersion">566.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">1306</string>
+			<string key="NS.object.0">1615</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSPathCell</string>
@@ -166,29 +166,29 @@
 						<reference ref="815553365"/>
 						<reference ref="988166683"/>
 					</array>
-					<array class="NSMutableArray" key="NSToolbarIBDefaultItems">
+					<array key="NSToolbarIBDefaultItems">
 						<reference ref="789744543"/>
 						<reference ref="113697683"/>
 						<reference ref="815553365"/>
 						<reference ref="988166683"/>
 					</array>
-					<array class="NSMutableArray" key="NSToolbarIBSelectableItems"/>
+					<array key="NSToolbarIBSelectableItems" id="0"/>
 				</object>
+				<nil key="NSUserInterfaceItemIdentifier"/>
 				<object class="NSView" key="NSWindowView" id="1006">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
-					<string key="NSFrame">{{7, 11}, {477, 271}}</string>
+					<string key="NSFrameSize">{477, 271}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
-					<reference key="NSNextKeyView"/>
 					<bool key="NSViewIsLayerTreeHost">YES</bool>
 					<int key="NSViewLayerContentsRedrawPolicy">2</int>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
-				<string key="NSMaxSize">{1e+13, 1e+13}</string>
+				<string key="NSScreenRect">{{0, 0}, {1366, 768}}</string>
+				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
+				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
 			<object class="NSCustomView" id="112118614">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSButton" id="185169719">
@@ -252,11 +252,10 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{481, 206}</string>
-				<reference key="NSSuperview"/>
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSCustomView" id="112506140">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSButton" id="412808014">
@@ -519,11 +518,10 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{480, 224}</string>
-				<reference key="NSSuperview"/>
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSCustomView" id="647462964">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSTextField" id="831500725">
@@ -1557,7 +1555,6 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 					</object>
 				</array>
 				<string key="NSFrameSize">{480, 357}</string>
-				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="116980144"/>
 				<string key="NSClassName">NSView</string>
 			</object>
@@ -1571,6 +1568,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						<string key="NSFrame">{{22, 165}, {440, 5}}</string>
 						<reference key="NSSuperview" ref="412826573"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="866868703"/>
 						<bool key="NSViewIsLayerTreeHost">YES</bool>
 						<object class="NSShadow" key="NSViewShadow">
 							<double key="NSShadowVert">-1</double>
@@ -1608,6 +1606,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						<string key="NSFrame">{{120, 192}, {16, 16}}</string>
 						<reference key="NSSuperview" ref="412826573"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="188513228"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSImageCell" key="NSCell" id="582396650">
 							<int key="NSCellFlags">130560</int>
@@ -1626,7 +1625,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						<string key="NSFrame">{{120, 359}, {217, 17}}</string>
 						<reference key="NSSuperview" ref="412826573"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="188513228"/>
+						<reference key="NSNextKeyView" ref="371624546"/>
 						<int key="NSViewLayerContentsRedrawPolicy">2</int>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="698957167">
@@ -1654,7 +1653,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 										<string key="NSFrameSize">{239, 133}</string>
 										<reference key="NSSuperview" ref="960295154"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="580619092"/>
+										<reference key="NSNextKeyView"/>
 										<bool key="NSEnabled">YES</bool>
 										<object class="_NSCornerView" key="NSCornerView">
 											<nil key="NSNextResponder"/>
@@ -1663,6 +1662,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 										</object>
 										<array class="NSMutableArray" key="NSTableColumns">
 											<object class="NSTableColumn" id="415275185">
+												<string key="NSIdentifier">column</string>
 												<double key="NSWidth">236</double>
 												<double key="NSMinWidth">40</double>
 												<double key="NSMaxWidth">1000</double>
@@ -1686,19 +1686,21 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 														<reference key="NSColor" ref="536391117"/>
 													</object>
 												</object>
-												<object class="NSTextFieldCell" key="NSDataCell" id="883841999">
-													<int key="NSCellFlags">337772096</int>
-													<int key="NSCellFlags2">2048</int>
-													<string key="NSContents">Text Cell</string>
+												<object class="NSButtonCell" key="NSDataCell" id="63566264">
+													<int key="NSCellFlags">67239424</int>
+													<int key="NSCellFlags2">0</int>
+													<string key="NSContents">Check</string>
 													<reference key="NSSupport" ref="401163205"/>
+													<string key="NSCellIdentifier">_NS:946</string>
 													<reference key="NSControlView" ref="898097370"/>
-													<object class="NSColor" key="NSBackgroundColor" id="1004605219">
-														<int key="NSColorSpace">6</int>
-														<string key="NSCatalogName">System</string>
-														<string key="NSColorName">controlBackgroundColor</string>
-														<reference key="NSColor" ref="295692903"/>
-													</object>
-													<reference key="NSTextColor" ref="828609230"/>
+													<int key="NSButtonFlags">1211912703</int>
+													<int key="NSButtonFlags2">2</int>
+													<reference key="NSNormalImage" ref="800226390"/>
+													<reference key="NSAlternateImage" ref="624008213"/>
+													<string key="NSAlternateContents"/>
+													<string key="NSKeyEquivalent"/>
+													<int key="NSPeriodicDelay">200</int>
+													<int key="NSPeriodicInterval">25</int>
 												</object>
 												<int key="NSResizingMask">3</int>
 												<bool key="NSIsResizeable">YES</bool>
@@ -1714,7 +1716,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 											<string key="NSColorName">gridColor</string>
 											<reference key="NSColor" ref="8795874"/>
 										</object>
-										<double key="NSRowHeight">17</double>
+										<double key="NSRowHeight">18</double>
 										<int key="NSTvFlags">-692060160</int>
 										<reference key="NSDelegate"/>
 										<reference key="NSDataSource"/>
@@ -1723,6 +1725,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 										<int key="NSDraggingSourceMaskForNonLocal">0</int>
 										<bool key="NSAllowsTypeSelect">YES</bool>
 										<int key="NSTableViewDraggingDestinationStyle">0</int>
+										<int key="NSTableViewGroupRowStyle">1</int>
 									</object>
 								</array>
 								<string key="NSFrame">{{1, 1}, {239, 133}}</string>
@@ -1730,7 +1733,12 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="898097370"/>
 								<reference key="NSDocView" ref="898097370"/>
-								<reference key="NSBGColor" ref="1004605219"/>
+								<object class="NSColor" key="NSBGColor">
+									<int key="NSColorSpace">6</int>
+									<string key="NSCatalogName">System</string>
+									<string key="NSColorName">controlBackgroundColor</string>
+									<reference key="NSColor" ref="295692903"/>
+								</object>
 								<int key="NScvFlags">4</int>
 							</object>
 							<object class="NSScroller" id="580619092">
@@ -1739,7 +1747,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 								<string key="NSFrame">{{224, 17}, {15, 102}}</string>
 								<reference key="NSSuperview" ref="371624546"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="866868703"/>
+								<reference key="NSNextKeyView" ref="1001977694"/>
 								<reference key="NSTarget" ref="371624546"/>
 								<string key="NSAction">_doScroller:</string>
 								<double key="NSPercent">0.9925373134328358</double>
@@ -1761,11 +1769,11 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						<reference key="NSSuperview" ref="412826573"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="144257784"/>
-						<int key="NSsFlags">530</int>
+						<int key="NSsFlags">133650</int>
 						<reference key="NSVScroller" ref="580619092"/>
 						<reference key="NSHScroller" ref="144257784"/>
 						<reference key="NSContentView" ref="960295154"/>
-						<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
+						<bytes key="NSScrollAmts">QSAAAEEgAABBoAAAQaAAAA</bytes>
 					</object>
 					<object class="NSTextField" id="188513228">
 						<reference key="NSNextResponder" ref="412826573"/>
@@ -1773,7 +1781,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						<string key="NSFrame">{{144, 192}, {196, 14}}</string>
 						<reference key="NSSuperview" ref="412826573"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="371624546"/>
+						<reference key="NSNextKeyView" ref="68096484"/>
 						<int key="NSViewLayerContentsRedrawPolicy">2</int>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="1010482612">
@@ -1842,6 +1850,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						<string key="NSFrame">{{195, 12}, {91, 32}}</string>
 						<reference key="NSSuperview" ref="412826573"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<int key="NSViewLayerContentsRedrawPolicy">2</int>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="605055151">
@@ -2472,26 +2481,26 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">dataSource</string>
-						<reference key="source" ref="898097370"/>
-						<reference key="destination" ref="1001"/>
-					</object>
-					<int key="connectionID">638</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="898097370"/>
 						<reference key="destination" ref="1001"/>
 					</object>
 					<int key="connectionID">639</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">dataSource</string>
+						<reference key="source" ref="898097370"/>
+						<reference key="destination" ref="1001"/>
+					</object>
+					<int key="connectionID">643</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
 					<object class="IBObjectRecord">
 						<int key="objectID">0</int>
-						<array key="object" id="0"/>
+						<reference key="object" ref="0"/>
 						<reference key="children" ref="1000"/>
 						<nil key="parent"/>
 					</object>
@@ -3323,14 +3332,9 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						<int key="objectID">624</int>
 						<reference key="object" ref="415275185"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="883841999"/>
+							<reference ref="63566264"/>
 						</array>
 						<reference key="parent" ref="898097370"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">627</int>
-						<reference key="object" ref="883841999"/>
-						<reference key="parent" ref="415275185"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">630</int>
@@ -3376,27 +3380,26 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						<reference key="object" ref="68096484"/>
 						<reference key="parent" ref="412826573"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">642</int>
+						<reference key="object" ref="63566264"/>
+						<reference key="parent" ref="415275185"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
-				<string key="1.IBEditorWindowLastContentRect">{{217, 567}, {477, 271}}</string>
+				<string key="-1.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="-3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1.IBWindowTemplateEditedContentRect">{{217, 567}, {477, 271}}</string>
 				<integer value="1" key="1.NSWindowTemplate.visibleAtLaunch"/>
-				<string key="1.WindowOrigin">{196, 240}</string>
-				<string key="1.editorWindowContentRectSynchronizationRect">{{202, 428}, {480, 270}}</string>
+				<string key="133.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="203.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="203.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDGwAAwigAAA</bytes>
-				</object>
 				<string key="204.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="29.IBEditorWindowLastContentRect">{{670, 736}, {617, 0}}</string>
 				<string key="29.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="299.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="299.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDIQAAwrgAAA</bytes>
-				</object>
 				<real value="0.0" key="299.IBViewIntegration.shadowBlurRadius"/>
 				<object class="NSColor" key="299.IBViewIntegration.shadowColor">
 					<int key="NSColorSpace">1</int>
@@ -3412,9 +3415,6 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<string key="37.designableToolbarItemIdentifier">Summary</string>
 				<boolean value="YES" key="37.toolbarItem.selectable"/>
 				<string key="431.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="431.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABC/AAAw6MAAA</bytes>
-				</object>
 				<real value="0.0" key="431.IBViewIntegration.shadowBlurRadius"/>
 				<object class="NSColor" key="431.IBViewIntegration.shadowColor">
 					<int key="NSColorSpace">1</int>
@@ -3423,47 +3423,25 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<real value="-1" key="431.IBViewIntegration.shadowOffsetHeight"/>
 				<real value="0.0" key="431.IBViewIntegration.shadowOffsetWidth"/>
 				<string key="432.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="432.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABC1AAAw6KAAA</bytes>
-				</object>
 				<string key="433.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="434.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="436.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="436.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">AUGgAABDEwAAA</bytes>
-				</object>
 				<reference key="436.IBViewIntegration.shadowColor" ref="99409265"/>
 				<real value="-1" key="436.IBViewIntegration.shadowOffsetHeight"/>
 				<string key="441.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="441.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDQwAAwwoAAA</bytes>
-				</object>
 				<string key="442.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="445.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="455.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="455.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">AcMHAADClAAAA</bytes>
-				</object>
 				<string key="461.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="461.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDXAAAwkwAAA</bytes>
-				</object>
 				<string key="462.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="462.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDrYAAwkQAAA</bytes>
-				</object>
 				<string key="463.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="464.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="471.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="471.designableToolbarItemIdentifier">Monitoring</string>
 				<boolean value="YES" key="471.toolbarItem.selectable"/>
-				<string key="478.IBEditorWindowLastContentRect">{{136, 680}, {480, 357}}</string>
 				<string key="478.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<array class="NSMutableArray" key="478.IBUserGuides"/>
 				<string key="479.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="479.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDdwAAwwIAAA</bytes>
-				</object>
 				<real value="0.0" key="479.IBViewIntegration.shadowBlurRadius"/>
 				<object class="NSColor" key="479.IBViewIntegration.shadowColor">
 					<int key="NSColorSpace">1</int>
@@ -3472,13 +3450,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<real value="-1" key="479.IBViewIntegration.shadowOffsetHeight"/>
 				<real value="0.0" key="479.IBViewIntegration.shadowOffsetWidth"/>
 				<string key="480.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="480.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">AUNfAABC6AAAA</bytes>
-				</object>
 				<string key="484.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="484.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDKQAAw04AAA</bytes>
-				</object>
 				<real value="0.0" key="484.IBViewIntegration.shadowBlurRadius"/>
 				<object class="NSColor" key="484.IBViewIntegration.shadowColor">
 					<int key="NSColorSpace">1</int>
@@ -3487,17 +3459,8 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<real value="-1" key="484.IBViewIntegration.shadowOffsetHeight"/>
 				<real value="0.0" key="484.IBViewIntegration.shadowOffsetWidth"/>
 				<string key="485.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="485.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDBwAAw1EAAA</bytes>
-				</object>
 				<string key="486.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="486.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABC+AAAwzIAAA</bytes>
-				</object>
 				<string key="487.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="487.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDEAAAwzMAAA</bytes>
-				</object>
 				<real value="0.0" key="487.IBViewIntegration.shadowBlurRadius"/>
 				<object class="NSColor" key="487.IBViewIntegration.shadowColor">
 					<int key="NSColorSpace">1</int>
@@ -3506,13 +3469,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<real value="-1" key="487.IBViewIntegration.shadowOffsetHeight"/>
 				<real value="0.0" key="487.IBViewIntegration.shadowOffsetWidth"/>
 				<string key="488.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="488.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDPAAAwyAAAA</bytes>
-				</object>
 				<string key="489.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="489.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABC2AAAw0wAAA</bytes>
-				</object>
 				<real value="0.0" key="489.IBViewIntegration.shadowBlurRadius"/>
 				<object class="NSColor" key="489.IBViewIntegration.shadowColor">
 					<int key="NSColorSpace">1</int>
@@ -3521,39 +3478,15 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<real value="-1" key="489.IBViewIntegration.shadowOffsetHeight"/>
 				<real value="0.0" key="489.IBViewIntegration.shadowOffsetWidth"/>
 				<string key="490.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="490.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDbgAAwyEAAA</bytes>
-				</object>
 				<string key="491.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="491.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDGwAAw3UAAA</bytes>
-				</object>
 				<string key="492.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="492.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDcgAAw4cAAA</bytes>
-				</object>
 				<string key="493.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="493.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDSgAAw4aAAA</bytes>
-				</object>
 				<string key="494.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="494.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABC0gAAw4UAAA</bytes>
-				</object>
 				<string key="495.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="495.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">AUGgAABC4AAAA</bytes>
-				</object>
 				<reference key="495.IBViewIntegration.shadowColor" ref="99409265"/>
 				<real value="-1" key="495.IBViewIntegration.shadowOffsetHeight"/>
 				<string key="496.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="496.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABCqgAAw5GAAA</bytes>
-				</object>
 				<string key="497.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="497.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABC0gAAw5IAAA</bytes>
-				</object>
 				<real value="0.0" key="497.IBViewIntegration.shadowBlurRadius"/>
 				<object class="NSColor" key="497.IBViewIntegration.shadowColor">
 					<int key="NSColorSpace">1</int>
@@ -3562,9 +3495,6 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<real value="-1" key="497.IBViewIntegration.shadowOffsetHeight"/>
 				<real value="0.0" key="497.IBViewIntegration.shadowOffsetWidth"/>
 				<string key="498.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="498.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDAAAAw3IAAA</bytes>
-				</object>
 				<real value="0.0" key="498.IBViewIntegration.shadowBlurRadius"/>
 				<object class="NSColor" key="498.IBViewIntegration.shadowColor">
 					<int key="NSColorSpace">1</int>
@@ -3573,9 +3503,6 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<real value="-1" key="498.IBViewIntegration.shadowOffsetHeight"/>
 				<real value="0.0" key="498.IBViewIntegration.shadowOffsetWidth"/>
 				<string key="499.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="499.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDdwAAw3EAAA</bytes>
-				</object>
 				<real value="0.0" key="499.IBViewIntegration.shadowBlurRadius"/>
 				<object class="NSColor" key="499.IBViewIntegration.shadowColor">
 					<int key="NSColorSpace">1</int>
@@ -3583,12 +3510,8 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				</object>
 				<real value="-1" key="499.IBViewIntegration.shadowOffsetHeight"/>
 				<real value="0.0" key="499.IBViewIntegration.shadowOffsetWidth"/>
-				<string key="50.IBEditorWindowLastContentRect">{{162, 540}, {481, 206}}</string>
 				<string key="50.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="500.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="500.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDAAAAw4WAAA</bytes>
-				</object>
 				<real value="0.0" key="500.IBViewIntegration.shadowBlurRadius"/>
 				<object class="NSColor" key="500.IBViewIntegration.shadowColor">
 					<int key="NSColorSpace">1</int>
@@ -3597,9 +3520,6 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<real value="-1" key="500.IBViewIntegration.shadowOffsetHeight"/>
 				<real value="0.0" key="500.IBViewIntegration.shadowOffsetWidth"/>
 				<string key="501.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="501.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDAAAAw0IAAA</bytes>
-				</object>
 				<real value="0.0" key="501.IBViewIntegration.shadowBlurRadius"/>
 				<object class="NSColor" key="501.IBViewIntegration.shadowColor">
 					<int key="NSColorSpace">1</int>
@@ -3613,6 +3533,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<string key="505.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="506.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="507.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="508.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="509.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="510.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="511.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3622,18 +3543,15 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<real value="1234.3399999999999" key="513.IBNumberFormatterSampleNumberKey"/>
 				<string key="513.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="514.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="515.IBEditorWindowLastContentRect">{{616, 775}, {105, 43}}</string>
 				<string key="515.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="516.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="517.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="518.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="519.IBEditorWindowLastContentRect">{{529, 730}, {122, 63}}</string>
 				<string key="519.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="520.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="521.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="522.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="523.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="524.IBEditorWindowLastContentRect">{{888, 761}, {86, 43}}</string>
 				<string key="524.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="525.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="526.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3652,9 +3570,6 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<string key="537.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="538.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="561.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="561.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABC/AAAwvYAAA</bytes>
-				</object>
 				<real value="0.0" key="561.IBViewIntegration.shadowBlurRadius"/>
 				<object class="NSColor" key="561.IBViewIntegration.shadowColor">
 					<int key="NSColorSpace">1</int>
@@ -3663,15 +3578,9 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<real value="-1" key="561.IBViewIntegration.shadowOffsetHeight"/>
 				<real value="0.0" key="561.IBViewIntegration.shadowOffsetWidth"/>
 				<string key="562.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="562.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABC1AAAwvQAAA</bytes>
-				</object>
 				<string key="563.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="564.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="566.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="566.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDAwAAw4AAAA</bytes>
-				</object>
 				<real value="0.0" key="566.IBViewIntegration.shadowBlurRadius"/>
 				<object class="NSColor" key="566.IBViewIntegration.shadowColor">
 					<int key="NSColorSpace">1</int>
@@ -3680,18 +3589,12 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<real value="-1" key="566.IBViewIntegration.shadowOffsetHeight"/>
 				<real value="0.0" key="566.IBViewIntegration.shadowOffsetWidth"/>
 				<string key="567.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="567.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABC3gAAw38AAA</bytes>
-				</object>
 				<string key="568.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="569.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="58.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="58.designableToolbarItemIdentifier">Advanced</string>
 				<boolean value="YES" key="58.toolbarItem.selectable"/>
 				<string key="582.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="582.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDEAAAwv4AAA</bytes>
-				</object>
 				<real value="0.0" key="582.IBViewIntegration.shadowBlurRadius"/>
 				<object class="NSColor" key="582.IBViewIntegration.shadowColor">
 					<int key="NSColorSpace">1</int>
@@ -3700,25 +3603,14 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<real value="-1" key="582.IBViewIntegration.shadowOffsetHeight"/>
 				<real value="0.0" key="582.IBViewIntegration.shadowOffsetWidth"/>
 				<string key="583.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="583.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABC+AAAwvwAAA</bytes>
-				</object>
 				<string key="584.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="585.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="59.IBEditorWindowLastContentRect">{{193, 632}, {480, 224}}</string>
 				<string key="59.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<array class="NSMutableArray" key="59.IBUserGuides"/>
-				<object class="NSAffineTransform" key="59.IBViewBoundsToFrameTransform"/>
 				<string key="591.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="591.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">AUFAAABChAAAA</bytes>
-				</object>
 				<reference key="591.IBViewIntegration.shadowColor" ref="99409265"/>
 				<real value="-1" key="591.IBViewIntegration.shadowOffsetHeight"/>
 				<string key="592.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="592.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDAwAAwuwAAA</bytes>
-				</object>
 				<real value="0.0" key="592.IBViewIntegration.shadowBlurRadius"/>
 				<object class="NSColor" key="592.IBViewIntegration.shadowColor">
 					<int key="NSColorSpace">1</int>
@@ -3727,15 +3619,9 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<real value="-1" key="592.IBViewIntegration.shadowOffsetHeight"/>
 				<real value="0.0" key="592.IBViewIntegration.shadowOffsetWidth"/>
 				<string key="593.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="593.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABC3gAAwuoAAA</bytes>
-				</object>
 				<string key="594.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="595.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="598.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="598.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDEAAAwnwAAA</bytes>
-				</object>
 				<real value="0.0" key="598.IBViewIntegration.shadowBlurRadius"/>
 				<object class="NSColor" key="598.IBViewIntegration.shadowColor">
 					<int key="NSColorSpace">1</int>
@@ -3744,27 +3630,14 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<real value="-1" key="598.IBViewIntegration.shadowOffsetHeight"/>
 				<real value="0.0" key="598.IBViewIntegration.shadowOffsetWidth"/>
 				<string key="599.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="599.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABC+AAAwngAAA</bytes>
-				</object>
-				<string key="60.IBEditorWindowLastContentRect">{{1330, 695}, {481, 161}}</string>
 				<string key="60.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="600.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="601.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="605.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="605.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDJgAAwogAAA</bytes>
-				</object>
 				<array class="NSMutableArray" key="606.IBPathControlIntegration.allowedTypes"/>
 				<string key="606.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="61.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="61.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABCngAAwpwAAA</bytes>
-				</object>
 				<string key="615.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="615.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABBIAAAw4sAAA</bytes>
-				</object>
 				<real value="0.0" key="615.IBViewIntegration.shadowBlurRadius"/>
 				<object class="NSColor" key="615.IBViewIntegration.shadowColor">
 					<int key="NSColorSpace">1</int>
@@ -3778,10 +3651,8 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<string key="620.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="622.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="623.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="624.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="630.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="630.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABC2AAAw0wAAA</bytes>
-				</object>
 				<real value="0.0" key="630.IBViewIntegration.shadowBlurRadius"/>
 				<object class="NSColor" key="630.IBViewIntegration.shadowColor">
 					<int key="NSColorSpace">1</int>
@@ -3791,9 +3662,6 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<real value="0.0" key="630.IBViewIntegration.shadowOffsetWidth"/>
 				<string key="631.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="633.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="633.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDIQAAwrgAAA</bytes>
-				</object>
 				<real value="0.0" key="633.IBViewIntegration.shadowBlurRadius"/>
 				<object class="NSColor" key="633.IBViewIntegration.shadowColor">
 					<int key="NSColorSpace">1</int>
@@ -3803,22 +3671,17 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<real value="0.0" key="633.IBViewIntegration.shadowOffsetWidth"/>
 				<string key="634.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="635.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="635.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">AUNfAABC6AAAA</bytes>
-				</object>
 				<string key="636.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="637.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="637.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">AUFAAABChAAAA</bytes>
-				</object>
 				<reference key="637.IBViewIntegration.shadowColor" ref="99409265"/>
 				<real value="-1" key="637.IBViewIntegration.shadowOffsetHeight"/>
+				<string key="642.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">639</int>
+			<int key="maxID">644</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

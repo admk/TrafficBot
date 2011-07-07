@@ -30,10 +30,10 @@
 	TBSummaryGenerator *_summaryGenerator;
     NSArray *_interfaceNameArray;
 
-    NSMutableArray *_includeInterfaces;
+    NSArray *_includeInterfaces;
 }
 
-@property (retain, nonatomic) NSMutableArray *includeInterfaces;
+@property (retain, nonatomic) NSArray *includeInterfaces;
 
 // IBAction methods
 - (IBAction)continueToSetup:(id)sender;
@@ -46,8 +46,5 @@
 - (IBAction)updateThresholds:(id)sender;
 
 - (IBAction)runPathDidChange:(NSPathControl *)myPathControl;
-
-// interfaces table view
-- (void)didClickCell:(id)sender;
 
 @end

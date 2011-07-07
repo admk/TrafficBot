@@ -88,13 +88,6 @@
 			 toObject:_summaryGenerator
 		  withKeyPath:Property(summaryString)
 			  options:nil];
-
-    // advanced view
-    // monitor settings
-    NSTableColumn *tableColumn = [[interfacesTableView tableColumns] objectAtIndex:0];
-    NSButtonCell *checkBoxCell = [[[NSButtonCell alloc] init] autorelease];
-    [checkBoxCell setButtonType:NSSwitchButton];
-    [tableColumn setDataCell:checkBoxCell];
 	
 	// window sizing
 	[self.window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
@@ -253,24 +246,23 @@
     NSString *interfaceName = [_interfaceNameArray objectAtIndex:row];
     NSButtonCell *cell = [tableColumn dataCellForRow:row];
     [cell setTitle:interfaceName];
-    [cell setTarget:self];
-    [cell setAction:@selector(didClickCell:)];
-    NSNumber *state = [NSNumber numberWithBool:
-                       [self.includeInterfaces containsObject:interfaceName]];
-    return state;
+    BOOL state = [self.includeInterfaces containsObject:interfaceName];
+    int stateInt = state ? NSOnState : NSOffState;
+    return [NSNumber numberWithInteger:stateInt];
 }
-- (void)didClickCell:(id)sender
+- (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    NSString *interfaceName = [sender title];
-    if ([self.includeInterfaces containsObject:interfaceName])
+    NSString *interfaceName = [_interfaceNameArray objectAtIndex:row];
+    NSMutableArray *newInterfaces = [self.includeInterfaces mutableCopy];
+    if ([object intValue] == NSOnState)
     {
-        [self.includeInterfaces removeObject:interfaceName];
+        [newInterfaces addObject:interfaceName];
     }
     else
     {
-        [self.includeInterfaces addObject:interfaceName];
+        [newInterfaces removeObject:interfaceName];
     }
-    [interfacesTableView updateTrackingAreas];
+    SetDefaults(newInterfaces, includeInterfaces);
 }
 
 #pragma mark -
