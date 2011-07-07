@@ -100,7 +100,7 @@ static AKTrafficMonitorService *sharedService = nil;
 
 #pragma mark -
 #pragma mark interfaces
-- (NSArray *)allNetworkInterfaceNames {
+- (NSArray *)networkInterfaceNames {
     NSMutableArray *names = [NSMutableArray array];
 
     int mib[] = {CTL_NET, PF_ROUTE, 0, 0, NET_RT_IFLIST2, 0};
