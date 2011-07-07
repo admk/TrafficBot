@@ -106,8 +106,8 @@
 		B16F08A51277636900D13C0B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		B16F0C401278708300D13C0B /* Gauge Pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gauge Pointer.png"; sourceTree = "<group>"; };
 		B16F0C411278708300D13C0B /* Gauge Face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gauge Face.png"; sourceTree = "<group>"; };
-		B16F0C441278709C00D13C0B /* AKGaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKGaugeView.h; sourceTree = "<group>"; };
-		B16F0C451278709C00D13C0B /* AKGaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKGaugeView.m; sourceTree = "<group>"; };
+		B16F0C441278709C00D13C0B /* AKGaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKGaugeView.h; path = "Gauge View/AKGaugeView.h"; sourceTree = "<group>"; };
+		B16F0C451278709C00D13C0B /* AKGaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKGaugeView.m; path = "Gauge View/AKGaugeView.m"; sourceTree = "<group>"; };
 		B16F0E921278CE6B00D13C0B /* AKTrafficMonitorService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTrafficMonitorService.h; sourceTree = "<group>"; };
 		B16F0E931278CE6B00D13C0B /* AKTrafficMonitorService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AKTrafficMonitorService.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B16F0F141278FBAA00D13C0B /* Cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Cog.png; path = Images/Cog.png; sourceTree = "<group>"; };
@@ -343,7 +343,7 @@
 				B16F0C451278709C00D13C0B /* AKGaugeView.m */,
 			);
 			name = "Gauge View";
-			path = "Private Utilites/Gauge View";
+			path = "private-utilities";
 			sourceTree = "<group>";
 		};
 		B16F0C3F1278705600D13C0B /* Images */ = {
@@ -499,7 +499,7 @@
 				B16F0C411278708300D13C0B /* Gauge Face.png */,
 			);
 			name = "Gauge View";
-			path = "Private Utilites/Gauge View";
+			path = "private-utilities/Gauge View";
 			sourceTree = "<group>";
 		};
 		DA4BF12712B2962F0070618E /* NSWindow (AKFlip) */ = {
@@ -508,9 +508,8 @@
 				DA4BF12112B2930C0070618E /* NSWindow+AKFlip.h */,
 				DA4BF12212B2930C0070618E /* NSWindow+AKFlip.m */,
 			);
-			name = "NSWindow (AKFlip)";
-			path = "/Users/admko/Desktop/TrafficBot/Cocoa-Utilities/NSWindow (AKFlip)";
-			sourceTree = "<absolute>";
+			path = "NSWindow (AKFlip)";
+			sourceTree = "<group>";
 		};
 		DA66D91B12EB51040065454C /* Summary View */ = {
 			isa = PBXGroup;
@@ -519,7 +518,7 @@
 				DA66D91E12EB511D0065454C /* AKSummaryView.m */,
 			);
 			name = "Summary View";
-			path = "Private Utilites/Summary View";
+			path = "private-utilities/Summary View";
 			sourceTree = "<group>";
 		};
 		DAB7E22312E24035006ED7C8 /* Setup View */ = {
@@ -576,9 +575,8 @@
 				DABFB4D512A0421A00AE41FF /* NSDate+AKMidnight.h */,
 				DABFB4D612A0421A00AE41FF /* NSDate+AKMidnight.m */,
 			);
-			name = "NSDate (AKMidnight)";
-			path = "/Users/admko/Desktop/TrafficBot/Cocoa-Utilities/NSDate (AKMidnight)";
-			sourceTree = "<absolute>";
+			path = "NSDate (AKMidnight)";
+			sourceTree = "<group>";
 		};
 		DAFADFAC12AB24B50027CEE8 /* Attached Window */ = {
 			isa = PBXGroup;
@@ -586,9 +584,8 @@
 				B16F084812772C8200D13C0B /* MAAttachedWindow.h */,
 				B16F084912772C8200D13C0B /* MAAttachedWindow.m */,
 			);
-			name = "Attached Window";
-			path = "/Users/admko/Desktop/TrafficBot/Cocoa-Utilities/Attached Window";
-			sourceTree = "<absolute>";
+			path = "Attached Window";
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
