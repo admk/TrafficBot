@@ -39,7 +39,7 @@ typedef struct {
 
 	BOOL			_monitoring;
 	
-    NSArray         *_monitoredInterfaces;
+    NSArray         *_includeInterfaces;
 	tms_mode_t		_monitoringMode;
 	NSTimeInterval	_rollingPeriodInterval;
 	NSDate			*_fixedPeriodRestartDate;
@@ -62,7 +62,7 @@ typedef struct {
 
 // monitoring interface
 // NULL or has "All" monitors all interfaces
-@property (copy, nonatomic) NSArray *monitoredInterfaces;
+@property (copy, nonatomic) NSArray *includeInterfaces;
 
 // modes:
 // tms_rolling_mode:	a rolling period - traffic in the last x hours/days

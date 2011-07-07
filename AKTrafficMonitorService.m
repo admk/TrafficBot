@@ -123,7 +123,6 @@ static AKTrafficMonitorService *sharedService = nil;
             name[sdl->sdl_nlen] = 0;
             NSString *nameStr = [NSString stringWithCString:name encoding:NSASCIIStringEncoding];
             [names addObject:nameStr];
-            DLog(@"if name: %@", nameStr);
 		}
 	}
 	free(buf);
@@ -149,10 +148,10 @@ static AKTrafficMonitorService *sharedService = nil;
 	if (_monitoring) [self _startMonitoring];
 	else [self _stopMonitoring];
 }
-- (void)setMonitoredInterfaces:(NSArray *)monitoredInterfaces {
-    if (_monitoredInterfaces == monitoredInterfaces) return;
-    [_monitoredInterfaces release];
-    _monitoredInterfaces = [monitoredInterfaces retain];
+- (void)setIncludeInterfaces:(NSArray *)monitoredInterfaces {
+    if (_includeInterfaces == monitoredInterfaces) return;
+    [_includeInterfaces release];
+    _includeInterfaces = [monitoredInterfaces retain];
     [self clearStatistics];
 }
 - (void)setMonitoringMode:(tms_mode_t)mode {
@@ -420,8 +419,8 @@ static AKTrafficMonitorService *sharedService = nil;
 
 - (NSDictionary *)_readDataUsage {
 
-    BOOL shouldIncludeAll = (nil == self.monitoredInterfaces) || 
-                            ([self.monitoredInterfaces count] == 0);
+    BOOL shouldIncludeAll = (nil == self.includeInterfaces) || 
+                            ([self.includeInterfaces count] == 0);
 
 	int mib[] = {CTL_NET, PF_ROUTE, 0, 0, NET_RT_IFLIST2, 0};
 	size_t len;
@@ -444,7 +443,7 @@ static AKTrafficMonitorService *sharedService = nil;
             strncpy(name, sdl->sdl_data, sdl->sdl_nlen);
             name[sdl->sdl_nlen] = 0;
             if (!shouldIncludeAll) {
-                BOOL hasInterface = [self.monitoredInterfaces containsObject:
+                BOOL hasInterface = [self.includeInterfaces containsObject:
                                      [NSString stringWithCString:name
                                                         encoding:NSASCIIStringEncoding]];
                 if (!hasInterface) {
@@ -513,7 +512,7 @@ static AKTrafficMonitorService *sharedService = nil;
 #pragma mark boilerplate
 #pragma mark property synthesize
 @synthesize monitoring = _monitoring;
-@synthesize monitoredInterfaces = _monitoredInterfaces, monitoringMode = _monitoringMode;
+@synthesize includeInterfaces = _includeInterfaces, monitoringMode = _monitoringMode;
 @synthesize thresholds = _thresholds;
 @synthesize rollingPeriodInterval = _rollingPeriodInterval;
 @synthesize fixedPeriodRestartDate = _fixedPeriodRestartDate;
