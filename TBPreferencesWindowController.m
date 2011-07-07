@@ -46,13 +46,8 @@
 
     // bindings
     [self bind:Property(includeInterfaces)
-      toObject:[NSUserDefaults standardUserDefaults]
+      toObject:[NSUserDefaultsController sharedUserDefaultsController]
    withKeyPath:[@"values." stringByAppendingString:Property(includeInterfaces)]
-       options:nil];
-    [[NSUserDefaults standardUserDefaults]
-          bind:[@"values." stringByAppendingString:Property(includeInterfaces)]
-      toObject:self
-   withKeyPath:Property(includeInterfaces)
        options:nil];
 
 	// summary generator
@@ -233,6 +228,7 @@
 - (void)resetAllPrefsAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo {
 	if (returnCode != NSAlertFirstButtonReturn) return;
 	[[NSUserDefaults standardUserDefaults] removePersistentDomainForName:[[NSBundle mainBundle] bundleIdentifier]];
+    [interfacesTableView reloadData];
 }
 
 #pragma mark -
