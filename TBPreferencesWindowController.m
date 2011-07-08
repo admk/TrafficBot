@@ -42,6 +42,11 @@
 
 	return self;
 }
+- (void)dealloc {
+    [_includeInterfaces release], _includeInterfaces = nil;
+    [super dealloc];
+}
+
 - (void)awakeFromNib {
 
     // bindings
