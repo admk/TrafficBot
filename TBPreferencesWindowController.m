@@ -239,12 +239,27 @@
 }
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
+    // update warning text field on no interfaces selected
+    BOOL setRed = TRUE;
+    for (NSString *interface in self.includeInterfaces)
+    {
+        if ([_interfaceNameArray containsObject:interface])
+        {
+            setRed = FALSE;
+        }
+    }
+    if (setRed)
+        [interfacesWarningTextField setTextColor:[NSColor redColor]];
+    else
+        [interfacesWarningTextField setTextColor:[NSColor darkGrayColor]];
+
+    // cell settings
     NSString *interfaceName = [_interfaceNameArray objectAtIndex:row];
     NSButtonCell *cell = [tableColumn dataCellForRow:row];
     [cell setTitle:interfaceName];
     BOOL state = [self.includeInterfaces containsObject:interfaceName];
-    int stateInt = state ? NSOnState : NSOffState;
-    return [NSNumber numberWithInteger:stateInt];
+    NSNumber *stateVal = [NSNumber numberWithInteger:state?NSOnState:NSOffState];
+    return stateVal;
 }
 - (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {

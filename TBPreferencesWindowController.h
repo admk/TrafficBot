@@ -10,8 +10,7 @@
 
 
 @class TBSummaryGenerator, AKSummaryView;
-@interface TBPreferencesWindowController : NSWindowController
-        <NSPathControlDelegate, NSTableViewDataSource, NSTableViewDelegate> {
+@interface TBPreferencesWindowController : NSWindowController <NSPathControlDelegate, NSTableViewDataSource, NSTableViewDelegate> {
 	
 	IBOutlet NSToolbar *pToolbar;
 	IBOutlet NSView *statusView;
@@ -24,6 +23,7 @@
 	IBOutlet NSPathControl *pathControl;
 
     IBOutlet NSTableView *interfacesTableView;
+    IBOutlet NSTextField *interfacesWarningTextField;
 
 @private
 	__weak NSView *_preferencesView;
