@@ -55,13 +55,15 @@ typedef struct {
 	tms_rec_t		_totalRec;
 	tms_rec_t		_speedRec;
 	TMS_D_T			_lastTotal;
+
+    NSArray         *_prevInterfaces;
 }
 
 // toggle monitoring by setting it
 @property (assign, nonatomic, getter=isMonitoring) BOOL monitoring;
 
 // monitoring interface
-// NULL or has "All" monitors all interfaces
+// nil monitors all interfaces
 @property (copy, nonatomic) NSArray *includeInterfaces;
 
 // modes:

@@ -71,12 +71,16 @@ static AKTrafficMonitorService *sharedService = nil;
 	_fixedPeriodRestartDate = nil;
 	_monitoring = NO;
 	_monitoringMode = tms_unreachable_mode;
+
+    _prevInterfaces = [[self networkInterfaceNames] retain];
 	
     return self;
 }
 - (void)dealloc {
 	[_fixedPeriodRestartDate release], _fixedPeriodRestartDate = nil;
 	[_monitorTimer release], _monitorTimer = nil;
+    [_includeInterfaces release], _includeInterfaces = nil;
+    [_prevInterfaces release], _prevInterfaces = nil;
 	[super dealloc];
 }
 
@@ -152,7 +156,7 @@ static AKTrafficMonitorService *sharedService = nil;
     if (_includeInterfaces == monitoredInterfaces) return;
     [_includeInterfaces release];
     _includeInterfaces = [monitoredInterfaces retain];
-    [self clearStatistics];
+    [self _reinitialiseIfMonitoring];
 }
 - (void)setMonitoringMode:(tms_mode_t)mode {
 	if (_monitoringMode == mode) return;
@@ -419,8 +423,15 @@ static AKTrafficMonitorService *sharedService = nil;
 
 - (NSDictionary *)_readDataUsage {
 
-    BOOL shouldIncludeAll = (nil == self.includeInterfaces) || 
-                            ([self.includeInterfaces count] == 0);
+    // reinitialise if interfaces changed
+    NSArray *curInterfaces = [self networkInterfaceNames];
+    if (![_prevInterfaces isEqualToArray:curInterfaces])
+    {
+        [self _reinitialiseIfMonitoring];
+    }
+    _prevInterfaces = [curInterfaces retain];
+
+    BOOL shouldIncludeAll = (nil == self.includeInterfaces);
 
 	int mib[] = {CTL_NET, PF_ROUTE, 0, 0, NET_RT_IFLIST2, 0};
 	size_t len;
@@ -501,6 +512,7 @@ static AKTrafficMonitorService *sharedService = nil;
 	
 	return folder;
 }
+
 #pragma mark -
 #pragma mark property accessors
 - (void)setValue:(id)value forKey:(NSString *)key {
