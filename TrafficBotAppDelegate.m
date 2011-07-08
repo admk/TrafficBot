@@ -51,6 +51,7 @@
 						 Property(rollingPeriodInterval),
 						 Property(fixedPeriodRestartDate),
 						 Property(monitoringMode),
+                         Property(includeInterfaces),
 						 @"monitoring", nil];
 	for (NSString *bindingKey in bindings)
 		[[AKTrafficMonitorService sharedService] bind:bindingKey 

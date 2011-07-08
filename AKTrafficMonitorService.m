@@ -305,6 +305,7 @@ static AKTrafficMonitorService *sharedService = nil;
 	if (!_monitoring) return;
 	[self _stopMonitoring];
 	[self _startMonitoring];
+    DLog(@"reinitialised.");
 }
 
 #pragma mark -
