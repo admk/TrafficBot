@@ -269,7 +269,7 @@
 - (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
     NSString *interfaceName = [_interfaceNameArray objectAtIndex:row];
-    NSMutableArray *newInterfaces = [self.includeInterfaces mutableCopy];
+    NSMutableArray *newInterfaces = [[self.includeInterfaces mutableCopy] autorelease];
     if ([object intValue] == NSOnState)
     {
         [newInterfaces addObject:interfaceName];
