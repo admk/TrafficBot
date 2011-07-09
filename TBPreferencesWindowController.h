@@ -16,6 +16,7 @@
 	IBOutlet NSView *statusView;
 	IBOutlet NSView *generalView;
 	IBOutlet NSView *monitoringView;
+    IBOutlet NSView *locationView;
 	IBOutlet NSView *advancedView;
 	
 	IBOutlet AKSummaryView *summaryView;
@@ -31,9 +32,18 @@
     NSArray *_interfaceNameArray;
 
     NSArray *_includeInterfaces;
+    
+    BOOL _hasLocation;
+    BOOL _locationFail;
+    NSImage *_currentLocationImage;
+    NSDictionary *_locationDictionary;
 }
 
 @property (retain, nonatomic) NSArray *includeInterfaces;
+@property (retain, nonatomic) NSDictionary *locationDictionary;
+@property (assign, nonatomic) NSImage *currentLocationImage;
+@property (assign, nonatomic) BOOL hasLocation;
+@property (assign, nonatomic) BOOL locationFail;
 
 // IBAction methods
 - (IBAction)continueToSetup:(id)sender;

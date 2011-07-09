@@ -8,6 +8,7 @@
 
 #import "TBPreferencesWindowController.h"
 #import "AKTrafficMonitorService.h"
+#import "AKLocationManager.h"
 #import "TrafficBotAppDelegate.h"
 #import "AKSummaryView.h"
 #import "TBSummaryGenerator.h"
@@ -27,6 +28,11 @@
 
 - (void)_selectPane:(NSString *)pane;
 
+- (void)_addCurrentLocationName:(NSString *)name;
+- (void)_removeCurrentLocationName:(NSString *)name;
+
+- (void)_didReceiveNotificationFromLocationManager:(NSNotification *)notification;
+
 @end
 
 
@@ -39,11 +45,18 @@
 
     _interfaceNameArray = [[[AKTrafficMonitorService sharedService] networkInterfaceNames] retain];
     _includeInterfaces = nil;
+    _hasLocation = NO;
+    _locationFail = NO;
+    _currentLocationImage = nil;
+    _locationDictionary = nil;
 
 	return self;
 }
 - (void)dealloc {
+    [_interfaceNameArray release], _interfaceNameArray = nil;
     [_includeInterfaces release], _includeInterfaces = nil;
+    [_locationDictionary release], _locationDictionary = nil;
+    [_currentLocationImage release], _currentLocationImage = nil;
     [super dealloc];
 }
 
@@ -96,7 +109,11 @@
     [self.window setFrame:frame display:NO animate:NO];
 	[self.window center];	
 	
+    // path
 	[pathControl setURL:[NSURL fileURLWithPath:Defaults(runURL)]];
+    
+    // geolocation
+    [[AKLocationManager sharedManager] addObserver:self selector:@selector(_didReceiveNotificationFromLocationManager:)];
 }
 - (void)windowDidLoad {
 	[self _selectPane:SUMMARY_PANE];
@@ -269,6 +286,10 @@
 - (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
     NSString *interfaceName = [_interfaceNameArray objectAtIndex:row];
+    if (!self.includeInterfaces)
+    {
+        self.includeInterfaces = [[[NSArray alloc] init] autorelease];
+    }
     NSMutableArray *newInterfaces = [[self.includeInterfaces mutableCopy] autorelease];
     if ([object intValue] == NSOnState)
     {
@@ -288,5 +309,51 @@
 	[self didSelectToolbarItem:pane];
 }
 
+#pragma mark -
+#pragma mark location
+- (void)_addCurrentLocationName:(NSString *)name
+{
+    CLLocation *location = [[AKLocationManager sharedManager] location];
+    if (!location)
+    {
+        ZAssert(0, @"location cannot be nil.");
+    }
+    if (!self.locationDictionary)
+    {
+        self.locationDictionary = [[[NSDictionary alloc] init] autorelease];
+    }
+    NSMutableDictionary *locations = [[self.locationDictionary mutableCopy] autorelease];
+    [locations setObject:[NSKeyedArchiver archivedDataWithRootObject:location]
+                  forKey:name];
+    SetDefaults(locations, locationDictionary);
+}
+- (void)_removeCurrentLocationName:(NSString *)name
+{
+    NSMutableDictionary *locations = [[self.locationDictionary mutableCopy] autorelease];
+    [locations removeObjectForKey:name];
+    SetDefaults(locations, locationDictionary);
+}
+
+- (void)_didReceiveNotificationFromLocationManager:(NSNotification *)notification
+{
+    DLog(@"received: %@", notification);
+    if ([[notification name] isEqual:AKLocationManagerDidGetNewCurrentLocationNotification])
+    {
+        self.hasLocation = YES;
+    }
+    else if ([[notification name] isEqual:AKLocationManagerDidFailNotification])
+    {
+        self.hasLocation = NO;
+        self.locationFail = YES;
+    }
+    NSURL *url = [[AKLocationManager sharedManager] currentLocationImageURL];
+    self.currentLocationImage = [[[NSImage alloc] initWithContentsOfURL:url] autorelease];
+}
+
+#pragma mark -
+#pragma mark synthesize
 @synthesize includeInterfaces = _includeInterfaces;
+@synthesize locationDictionary = _locationDictionary;
+@synthesize currentLocationImage = _currentLocationImage;
+@synthesize hasLocation = _hasLocation, locationFail = _locationFail;
 @end
