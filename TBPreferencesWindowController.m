@@ -220,6 +220,13 @@
 }
 
 #pragma mark -
+#pragma mark location
+- (IBAction)addLandmark:(id)sender
+{
+	
+}
+
+#pragma mark -
 #pragma mark advanced
 
 - (IBAction)clearStatistics:(id)sender {
