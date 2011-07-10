@@ -16,6 +16,7 @@
 #define SUMMARY_PANE	@"Summary"
 #define GENERAL_PANE	@"General"
 #define MONITORING_PANE	@"Monitoring"
+#define LOCATION_PANE   @"Location"
 #define ADVACNED_PANE	@"Advanced"
 
 
@@ -138,6 +139,8 @@
 		_preferencesView = generalView;
 	else if ([identifier isEqual:MONITORING_PANE])
 		_preferencesView = monitoringView;
+    else if ([identifier isEqual:LOCATION_PANE])
+        _preferencesView = locationView;
 	else if ([identifier isEqual:ADVACNED_PANE])
 		_preferencesView = advancedView;
 	
