@@ -32,6 +32,8 @@
 		B500D93313C99CC000FD6D1C /* AKLandmark.m in Sources */ = {isa = PBXBuildFile; fileRef = B500D93213C99CC000FD6D1C /* AKLandmark.m */; };
 		B552662513C721ED0037C39E /* AKLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B552662413C721ED0037C39E /* AKLocationManager.m */; };
 		B552662713C723820037C39E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B552662613C723820037C39E /* CoreLocation.framework */; };
+		B581F7CA13CA1D6000885FE8 /* AKAddLocationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B581F7C913CA1D6000885FE8 /* AKAddLocationWindow.xib */; };
+		B581F7CE13CA1DCC00885FE8 /* AKAddLocationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B581F7CD13CA1DCC00885FE8 /* AKAddLocationWindowController.m */; };
 		DA049FC112B8534600ECA24C /* Gauge Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FBF12B8534600ECA24C /* Gauge Pressed.png */; };
 		DA049FC212B8534600ECA24C /* Gauge.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FC012B8534600ECA24C /* Gauge.png */; };
 		DA06937612BD9774008B1584 /* GVViewCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = DA06937512BD9774008B1584 /* GVViewCollection.m */; };
@@ -123,11 +125,14 @@
 		B1F449AF127E352B0020735E /* NSWindow-NoodleEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow-NoodleEffects.m"; sourceTree = "<group>"; };
 		B1F44B50127F30530020735E /* Set Up Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Up Button.png"; path = "Images/Set Up Button.png"; sourceTree = "<group>"; };
 		B1F44B51127F30530020735E /* Set Up Button Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Up Button Pressed.png"; path = "Images/Set Up Button Pressed.png"; sourceTree = "<group>"; };
-		B500D93113C99CC000FD6D1C /* AKLandmark.h */ = {isa = PBXFileReference; fileEncoding = 4; name = AKLandmark.h; path = "private-utilities/Location Manager/AKLandmark.h"; sourceTree = "<group>"; };
+		B500D93113C99CC000FD6D1C /* AKLandmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKLandmark.h; path = "private-utilities/Location Manager/AKLandmark.h"; sourceTree = "<group>"; };
 		B500D93213C99CC000FD6D1C /* AKLandmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKLandmark.m; path = "private-utilities/Location Manager/AKLandmark.m"; sourceTree = "<group>"; };
 		B552662313C721ED0037C39E /* AKLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKLocationManager.h; path = "private-utilities/Location Manager/AKLocationManager.h"; sourceTree = "<group>"; };
 		B552662413C721ED0037C39E /* AKLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKLocationManager.m; path = "private-utilities/Location Manager/AKLocationManager.m"; sourceTree = "<group>"; };
 		B552662613C723820037C39E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B581F7C913CA1D6000885FE8 /* AKAddLocationWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AKAddLocationWindow.xib; path = "private-utilities/Location Manager/AKAddLocationWindow.xib"; sourceTree = "<group>"; };
+		B581F7CC13CA1DCC00885FE8 /* AKAddLocationWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKAddLocationWindowController.h; path = "private-utilities/Location Manager/AKAddLocationWindowController.h"; sourceTree = "<group>"; };
+		B581F7CD13CA1DCC00885FE8 /* AKAddLocationWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKAddLocationWindowController.m; path = "private-utilities/Location Manager/AKAddLocationWindowController.m"; sourceTree = "<group>"; };
 		DA049FBF12B8534600ECA24C /* Gauge Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gauge Pressed.png"; path = "Images/Gauge Pressed.png"; sourceTree = "<group>"; };
 		DA049FC012B8534600ECA24C /* Gauge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Gauge.png; path = Images/Gauge.png; sourceTree = "<group>"; };
 		DA06937412BD9774008B1584 /* GVViewCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVViewCollection.h; sourceTree = "<group>"; };
@@ -453,6 +458,8 @@
 				B552662413C721ED0037C39E /* AKLocationManager.m */,
 				B500D93113C99CC000FD6D1C /* AKLandmark.h */,
 				B500D93213C99CC000FD6D1C /* AKLandmark.m */,
+				B581F7CC13CA1DCC00885FE8 /* AKAddLocationWindowController.h */,
+				B581F7CD13CA1DCC00885FE8 /* AKAddLocationWindowController.m */,
 			);
 			name = "Location Manager";
 			sourceTree = "<group>";
@@ -565,6 +572,7 @@
 				DA198D5412B6B41A00D64DD7 /* TBGraphWindow.xib */,
 				B16F068B1275E53C00D13C0B /* TBPreferencesWindow.xib */,
 				DAB7E48512E34B4D006ED7C8 /* TBFirstLaunchWindow.xib */,
+				B581F7C913CA1D6000885FE8 /* AKAddLocationWindow.xib */,
 			);
 			name = Nibs;
 			sourceTree = "<group>";
@@ -680,6 +688,7 @@
 				DA66DB2B12EBE0A60065454C /* Icon.icns in Resources */,
 				DA66DB3812ECA0490065454C /* Hint.png in Resources */,
 				DA66DBFF12ECAEDB0065454C /* Credits.rtf in Resources */,
+				B581F7CA13CA1D6000885FE8 /* AKAddLocationWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,6 +726,7 @@
 				DABEB80213480C4100063B84 /* NSFont+AKFallback.m in Sources */,
 				B552662513C721ED0037C39E /* AKLocationManager.m in Sources */,
 				B500D93313C99CC000FD6D1C /* AKLandmark.m in Sources */,
+				B581F7CE13CA1DCC00885FE8 /* AKAddLocationWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,6 +23,8 @@
 
 	IBOutlet NSPathControl *pathControl;
 
+	IBOutlet NSArrayController *landmarkArrayController;
+
     IBOutlet NSTableView *interfacesTableView;
     IBOutlet NSTextField *interfacesWarningTextField;
 
@@ -36,11 +38,9 @@
     BOOL _hasLocation;
     BOOL _locationFail;
     NSImage *_currentLocationImage;
-    NSDictionary *_locationDictionary;
 }
 
 @property (retain, nonatomic) NSArray *includeInterfaces;
-@property (retain, nonatomic) NSDictionary *locationDictionary;
 @property (assign, nonatomic) NSImage *currentLocationImage;
 @property (assign, nonatomic) BOOL hasLocation;
 @property (assign, nonatomic) BOOL locationFail;

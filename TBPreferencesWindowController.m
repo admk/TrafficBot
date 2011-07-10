@@ -29,9 +29,6 @@
 
 - (void)_selectPane:(NSString *)pane;
 
-- (void)_addCurrentLocationName:(NSString *)name;
-- (void)_removeCurrentLocationName:(NSString *)name;
-
 - (void)_didReceiveNotificationFromLocationManager:(NSNotification *)notification;
 
 @end
@@ -49,14 +46,12 @@
     _hasLocation = NO;
     _locationFail = NO;
     _currentLocationImage = nil;
-    _locationDictionary = nil;
 
 	return self;
 }
 - (void)dealloc {
     [_interfaceNameArray release], _interfaceNameArray = nil;
     [_includeInterfaces release], _includeInterfaces = nil;
-    [_locationDictionary release], _locationDictionary = nil;
     [_currentLocationImage release], _currentLocationImage = nil;
     [super dealloc];
 }
@@ -321,22 +316,9 @@
     {
         ZAssert(0, @"location cannot be nil.");
     }
-    if (!self.locationDictionary)
-    {
-        self.locationDictionary = [[[NSDictionary alloc] init] autorelease];
-    }
-    NSMutableDictionary *locations = [[self.locationDictionary mutableCopy] autorelease];
-    [locations setObject:[NSKeyedArchiver archivedDataWithRootObject:location]
-                  forKey:name];
-    SetDefaults(locations, locationDictionary);
+	AKLandmark *landmark = [[AKLandmark alloc] initWithName:name location:location];
+	[landmarkArrayController addObject:landmark];
 }
-- (void)_removeCurrentLocationName:(NSString *)name
-{
-    NSMutableDictionary *locations = [[self.locationDictionary mutableCopy] autorelease];
-    [locations removeObjectForKey:name];
-    SetDefaults(locations, locationDictionary);
-}
-
 - (void)_didReceiveNotificationFromLocationManager:(NSNotification *)notification
 {
     DLog(@"received: %@", notification);
@@ -356,7 +338,6 @@
 #pragma mark -
 #pragma mark synthesize
 @synthesize includeInterfaces = _includeInterfaces;
-@synthesize locationDictionary = _locationDictionary;
 @synthesize currentLocationImage = _currentLocationImage;
 @synthesize hasLocation = _hasLocation, locationFail = _locationFail;
 @end
