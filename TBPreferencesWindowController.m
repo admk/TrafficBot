@@ -23,6 +23,7 @@
 
 @interface TBPreferencesWindowController ()
 
+- (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
 - (void)clearStatisticsAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 - (void)resetAllPrefsAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 
@@ -212,11 +213,7 @@
 }
 
 #pragma mark -
-#pragma mark location
-- (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
-{
-    
-}
+#pragma mark landmark
 - (IBAction)addLandmark:(id)sender
 {
     if (!addLocationWindowController)
@@ -228,6 +225,28 @@
         modalDelegate:self
        didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:)
           contextInfo:nil];
+}
+- (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
+{
+    if (NSCancelButton == returnCode) return;
+    
+    CLLocation *location = [[AKLocationManager sharedManager] location];
+    if (!location)
+    {
+        ZAssert(0, @"location cannot be nil.");
+    }
+	AKLandmark *landmark = [[AKLandmark alloc] initWithName:addLocationWindowController.name
+                                                   location:location];
+    NSMutableArray *landmarks = [[landmarkArrayController arrangedObjects] mutableCopy];
+	[landmarks addObject:landmark];
+    SetDefaults([NSKeyedArchiver archivedDataWithRootObject:landmarks], landmarks);
+}
+- (IBAction)removeLandmark:(id)sender
+{
+    NSMutableArray *landmarks = [[landmarkArrayController arrangedObjects] mutableCopy];
+    NSArray *selectedLandmarks = [landmarkArrayController selectedObjects];
+	[landmarks removeObjectsInArray:selectedLandmarks];
+    SetDefaults([NSKeyedArchiver archivedDataWithRootObject:landmarks], landmarks);
 }
 
 #pragma mark -
@@ -316,19 +335,6 @@
 - (void)_selectPane:(NSString *)pane {
 	[pToolbar setSelectedItemIdentifier:pane];
 	[self didSelectToolbarItem:pane];
-}
-
-#pragma mark -
-#pragma mark location
-- (void)_addCurrentLocationName:(NSString *)name
-{
-    CLLocation *location = [[AKLocationManager sharedManager] location];
-    if (!location)
-    {
-        ZAssert(0, @"location cannot be nil.");
-    }
-	AKLandmark *landmark = [[AKLandmark alloc] initWithName:name location:location];
-	[landmarkArrayController addObject:landmark];
 }
 
 #pragma mark -

@@ -218,7 +218,7 @@
 					<bool key="NSViewIsLayerTreeHost">YES</bool>
 					<int key="NSViewLayerContentsRedrawPolicy">2</int>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1366, 768}}</string>
+				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
 				<string key="NSMaxSize">{1e+13, 1e+13}</string>
 			</object>
 			<object class="NSCustomView" id="112118614">
@@ -1746,7 +1746,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 											<reference key="NSColor" ref="8795874"/>
 										</object>
 										<double key="NSRowHeight">18</double>
-										<int key="NSTvFlags">-692060160</int>
+										<int key="NSTvFlags">-557842432</int>
 										<reference key="NSDelegate"/>
 										<reference key="NSDataSource"/>
 										<int key="NSColumnAutoresizingStyle">4</int>
@@ -2760,26 +2760,6 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 					<int key="connectionID">645</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: values.monitoring</string>
-						<reference key="source" ref="432873882"/>
-						<reference key="destination" ref="910727094"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="432873882"/>
-							<reference key="NSDestination" ref="910727094"/>
-							<string key="NSLabel">value: values.monitoring</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">values.monitoring</string>
-							<object class="NSDictionary" key="NSOptions">
-								<string key="NS.key.0">NSValidatesImmediately</string>
-								<boolean value="YES" key="NS.object.0"/>
-							</object>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">657</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">landmarkArrayController</string>
 						<reference key="source" ref="1001"/>
@@ -2849,11 +2829,79 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">remove:</string>
-						<reference key="source" ref="14093541"/>
+						<string key="label">removeLandmark:</string>
+						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="74870183"/>
 					</object>
-					<int key="connectionID">728</int>
+					<int key="connectionID">729</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: values.trackingLocation</string>
+						<reference key="source" ref="432873882"/>
+						<reference key="destination" ref="910727094"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="432873882"/>
+							<reference key="NSDestination" ref="910727094"/>
+							<string key="NSLabel">value: values.trackingLocation</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">values.trackingLocation</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSValidatesImmediately</string>
+								<boolean value="YES" key="NS.object.0"/>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">730</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: values.trackingLocation</string>
+						<reference key="source" ref="346089739"/>
+						<reference key="destination" ref="910727094"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="346089739"/>
+							<reference key="NSDestination" ref="910727094"/>
+							<string key="NSLabel">enabled: values.trackingLocation</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">values.trackingLocation</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">732</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: values.trackingLocation</string>
+						<reference key="source" ref="74870183"/>
+						<reference key="destination" ref="910727094"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="74870183"/>
+							<reference key="NSDestination" ref="910727094"/>
+							<string key="NSLabel">enabled: values.trackingLocation</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">values.trackingLocation</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">738</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: values.trackingLocation</string>
+						<reference key="source" ref="404299100"/>
+						<reference key="destination" ref="910727094"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="404299100"/>
+							<reference key="NSDestination" ref="910727094"/>
+							<string key="NSLabel">enabled: values.trackingLocation</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">values.trackingLocation</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">740</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -4186,7 +4234,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">728</int>
+			<int key="maxID">740</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4214,6 +4262,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						<string key="clearStatistics:">id</string>
 						<string key="continueToSetup:">id</string>
 						<string key="didSelectToolbarItem:">id</string>
+						<string key="removeLandmark:">id</string>
 						<string key="resetAllPrefs:">id</string>
 						<string key="runPathDidChange:">NSPathControl</string>
 						<string key="updateLimit:">id</string>
@@ -4235,6 +4284,10 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						</object>
 						<object class="IBActionInfo" key="didSelectToolbarItem:">
 							<string key="name">didSelectToolbarItem:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="removeLandmark:">
+							<string key="name">removeLandmark:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="resetAllPrefs:">

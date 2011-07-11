@@ -52,5 +52,6 @@
 - (IBAction)runPathDidChange:(NSPathControl *)myPathControl;
 
 - (IBAction)addLandmark:(id)sender;
+- (IBAction)removeLandmark:(id)sender;
 
 @end
