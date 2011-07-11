@@ -9,6 +9,7 @@
 #import "TBPreferencesWindowController.h"
 #import "AKTrafficMonitorService.h"
 #import "AKLocationManager.h"
+#import "AKAddLocationWindowController.h"
 #import "TrafficBotAppDelegate.h"
 #import "AKSummaryView.h"
 #import "TBSummaryGenerator.h"
@@ -29,8 +30,6 @@
 
 - (void)_selectPane:(NSString *)pane;
 
-- (void)_didReceiveNotificationFromLocationManager:(NSNotification *)notification;
-
 @end
 
 
@@ -43,16 +42,12 @@
 
     _interfaceNameArray = [[[AKTrafficMonitorService sharedService] networkInterfaceNames] retain];
     _includeInterfaces = nil;
-    _hasLocation = NO;
-    _locationFail = NO;
-    _currentLocationImage = nil;
 
 	return self;
 }
 - (void)dealloc {
     [_interfaceNameArray release], _interfaceNameArray = nil;
     [_includeInterfaces release], _includeInterfaces = nil;
-    [_currentLocationImage release], _currentLocationImage = nil;
     [super dealloc];
 }
 
@@ -107,9 +102,6 @@
 	
     // path
 	[pathControl setURL:[NSURL fileURLWithPath:Defaults(runURL)]];
-    
-    // geolocation
-    [[AKLocationManager sharedManager] addObserver:self selector:@selector(_didReceiveNotificationFromLocationManager:)];
 }
 - (void)windowDidLoad {
 	[self _selectPane:SUMMARY_PANE];
@@ -221,9 +213,21 @@
 
 #pragma mark -
 #pragma mark location
+- (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
+{
+    
+}
 - (IBAction)addLandmark:(id)sender
 {
-	
+    if (!addLocationWindowController)
+    {
+        addLocationWindowController = [[AKAddLocationWindowController alloc] initWithWindowNibName:@"AKAddLocationWindow"];
+    }
+	[NSApp beginSheet:addLocationWindowController.window
+       modalForWindow:self.window
+        modalDelegate:self
+       didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:)
+          contextInfo:nil];
 }
 
 #pragma mark -
@@ -326,25 +330,8 @@
 	AKLandmark *landmark = [[AKLandmark alloc] initWithName:name location:location];
 	[landmarkArrayController addObject:landmark];
 }
-- (void)_didReceiveNotificationFromLocationManager:(NSNotification *)notification
-{
-    DLog(@"received: %@", notification);
-    if ([[notification name] isEqual:AKLocationManagerDidGetNewCurrentLocationNotification])
-    {
-        self.hasLocation = YES;
-    }
-    else if ([[notification name] isEqual:AKLocationManagerDidFailNotification])
-    {
-        self.hasLocation = NO;
-        self.locationFail = YES;
-    }
-    NSURL *url = [[AKLocationManager sharedManager] currentLocationImageURL];
-    self.currentLocationImage = [[[NSImage alloc] initWithContentsOfURL:url] autorelease];
-}
 
 #pragma mark -
 #pragma mark synthesize
 @synthesize includeInterfaces = _includeInterfaces;
-@synthesize currentLocationImage = _currentLocationImage;
-@synthesize hasLocation = _hasLocation, locationFail = _locationFail;
 @end

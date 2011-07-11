@@ -8,10 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-
-@class TBSummaryGenerator, AKSummaryView;
+@class TBSummaryGenerator, AKSummaryView, AKAddLocationWindowController;
 @interface TBPreferencesWindowController : NSWindowController <NSPathControlDelegate, NSTableViewDataSource, NSTableViewDelegate> {
-	
+
+    AKAddLocationWindowController *addLocationWindowController;
+
 	IBOutlet NSToolbar *pToolbar;
 	IBOutlet NSView *statusView;
 	IBOutlet NSView *generalView;
@@ -34,16 +35,9 @@
     NSArray *_interfaceNameArray;
 
     NSArray *_includeInterfaces;
-    
-    BOOL _hasLocation;
-    BOOL _locationFail;
-    NSImage *_currentLocationImage;
 }
 
 @property (retain, nonatomic) NSArray *includeInterfaces;
-@property (assign, nonatomic) NSImage *currentLocationImage;
-@property (assign, nonatomic) BOOL hasLocation;
-@property (assign, nonatomic) BOOL locationFail;
 
 // IBAction methods
 - (IBAction)continueToSetup:(id)sender;
