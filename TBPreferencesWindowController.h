@@ -25,6 +25,7 @@
 	IBOutlet NSPathControl *pathControl;
 
 	IBOutlet NSArrayController *landmarkArrayController;
+	IBOutlet NSTableView *landmarkTableView;
 
     IBOutlet NSTableView *interfacesTableView;
     IBOutlet NSTextField *interfacesWarningTextField;
@@ -33,7 +34,6 @@
 	__weak NSView *_preferencesView;
 	TBSummaryGenerator *_summaryGenerator;
     NSArray *_interfaceNameArray;
-
     NSArray *_includeInterfaces;
 }
 
@@ -53,5 +53,6 @@
 
 - (IBAction)addLandmark:(id)sender;
 - (IBAction)removeLandmark:(id)sender;
+- (IBAction)editLandmark:(id)sender;
 
 @end

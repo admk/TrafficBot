@@ -23,7 +23,9 @@
 
 @interface TBPreferencesWindowController ()
 
-- (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
+- (void)addLandmarkSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
+- (void)editLocationSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
+
 - (void)clearStatisticsAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 - (void)resetAllPrefsAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 
@@ -220,19 +222,18 @@
     {
         addLocationWindowController = [[AKAddLocationWindowController alloc] initWithWindowNibName:@"AKAddLocationWindow"];
     }
+	addLocationWindowController.mode = AKAutomaticLocationMode;
 	[NSApp beginSheet:addLocationWindowController.window
        modalForWindow:self.window
         modalDelegate:self
-       didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:)
+       didEndSelector:@selector(addLandmarkSheetDidEnd:returnCode:contextInfo:)
           contextInfo:nil];
 }
-- (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
+- (void)addLandmarkSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
 {
     if (NSCancelButton == returnCode) return;
     
-    AKLandmark *aLandmark = [[AKLocationManager sharedManager] landmark];
-	AKLandmark *landmark = [[[AKLandmark alloc] initWithName:addLocationWindowController.name
-													location:aLandmark.location] autorelease];
+	AKLandmark *landmark = [[[AKLandmark alloc] initWithLandmark:addLocationWindowController.landmark] autorelease];
     NSMutableArray *landmarks = [[landmarkArrayController arrangedObjects] mutableCopy];
 	[landmarks addObject:landmark];
     SetDefaults([NSKeyedArchiver archivedDataWithRootObject:landmarks], landmarks);
@@ -243,6 +244,32 @@
     NSArray *selectedLandmarks = [landmarkArrayController selectedObjects];
 	[landmarks removeObjectsInArray:selectedLandmarks];
     SetDefaults([NSKeyedArchiver archivedDataWithRootObject:landmarks], landmarks);
+}
+- (IBAction)editLandmark:(id)sender
+{
+	NSArray *selectedLandmarks = [landmarkArrayController selectedObjects];
+	if ([selectedLandmarks count] != 1) return;
+
+	AKLandmark *landmark = [selectedLandmarks objectAtIndex:0];
+
+	if (!addLocationWindowController)
+	{
+		addLocationWindowController = [[AKAddLandmarkWindowController alloc] initWithWindowNibName:@"AKAddLandmarkWindow"];
+	}
+	addLocationWindowController.mode = AKSpecifyLocationMode;
+	addLocationWindowController.landmark = landmark;
+	[NSApp beginSheet:addLocationWindowController.window
+       modalForWindow:self.window
+        modalDelegate:self
+       didEndSelector:@selector(editLocationSheetDidEnd:returnCode:contextInfo:)
+          contextInfo:nil];
+}
+- (void)editLocationSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
+{
+	if (NSCancelButton == returnCode) return;
+
+	[self removeLandmark:nil]; // remove selection
+	[self addLandmarkSheetDidEnd:sheet returnCode:returnCode contextInfo:contextInfo]; // readd new
 }
 
 #pragma mark -
