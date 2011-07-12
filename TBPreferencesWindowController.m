@@ -8,8 +8,8 @@
 
 #import "TBPreferencesWindowController.h"
 #import "AKTrafficMonitorService.h"
-#import "AKLocationManager.h"
-#import "AKAddLocationWindowController.h"
+#import "AKLandmarkManager.h"
+#import "AKAddLandmarkWindowController.h"
 #import "TrafficBotAppDelegate.h"
 #import "AKSummaryView.h"
 #import "TBSummaryGenerator.h"
@@ -49,6 +49,8 @@
 	return self;
 }
 - (void)dealloc {
+	[addLocationWindowController release], addLocationWindowController = nil;
+	[_summaryGenerator release], _summaryGenerator = nil;
     [_interfaceNameArray release], _interfaceNameArray = nil;
     [_includeInterfaces release], _includeInterfaces = nil;
     [super dealloc];
@@ -105,6 +107,10 @@
 	
     // path
 	[pathControl setURL:[NSURL fileURLWithPath:Defaults(runURL)]];
+
+	// landmarks
+	[landmarkTableView setTarget:self];
+	[landmarkTableView setDoubleAction:@selector(editLandmark:)];
 }
 - (void)windowDidLoad {
 	[self _selectPane:SUMMARY_PANE];
@@ -220,7 +226,7 @@
 {
     if (!addLocationWindowController)
     {
-        addLocationWindowController = [[AKAddLocationWindowController alloc] initWithWindowNibName:@"AKAddLocationWindow"];
+        addLocationWindowController = [[AKAddLandmarkWindowController alloc] initWithWindowNibName:@"AKAddLandmarkWindow"];
     }
 	addLocationWindowController.mode = AKAutomaticLocationMode;
 	[NSApp beginSheet:addLocationWindowController.window

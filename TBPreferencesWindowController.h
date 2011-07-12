@@ -8,10 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class TBSummaryGenerator, AKSummaryView, AKAddLocationWindowController;
+@class TBSummaryGenerator, AKSummaryView, AKAddLandmarkWindowController;
 @interface TBPreferencesWindowController : NSWindowController <NSPathControlDelegate, NSTableViewDataSource, NSTableViewDelegate> {
 
-    AKAddLocationWindowController *addLocationWindowController;
+    AKAddLandmarkWindowController *addLocationWindowController;
 
 	IBOutlet NSToolbar *pToolbar;
 	IBOutlet NSView *statusView;
