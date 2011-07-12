@@ -8,6 +8,7 @@
 
 #import "TrafficBotAppDelegate.h"
 #import "AKTrafficMonitorService.h"
+#import "AKLandmarkManager.h"
 #import "TBPreferencesWindowController.h"
 #import "TBFirstLaunchWindowController.h"
 #import "TBStatusWindowController.h"
@@ -18,6 +19,9 @@
 
 #define LIMIT_REMINDER @"Limit Reminder"
 #define LIMIT_EXCEEDED @"Limit Exceeded"
+#define LOCATION_CHANGED @"Location Changed"
+#define ERROR_MESSAGE  @"Errors"
+
 @interface TrafficBotAppDelegate (Private)
 
 - (void)_newRestartDate;
@@ -25,6 +29,8 @@
 - (void)_sendGrowlNotificationWithTitle:(NSString *)title description:(NSString *)description notificationName:(NSString *)name;
 
 - (void)_didReceiveNotificationFromTrafficMonitorService:(NSNotification *)notification;
+- (void)_didReceiveNotificationFromLocationManager:(NSNotification *)notification;
+
 @end
 
 @implementation TrafficBotAppDelegate
@@ -65,6 +71,24 @@
    withKeyPath:[@"values." stringByAppendingString:bindingKey]
 	   options:nil];
 	[[AKTrafficMonitorService sharedService] addObserver:self selector:@selector(_didReceiveNotificationFromTrafficMonitorService:)];
+	
+	// LS bindings & notifications
+	NSArray *lsBindings = [NSArray arrayWithObjects:
+						   @"tracking", nil];
+	for (NSString *bindingKey in lsBindings)
+		[[AKLandmarkManager sharedManager]
+		   bind:bindingKey
+	   toObject:[NSUserDefaultsController sharedUserDefaultsController]
+	withKeyPath:[@"values." stringByAppendingString:bindingKey]
+		options:nil];
+	// custom binding
+	[[AKLandmarkManager sharedManager]
+		bind:Property(landmarks)
+	toObject:[NSUserDefaultsController sharedUserDefaultsController]
+ withKeyPath:@"values.landmarks"
+	 options:[NSDictionary dictionaryWithObject:NSKeyedUnarchiveFromDataTransformerName
+										 forKey:NSValueTransformerNameBindingOption]];
+	[[AKLandmarkManager sharedManager] addObserver:self selector:@selector(_didReceiveNotificationFromLocationManager:)];
 	
 	// threshold notifications
 	[self refreshThresholds];
@@ -191,6 +215,7 @@
 								   priority:0
 								   isSticky:BOOLDefaults(notificationIsSticky)
 							   clickContext:name];
+	DLog(@"Growl {\n\t%@,\n\t%@,\n\t%@\n}", title, description, name);
 }
 
 #pragma mark -
@@ -239,6 +264,42 @@
 			}
 		}	
 	}
+}
+
+#pragma mark -
+#pragma mark landmark manager notifications
+- (void)_didReceiveNotificationFromLocationManager:(NSNotification *)notification
+{
+	if (!BOOLDefaults(tracking)) return;
+
+	DLog(@"received: %@", notification);
+
+    if ([[notification name] isEqual:AKLandmarkManagerDidGetNewLandmarkNotification])
+    {
+		BOOL nearby = [[AKLandmarkManager sharedManager] hasNearbyLandmarks];
+		SetBOOLDefaults(nearby, monitoring);
+
+		if (!BOOLDefaults(shouldNotifyOnLocation)) return;
+
+		NSString *title;
+		if (nearby)
+		{
+			title = [NSString stringWithFormat:
+					 NSLocalizedString(@"You're now at \"%@\"", @"location changed"),
+					 [[[AKLandmarkManager sharedManager] landmark] name]];
+		}
+		else
+		{
+			title = NSLocalizedString(@"You're not currently at any known location. TrafficBot will pause monitoring for now.", @"location changed");
+		}
+		[self _sendGrowlNotificationWithTitle:title description:nil notificationName:LOCATION_CHANGED];
+    }
+    else if ([[notification name] isEqual:AKLandmarkManagerDidFailNotification])
+    {
+		if (!BOOLDefaults(shouldNotifyOnError)) return;
+		NSString *title = NSLocalizedString(@"Could not determine your location.", @"location fail");
+		[self _sendGrowlNotificationWithTitle:title description:nil notificationName:ERROR_MESSAGE];
+    }
 }
 
 @end
