@@ -16,9 +16,14 @@
 #import "NSDate+AKMidnight.h"
 
 
+#define LIMIT_REMINDER @"Limit Reminder"
+#define LIMIT_EXCEEDED @"Limit Exceeded"
 @interface TrafficBotAppDelegate (Private)
+
 - (void)_newRestartDate;
+
 - (void)_sendGrowlNotificationWithTitle:(NSString *)title description:(NSString *)description notificationName:(NSString *)name;
+
 - (void)_didReceiveNotificationFromTrafficMonitorService:(NSNotification *)notification;
 @end
 
@@ -46,18 +51,19 @@
 		[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(dismissFirstLaunchWindow:) userInfo:nil repeats:NO];
 	}
 	
-	// bindings & notifications
-	NSArray *bindings = [NSArray arrayWithObjects:
-						 Property(rollingPeriodInterval),
-						 Property(fixedPeriodRestartDate),
-						 Property(monitoringMode),
-                         Property(includeInterfaces),
-						 @"monitoring", nil];
-	for (NSString *bindingKey in bindings)
-		[[AKTrafficMonitorService sharedService] bind:bindingKey 
-		  toObject:[NSUserDefaultsController sharedUserDefaultsController] 
-	   withKeyPath:[@"values." stringByAppendingString:bindingKey]
-		   options:nil];
+	// TMS bindings & notifications
+	NSArray *tmsBindings = [NSArray arrayWithObjects:
+							Property(rollingPeriodInterval),
+							Property(fixedPeriodRestartDate),
+							Property(monitoringMode),
+							Property(includeInterfaces),
+							@"monitoring", nil];
+	for (NSString *bindingKey in tmsBindings)
+		[[AKTrafficMonitorService sharedService]
+		  bind:bindingKey 
+	  toObject:[NSUserDefaultsController sharedUserDefaultsController] 
+   withKeyPath:[@"values." stringByAppendingString:bindingKey]
+	   options:nil];
 	[[AKTrafficMonitorService sharedService] addObserver:self selector:@selector(_didReceiveNotificationFromTrafficMonitorService:)];
 	
 	// threshold notifications
@@ -131,8 +137,6 @@
 
 #pragma mark -
 #pragma mark thresholds
-#define LIMIT_REMINDER @"Limit Reminder"
-#define LIMIT_EXCEEDED @"Limit Exceeded"
 - (void)refreshThresholds {
 	float criticalPercentage = [Defaults(criticalPercentage) floatValue];
 	float limit = [Defaults(limit) floatValue];
@@ -163,7 +167,11 @@
 #pragma mark -
 #pragma mark growl
 - (NSDictionary *)registrationDictionaryForGrowl {
-	NSArray* notifications = [NSArray arrayWithObjects:LIMIT_REMINDER, LIMIT_EXCEEDED, nil];
+	NSArray* notifications = [NSArray arrayWithObjects:
+							  LIMIT_REMINDER,
+							  LIMIT_EXCEEDED,
+							  ERROR_MESSAGE,
+							  nil];
 	return [NSDictionary dictionaryWithObjectsAndKeys:
 			[NSNumber numberWithInt:1], GROWL_TICKET_VERSION,
 			notifications, GROWL_NOTIFICATIONS_DEFAULT,
