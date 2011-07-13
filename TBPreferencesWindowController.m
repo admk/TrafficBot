@@ -105,6 +105,12 @@
 	// landmarks
 	[landmarkTableView setTarget:self];
 	[landmarkTableView setDoubleAction:@selector(editLandmark:)];
+	
+	// update warning text field on no landmarks added
+    if ([[landmarkArrayController arrangedObjects] count] == 0)
+        [landmarksWarningTextField setTextColor:[NSColor redColor]];
+    else
+        [landmarksWarningTextField setTextColor:[NSColor darkGrayColor]];
 }
 - (void)windowDidLoad {
 	[self _selectPane:SUMMARY_PANE];
@@ -117,7 +123,6 @@
 	if (_interfaces == interfaces) return;
 	[_interfaces release];
 	_interfaces = [interfaces retain];
-	DLog(@"%@", interfaces);
 	// reload table view
 	[interfacesTableView reloadData];
 }
@@ -255,6 +260,12 @@
     NSArray *selectedLandmarks = [landmarkArrayController selectedObjects];
 	[landmarks removeObjectsInArray:selectedLandmarks];
     SetDefaults([NSKeyedArchiver archivedDataWithRootObject:landmarks], landmarks);
+
+	// update warning text field on no landmarks added
+    if ([landmarks count] == 0)
+        [landmarksWarningTextField setTextColor:[NSColor redColor]];
+    else
+        [landmarksWarningTextField setTextColor:[NSColor darkGrayColor]];
 }
 - (IBAction)editLandmark:(id)sender
 {

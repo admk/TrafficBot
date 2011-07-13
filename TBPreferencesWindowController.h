@@ -26,6 +26,7 @@
 
 	IBOutlet NSArrayController *landmarkArrayController;
 	IBOutlet NSTableView *landmarkTableView;
+	IBOutlet NSTextField *landmarksWarningTextField;
 
     IBOutlet NSTableView *interfacesTableView;
     IBOutlet NSTextField *interfacesWarningTextField;
