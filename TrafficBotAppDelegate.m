@@ -297,7 +297,8 @@
 
 		if (!BOOLDefaults(shouldNotifyOnLocation)) return;
 
-		NSString *title;
+		NSString *title = nil;
+		NSString *description = nil;
 		if (nearby)
 		{
 			title = [NSString stringWithFormat:
@@ -306,9 +307,10 @@
 		}
 		else
 		{
-			title = NSLocalizedString(@"You're not currently at any known location. TrafficBot will pause monitoring for now.", @"location changed");
+			title = NSLocalizedString(@"You're not at any known location.", @"location changed");
+			description = NSLocalizedString(@"TrafficBot will pause monitoring for now.", @"location changed");
 		}
-		[self _sendGrowlNotificationWithTitle:title description:nil notificationName:LOCATION_CHANGED];
+		[self _sendGrowlNotificationWithTitle:title description:description notificationName:LOCATION_CHANGED];
     }
     else if ([[notification name] isEqual:AKLandmarkManagerDidFailNotification])
     {
