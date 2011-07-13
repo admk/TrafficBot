@@ -207,6 +207,7 @@
 #pragma mark growl
 - (NSDictionary *)registrationDictionaryForGrowl {
 	NSArray* notifications = [NSArray arrayWithObjects:
+							  LOCATION_CHANGED,
 							  LIMIT_REMINDER,
 							  LIMIT_EXCEEDED,
 							  ERROR_MESSAGE,
