@@ -43,7 +43,7 @@
 	self = [super initWithWindowNibName:@"TBPreferencesWindow"];
 	if (!self) return nil;
 
-    _interfaceNameArray = [[[AKTrafficMonitorService sharedService] networkInterfaceNames] retain];
+    _interfaces = nil;
     _includeInterfaces = nil;
 
 	return self;
@@ -51,18 +51,12 @@
 - (void)dealloc {
 	[addLocationWindowController release], addLocationWindowController = nil;
 	[_summaryGenerator release], _summaryGenerator = nil;
-    [_interfaceNameArray release], _interfaceNameArray = nil;
+    [_interfaces release], _interfaces = nil;
     [_includeInterfaces release], _includeInterfaces = nil;
     [super dealloc];
 }
 
 - (void)awakeFromNib {
-
-    // bindings
-    [self bind:Property(includeInterfaces)
-      toObject:[NSUserDefaultsController sharedUserDefaultsController]
-   withKeyPath:[@"values." stringByAppendingString:Property(includeInterfaces)]
-       options:nil];
 
 	// summary generator
 	if (!_summaryGenerator)
@@ -116,6 +110,17 @@
 	[self _selectPane:SUMMARY_PANE];
 }
 
+#pragma mark -
+#pragma mark setters & getters
+- (void)setInterfaces:(NSArray *)interfaces
+{
+	if (_interfaces == interfaces) return;
+	[_interfaces release];
+	_interfaces = [interfaces retain];
+	DLog(@"%@", interfaces);
+	// reload table view
+	[interfacesTableView reloadData];
+}
 
 #pragma mark -
 #pragma mark IBAction methods
@@ -314,7 +319,7 @@
 #pragma mark interfaces table view
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-    return [_interfaceNameArray count];
+    return [self.interfaces count];
 }
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
@@ -322,7 +327,7 @@
     BOOL setRed = TRUE;
     for (NSString *interface in self.includeInterfaces)
     {
-        if ([_interfaceNameArray containsObject:interface])
+        if ([self.interfaces containsObject:interface])
         {
             setRed = FALSE;
         }
@@ -333,7 +338,7 @@
         [interfacesWarningTextField setTextColor:[NSColor darkGrayColor]];
 
     // cell settings
-    NSString *interfaceName = [_interfaceNameArray objectAtIndex:row];
+    NSString *interfaceName = [self.interfaces objectAtIndex:row];
     NSButtonCell *cell = [tableColumn dataCellForRow:row];
     [cell setTitle:interfaceName];
     BOOL state = [self.includeInterfaces containsObject:interfaceName];
@@ -342,7 +347,7 @@
 }
 - (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    NSString *interfaceName = [_interfaceNameArray objectAtIndex:row];
+    NSString *interfaceName = [self.interfaces objectAtIndex:row];
     if (!self.includeInterfaces)
     {
         self.includeInterfaces = [[[NSArray alloc] init] autorelease];
@@ -368,5 +373,6 @@
 
 #pragma mark -
 #pragma mark synthesize
+@synthesize interfaces = _interfaces;
 @synthesize includeInterfaces = _includeInterfaces;
 @end

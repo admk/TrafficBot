@@ -117,7 +117,22 @@
 - (void)showPreferencesWindow:(id)sender {
 	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 	if (!preferencesWindowController)
+	{
 		preferencesWindowController = [[TBPreferencesWindowController alloc] init];
+		
+		// bindings
+		NSArray *bindings = [NSArray arrayWithObjects:
+							 Property(includeInterfaces), nil];
+		for (NSString *bindingKey in bindings)
+			[preferencesWindowController bind:bindingKey
+									 toObject:[NSUserDefaultsController sharedUserDefaultsController]
+								  withKeyPath:[@"values." stringByAppendingString:bindingKey]
+									  options:nil];
+		[preferencesWindowController bind:Property(interfaces)
+								 toObject:[AKTrafficMonitorService sharedService]
+							  withKeyPath:Property(interfaces)
+								  options:nil];
+	}
 	[preferencesWindowController showWindow:nil];
 	[self dismissStatusWindow:sender];
 	[self dismissFirstLaunchWindow:sender];

@@ -55,8 +55,8 @@ typedef struct {
 	tms_rec_t		_totalRec;
 	tms_rec_t		_speedRec;
 	TMS_D_T			_lastTotal;
-
-    NSArray         *_prevInterfaces;
+	
+    NSArray         *_interfaces;
 }
 
 // toggle monitoring by setting it
@@ -65,6 +65,9 @@ typedef struct {
 // monitoring interface
 // nil monitors all interfaces
 @property (copy, nonatomic) NSArray *includeInterfaces;
+
+// network interfaces
+@property (readonly, nonatomic) NSArray *interfaces;
 
 // modes:
 // tms_rolling_mode:	a rolling period - traffic in the last x hours/days

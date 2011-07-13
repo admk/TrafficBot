@@ -33,10 +33,11 @@
 @private
 	__weak NSView *_preferencesView;
 	TBSummaryGenerator *_summaryGenerator;
-    NSArray *_interfaceNameArray;
+    NSArray *_interfaces;
     NSArray *_includeInterfaces;
 }
 
+@property (retain, nonatomic) NSArray *interfaces;
 @property (retain, nonatomic) NSArray *includeInterfaces;
 
 // IBAction methods

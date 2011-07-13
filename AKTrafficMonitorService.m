@@ -38,6 +38,8 @@
 - (NSMutableDictionary *)_dictionaryWithFile:(NSString *)filePath;
 - (NSString *)_logsPath;
 
+- (void)_setInterfaces:(NSArray *)interfaces;
+
 @end
 
 #pragma mark -
@@ -72,7 +74,7 @@ static AKTrafficMonitorService *sharedService = nil;
 	_monitoring = NO;
 	_monitoringMode = tms_unreachable_mode;
 
-    _prevInterfaces = [[self networkInterfaceNames] retain];
+    _interfaces = [[self networkInterfaceNames] retain];
 	
     return self;
 }
@@ -80,7 +82,7 @@ static AKTrafficMonitorService *sharedService = nil;
 	[_fixedPeriodRestartDate release], _fixedPeriodRestartDate = nil;
 	[_monitorTimer release], _monitorTimer = nil;
     [_includeInterfaces release], _includeInterfaces = nil;
-    [_prevInterfaces release], _prevInterfaces = nil;
+    [_interfaces release], _interfaces = nil;
 	[super dealloc];
 }
 
@@ -425,12 +427,12 @@ static AKTrafficMonitorService *sharedService = nil;
 - (NSDictionary *)_readDataUsage {
 
     // reinitialise if interfaces changed
-    NSArray *curInterfaces = [self networkInterfaceNames];
-    if (![_prevInterfaces isEqualToArray:curInterfaces])
+    NSArray *interfaces = [self networkInterfaceNames];
+    if (![self.interfaces isEqualToArray:interfaces])
     {
+		[self _setInterfaces:interfaces];
         [self _reinitialiseIfMonitoring];
     }
-    _prevInterfaces = [curInterfaces retain];
 
     BOOL shouldIncludeAll = (nil == self.includeInterfaces);
 
@@ -522,6 +524,15 @@ static AKTrafficMonitorService *sharedService = nil;
 }
 
 #pragma mark -
+#pragma mark private setters
+- (void)_setInterfaces:(NSArray *)interfaces
+{
+	if (_interfaces == interfaces) return;
+	[_interfaces release];
+	_interfaces = [interfaces retain];
+}
+
+#pragma mark -
 #pragma mark boilerplate
 #pragma mark property synthesize
 @synthesize monitoring = _monitoring;
@@ -529,5 +540,6 @@ static AKTrafficMonitorService *sharedService = nil;
 @synthesize thresholds = _thresholds;
 @synthesize rollingPeriodInterval = _rollingPeriodInterval;
 @synthesize fixedPeriodRestartDate = _fixedPeriodRestartDate;
+@synthesize interfaces = _interfaces;
 
 @end
