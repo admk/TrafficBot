@@ -231,7 +231,7 @@
 								   priority:0
 								   isSticky:BOOLDefaults(notificationIsSticky)
 							   clickContext:name];
-	DLog(@"Growl {\n\t%@,\n\t%@,\n\t%@\n}", title, description, name);
+	DLog(@"Growl {\n\t\"%@\",\n\t\"%@\",\n\t\"%@\"\n}", title, description, name);
 }
 
 #pragma mark -
@@ -287,8 +287,6 @@
 - (void)_didReceiveNotificationFromLocationManager:(NSNotification *)notification
 {
 	if (!BOOLDefaults(tracking)) return;
-
-	DLog(@"received: %@", notification);
 
     if ([[notification name] isEqual:AKLandmarkManagerDidGetNewLandmarkNotification])
     {
