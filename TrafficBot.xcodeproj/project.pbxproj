@@ -32,6 +32,7 @@
 		B500D93313C99CC000FD6D1C /* AKLandmark.m in Sources */ = {isa = PBXBuildFile; fileRef = B500D93213C99CC000FD6D1C /* AKLandmark.m */; };
 		B552662513C721ED0037C39E /* AKLandmarkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B552662413C721ED0037C39E /* AKLandmarkManager.m */; };
 		B552662713C723820037C39E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B552662613C723820037C39E /* CoreLocation.framework */; };
+		B57E9E8A13CF435400F76ED6 /* Help.png in Resources */ = {isa = PBXBuildFile; fileRef = B57E9E8913CF435400F76ED6 /* Help.png */; };
 		B581F7CA13CA1D6000885FE8 /* AKAddLandmarkWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B581F7C913CA1D6000885FE8 /* AKAddLandmarkWindow.xib */; };
 		B581F7CE13CA1DCC00885FE8 /* AKAddLandmarkWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B581F7CD13CA1DCC00885FE8 /* AKAddLandmarkWindowController.m */; };
 		B593C18713CD8049006D03B9 /* Maps.png in Resources */ = {isa = PBXBuildFile; fileRef = B593C18613CD8049006D03B9 /* Maps.png */; };
@@ -131,6 +132,7 @@
 		B552662313C721ED0037C39E /* AKLandmarkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AKLandmarkManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B552662413C721ED0037C39E /* AKLandmarkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AKLandmarkManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B552662613C723820037C39E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B57E9E8913CF435400F76ED6 /* Help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Help.png; sourceTree = "<group>"; };
 		B581F7C913CA1D6000885FE8 /* AKAddLandmarkWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AKAddLandmarkWindow.xib; path = "private-utilities/Landmark Manager/AKAddLandmarkWindow.xib"; sourceTree = "<group>"; };
 		B581F7CC13CA1DCC00885FE8 /* AKAddLandmarkWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKAddLandmarkWindowController.h; sourceTree = "<group>"; };
 		B581F7CD13CA1DCC00885FE8 /* AKAddLandmarkWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AKAddLandmarkWindowController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -301,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				DA66DAA412EB737C0065454C /* Caution.png */,
+				B57E9E8913CF435400F76ED6 /* Help.png */,
 				DA66DB3712ECA0490065454C /* Hint.png */,
 				B593C18613CD8049006D03B9 /* Maps.png */,
 				DABFB45B129F21AB00AE41FF /* Monitor.png */,
@@ -694,6 +697,7 @@
 				DA66DBFF12ECAEDB0065454C /* Credits.rtf in Resources */,
 				B581F7CA13CA1D6000885FE8 /* AKAddLandmarkWindow.xib in Resources */,
 				B593C18713CD8049006D03B9 /* Maps.png in Resources */,
+				B57E9E8A13CF435400F76ED6 /* Help.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
