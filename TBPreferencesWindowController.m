@@ -335,12 +335,12 @@
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
     // update warning text field on no interfaces selected
-    BOOL setRed = TRUE;
+    BOOL setRed = YES;
     for (NSString *interface in self.includeInterfaces)
     {
         if ([self.interfaces containsObject:interface])
         {
-            setRed = FALSE;
+            setRed = NO;
         }
     }
     if (setRed)

@@ -25,13 +25,13 @@
 	BOOL		_animate;
 }
 
-@property (assign) IBOutlet NSView		*contentView;
-@property (assign) IBOutlet AKGaugeView	*gaugeView;
+@property (nonatomic, assign) IBOutlet NSView		*contentView;
+@property (nonatomic, assign) IBOutlet AKGaugeView	*gaugeView;
 
-@property (assign, getter=isMonitoring) BOOL monitoring;
-@property (retain, nonatomic) NSNumber *limit;
+@property (nonatomic, assign, getter=isMonitoring) BOOL monitoring;
+@property (nonatomic, retain, nonatomic) NSNumber *limit;
 
-@property (assign) BOOL shouldAnimateGauge;
+@property (nonatomic, assign) BOOL shouldAnimateGauge;
 
 - (void)show:(id)sender animate:(BOOL)animate;
 - (void)dismiss:(id)sender;

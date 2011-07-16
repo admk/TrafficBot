@@ -48,7 +48,7 @@
 static AKTrafficMonitorService *sharedService = nil;
 
 + (AKTrafficMonitorService *)sharedService {
-	if (sharedService == nil) {
+	if (!sharedService) {
 		@synchronized(self) {
 			sharedService = [[self alloc] init];
 		}
