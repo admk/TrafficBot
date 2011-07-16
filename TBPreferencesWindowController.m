@@ -250,13 +250,13 @@
     if (NSCancelButton == returnCode) return;
     
 	AKLandmark *landmark = [[[AKLandmark alloc] initWithLandmark:addLocationWindowController.landmark] autorelease];
-    NSMutableArray *landmarks = [[landmarkArrayController arrangedObjects] mutableCopy];
+    NSMutableArray *landmarks = [[[landmarkArrayController arrangedObjects] mutableCopy] autorelease];
 	[landmarks addObject:landmark];
     SetDefaults([NSKeyedArchiver archivedDataWithRootObject:landmarks], landmarks);
 }
 - (IBAction)removeLandmark:(id)sender
 {
-    NSMutableArray *landmarks = [[landmarkArrayController arrangedObjects] mutableCopy];
+    NSMutableArray *landmarks = [[[landmarkArrayController arrangedObjects] mutableCopy] autorelease];
     NSArray *selectedLandmarks = [landmarkArrayController selectedObjects];
 	[landmarks removeObjectsInArray:selectedLandmarks];
     SetDefaults([NSKeyedArchiver archivedDataWithRootObject:landmarks], landmarks);
