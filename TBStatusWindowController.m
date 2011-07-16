@@ -8,6 +8,7 @@
 
 #import "TBStatusWindowController.h"
 #import "AKTrafficMonitorService.h"
+#import "AKLandmarkManager.h"
 #import "TrafficBotAppDelegate.h"
 #import "MAAttachedWindow.h"
 #import "NSWindow-NoodleEffects.h"
@@ -194,14 +195,27 @@
 	
 	AKTrafficMonitorService *tms = [AKTrafficMonitorService sharedService];
 	
-	[usageTextField setTitleWithMnemonic:
-	 [NSString stringWithFormat:NSLocalizedString(@"In: %@ (%@/s)\nOut: %@ (%@/s)\nTotal: %@ (%@/s)", @"stats"),
-	  [AKBytesFormatter convertBytesWithNumber:[tms totalIn] floatingDecimalsWithLength:4],
-	  [AKBytesFormatter convertBytesWithNumber:[tms inSpeed] decimals:NO],
-	  [AKBytesFormatter convertBytesWithNumber:[tms totalOut] floatingDecimalsWithLength:4],
-	  [AKBytesFormatter convertBytesWithNumber:[tms outSpeed] decimals:NO],
-	  [AKBytesFormatter convertBytesWithNumber:[tms total] floatingDecimalsWithLength:4],
-	  [AKBytesFormatter convertBytesWithNumber:[tms totalSpeed] decimals:NO]]];
+	NSString *stats = [NSString stringWithFormat:NSLocalizedString(@"In: %@ (%@/s)\nOut: %@ (%@/s)\nTotal: %@ (%@/s)", @"stats"),
+					   [AKBytesFormatter convertBytesWithNumber:[tms totalIn] floatingDecimalsWithLength:4],
+					   [AKBytesFormatter convertBytesWithNumber:[tms inSpeed] decimals:NO],
+					   [AKBytesFormatter convertBytesWithNumber:[tms totalOut] floatingDecimalsWithLength:4],
+					   [AKBytesFormatter convertBytesWithNumber:[tms outSpeed] decimals:NO],
+					   [AKBytesFormatter convertBytesWithNumber:[tms total] floatingDecimalsWithLength:4],
+					   [AKBytesFormatter convertBytesWithNumber:[tms totalSpeed] decimals:NO]];
+
+	AKLandmarkManager *lm = [AKLandmarkManager sharedManager];
+	NSString *name = NSLocalizedString(@"Failed", @"failed to locate");
+	NSString *rname = [[lm landmark] name];
+	if (!IsEmpty(rname))
+	{
+		name = rname;
+	}
+	if (![lm isTracking])
+	{
+		name = NSLocalizedString(@"Off", @"stats location");
+	}
+	stats = [stats stringByAppendingFormat:NSLocalizedString(@"\nLocation: %@", @"stats location"), name];
+	[usageTextField setTitleWithMnemonic:stats];
 }
 #pragma mark monitor service notifications
 - (void)_didReceiveNotificationFromTrafficMonitorService:(NSNotification *)notification {
