@@ -107,7 +107,8 @@
 	[landmarkTableView setDoubleAction:@selector(editLandmark:)];
 	
 	// update warning text field on no landmarks added
-    if ([[landmarkArrayController arrangedObjects] count] == 0)
+    if (BOOLDefaults(tracking) &&
+        [[landmarkArrayController arrangedObjects] count] == 0)
         [landmarksWarningTextField setTextColor:[NSColor redColor]];
     else
         [landmarksWarningTextField setTextColor:[NSColor darkGrayColor]];

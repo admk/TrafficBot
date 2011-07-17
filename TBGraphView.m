@@ -121,10 +121,8 @@
 			if ([self.window respondsToSelector:@selector(setHasArrow:)]) {
 				[(MAAttachedWindow *)self.window setHasArrow:YES];
 			}
-			if ([delegate respondsToSelector:@selector(showDraggedWindowWithFrame:)]) {
-				[delegate showDraggedWindowWithFrame:self.window.frame];
-			}
-			return;
+			[delegate showDraggedWindowWithFrame:self.window.frame];
+            return;
 		}
 		
 		// still dragging
