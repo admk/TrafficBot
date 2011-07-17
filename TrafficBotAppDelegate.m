@@ -286,6 +286,8 @@
 #pragma mark landmark manager notifications
 - (void)_didReceiveNotificationFromLocationManager:(NSNotification *)notification
 {
+    DLog(@"received: %@", notification);
+
 	if (!BOOLDefaults(tracking)) return;
 
     NSString *title = nil;

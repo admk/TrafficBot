@@ -113,6 +113,7 @@
         [landmarksWarningTextField setTextColor:[NSColor darkGrayColor]];
 }
 - (void)windowDidLoad {
+    [super windowDidLoad];
 	[self _selectPane:SUMMARY_PANE];
 }
 
