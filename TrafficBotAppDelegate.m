@@ -288,15 +288,16 @@
 {
 	if (!BOOLDefaults(tracking)) return;
 
+    NSString *title = nil;
+    NSString *description = nil;
+    NSString *noteName = nil;
     if ([[notification name] isEqual:AKLandmarkManagerDidGetNewLandmarkNotification])
     {
 		BOOL nearby = [[AKLandmarkManager sharedManager] hasNearbyLandmarks];
 		SetBOOLDefaults(nearby, monitoring);
 
+        // growl
 		if (!BOOLDefaults(shouldNotifyOnLocation)) return;
-
-		NSString *title = nil;
-		NSString *description = nil;
 		if (nearby)
 		{
 			title = [NSString stringWithFormat:
@@ -305,17 +306,22 @@
 		}
 		else
 		{
-			title = NSLocalizedString(@"You're not at any known location.", @"location changed");
+			title = NSLocalizedString(@"You're not at any saved location.", @"location changed");
 			description = NSLocalizedString(@"TrafficBot will pause monitoring for now.", @"location changed");
 		}
-		[self _sendGrowlNotificationWithTitle:title description:description notificationName:LOCATION_CHANGED];
+        noteName = LOCATION_CHANGED;
     }
     else if ([[notification name] isEqual:AKLandmarkManagerDidFailNotification])
     {
+        // growl
 		if (!BOOLDefaults(shouldNotifyOnError)) return;
-		NSString *title = NSLocalizedString(@"Could not determine your location.", @"location fail");
-		[self _sendGrowlNotificationWithTitle:title description:nil notificationName:ERROR_MESSAGE];
+		title = NSLocalizedString(@"Could not determine your location.", @"location fail");
+        description = NSLocalizedString(@"OS X does not know your current location.", @"location fail");
+		noteName = ERROR_MESSAGE;
     }
+
+    if (IsEmpty(title) || IsEmpty(noteName)) return;
+    [self _sendGrowlNotificationWithTitle:title description:description notificationName:noteName];
 }
 
 @end

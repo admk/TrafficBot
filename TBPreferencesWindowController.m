@@ -249,7 +249,7 @@
 {
     if (NSCancelButton == returnCode) return;
     
-	AKLandmark *landmark = [[[AKLandmark alloc] initWithLandmark:addLocationWindowController.landmark] autorelease];
+	AKLandmark *landmark = [AKLandmark landmarkWithLandmark:addLocationWindowController.landmark];
     NSMutableArray *landmarks = [[[landmarkArrayController arrangedObjects] mutableCopy] autorelease];
 	[landmarks addObject:landmark];
     SetDefaults([NSKeyedArchiver archivedDataWithRootObject:landmarks], landmarks);
