@@ -8,13 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 #import <Growl/Growl.h>
+#import "BWQuincyManager.h"
 
 @class TBPreferencesWindowController;
 @class TBFirstLaunchWindowController;
 @class TBStatusWindowController, TBGraphWindowController;
 @class TBStatusItemController;
 
-@interface TrafficBotAppDelegate : NSObject <NSApplicationDelegate, GrowlApplicationBridgeDelegate> {
+@interface TrafficBotAppDelegate : NSObject
+	<NSApplicationDelegate, GrowlApplicationBridgeDelegate, BWQuincyManagerDelegate> {
 	
 	// ui
 	IBOutlet TBStatusItemController	*statusItemController;

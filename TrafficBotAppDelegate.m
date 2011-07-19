@@ -24,6 +24,8 @@
 
 @interface TrafficBotAppDelegate (Private)
 
+- (void)_simulateCrash;
+
 - (void)_newRestartDate;
 
 - (void)_sendGrowlNotificationWithTitle:(NSString *)title description:(NSString *)description notificationName:(NSString *)name;
@@ -42,8 +44,16 @@
 }
 
 #pragma mark app delegate notification methods
+- (void)showMainApplicationWindow {
+	//[self _simulateCrash];
+}
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-	
+
+	// quincy kit
+	[[BWQuincyManager sharedQuincyManager] setSubmissionURL:@"http://admk.zzl.org/quincy/crash_v200.php"];
+    [[BWQuincyManager sharedQuincyManager] setCompanyName:@"AK.Kloca"];
+    [[BWQuincyManager sharedQuincyManager] setDelegate:self];
+
 	// setup defaults
 	NSString *defaultsPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"TBDefaults.plist"];
 	NSDictionary *defaultsDict = [NSDictionary dictionaryWithContentsOfFile:defaultsPath];
@@ -324,6 +334,13 @@
 
     if (IsEmpty(title) || IsEmpty(noteName)) return;
     [self _sendGrowlNotificationWithTitle:title description:description notificationName:noteName];
+}
+
+#pragma mark -
+#pragma simulate crash
+- (void)_simulateCrash
+{
+	((void (*)())0)();
 }
 
 @end
