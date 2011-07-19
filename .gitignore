@@ -1,6 +1,7 @@
 .DS_Store
 Design Files
 build/*
+DerivedData/*
 *.pbxuser
 !default.pbxuser
 *.mode1v3
