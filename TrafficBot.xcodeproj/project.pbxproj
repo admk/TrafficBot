@@ -36,6 +36,9 @@
 		B581F7CA13CA1D6000885FE8 /* AKAddLandmarkWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B581F7C913CA1D6000885FE8 /* AKAddLandmarkWindow.xib */; };
 		B581F7CE13CA1DCC00885FE8 /* AKAddLandmarkWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B581F7CD13CA1DCC00885FE8 /* AKAddLandmarkWindowController.m */; };
 		B593C18713CD8049006D03B9 /* Maps.png in Resources */ = {isa = PBXBuildFile; fileRef = B593C18613CD8049006D03B9 /* Maps.png */; };
+		B5A1932713D57BF6006E6F40 /* BWQuincyMain.nib in Resources */ = {isa = PBXBuildFile; fileRef = B5A1932413D57BF6006E6F40 /* BWQuincyMain.nib */; };
+		B5A1932813D57BF6006E6F40 /* BWQuincyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A1932613D57BF6006E6F40 /* BWQuincyManager.m */; };
+		B5A1932C13D58A75006E6F40 /* Entitlements.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = B5A1932B13D58A75006E6F40 /* Entitlements.entitlements */; };
 		DA049FC112B8534600ECA24C /* Gauge Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FBF12B8534600ECA24C /* Gauge Pressed.png */; };
 		DA049FC212B8534600ECA24C /* Gauge.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FC012B8534600ECA24C /* Gauge.png */; };
 		DA06937612BD9774008B1584 /* GVViewCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = DA06937512BD9774008B1584 /* GVViewCollection.m */; };
@@ -137,6 +140,10 @@
 		B581F7CC13CA1DCC00885FE8 /* AKAddLandmarkWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKAddLandmarkWindowController.h; sourceTree = "<group>"; };
 		B581F7CD13CA1DCC00885FE8 /* AKAddLandmarkWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AKAddLandmarkWindowController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B593C18613CD8049006D03B9 /* Maps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Maps.png; sourceTree = "<group>"; };
+		B5A1932413D57BF6006E6F40 /* BWQuincyMain.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = BWQuincyMain.nib; path = "Quincy Kit/client/Mac/BWQuincyMain.nib"; sourceTree = "<group>"; };
+		B5A1932513D57BF6006E6F40 /* BWQuincyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BWQuincyManager.h; path = "Quincy Kit/client/Mac/BWQuincyManager.h"; sourceTree = "<group>"; };
+		B5A1932613D57BF6006E6F40 /* BWQuincyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BWQuincyManager.m; path = "Quincy Kit/client/Mac/BWQuincyManager.m"; sourceTree = "<group>"; };
+		B5A1932B13D58A75006E6F40 /* Entitlements.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		DA049FBF12B8534600ECA24C /* Gauge Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gauge Pressed.png"; sourceTree = "<group>"; };
 		DA049FC012B8534600ECA24C /* Gauge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gauge.png; sourceTree = "<group>"; };
 		DA06937412BD9774008B1584 /* GVViewCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVViewCollection.h; sourceTree = "<group>"; };
@@ -279,6 +286,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B5A1932B13D58A75006E6F40 /* Entitlements.entitlements */,
 				DABFB4AF129F2CF100AE41FF /* TBDefaults.plist */,
 				DA69338412F76FC40052DEC6 /* Sleep Mac.scpt */,
 				B16F0C3F1278705600D13C0B /* Images */,
@@ -446,6 +454,7 @@
 			children = (
 				B5A7AEF213C43DA50058EC62 /* Macros */,
 				DABEB7FF13480C0E00063B84 /* NSFont (AKFallback) */,
+				B5A1932213D57BB2006E6F40 /* Quincy Kit */,
 				DA4BE75E12AC8CAD0070618E /* Launch At Login Controller */,
 				DAFADFAC12AB24B50027CEE8 /* Attached Window */,
 				DABFB4D412A041E100AE41FF /* NSDate (AKMidnight) */,
@@ -469,6 +478,16 @@
 			);
 			name = "Landmark Manager";
 			path = "private-utilities/Landmark Manager";
+			sourceTree = "<group>";
+		};
+		B5A1932213D57BB2006E6F40 /* Quincy Kit */ = {
+			isa = PBXGroup;
+			children = (
+				B5A1932413D57BF6006E6F40 /* BWQuincyMain.nib */,
+				B5A1932513D57BF6006E6F40 /* BWQuincyManager.h */,
+				B5A1932613D57BF6006E6F40 /* BWQuincyManager.m */,
+			);
+			name = "Quincy Kit";
 			sourceTree = "<group>";
 		};
 		B5A7AEF213C43DA50058EC62 /* Macros */ = {
@@ -698,6 +717,8 @@
 				B581F7CA13CA1D6000885FE8 /* AKAddLandmarkWindow.xib in Resources */,
 				B593C18713CD8049006D03B9 /* Maps.png in Resources */,
 				B57E9E8A13CF435400F76ED6 /* Help.png in Resources */,
+				B5A1932713D57BF6006E6F40 /* BWQuincyMain.nib in Resources */,
+				B5A1932C13D58A75006E6F40 /* Entitlements.entitlements in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,6 +757,7 @@
 				B552662513C721ED0037C39E /* AKLandmarkManager.m in Sources */,
 				B500D93313C99CC000FD6D1C /* AKLandmark.m in Sources */,
 				B581F7CE13CA1DCC00885FE8 /* AKAddLandmarkWindowController.m in Sources */,
+				B5A1932813D57BF6006E6F40 /* BWQuincyManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -808,7 +830,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.entitlements;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
@@ -831,6 +854,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = macosx10.6;
 				VALID_ARCHS = "i386 x86_64";
@@ -842,7 +866,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Xitong Gao";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.entitlements;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -862,6 +887,7 @@
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx10.6;
 				VALID_ARCHS = "i386 x86_64";
