@@ -46,13 +46,8 @@
 @end
 
 //These need to be defined for each application and version
-#ifdef DEBUG
-static NSString * const kReceiptBundleIdentifier = @"com.example.SampleApp";
-static NSString * const kReceiptBundleVersion = @"1.0.2";
-#else
-static NSString * const kReceiptBundleIdentifier = @"com.akkloca.TrafficBot";\
+static NSString * const kReceiptBundleIdentifier = @"com.akkloca.TrafficBot";
 static NSString * const kReceiptBundleVersion = @"1.0.1";
-#endif
 
 static NSString * const kReceiptBundleIdentiferKey = @"BundleIdentifier";
 static NSString * const kReceiptBundleIdentiferDataKey = @"BundleIdentifierData";
@@ -64,11 +59,9 @@ static NSString * const kReceiptHashKey = @"Hash";
 
 + (void)load {
 
-#ifdef DEBUG
-
-    return;
-
-#else
+#if DEBUG
+	return;
+#endif
 
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
@@ -119,12 +112,7 @@ static NSString * const kReceiptHashKey = @"Hash";
 		pool = (NSAutoreleasePool *)1;
 	}
 	
-#ifdef DEBUG
-	const char guidBytes[] = "\x00\x17\xf2\xc4\xbc\xc0";
-	NSData *guidData = [NSData dataWithBytes:guidBytes length:sizeof(guidBytes)-1];
-#else
 	NSData *guidData = [[self class] systemMACAddress];
-#endif
 	
 	if (guidData == nil) {
 		exit(173);
@@ -153,8 +141,6 @@ static NSString * const kReceiptHashKey = @"Hash";
 	}
 
 	[pool release];
-
-#endif
 }
 
 + (NSData *)appleRootCertificateData {
