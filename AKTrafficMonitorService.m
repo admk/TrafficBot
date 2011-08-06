@@ -7,6 +7,7 @@
 //
 
 #import "AKTrafficMonitorService.h"
+#import "NSDate+AKCachedDateString.h"
 #include <sys/sysctl.h>
 #include <netinet/in.h>
 #include <net/if.h>
@@ -227,10 +228,13 @@ static AKTrafficMonitorService *sharedService = nil;
 			NSMutableDictionary *tLog = [self rollingLogFile];
 			for (NSString *dateString in [tLog allKeys]) {
 				AKScopeAutoreleased();
-				NSDate *date = [NSDate dateWithString:dateString];
+                NSDate *date = [NSDate ak_cachedDateWithString:dateString];
 				// remove expired entries
 				if ([date timeIntervalSinceNow] < -self.rollingPeriodInterval)
+                {
 					[tLog removeObjectForKey:dateString];
+                    [NSDate ak_removeCachedDateString:dateString];
+                }
 				else {
 					_totalRec.kin += TMSDTFromNumber([[tLog objectForKey:dateString] objectForKey:@"in"]);
 					_totalRec.kout += TMSDTFromNumber([[tLog objectForKey:dateString] objectForKey:@"out"]);

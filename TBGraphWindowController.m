@@ -12,6 +12,7 @@
 #import "MAAttachedWindow.h"
 #import "NSWindow+AKFlip.h"
 #import "NSWindow-NoodleEffects.h"
+#import "NSDate+AKCachedDateString.h"
 
 @interface TBGraphWindowController ()
 @property (retain) NSWindow *_flipFromWindow;
@@ -120,7 +121,7 @@
 	NSDictionary *dict = [[AKTrafficMonitorService sharedService] rollingLogFile];
 	NSMutableDictionary *graphDict = [[[NSMutableDictionary alloc] initWithCapacity:[dict count]] autorelease];
 	for (NSString *dateString in [dict allKeys]) {
-		[graphDict setObject:[dict objectForKey:dateString] forKey:[NSDate dateWithString:dateString]];
+		[graphDict setObject:[dict objectForKey:dateString] forKey:[NSDate ak_cachedDateWithString:dateString]];
 	}
 	graphView.dataDict = graphDict;
 }

@@ -32,6 +32,7 @@
 		B500D93313C99CC000FD6D1C /* AKLandmark.m in Sources */ = {isa = PBXBuildFile; fileRef = B500D93213C99CC000FD6D1C /* AKLandmark.m */; };
 		B552662513C721ED0037C39E /* AKLandmarkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B552662413C721ED0037C39E /* AKLandmarkManager.m */; };
 		B552662713C723820037C39E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B552662613C723820037C39E /* CoreLocation.framework */; };
+		B567EC1613ED715200934E1E /* NSDate+AKCachedDateString.m in Sources */ = {isa = PBXBuildFile; fileRef = B567EC1513ED715200934E1E /* NSDate+AKCachedDateString.m */; };
 		B57E9E8A13CF435400F76ED6 /* Help.png in Resources */ = {isa = PBXBuildFile; fileRef = B57E9E8913CF435400F76ED6 /* Help.png */; };
 		B581F7CA13CA1D6000885FE8 /* AKAddLandmarkWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B581F7C913CA1D6000885FE8 /* AKAddLandmarkWindow.xib */; };
 		B581F7CE13CA1DCC00885FE8 /* AKAddLandmarkWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B581F7CD13CA1DCC00885FE8 /* AKAddLandmarkWindowController.m */; };
@@ -135,6 +136,8 @@
 		B552662313C721ED0037C39E /* AKLandmarkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AKLandmarkManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B552662413C721ED0037C39E /* AKLandmarkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AKLandmarkManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B552662613C723820037C39E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B567EC1413ED715200934E1E /* NSDate+AKCachedDateString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+AKCachedDateString.h"; path = "NSDate (AKCachedDateString)/NSDate+AKCachedDateString.h"; sourceTree = "<group>"; };
+		B567EC1513ED715200934E1E /* NSDate+AKCachedDateString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+AKCachedDateString.m"; path = "NSDate (AKCachedDateString)/NSDate+AKCachedDateString.m"; sourceTree = "<group>"; };
 		B57E9E8913CF435400F76ED6 /* Help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Help.png; sourceTree = "<group>"; };
 		B581F7C913CA1D6000885FE8 /* AKAddLandmarkWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AKAddLandmarkWindow.xib; path = "private-utilities/Landmark Manager/AKAddLandmarkWindow.xib"; sourceTree = "<group>"; };
 		B581F7CC13CA1DCC00885FE8 /* AKAddLandmarkWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKAddLandmarkWindowController.h; sourceTree = "<group>"; };
@@ -458,6 +461,7 @@
 				DA4BE75E12AC8CAD0070618E /* Launch At Login Controller */,
 				DAFADFAC12AB24B50027CEE8 /* Attached Window */,
 				DABFB4D412A041E100AE41FF /* NSDate (AKMidnight) */,
+				B567EC1713ED715600934E1E /* NSDate (AKCachedDateString) */,
 				DA4BF12712B2962F0070618E /* NSWindow (AKFlip) */,
 				B1F449B5127E356F0020735E /* NSWindow+NoodleEffects */,
 				B16F1087127A09B600D13C0B /* Drawing */,
@@ -478,6 +482,15 @@
 			);
 			name = "Landmark Manager";
 			path = "private-utilities/Landmark Manager";
+			sourceTree = "<group>";
+		};
+		B567EC1713ED715600934E1E /* NSDate (AKCachedDateString) */ = {
+			isa = PBXGroup;
+			children = (
+				B567EC1413ED715200934E1E /* NSDate+AKCachedDateString.h */,
+				B567EC1513ED715200934E1E /* NSDate+AKCachedDateString.m */,
+			);
+			name = "NSDate (AKCachedDateString)";
 			sourceTree = "<group>";
 		};
 		B5A1932213D57BB2006E6F40 /* Quincy Kit */ = {
@@ -761,6 +774,7 @@
 				B500D93313C99CC000FD6D1C /* AKLandmark.m in Sources */,
 				B581F7CE13CA1DCC00885FE8 /* AKAddLandmarkWindowController.m in Sources */,
 				B5A1932813D57BF6006E6F40 /* BWQuincyManager.m in Sources */,
+				B567EC1613ED715200934E1E /* NSDate+AKCachedDateString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
