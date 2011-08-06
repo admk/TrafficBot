@@ -22,20 +22,24 @@
 
 @interface AKTrafficMonitorService ()
 
+- (void)_postNotificationName:(NSString *)aName object:(id)anObject userInfo:(NSDictionary *)aUserInfo;
+
 - (void)_startMonitoring;
 - (void)_stopMonitoring;
 
 - (NSTimeInterval)_timerInterval;
 - (void)_reinitialiseIfMonitoring;
 
-- (void)_updateTraffic:(id)info;
-- (void)_logTrafficData:(id)info;
-- (NSDictionary *)_readDataUsage;
+- (void)_dispatchUpdateTraffic:(id)info;
+- (void)_workerUpdateTraffic;
+- (void)_dispatchLogTrafficData:(id)info;
+- (void)_workerLogTrafficData;
+- (NSDictionary *)_workerReadDataUsage;
 
 - (NSString *)_rollingLogFilePath;
 - (NSString *)_fixedLogFilePath;
-- (BOOL)_writeToRollingLogFile:(NSDictionary *)log;
-- (BOOL)_writeToFixedLogFile:(NSDictionary *)log;
+- (BOOL)_workerWriteToRollingLogFile:(NSDictionary *)log;
+- (BOOL)_workerWriteToFixedLogFile:(NSDictionary *)log;
 - (NSMutableDictionary *)_dictionaryWithFile:(NSString *)filePath;
 - (NSString *)_logsPath;
 
@@ -102,7 +106,7 @@ static AKTrafficMonitorService *sharedService = nil;
 	[[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceDestroyOperation source:[[self _logsPath] stringByDeletingLastPathComponent] destination:@"" files:[NSArray arrayWithObject:[[self _logsPath] lastPathComponent]] tag:&tag];
 	ZAssert(!tag, @"NSWorkspaceRecycleOperation failed with tag %ld", tag);
 	// notify
-	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
+	[self _postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
 }
 
 #pragma mark -
@@ -200,21 +204,45 @@ static AKTrafficMonitorService *sharedService = nil;
 	for (NSString *notificationName in ALL_NOTIFICATIONS)
 		[[NSNotificationCenter defaultCenter] removeObserver:inObserver name:notificationName object:nil];
 }
+- (void)_postNotificationName:(NSString *)aName object:(id)anObject userInfo:(NSDictionary *)aUserInfo
+{
+    if ([NSThread isMainThread])
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:aName
+                                                            object:anObject
+                                                          userInfo:aUserInfo];
+        return;
+    }
+    // async
+    dispatch_async
+        (dispatch_get_main_queue(),
+         ^(void) {
+             [[NSNotificationCenter defaultCenter] postNotificationName:aName
+                                                                 object:anObject
+                                                               userInfo:aUserInfo];
+         });
+}
 
 #pragma mark -
 #pragma mark private
 
 #pragma mark -
 #pragma mark monitoring
+#if DEBUG
+#define TMS_MONITOR_INTERVAL .2
+#else
 #define TMS_MONITOR_INTERVAL 1
+#endif
 - (void)_startMonitoring {
+
+    @synchronized(self) {
 
 	// empty checking
 	ZAssert(self.monitoringMode != tms_rolling_mode || self.rollingPeriodInterval, @"must specify time interval for rolling period monitoring.");
 	ZAssert(self.monitoringMode == tms_rolling_mode || !IsEmpty(self.fixedPeriodRestartDate), @"must specify fresh start date for fixed period monitoring.");
 	
 	// initialise readings
-	NSDictionary *initReading = [self _readDataUsage];
+	NSDictionary *initReading = [self _workerReadDataUsage];
 	_lastRec.kin = TMSDTFromNumber([initReading objectForKey:@"in"]);
 	_lastRec.kout = TMSDTFromNumber([initReading objectForKey:@"out"]);
 	_prevNowRec = _nowRec = _lastRec;
@@ -240,7 +268,7 @@ static AKTrafficMonitorService *sharedService = nil;
 					_totalRec.kout += TMSDTFromNumber([[tLog objectForKey:dateString] objectForKey:@"out"]);
 				}
 			}
-			[self _writeToRollingLogFile:tLog];
+			[self _workerWriteToRollingLogFile:tLog];
 		} break;
 
 		case tms_fixed_mode: {
@@ -254,7 +282,7 @@ static AKTrafficMonitorService *sharedService = nil;
 			else {
 				DLog(@"fixed period monitor date expired.");
 				_totalRec = TMSZeroRec;
-				[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorNeedsNewFixedPeriodRestartDateNotification object:nil userInfo:nil];
+				[self _postNotificationName:AKTrafficMonitorNeedsNewFixedPeriodRestartDateNotification object:nil userInfo:nil];
 			}
 		} break;
 			
@@ -269,22 +297,26 @@ static AKTrafficMonitorService *sharedService = nil;
 		default: ALog(@"unrecognised mode"); break;
 	}
 	
-	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
+	[self _postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
 	
 	// threshold update
 	_lastTotal = _totalRec.kin + _totalRec.kout;
 	
 	// timer
 	if (!_monitorTimer)
-		_monitorTimer = [NSTimer scheduledTimerWithTimeInterval:TMS_MONITOR_INTERVAL target:self selector:@selector(_updateTraffic:) userInfo:nil repeats:YES];
+		_monitorTimer = [NSTimer scheduledTimerWithTimeInterval:TMS_MONITOR_INTERVAL target:self selector:@selector(_dispatchUpdateTraffic:) userInfo:nil repeats:YES];
 	if (!_logTimer)
-		_logTimer = [NSTimer scheduledTimerWithTimeInterval:[self _timerInterval] target:self selector:@selector(_logTrafficData:) userInfo:nil repeats:YES];
+		_logTimer = [NSTimer scheduledTimerWithTimeInterval:[self _timerInterval] target:self selector:@selector(_dispatchLogTrafficData:) userInfo:nil repeats:YES];
 	[_monitorTimer fire];
 	[_logTimer fire];
+
+    }
 }
 - (void)_stopMonitoring {
-	[_logTimer invalidate], _logTimer = nil;
-	[_monitorTimer invalidate], _monitorTimer = nil;
+    @synchronized(self) {
+        [_logTimer invalidate], _logTimer = nil;
+        [_monitorTimer invalidate], _monitorTimer = nil;
+    }
 }
 
 #pragma mark -
@@ -292,8 +324,9 @@ static AKTrafficMonitorService *sharedService = nil;
 #define TMS_MAX_NO_OF_LOG_ENTRIES 2880
 #define TMS_SHORTEST_UPDATE_INTERVAL 10
 - (NSTimeInterval)_timerInterval {
+    // logging timer interval should never be < 1 sec
 #if DEBUG
-	return 5;
+	return 2;
 #else
 	if (self.monitoringMode == tms_rolling_mode) {
 		NSTimeInterval proposedInterval = self.rollingPeriodInterval/TMS_MAX_NO_OF_LOG_ENTRIES;
@@ -316,119 +349,140 @@ static AKTrafficMonitorService *sharedService = nil;
 
 #pragma mark -
 #pragma mark traffic data
-- (void)_updateTraffic:(id)info {
-	
-	_prevNowRec = _nowRec;
-	NSDictionary *reading = [self _readDataUsage];
-	_nowRec.kin = TMSDTFromNumber([reading objectForKey:@"in"]);
-	_nowRec.kout = TMSDTFromNumber([reading objectForKey:@"out"]);
-
-	_speedRec.kin = (_nowRec.kin - _prevNowRec.kin) / TMS_MONITOR_INTERVAL;
-	_speedRec.kout = (_nowRec.kout - _prevNowRec.kout) / TMS_MONITOR_INTERVAL;
-	
-	_stashedRec.kin = _nowRec.kin - _lastRec.kin;
-	_stashedRec.kout = _nowRec.kout - _lastRec.kout;
-	
-	// should not notify if no change
-	if (TMSRecIsZero(_stashedRec)) return;
-	
-	// notify
-	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
+- (void)_dispatchUpdateTraffic:(id)info {
+    dispatch_async
+        (dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+         ^(void) {
+             [self _workerUpdateTraffic];
+         });
 }
-- (void)_logTrafficData:(id)info {
-	
-	// accumulate the differences
-	_totalRec.kin += _stashedRec.kin;
-	_totalRec.kout += _stashedRec.kout;
-	
-	// rolling log
-	NSMutableDictionary *rollingLog = [self rollingLogFile];
-	// log current entry for rolling log
-	if (!TMSRecIsZero(_stashedRec)) {
-		NSDictionary *rollingEntry = [NSDictionary dictionaryWithObjectsAndKeys:
-									  NumberFromTMSDT(_stashedRec.kin), @"in", 
-									  NumberFromTMSDT(_stashedRec.kout), @"out", nil];
-		[rollingLog setObject:rollingEntry forKey:[[NSDate date] description]];
-	}
-	// rolling elimination
-	for (NSString *dateString in [rollingLog allKeys]) {
-		AKScopeAutoreleased();
-		NSDate *date = [NSDate dateWithString:dateString];
-		if ([date timeIntervalSinceNow] < -self.rollingPeriodInterval) {
-			// rolling total needs to minus expired entries
-			if (self.monitoringMode == tms_rolling_mode) {
-				_totalRec.kin -= TMSDTFromNumber([[rollingLog objectForKey:dateString] objectForKey:@"in"]);
-				_totalRec.kout -= TMSDTFromNumber([[rollingLog objectForKey:dateString] objectForKey:@"out"]);
-			}
-			// remove deprecated log entry
-			[rollingLog removeObjectForKey:dateString];
-		}
-	}
-	[self _writeToRollingLogFile:rollingLog];
+- (void)_workerUpdateTraffic {
+    @synchronized(self) {
 
-	switch (self.monitoringMode) {
+        _prevNowRec = _nowRec;
+        NSDictionary *reading = [self _workerReadDataUsage];
+        _nowRec.kin = TMSDTFromNumber([reading objectForKey:@"in"]);
+        _nowRec.kout = TMSDTFromNumber([reading objectForKey:@"out"]);
+        
+        _speedRec.kin = (_nowRec.kin - _prevNowRec.kin) / TMS_MONITOR_INTERVAL;
+        _speedRec.kout = (_nowRec.kout - _prevNowRec.kout) / TMS_MONITOR_INTERVAL;
+        
+        _stashedRec.kin = _nowRec.kin - _lastRec.kin;
+        _stashedRec.kout = _nowRec.kout - _lastRec.kout;
+        
+        // should not notify if no change
+        if (TMSRecIsZero(_stashedRec)) return;
+        
+        [self _postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification
+                             object:nil
+                           userInfo:nil];
+    }
+}
+- (void)_dispatchLogTrafficData:(id)info {
+    dispatch_async
+        (dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+         ^(void) {
+             [self _workerLogTrafficData];
+         });
+}
+- (void)_workerLogTrafficData {
 
-		case tms_rolling_mode: {
-			// should not log if no change
-			if (TMSRecIsZero(_stashedRec)) return;
-		} break;
-
-		case tms_fixed_mode: {
-			if ([self.fixedPeriodRestartDate timeIntervalSinceNow] > 0) {
-				// log only total
-				NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
-									   NumberFromTMSDT(_totalRec.kin), @"in", 
-									   NumberFromTMSDT(_totalRec.kout), @"out", nil];
-				NSDictionary *tLog = [NSDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]];
-				[self _writeToFixedLogFile:tLog];
-			}
-			else {
-				[self clearStatistics];
-				DLog(@"fixed period monitor date expired.");
-				[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorNeedsNewFixedPeriodRestartDateNotification object:nil userInfo:nil];
-				return;
-			}			
-		} break;
-			
-		case tms_indefinite_mode: {
-			// log only total
-			NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
-								   NumberFromTMSDT(_totalRec.kin), @"in", 
-								   NumberFromTMSDT(_totalRec.kout), @"out", nil];
-			NSDictionary *tLog = [NSDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]];
-			[self _writeToFixedLogFile:tLog];
-		} break;
-
-		default: ALog(@"unrecognised mode"); break;
-	}
-	
-	// no negative total values
-	ZAssert(_totalRec.kin >= 0 && _totalRec.kout >= 0, @"_totalRec values should be greater than zero.");
-	if (_totalRec.kin < 0) _totalRec.kin = 0;
-	if (_totalRec.kout < 0) _totalRec.kout = 0;
-	
-	_stashedRec = TMSZeroRec; // reset differences
-	_lastRec = _nowRec; // updates last readings
-	
-	// notify
-	[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorLogsDidUpdateNotification object:nil userInfo:nil];
-	
-	// thresholds
-	if (self.thresholds) {
-		TMS_D_T cTotal = TMSTotal(_totalRec);
-		for (NSString *thresholdKey in [self.thresholds allKeys]) {
-			NSNumber *tNumber = [self.thresholds objectForKey:thresholdKey];
-			TMS_D_T threshold = TMSDTFromNumber(tNumber);
-			if (_lastTotal <= threshold && threshold <= cTotal) {
-				NSDictionary *infoDict = [NSDictionary dictionaryWithObject:tNumber forKey:thresholdKey];
-				[[NSNotificationCenter defaultCenter] postNotificationName:AKTrafficMonitorThresholdDidExceedNotification object:nil userInfo:infoDict];
-			}
-		}
-		_lastTotal = cTotal;
-	}
+    @synchronized(self) {
+        
+        // accumulate the differences
+        _totalRec.kin += _stashedRec.kin;
+        _totalRec.kout += _stashedRec.kout;
+        
+        // rolling log
+        NSMutableDictionary *rollingLog = [self rollingLogFile];
+        // log current entry for rolling log
+        if (!TMSRecIsZero(_stashedRec)) {
+            NSDictionary *rollingEntry = [NSDictionary dictionaryWithObjectsAndKeys:
+                                          NumberFromTMSDT(_stashedRec.kin), @"in", 
+                                          NumberFromTMSDT(_stashedRec.kout), @"out", nil];
+            [rollingLog setObject:rollingEntry forKey:[[NSDate date] description]];
+        }
+        // rolling elimination
+        for (NSString *dateString in [rollingLog allKeys]) {
+            AKScopeAutoreleased();
+            NSDate *date = [NSDate ak_cachedDateWithString:dateString];
+            if ([date timeIntervalSinceNow] < -self.rollingPeriodInterval) {
+                // rolling total needs to minus expired entries
+                if (self.monitoringMode == tms_rolling_mode) {
+                    _totalRec.kin -= TMSDTFromNumber([[rollingLog objectForKey:dateString] objectForKey:@"in"]);
+                    _totalRec.kout -= TMSDTFromNumber([[rollingLog objectForKey:dateString] objectForKey:@"out"]);
+                }
+                // remove deprecated log entry
+                [rollingLog removeObjectForKey:dateString];
+                [NSDate ak_removeCachedDateString:dateString];
+            }
+        }
+        [self _workerWriteToRollingLogFile:rollingLog];
+        
+        switch (self.monitoringMode) {
+                
+            case tms_rolling_mode: {
+                // should not log if no change
+                if (TMSRecIsZero(_stashedRec)) return;
+            } break;
+                
+            case tms_fixed_mode: {
+                if ([self.fixedPeriodRestartDate timeIntervalSinceNow] > 0) {
+                    // log only total
+                    NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
+                                           NumberFromTMSDT(_totalRec.kin), @"in", 
+                                           NumberFromTMSDT(_totalRec.kout), @"out", nil];
+                    NSDictionary *tLog = [NSDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]];
+                    [self _workerWriteToFixedLogFile:tLog];
+                }
+                else {
+                    [self clearStatistics];
+                    DLog(@"fixed period monitor date expired.");
+                    [self _postNotificationName:AKTrafficMonitorNeedsNewFixedPeriodRestartDateNotification object:nil userInfo:nil];
+                    return;
+                }			
+            } break;
+                
+            case tms_indefinite_mode: {
+                // log only total
+                NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       NumberFromTMSDT(_totalRec.kin), @"in", 
+                                       NumberFromTMSDT(_totalRec.kout), @"out", nil];
+                NSDictionary *tLog = [NSDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]];
+                [self _workerWriteToFixedLogFile:tLog];
+            } break;
+                
+            default: ALog(@"unrecognised mode"); break;
+        }
+        
+        // no negative total values
+        ZAssert(_totalRec.kin >= 0 && _totalRec.kout >= 0, @"_totalRec values should be greater than zero.");
+        if (_totalRec.kin < 0) _totalRec.kin = 0;
+        if (_totalRec.kout < 0) _totalRec.kout = 0;
+        
+        _stashedRec = TMSZeroRec; // reset differences
+        _lastRec = _nowRec; // updates last readings
+        
+        // notify
+        [self _postNotificationName:AKTrafficMonitorLogsDidUpdateNotification object:nil userInfo:nil];
+        
+        // thresholds
+        if (self.thresholds) {
+            TMS_D_T cTotal = TMSTotal(_totalRec);
+            for (NSString *thresholdKey in [self.thresholds allKeys]) {
+                NSNumber *tNumber = [self.thresholds objectForKey:thresholdKey];
+                TMS_D_T threshold = TMSDTFromNumber(tNumber);
+                if (_lastTotal <= threshold && threshold <= cTotal) {
+                    NSDictionary *infoDict = [NSDictionary dictionaryWithObject:tNumber forKey:thresholdKey];
+                    [self _postNotificationName:AKTrafficMonitorThresholdDidExceedNotification object:nil userInfo:infoDict];
+                }
+            }
+            _lastTotal = cTotal;
+        }
+    } // @synchronized(self)
 }
 
-- (NSDictionary *)_readDataUsage {
+- (NSDictionary *)_workerReadDataUsage {
 
     // reinitialise if interfaces changed
     NSArray *interfaces = [self networkInterfaceNames];
@@ -480,17 +534,28 @@ static AKTrafficMonitorService *sharedService = nil;
 
 #pragma mark -
 #pragma mark file management
-- (BOOL)_writeToRollingLogFile:(NSDictionary *)tLog {
-	// save log file
-	BOOL success = [tLog writeToFile:[self _rollingLogFilePath] atomically:YES];
-	ZAssert(success, @"failed to write log");
-	return success;
+- (BOOL)_workerWriteToRollingLogFile:(NSDictionary *)tLog {
+
+    BOOL success = NO;
+    @synchronized(self) {
+        // save log file
+        success = [tLog writeToFile:[self _rollingLogFilePath] atomically:YES];
+    }
+
+    ZAssert(success, @"failed to write log");
+    return success;
 }
-- (BOOL)_writeToFixedLogFile:(NSDictionary *)tLog {
-	ZAssert([[tLog allKeys] count] == 1, @"log file must have exactly one entry for a fixed period monitoring");
-	// save log file
-	BOOL success = [tLog writeToFile:[self _fixedLogFilePath] atomically:YES];
-	ZAssert(success, @"failed to write log");
+- (BOOL)_workerWriteToFixedLogFile:(NSDictionary *)tLog {
+
+    BOOL success = NO;
+    ZAssert([[tLog allKeys] count] == 1, @"log file must have exactly one entry for a fixed period monitoring");
+
+    @synchronized(self) {
+        // save log file
+        success = [tLog writeToFile:[self _fixedLogFilePath] atomically:YES];
+    }
+
+    ZAssert(success, @"failed to write log");
 	return success;
 }
 
