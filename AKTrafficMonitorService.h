@@ -37,6 +37,7 @@ typedef struct {
 	
 @private
 
+    dispatch_group_t _dispatch_group;
 	BOOL			_monitoring;
 	
     NSArray         *_includeInterfaces;

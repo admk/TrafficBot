@@ -64,6 +64,8 @@ static AKTrafficMonitorService *sharedService = nil;
 	self = [super init];
 	if (!self) return nil;
 	
+    _dispatch_group = dispatch_group_create();
+
 	_lastRec = TMSZeroRec;
 	_stashedRec = TMSZeroRec;
 	_nowRec = TMSZeroRec;
@@ -88,6 +90,8 @@ static AKTrafficMonitorService *sharedService = nil;
 	[_monitorTimer release], _monitorTimer = nil;
     [_includeInterfaces release], _includeInterfaces = nil;
     [_interfaces release], _interfaces = nil;
+    dispatch_group_wait(_dispatch_group, DISPATCH_TIME_FOREVER);
+    dispatch_release(_dispatch_group);
 	[super dealloc];
 }
 
@@ -100,11 +104,19 @@ static AKTrafficMonitorService *sharedService = nil;
 	return [self _dictionaryWithFile:[self _fixedLogFilePath]];
 }
 - (void)clearStatistics {
-	_totalRec = TMSZeroRec;
-	// reset all log files
-	NSInteger tag;
-	[[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceDestroyOperation source:[[self _logsPath] stringByDeletingLastPathComponent] destination:@"" files:[NSArray arrayWithObject:[[self _logsPath] lastPathComponent]] tag:&tag];
-	ZAssert(!tag, @"NSWorkspaceRecycleOperation failed with tag %ld", tag);
+
+    dispatch_group_wait(_dispatch_group, DISPATCH_TIME_FOREVER);
+
+    @synchronized(self)
+    {
+        _totalRec = TMSZeroRec;
+        
+        // delete all log files
+        NSInteger tag;
+        [[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceDestroyOperation source:[[self _logsPath] stringByDeletingLastPathComponent] destination:@"" files:[NSArray arrayWithObject:[[self _logsPath] lastPathComponent]] tag:&tag];
+        ZAssert(!tag, @"NSWorkspaceRecycleOperation failed with tag %ld", tag);
+    }
+
 	// notify
 	[self _postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
 }
@@ -214,8 +226,8 @@ static AKTrafficMonitorService *sharedService = nil;
         return;
     }
     // async
-    dispatch_async
-        (dispatch_get_main_queue(),
+    dispatch_group_async
+        (_dispatch_group, dispatch_get_main_queue(),
          ^(void) {
              [[NSNotificationCenter defaultCenter] postNotificationName:aName
                                                                  object:anObject
@@ -313,6 +325,9 @@ static AKTrafficMonitorService *sharedService = nil;
     }
 }
 - (void)_stopMonitoring {
+
+    dispatch_group_wait(_dispatch_group, DISPATCH_TIME_FOREVER);
+
     @synchronized(self) {
         [_logTimer invalidate], _logTimer = nil;
         [_monitorTimer invalidate], _monitorTimer = nil;
@@ -350,8 +365,8 @@ static AKTrafficMonitorService *sharedService = nil;
 #pragma mark -
 #pragma mark traffic data
 - (void)_dispatchUpdateTraffic:(id)info {
-    dispatch_async
-        (dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+    dispatch_group_async
+        (_dispatch_group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
          ^(void) {
              [self _workerUpdateTraffic];
          });
@@ -379,8 +394,8 @@ static AKTrafficMonitorService *sharedService = nil;
     }
 }
 - (void)_dispatchLogTrafficData:(id)info {
-    dispatch_async
-        (dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+    dispatch_group_async
+        (_dispatch_group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
          ^(void) {
              [self _workerLogTrafficData];
          });
