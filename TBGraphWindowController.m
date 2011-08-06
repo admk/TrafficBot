@@ -118,7 +118,7 @@
 #pragma mark refresh view
 - (void)_refreshView {
 	// calculate total
-	NSDictionary *dict = [[AKTrafficMonitorService sharedService] rollingLogFile];
+	NSDictionary *dict = [[AKTrafficMonitorService sharedService] rollingLog];
 	NSMutableDictionary *graphDict = [[[NSMutableDictionary alloc] initWithCapacity:[dict count]] autorelease];
 	for (NSString *dateString in [dict allKeys]) {
 		[graphDict setObject:[dict objectForKey:dateString] forKey:[NSDate ak_cachedDateWithString:dateString]];

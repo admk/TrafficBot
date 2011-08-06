@@ -56,6 +56,11 @@ typedef struct {
 	tms_rec_t		_totalRec;
 	tms_rec_t		_speedRec;
 	TMS_D_T			_lastTotal;
+
+    NSMutableDictionary *_rollingLog;
+    NSMutableDictionary *_fixedLog;
+    NSDate          *_lastRollingLogWriteDate;
+    NSDate          *_lastFixedLogWriteDate;
 	
     NSArray         *_interfaces;
 }
@@ -99,6 +104,10 @@ typedef struct {
 @property (readonly) NSNumber *outSpeed;
 @property (readonly) NSNumber *totalSpeed;
 
+// dictionary representation of log files
+@property (readonly) NSMutableDictionary *rollingLog;
+@property (readonly) NSMutableDictionary *fixedLog;
+
 + (AKTrafficMonitorService *)sharedService;
 
 // notifications
@@ -108,10 +117,6 @@ typedef struct {
 // thresholds
 - (void)registerThresholdWithValue:(NSNumber *)value context:(NSString *)context;
 - (void)unregisterAllThresholds;
-
-// dictionary representation of log files
-- (NSMutableDictionary *)rollingLogFile;
-- (NSMutableDictionary *)fixedLogFile;
 
 // all names of network interfaces
 - (NSArray *)networkInterfaceNames;

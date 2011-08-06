@@ -38,8 +38,10 @@
 
 - (NSString *)_rollingLogFilePath;
 - (NSString *)_fixedLogFilePath;
-- (BOOL)_workerWriteToRollingLogFile:(NSDictionary *)log;
-- (BOOL)_workerWriteToFixedLogFile:(NSDictionary *)log;
+- (void)_workerScheduleWriteRollingLogToFile;
+- (void)_workerScheduleWriteFixedLogToFile;
+- (BOOL)_workerWriteRollingLogToFile;
+- (BOOL)_workerWriteFixedLogToFile;
 - (NSMutableDictionary *)_dictionaryWithFile:(NSString *)filePath;
 - (NSString *)_logsPath;
 
@@ -73,6 +75,11 @@ static AKTrafficMonitorService *sharedService = nil;
 	_totalRec = TMSZeroRec;
 	_speedRec = TMSZeroRec;
 	
+    _rollingLog = [[self _dictionaryWithFile:[self _rollingLogFilePath]] retain];
+    _fixedLog = [[self _dictionaryWithFile:[self _fixedLogFilePath]] retain];
+    _lastRollingLogWriteDate = nil;
+    _lastFixedLogWriteDate = nil;
+
 	_lastTotal = 0;
 	_thresholds = nil;
 
@@ -86,7 +93,12 @@ static AKTrafficMonitorService *sharedService = nil;
     return self;
 }
 - (void)dealloc {
+    [_rollingLog release], _rollingLog = nil;
+    [_fixedLog release], _fixedLog = nil;
+    [_lastRollingLogWriteDate release], _lastRollingLogWriteDate = nil;
+    [_lastFixedLogWriteDate release], _lastFixedLogWriteDate = nil;
 	[_fixedPeriodRestartDate release], _fixedPeriodRestartDate = nil;
+    [_thresholds release], _thresholds = nil;
 	[_monitorTimer release], _monitorTimer = nil;
     [_includeInterfaces release], _includeInterfaces = nil;
     [_interfaces release], _interfaces = nil;
@@ -97,11 +109,11 @@ static AKTrafficMonitorService *sharedService = nil;
 
 #pragma mark -
 #pragma mark file management
-- (NSMutableDictionary *)rollingLogFile {
-	return [self _dictionaryWithFile:[self _rollingLogFilePath]];
+- (NSMutableDictionary *)rollingLog {
+    return _rollingLog;
 }
-- (NSMutableDictionary *)fixedLogFile {
-	return [self _dictionaryWithFile:[self _fixedLogFilePath]];
+- (NSMutableDictionary *)fixedLog {
+    return _fixedLog;
 }
 - (void)clearStatistics {
 
@@ -110,6 +122,11 @@ static AKTrafficMonitorService *sharedService = nil;
     @synchronized(self)
     {
         _totalRec = TMSZeroRec;
+        
+        [_rollingLog release];
+        _rollingLog = [[NSMutableDictionary dictionary] retain];
+        [_fixedLog release];
+        _fixedLog = [[NSMutableDictionary dictionary] retain];
         
         // delete all log files
         NSInteger tag;
@@ -265,29 +282,27 @@ static AKTrafficMonitorService *sharedService = nil;
 	switch (self.monitoringMode) {
 
 		case tms_rolling_mode: {
-			NSMutableDictionary *tLog = [self rollingLogFile];
-			for (NSString *dateString in [tLog allKeys]) {
+			for (NSString *dateString in [_rollingLog allKeys]) {
 				AKScopeAutoreleased();
                 NSDate *date = [NSDate ak_cachedDateWithString:dateString];
 				// remove expired entries
 				if ([date timeIntervalSinceNow] < -self.rollingPeriodInterval)
                 {
-					[tLog removeObjectForKey:dateString];
+					[_rollingLog removeObjectForKey:dateString];
                     [NSDate ak_removeCachedDateString:dateString];
                 }
 				else {
-					_totalRec.kin += TMSDTFromNumber([[tLog objectForKey:dateString] objectForKey:@"in"]);
-					_totalRec.kout += TMSDTFromNumber([[tLog objectForKey:dateString] objectForKey:@"out"]);
+					_totalRec.kin += TMSDTFromNumber([[_rollingLog objectForKey:dateString] objectForKey:@"in"]);
+					_totalRec.kout += TMSDTFromNumber([[_rollingLog objectForKey:dateString] objectForKey:@"out"]);
 				}
 			}
-			[self _workerWriteToRollingLogFile:tLog];
+			[self _workerScheduleWriteRollingLogToFile];
 		} break;
 
 		case tms_fixed_mode: {
-			NSMutableDictionary *tLog = [self fixedLogFile];
 			if ([self.fixedPeriodRestartDate timeIntervalSinceNow] > 0) {
-				NSString *dateString = [[tLog allKeys] objectAtIndex:0];
-				NSDictionary *entry = [tLog objectForKey:dateString];
+				NSString *dateString = [[_fixedLog allKeys] objectAtIndex:0];
+				NSDictionary *entry = [_fixedLog objectForKey:dateString];
 				_totalRec.kin = TMSDTFromNumber([entry objectForKey:@"in"]);
 				_totalRec.kout = TMSDTFromNumber([entry objectForKey:@"out"]);
 			}
@@ -299,9 +314,8 @@ static AKTrafficMonitorService *sharedService = nil;
 		} break;
 			
 		case tms_indefinite_mode: {
-			NSMutableDictionary *tLog = [self fixedLogFile];
-			NSString *dateString = [[tLog allKeys] objectAtIndex:0];
-			NSDictionary *entry = [tLog objectForKey:dateString];
+			NSString *dateString = [[_fixedLog allKeys] objectAtIndex:0];
+			NSDictionary *entry = [_fixedLog objectForKey:dateString];
 			_totalRec.kin = TMSDTFromNumber([entry objectForKey:@"in"]);
 			_totalRec.kout = TMSDTFromNumber([entry objectForKey:@"out"]);			
 		} break;
@@ -409,30 +423,29 @@ static AKTrafficMonitorService *sharedService = nil;
         _totalRec.kout += _stashedRec.kout;
         
         // rolling log
-        NSMutableDictionary *rollingLog = [self rollingLogFile];
         // log current entry for rolling log
         if (!TMSRecIsZero(_stashedRec)) {
             NSDictionary *rollingEntry = [NSDictionary dictionaryWithObjectsAndKeys:
                                           NumberFromTMSDT(_stashedRec.kin), @"in", 
                                           NumberFromTMSDT(_stashedRec.kout), @"out", nil];
-            [rollingLog setObject:rollingEntry forKey:[[NSDate date] description]];
+            [_rollingLog setObject:rollingEntry forKey:[[NSDate date] description]];
         }
         // rolling elimination
-        for (NSString *dateString in [rollingLog allKeys]) {
+        for (NSString *dateString in [_rollingLog allKeys]) {
             AKScopeAutoreleased();
             NSDate *date = [NSDate ak_cachedDateWithString:dateString];
             if ([date timeIntervalSinceNow] < -self.rollingPeriodInterval) {
                 // rolling total needs to minus expired entries
                 if (self.monitoringMode == tms_rolling_mode) {
-                    _totalRec.kin -= TMSDTFromNumber([[rollingLog objectForKey:dateString] objectForKey:@"in"]);
-                    _totalRec.kout -= TMSDTFromNumber([[rollingLog objectForKey:dateString] objectForKey:@"out"]);
+                    _totalRec.kin -= TMSDTFromNumber([[_rollingLog objectForKey:dateString] objectForKey:@"in"]);
+                    _totalRec.kout -= TMSDTFromNumber([[_rollingLog objectForKey:dateString] objectForKey:@"out"]);
                 }
                 // remove deprecated log entry
-                [rollingLog removeObjectForKey:dateString];
+                [_rollingLog removeObjectForKey:dateString];
                 [NSDate ak_removeCachedDateString:dateString];
             }
         }
-        [self _workerWriteToRollingLogFile:rollingLog];
+        [self _workerScheduleWriteRollingLogToFile];
         
         switch (self.monitoringMode) {
                 
@@ -447,8 +460,9 @@ static AKTrafficMonitorService *sharedService = nil;
                     NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
                                            NumberFromTMSDT(_totalRec.kin), @"in", 
                                            NumberFromTMSDT(_totalRec.kout), @"out", nil];
-                    NSDictionary *tLog = [NSDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]];
-                    [self _workerWriteToFixedLogFile:tLog];
+                    [_fixedLog release];
+                    _fixedLog = [[NSMutableDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]] retain];
+                    [self _workerScheduleWriteFixedLogToFile];
                 }
                 else {
                     [self clearStatistics];
@@ -463,8 +477,9 @@ static AKTrafficMonitorService *sharedService = nil;
                 NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
                                        NumberFromTMSDT(_totalRec.kin), @"in", 
                                        NumberFromTMSDT(_totalRec.kout), @"out", nil];
-                NSDictionary *tLog = [NSDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]];
-                [self _workerWriteToFixedLogFile:tLog];
+                [_fixedLog release];
+                _fixedLog = [NSMutableDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]];
+                [self _workerScheduleWriteFixedLogToFile];
             } break;
                 
             default: ALog(@"unrecognised mode"); break;
@@ -549,25 +564,74 @@ static AKTrafficMonitorService *sharedService = nil;
 
 #pragma mark -
 #pragma mark file management
-- (BOOL)_workerWriteToRollingLogFile:(NSDictionary *)tLog {
+#if DEBUG
+#define TMS_SHORTEST_CONSECUTIVE_WRITE_INTERVAL 3
+#else
+#define TMS_SHORTEST_CONSECUTIVE_WRITE_INTERVAL 60
+#endif
+- (void)_workerScheduleWriteRollingLogToFile
+{
+    if (!_lastRollingLogWriteDate)
+    {
+        @synchronized(self)
+        {
+            _lastRollingLogWriteDate = [[NSDate distantPast] retain];
+        }
+    }
+    if ([_lastRollingLogWriteDate timeIntervalSinceNow] > -TMS_SHORTEST_CONSECUTIVE_WRITE_INTERVAL)
+    {
+        return;
+    }
+
+    @synchronized(self)
+    {
+        [self _workerWriteRollingLogToFile];
+
+        [_lastRollingLogWriteDate release];
+        _lastRollingLogWriteDate = [[NSDate date] retain];
+    }
+}
+- (void)_workerScheduleWriteFixedLogToFile
+{
+    if (!_lastFixedLogWriteDate)
+    {
+        @synchronized(self)
+        {
+            _lastFixedLogWriteDate = [[NSDate distantPast] retain];
+        }
+    }
+    if ([_lastFixedLogWriteDate timeIntervalSinceNow] > -TMS_SHORTEST_CONSECUTIVE_WRITE_INTERVAL)
+    {
+        return;
+    }
+    
+    @synchronized(self)
+    {
+        [self _workerWriteFixedLogToFile];
+
+        [_lastFixedLogWriteDate release];
+        _lastFixedLogWriteDate = [[NSDate date] retain];
+    }
+}
+- (BOOL)_workerWriteRollingLogToFile {
 
     BOOL success = NO;
     @synchronized(self) {
         // save log file
-        success = [tLog writeToFile:[self _rollingLogFilePath] atomically:YES];
+        success = [_rollingLog writeToFile:[self _rollingLogFilePath] atomically:YES];
     }
 
     ZAssert(success, @"failed to write log");
     return success;
 }
-- (BOOL)_workerWriteToFixedLogFile:(NSDictionary *)tLog {
+- (BOOL)_workerWriteFixedLogToFile {
 
     BOOL success = NO;
-    ZAssert([[tLog allKeys] count] == 1, @"log file must have exactly one entry for a fixed period monitoring");
+    ZAssert([[_fixedLog allKeys] count] == 1, @"log file must have exactly one entry for a fixed period monitoring");
 
     @synchronized(self) {
         // save log file
-        success = [tLog writeToFile:[self _fixedLogFilePath] atomically:YES];
+        success = [_fixedLog writeToFile:[self _fixedLogFilePath] atomically:YES];
     }
 
     ZAssert(success, @"failed to write log");
