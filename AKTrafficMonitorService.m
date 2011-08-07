@@ -478,7 +478,7 @@ static AKTrafficMonitorService *sharedService = nil;
                                        NumberFromTMSDT(_totalRec.kin), @"in", 
                                        NumberFromTMSDT(_totalRec.kout), @"out", nil];
                 [_fixedLog release];
-                _fixedLog = [NSMutableDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]];
+                _fixedLog = [[NSMutableDictionary dictionaryWithObject:entry forKey:[[NSDate date] description]] retain];
                 [self _workerScheduleWriteFixedLogToFile];
             } break;
                 
