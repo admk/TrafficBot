@@ -52,20 +52,19 @@
 #pragma mark -
 @implementation AKTrafficMonitorService
 
-static AKTrafficMonitorService *sharedService = nil;
-
 + (AKTrafficMonitorService *)sharedService {
-	if (!sharedService) {
-		@synchronized(self) {
-			sharedService = [[self alloc] init];
-		}
-	}
+	static dispatch_once_t pred;
+	static AKTrafficMonitorService *sharedService = nil;
+	dispatch_once(&pred, ^{
+		sharedService = [[AKTrafficMonitorService alloc] init];
+	});
 	return sharedService;
 }
 - (id)init {
 	self = [super init];
 	if (!self) return nil;
 	
+	_dispatch_queue = dispatch_queue_create("com.akkloca.TrafficBot.TMS.Monitor", NULL);
     _dispatch_group = dispatch_group_create();
 
 	_lastRec = TMSZeroRec;
@@ -104,6 +103,7 @@ static AKTrafficMonitorService *sharedService = nil;
     [_interfaces release], _interfaces = nil;
     dispatch_group_wait(_dispatch_group, DISPATCH_TIME_FOREVER);
     dispatch_release(_dispatch_group);
+	dispatch_release(_dispatch_queue);
 	[super dealloc];
 }
 
@@ -243,8 +243,8 @@ static AKTrafficMonitorService *sharedService = nil;
         return;
     }
     // async
-    dispatch_group_async
-        (_dispatch_group, dispatch_get_main_queue(),
+    dispatch_async
+        (dispatch_get_main_queue(),
          ^(void) {
              [[NSNotificationCenter defaultCenter] postNotificationName:aName
                                                                  object:anObject
@@ -264,6 +264,8 @@ static AKTrafficMonitorService *sharedService = nil;
 #endif
 - (void)_startMonitoring {
 
+	ZAssert([NSThread isMainThread], @"must be called from main thread.");
+	dispatch_group_wait(_dispatch_group, DISPATCH_TIME_FOREVER);
     @synchronized(self) {
 
 	// empty checking
@@ -333,15 +335,13 @@ static AKTrafficMonitorService *sharedService = nil;
 		_monitorTimer = [NSTimer scheduledTimerWithTimeInterval:TMS_MONITOR_INTERVAL target:self selector:@selector(_dispatchUpdateTraffic:) userInfo:nil repeats:YES];
 	if (!_logTimer)
 		_logTimer = [NSTimer scheduledTimerWithTimeInterval:[self _timerInterval] target:self selector:@selector(_dispatchLogTrafficData:) userInfo:nil repeats:YES];
+    }
 	[_monitorTimer fire];
 	[_logTimer fire];
-
-    }
 }
 - (void)_stopMonitoring {
-
+	ZAssert([NSThread isMainThread], @"must be called from main thread.");
     dispatch_group_wait(_dispatch_group, DISPATCH_TIME_FOREVER);
-
     @synchronized(self) {
         [_logTimer invalidate], _logTimer = nil;
         [_monitorTimer invalidate], _monitorTimer = nil;
@@ -371,16 +371,21 @@ static AKTrafficMonitorService *sharedService = nil;
 #pragma mark settings changed
 - (void)_reinitialiseIfMonitoring {
 	if (!_monitoring) return;
-	[self _stopMonitoring];
-	[self _startMonitoring];
-    DLog(@"reinitialised.");
+	dispatch_async
+		(dispatch_get_main_queue(), ^{
+			[self _stopMonitoring];
+			[self _startMonitoring];
+			DLog(@"reinitialised.");
+		});
 }
 
 #pragma mark -
 #pragma mark traffic data
 - (void)_dispatchUpdateTraffic:(id)info {
+	ZAssert([NSThread isMainThread], @"must be called from main thread.");
+	dispatch_group_wait(_dispatch_group, DISPATCH_TIME_FOREVER);
     dispatch_group_async
-        (_dispatch_group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+        (_dispatch_group, _dispatch_queue,
          ^(void) {
              [self _workerUpdateTraffic];
          });
@@ -408,13 +413,23 @@ static AKTrafficMonitorService *sharedService = nil;
     }
 }
 - (void)_dispatchLogTrafficData:(id)info {
+	ZAssert([NSThread isMainThread], @"must be called from main thread.");
+	dispatch_group_wait(_dispatch_group, DISPATCH_TIME_FOREVER);
     dispatch_group_async
-        (_dispatch_group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+        (_dispatch_group, _dispatch_queue,
          ^(void) {
              [self _workerLogTrafficData];
          });
 }
 - (void)_workerLogTrafficData {
+
+	// reinitialise if interfaces changed
+    NSArray *interfaces = [self networkInterfaceNames];
+    if (![self.interfaces isEqualToArray:interfaces])
+    {
+		[self _setInterfaces:interfaces];
+        [self _reinitialiseIfMonitoring];
+    }
 
     @synchronized(self) {
         
@@ -513,14 +528,6 @@ static AKTrafficMonitorService *sharedService = nil;
 }
 
 - (NSDictionary *)_workerReadDataUsage {
-
-    // reinitialise if interfaces changed
-    NSArray *interfaces = [self networkInterfaceNames];
-    if (![self.interfaces isEqualToArray:interfaces])
-    {
-		[self _setInterfaces:interfaces];
-        [self _reinitialiseIfMonitoring];
-    }
 
     BOOL shouldIncludeAll = (nil == self.includeInterfaces);
 
@@ -676,8 +683,11 @@ static AKTrafficMonitorService *sharedService = nil;
 - (void)_setInterfaces:(NSArray *)interfaces
 {
 	if (_interfaces == interfaces) return;
-	[_interfaces release];
-	_interfaces = [interfaces retain];
+	@synchronized(self)
+	{
+		[_interfaces release];
+		_interfaces = [interfaces retain];
+	}
 }
 
 #pragma mark -
