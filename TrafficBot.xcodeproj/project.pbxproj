@@ -33,6 +33,7 @@
 		B552662513C721ED0037C39E /* AKLandmarkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B552662413C721ED0037C39E /* AKLandmarkManager.m */; };
 		B552662713C723820037C39E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B552662613C723820037C39E /* CoreLocation.framework */; };
 		B567EC1613ED715200934E1E /* NSDate+AKCachedDateString.m in Sources */ = {isa = PBXBuildFile; fileRef = B567EC1513ED715200934E1E /* NSDate+AKCachedDateString.m */; };
+		B5795FF4142A208600D35F8E /* TrafficBotHelperConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B5795FF3142A208600D35F8E /* TrafficBotHelperConnection.m */; };
 		B57E9E8A13CF435400F76ED6 /* Help.png in Resources */ = {isa = PBXBuildFile; fileRef = B57E9E8913CF435400F76ED6 /* Help.png */; };
 		B581F7CA13CA1D6000885FE8 /* AKAddLandmarkWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B581F7C913CA1D6000885FE8 /* AKAddLandmarkWindow.xib */; };
 		B581F7CE13CA1DCC00885FE8 /* AKAddLandmarkWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B581F7CD13CA1DCC00885FE8 /* AKAddLandmarkWindowController.m */; };
@@ -154,6 +155,9 @@
 		B567EC1413ED715200934E1E /* NSDate+AKCachedDateString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+AKCachedDateString.h"; path = "NSDate (AKCachedDateString)/NSDate+AKCachedDateString.h"; sourceTree = "<group>"; };
 		B567EC1513ED715200934E1E /* NSDate+AKCachedDateString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+AKCachedDateString.m"; path = "NSDate (AKCachedDateString)/NSDate+AKCachedDateString.m"; sourceTree = "<group>"; };
 		B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TrafficBotHelper.xcodeproj; path = TrafficBotHelper/TrafficBotHelper.xcodeproj; sourceTree = "<group>"; };
+		B5795FEF142A0C5E00D35F8E /* TrafficBotHelperConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrafficBotHelperConnection.h; path = TrafficBotHelper/TrafficBotHelper/TrafficBotHelperConnection.h; sourceTree = "<group>"; };
+		B5795FF3142A208600D35F8E /* TrafficBotHelperConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrafficBotHelperConnection.m; path = TrafficBotHelper/TrafficBotHelper/TrafficBotHelperConnection.m; sourceTree = "<group>"; };
+		B5795FF5142A24E400D35F8E /* AKOptimizationMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKOptimizationMacros.h; sourceTree = "<group>"; };
 		B57E9E8913CF435400F76ED6 /* Help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Help.png; sourceTree = "<group>"; };
 		B581F7C913CA1D6000885FE8 /* AKAddLandmarkWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AKAddLandmarkWindow.xib; path = "private-utilities/Landmark Manager/AKAddLandmarkWindow.xib"; sourceTree = "<group>"; };
 		B581F7CC13CA1DCC00885FE8 /* AKAddLandmarkWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKAddLandmarkWindowController.h; sourceTree = "<group>"; };
@@ -372,8 +376,8 @@
 			isa = PBXGroup;
 			children = (
 				B552662113C721510037C39E /* Landmark Manager */,
-				B16F0E911278CE4700D13C0B /* Traffic Monitor Notification Service */,
 				B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */,
+				B16F0E911278CE4700D13C0B /* Traffic Monitor Notification Service */,
 				DA19897E12B45BDE00D64DD7 /* Bytes Formatter */,
 			);
 			name = "Core Services";
@@ -419,6 +423,8 @@
 		B16F0E911278CE4700D13C0B /* Traffic Monitor Notification Service */ = {
 			isa = PBXGroup;
 			children = (
+				B5795FEF142A0C5E00D35F8E /* TrafficBotHelperConnection.h */,
+				B5795FF3142A208600D35F8E /* TrafficBotHelperConnection.m */,
 				B16F0E921278CE6B00D13C0B /* AKTrafficMonitorService.h */,
 				B16F0E931278CE6B00D13C0B /* AKTrafficMonitorService.m */,
 			);
@@ -520,6 +526,7 @@
 			children = (
 				DA4BE80012AD786B0070618E /* AKDebugMacros.h */,
 				DA4BEBB912B0485B0070618E /* AKScopeReleased.h */,
+				B5795FF5142A24E400D35F8E /* AKOptimizationMacros.h */,
 				B16F0FB512798BEE00D13C0B /* DMCommonMacros.h */,
 				DA4BE83612AD85380070618E /* AKUKHelperMacros.h */,
 			);
@@ -809,6 +816,7 @@
 				B500D93313C99CC000FD6D1C /* AKLandmark.m in Sources */,
 				B581F7CE13CA1DCC00885FE8 /* AKAddLandmarkWindowController.m in Sources */,
 				B567EC1613ED715200934E1E /* NSDate+AKCachedDateString.m in Sources */,
+				B5795FF4142A208600D35F8E /* TrafficBotHelperConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -888,8 +896,8 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
@@ -923,8 +931,8 @@
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;

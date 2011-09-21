@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TrafficBotHelperConnection.h"
 
 #define AKTrafficMonitorNeedsNewFixedPeriodRestartDateNotification @"AKTrafficMonitorNeedsNewFixedPeriodRestartDateNotification"
 #define AKTrafficMonitorStatisticsDidUpdateNotification @"AKTrafficMonitorStatisticsDidUpdateNotification"
@@ -33,8 +34,8 @@ typedef struct {
 	TMS_D_T kout;
 } tms_rec_t;
 
-@interface AKTrafficMonitorService : NSObject {
-	
+@interface AKTrafficMonitorService : NSObject<TrafficBotHelperClient>
+{
 @private
 
 	dispatch_queue_t _dispatch_queue;
@@ -50,6 +51,8 @@ typedef struct {
 	NSTimer			*_monitorTimer;
 	NSTimer			*_logTimer;
 	
+    NSDistantObject<TrafficBotHelperServer> *_server;
+
 	tms_rec_t		_lastRec;
 	tms_rec_t		_stashedRec;
 	tms_rec_t		_nowRec;

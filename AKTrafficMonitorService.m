@@ -47,6 +47,8 @@
 
 - (void)_setInterfaces:(NSArray *)interfaces;
 
+- (void)_serverDidDie:(NSNotification *)notification;
+
 @end
 
 #pragma mark -
@@ -81,6 +83,11 @@
 
 	_lastTotal = 0;
 	_thresholds = nil;
+
+    _monitorTimer = nil;
+    _logTimer = nil;
+
+    _server = nil;
 
 	_rollingPeriodInterval = 0;
 	_fixedPeriodRestartDate = nil;
@@ -330,6 +337,9 @@
 	// threshold update
 	_lastTotal = _totalRec.kin + _totalRec.kout;
 	
+    // set up connection with AKSMS
+    _server = tbhVendServer(self, @selector(_serverDidDie:));
+
 	// timer
 	if (!_monitorTimer)
 		_monitorTimer = [NSTimer scheduledTimerWithTimeInterval:TMS_MONITOR_INTERVAL target:self selector:@selector(_dispatchUpdateTraffic:) userInfo:nil repeats:YES];
@@ -390,8 +400,18 @@
              [self _workerUpdateTraffic];
          });
 }
+#define AKTMSServerConnectionRetryInterval 1.0
 - (void)_workerUpdateTraffic {
     @synchronized(self) {
+
+        AKPollingIntervalOptimize(AKTMSServerConnectionRetryInterval)
+        {
+            if (!tbhIsServerAlive(_server))
+            {
+                _server = tbhVendServer(self, @selector(_serverDidDie:));
+            }
+        }
+        NSDictionary *localStats = tbhIsServerAlive(_server) ? [_server statistics] : nil;
 
         _prevNowRec = _nowRec;
         NSDictionary *reading = [self _workerReadDataUsage];
@@ -669,6 +689,13 @@
 	ZAssert(!error, @"%@ an error occurred when creating directory at path \"%@\": %@", folder, error);
 	
 	return folder;
+}
+
+#pragma mark -
+#pragma mark server connections
+- (void)_serverDidDie:(NSNotification *)notification
+{
+    _server = tbhVendServer(self, @selector(_serverDidDie:));
 }
 
 #pragma mark -
