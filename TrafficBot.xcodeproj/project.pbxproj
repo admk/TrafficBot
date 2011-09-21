@@ -75,6 +75,23 @@
 		DABFB4D712A0421A00AE41FF /* NSDate+AKMidnight.m in Sources */ = {isa = PBXBuildFile; fileRef = DABFB4D612A0421A00AE41FF /* NSDate+AKMidnight.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B5795FE31429EC8F00D35F8E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B5795B7E1429982900D35F8E;
+			remoteInfo = TrafficBotHelper;
+		};
+		B5795FE51429EC8F00D35F8E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 61126F901425D01700EB1A5D;
+			remoteInfo = TrafficBotHelperTests;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		DAB7E70612E3D5BB006ED7C8 /* Copy Libraries */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -136,6 +153,7 @@
 		B552662613C723820037C39E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B567EC1413ED715200934E1E /* NSDate+AKCachedDateString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+AKCachedDateString.h"; path = "NSDate (AKCachedDateString)/NSDate+AKCachedDateString.h"; sourceTree = "<group>"; };
 		B567EC1513ED715200934E1E /* NSDate+AKCachedDateString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+AKCachedDateString.m"; path = "NSDate (AKCachedDateString)/NSDate+AKCachedDateString.m"; sourceTree = "<group>"; };
+		B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TrafficBotHelper.xcodeproj; path = TrafficBotHelper/TrafficBotHelper.xcodeproj; sourceTree = "<group>"; };
 		B57E9E8913CF435400F76ED6 /* Help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Help.png; sourceTree = "<group>"; };
 		B581F7C913CA1D6000885FE8 /* AKAddLandmarkWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AKAddLandmarkWindow.xib; path = "private-utilities/Landmark Manager/AKAddLandmarkWindow.xib"; sourceTree = "<group>"; };
 		B581F7CC13CA1DCC00885FE8 /* AKAddLandmarkWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKAddLandmarkWindowController.h; sourceTree = "<group>"; };
@@ -355,6 +373,7 @@
 			children = (
 				B552662113C721510037C39E /* Landmark Manager */,
 				B16F0E911278CE4700D13C0B /* Traffic Monitor Notification Service */,
+				B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */,
 				DA19897E12B45BDE00D64DD7 /* Bytes Formatter */,
 			);
 			name = "Core Services";
@@ -485,6 +504,15 @@
 				B567EC1513ED715200934E1E /* NSDate+AKCachedDateString.m */,
 			);
 			name = "NSDate (AKCachedDateString)";
+			sourceTree = "<group>";
+		};
+		B5795FDF1429EC8F00D35F8E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B5795FE41429EC8F00D35F8E /* TrafficBotHelper */,
+				B5795FE61429EC8F00D35F8E /* TrafficBotHelperTests.octest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		B5A7AEF213C43DA50058EC62 /* Macros */ = {
@@ -675,15 +703,39 @@
 				Japanese,
 				French,
 				German,
+				en,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* TrafficBot */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B5795FDF1429EC8F00D35F8E /* Products */;
+					ProjectRef = B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* TrafficBot */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B5795FE41429EC8F00D35F8E /* TrafficBotHelper */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = TrafficBotHelper;
+			remoteRef = B5795FE31429EC8F00D35F8E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B5795FE61429EC8F00D35F8E /* TrafficBotHelperTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TrafficBotHelperTests.octest;
+			remoteRef = B5795FE51429EC8F00D35F8E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8D1107290486CEB800E47090 /* Resources */ = {
