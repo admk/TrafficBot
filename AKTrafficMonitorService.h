@@ -48,8 +48,8 @@ typedef struct {
 	NSDate			*_fixedPeriodRestartDate;
 	NSMutableDictionary	*_thresholds;
 	
-	NSTimer			*_monitorTimer;
-	NSTimer			*_logTimer;
+	__weak NSTimer	*_monitorTimer;
+	__weak NSTimer	*_logTimer;
 	
     NSDistantObject<TrafficBotHelperServer> *_server;
 
