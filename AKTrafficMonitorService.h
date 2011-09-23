@@ -15,7 +15,7 @@
 #define AKTrafficMonitorThresholdDidExceedNotification @"AKTrafficMonitorThresholdDidExceedNotification"
 
 #define TMS_D_T		int64_t
-#define NumberFromTMSDT(ull)	( (NSNumber *)[NSNumber numberWithLongLong:((TMS_D_T)(ull))] )
+#define NumberFromTMSDT(ll)	( (NSNumber *)[NSNumber numberWithLongLong:((TMS_D_T)(ll))] )
 #define TMSDTFromNumber(number)	( (TMS_D_T)[((NSNumber *)(number)) longLongValue] )
 
 #define TMSZeroRec				((tms_rec_t){0,0})

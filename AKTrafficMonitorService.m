@@ -338,7 +338,7 @@
 	_lastTotal = _totalRec.kin + _totalRec.kout;
 	
     // set up connection with AKSMS
-    _server = tbhVendServer(self, @selector(_serverDidDie:));
+    _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
 
 	// timer
 	if (!_monitorTimer)
@@ -408,15 +408,15 @@
         {
             if (!tbhIsServerAlive(_server))
             {
-                _server = tbhVendServer(self, @selector(_serverDidDie:));
+                _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
             }
         }
-        NSDictionary *localStats = tbhIsServerAlive(_server) ? [_server statistics] : nil;
 
         _prevNowRec = _nowRec;
         NSDictionary *reading = [self _workerReadDataUsage];
-        _nowRec.kin = TMSDTFromNumber([reading objectForKey:@"in"]);
-        _nowRec.kout = TMSDTFromNumber([reading objectForKey:@"out"]);
+        NSDictionary *local = tbhIsServerAlive(_server) ? [_server statistics] : nil;
+        _nowRec.kin = TMSDTFromNumber([reading objectForKey:@"in"]) - TMSDTFromNumber([local objectForKey:@"in"]);
+        _nowRec.kout = TMSDTFromNumber([reading objectForKey:@"out"]) - TMSDTFromNumber([local objectForKey:@"out"]);
         
         _speedRec.kin = (_nowRec.kin - _prevNowRec.kin) / TMS_MONITOR_INTERVAL;
         _speedRec.kout = (_nowRec.kout - _prevNowRec.kout) / TMS_MONITOR_INTERVAL;
@@ -695,7 +695,7 @@
 #pragma mark server connections
 - (void)_serverDidDie:(NSNotification *)notification
 {
-    _server = tbhVendServer(self, @selector(_serverDidDie:));
+    _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
 }
 
 #pragma mark -
