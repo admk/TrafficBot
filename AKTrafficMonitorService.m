@@ -124,25 +124,28 @@
 }
 - (void)clearStatistics {
 
-    dispatch_group_wait(_dispatch_group, DISPATCH_TIME_FOREVER);
-
-    @synchronized(self)
+    dispatch_async(dispatch_get_main_queue(), ^(void)
     {
-        _totalRec = TMSZeroRec;
+        dispatch_group_wait(_dispatch_group, DISPATCH_TIME_FOREVER);
         
-        [_rollingLog release];
-        _rollingLog = [[NSMutableDictionary dictionary] retain];
-        [_fixedLog release];
-        _fixedLog = [[NSMutableDictionary dictionary] retain];
+        @synchronized(self)
+        {
+            _totalRec = TMSZeroRec;
+            
+            [_rollingLog release];
+            _rollingLog = [[NSMutableDictionary dictionary] retain];
+            [_fixedLog release];
+            _fixedLog = [[NSMutableDictionary dictionary] retain];
+            
+            // delete all log files
+            NSInteger tag;
+            [[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceDestroyOperation source:[[self _logsPath] stringByDeletingLastPathComponent] destination:@"" files:[NSArray arrayWithObject:[[self _logsPath] lastPathComponent]] tag:&tag];
+            ZAssert(!tag, @"NSWorkspaceRecycleOperation failed with tag %ld", tag);
+        }
         
-        // delete all log files
-        NSInteger tag;
-        [[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceDestroyOperation source:[[self _logsPath] stringByDeletingLastPathComponent] destination:@"" files:[NSArray arrayWithObject:[[self _logsPath] lastPathComponent]] tag:&tag];
-        ZAssert(!tag, @"NSWorkspaceRecycleOperation failed with tag %ld", tag);
-    }
-
-	// notify
-	[self _postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
+        // notify
+        [self _postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification object:nil userInfo:nil];
+    });
 }
 
 #pragma mark -
