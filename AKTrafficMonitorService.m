@@ -713,6 +713,10 @@
 {
     _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
 }
+- (void)ping
+{
+    // still here!
+}
 
 #pragma mark -
 #pragma mark property accessors
