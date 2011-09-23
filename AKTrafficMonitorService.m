@@ -590,12 +590,12 @@
 
     AKPollingIntervalOptimize(AKTMSServerConnectionRetryInterval)
     {
-        if (!tbhIsServerAlive(_server))
+        if (!tbhIsAlive(_server))
         {
             _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
         }
     }
-    NSDictionary *local = tbhIsServerAlive(_server) ? [_server statistics] : nil;
+    NSDictionary *local = tbhIsAlive(_server) ? [_server statistics] : nil;
 
     totalibytes -= TMSDTFromNumber([local objectForKey:@"in"]);
     totalobytes -= TMSDTFromNumber([local objectForKey:@"out"]);
