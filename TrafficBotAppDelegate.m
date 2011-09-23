@@ -100,8 +100,10 @@
 	[GrowlApplicationBridge setGrowlDelegate:self];
 }
 - (void)applicationDidResignActive:(NSNotification *)notification {
+#ifndef DEBUG
 	[self dismissStatusWindow:self];
 	[self dismissGraphWindow:self];
+#endif
 }
 - (void)applicationWillTerminate:(NSNotification *)notification {
 	[[AKTrafficMonitorService sharedService] removeObserver:self];

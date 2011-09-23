@@ -403,32 +403,28 @@
              [self _workerUpdateTraffic];
          });
 }
-#define AKTMSServerConnectionRetryInterval 1.0
 - (void)_workerUpdateTraffic {
     @synchronized(self) {
 
-        AKPollingIntervalOptimize(AKTMSServerConnectionRetryInterval)
-        {
-            if (!tbhIsServerAlive(_server))
-            {
-                _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
-            }
-        }
-
-        _prevNowRec = _nowRec;
         NSDictionary *reading = [self _workerReadDataUsage];
-        NSDictionary *local = tbhIsServerAlive(_server) ? [_server statistics] : nil;
-        _nowRec.kin = TMSDTFromNumber([reading objectForKey:@"in"]) - TMSDTFromNumber([local objectForKey:@"in"]);
-        _nowRec.kout = TMSDTFromNumber([reading objectForKey:@"out"]) - TMSDTFromNumber([local objectForKey:@"out"]);
-        
-        _speedRec.kin = (_nowRec.kin - _prevNowRec.kin) / TMS_MONITOR_INTERVAL;
-        _speedRec.kout = (_nowRec.kout - _prevNowRec.kout) / TMS_MONITOR_INTERVAL;
+        _nowRec.kin = TMSDTFromNumber([reading objectForKey:@"in"]);
+        _nowRec.kout = TMSDTFromNumber([reading objectForKey:@"out"]);
         
         _stashedRec.kin = _nowRec.kin - _lastRec.kin;
         _stashedRec.kout = _nowRec.kout - _lastRec.kout;
         
+        // speed
+        _speedRec.kin = (_nowRec.kin - _prevNowRec.kin) / TMS_MONITOR_INTERVAL;
+        _speedRec.kout = (_nowRec.kout - _prevNowRec.kout) / TMS_MONITOR_INTERVAL;
+        if (_speedRec.kin < 0) _speedRec.kin = 0;
+        if (_speedRec.kout < 0) _speedRec.kout = 0;
+        _prevNowRec = _nowRec;
+
         // should not notify if no change
         if (TMSRecIsZero(_stashedRec)) return;
+
+        // pending addition
+        if (_stashedRec.kin < 0 || _stashedRec.kout < 0) return;
         
         [self _postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification
                              object:nil
@@ -453,6 +449,9 @@
 		[self _setInterfaces:interfaces];
         [self _reinitialiseIfMonitoring];
     }
+
+    // pending addition
+    if (_stashedRec.kin < 0 || _stashedRec.kout < 0) return;
 
     @synchronized(self) {
         
@@ -550,6 +549,7 @@
     } // @synchronized(self)
 }
 
+#define AKTMSServerConnectionRetryInterval 1.0
 - (NSDictionary *)_workerReadDataUsage {
 
     BOOL shouldIncludeAll = (nil == self.includeInterfaces);
@@ -587,6 +587,19 @@
 		}
 	}
 	free(buf);
+
+    AKPollingIntervalOptimize(AKTMSServerConnectionRetryInterval)
+    {
+        if (!tbhIsServerAlive(_server))
+        {
+            _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
+        }
+    }
+    NSDictionary *local = tbhIsServerAlive(_server) ? [_server statistics] : nil;
+
+    totalibytes -= TMSDTFromNumber([local objectForKey:@"in"]);
+    totalobytes -= TMSDTFromNumber([local objectForKey:@"out"]);
+
 	return [NSDictionary dictionaryWithObjectsAndKeys:
 			NumberFromTMSDT(totalibytes), @"in", 
 			NumberFromTMSDT(totalobytes), @"out", nil];
