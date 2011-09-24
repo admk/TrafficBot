@@ -84,12 +84,26 @@
 			remoteGlobalIDString = B5795B7E1429982900D35F8E;
 			remoteInfo = TrafficBotHelper;
 		};
-		B5795FE51429EC8F00D35F8E /* PBXContainerItemProxy */ = {
+		B5D946CE142DD3CA00D5E1CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 61126F901425D01700EB1A5D;
-			remoteInfo = TrafficBotHelperTests;
+			remoteGlobalIDString = 6137962B142DB98A00822607;
+			remoteInfo = TrafficBotHelperTester;
+		};
+		B5D94770142E087E00D5E1CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B5D94740142DDBFE00D5E1CC;
+			remoteInfo = TrafficBotHelperDaemon;
+		};
+		B5D94772142E087E00D5E1CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B5D94705142DD92200D5E1CC;
+			remoteInfo = TrafficBotHelperInstaller;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -155,8 +169,8 @@
 		B567EC1413ED715200934E1E /* NSDate+AKCachedDateString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+AKCachedDateString.h"; path = "NSDate (AKCachedDateString)/NSDate+AKCachedDateString.h"; sourceTree = "<group>"; };
 		B567EC1513ED715200934E1E /* NSDate+AKCachedDateString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+AKCachedDateString.m"; path = "NSDate (AKCachedDateString)/NSDate+AKCachedDateString.m"; sourceTree = "<group>"; };
 		B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TrafficBotHelper.xcodeproj; path = TrafficBotHelper/TrafficBotHelper.xcodeproj; sourceTree = "<group>"; };
-		B5795FEF142A0C5E00D35F8E /* TrafficBotHelperConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrafficBotHelperConnection.h; path = TrafficBotHelper/TrafficBotHelper/TrafficBotHelperConnection.h; sourceTree = "<group>"; };
-		B5795FF3142A208600D35F8E /* TrafficBotHelperConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrafficBotHelperConnection.m; path = TrafficBotHelper/TrafficBotHelper/TrafficBotHelperConnection.m; sourceTree = "<group>"; };
+		B5795FEF142A0C5E00D35F8E /* TrafficBotHelperConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrafficBotHelperConnection.h; path = TrafficBotHelper/TrafficBotHelperDaemon/TrafficBotHelperConnection.h; sourceTree = "<group>"; };
+		B5795FF3142A208600D35F8E /* TrafficBotHelperConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrafficBotHelperConnection.m; path = TrafficBotHelper/TrafficBotHelperDaemon/TrafficBotHelperConnection.m; sourceTree = "<group>"; };
 		B5795FF5142A24E400D35F8E /* AKOptimizationMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKOptimizationMacros.h; sourceTree = "<group>"; };
 		B57E9E8913CF435400F76ED6 /* Help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Help.png; sourceTree = "<group>"; };
 		B581F7C913CA1D6000885FE8 /* AKAddLandmarkWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AKAddLandmarkWindow.xib; path = "private-utilities/Landmark Manager/AKAddLandmarkWindow.xib"; sourceTree = "<group>"; };
@@ -515,8 +529,10 @@
 		B5795FDF1429EC8F00D35F8E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B5795FE41429EC8F00D35F8E /* TrafficBotHelper */,
-				B5795FE61429EC8F00D35F8E /* TrafficBotHelperTests.octest */,
+				B5D94771142E087E00D5E1CC /* TrafficBotHelperDaemon */,
+				B5D94773142E087E00D5E1CC /* TrafficBotHelperInstaller */,
+				B5795FE41429EC8F00D35F8E /* TrafficBotHelper.app */,
+				B5D946CF142DD3CA00D5E1CC /* TrafficBotHelperTester */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -728,18 +744,32 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		B5795FE41429EC8F00D35F8E /* TrafficBotHelper */ = {
+		B5795FE41429EC8F00D35F8E /* TrafficBotHelper.app */ = {
 			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = TrafficBotHelper;
+			fileType = wrapper.application;
+			path = TrafficBotHelper.app;
 			remoteRef = B5795FE31429EC8F00D35F8E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		B5795FE61429EC8F00D35F8E /* TrafficBotHelperTests.octest */ = {
+		B5D946CF142DD3CA00D5E1CC /* TrafficBotHelperTester */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = TrafficBotHelperTests.octest;
-			remoteRef = B5795FE51429EC8F00D35F8E /* PBXContainerItemProxy */;
+			fileType = "compiled.mach-o.executable";
+			path = TrafficBotHelperTester;
+			remoteRef = B5D946CE142DD3CA00D5E1CC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B5D94771142E087E00D5E1CC /* TrafficBotHelperDaemon */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = TrafficBotHelperDaemon;
+			remoteRef = B5D94770142E087E00D5E1CC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B5D94773142E087E00D5E1CC /* TrafficBotHelperInstaller */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = TrafficBotHelperInstaller;
+			remoteRef = B5D94772142E087E00D5E1CC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

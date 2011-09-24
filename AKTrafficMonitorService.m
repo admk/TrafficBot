@@ -47,6 +47,7 @@
 
 - (void)_setInterfaces:(NSArray *)interfaces;
 
+- (BOOL)_pokeServer;
 - (void)_serverDidDie:(NSNotification *)notification;
 
 @end
@@ -590,12 +591,12 @@
 
     AKPollingIntervalOptimize(AKTMSServerConnectionRetryInterval)
     {
-        if (!tbhIsAlive(_server))
+        if (![self _pokeServer])
         {
             _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
         }
     }
-    NSDictionary *local = tbhIsAlive(_server) ? [_server statistics] : nil;
+    NSDictionary *local = [self _pokeServer] ? [_server statistics] : nil;
 
     totalibytes -= TMSDTFromNumber([local objectForKey:@"in"]);
     totalobytes -= TMSDTFromNumber([local objectForKey:@"out"]);
@@ -709,9 +710,20 @@
 
 #pragma mark -
 #pragma mark server connections
+#define AKTMSReinitializeOnServerFailInterval 2.0
+- (BOOL)_pokeServer
+{
+    if (tbhIsAlive(_server)) return YES;
+    AKPollingIntervalOptimize(AKTMSReinitializeOnServerFailInterval)
+    {
+        [self _reinitialiseIfMonitoring];
+        _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
+    }
+    return nil != _server;
+}
 - (void)_serverDidDie:(NSNotification *)notification
 {
-    _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
+    [self _pokeServer];
 }
 - (void)ping
 {
