@@ -215,7 +215,7 @@
 {
     if (returnCode == NSAlertFirstButtonReturn)
     {
-        // goto site
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://admk.zzl.org"]];
     }
 }
 - (void)_pollTrafficBotHelperConnection:(id)info
