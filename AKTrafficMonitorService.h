@@ -51,6 +51,7 @@ typedef struct {
 	__weak NSTimer	*_monitorTimer;
 	__weak NSTimer	*_logTimer;
 	
+    BOOL            _excludingLocal;
     NSDistantObject<TrafficBotHelperServer> *_server;
 
 	tms_rec_t		_lastRec;
@@ -78,6 +79,9 @@ typedef struct {
 
 // network interfaces
 @property (readonly, nonatomic) NSArray *interfaces;
+
+// should it exclude local traffic
+@property (assign, nonatomic, getter = isExcludingLocal) BOOL excludingLocal;
 
 // modes:
 // tms_rolling_mode:	a rolling period - traffic in the last x hours/days

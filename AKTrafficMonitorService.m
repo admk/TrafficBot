@@ -214,6 +214,10 @@
 	_rollingPeriodInterval = interval;
 	[self _reinitialiseIfMonitoring];
 }
+- (void)setExcludingLocal:(BOOL)excludingLocal {
+    _excludingLocal = excludingLocal;
+    [self _reinitialiseIfMonitoring];
+}
 
 - (NSNumber *)totalIn {
 	return NumberFromTMSDT(_totalRec.kin + _stashedRec.kin);
@@ -342,7 +346,8 @@
 	_lastTotal = _totalRec.kin + _totalRec.kout;
 	
     // set up connection with AKSMS
-    _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
+    if ([self isExcludingLocal])
+        _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
 
 	// timer
 	if (!_monitorTimer)
@@ -357,6 +362,7 @@
 	ZAssert([NSThread isMainThread], @"must be called from main thread.");
     dispatch_group_wait(_dispatch_group, DISPATCH_TIME_FOREVER);
     @synchronized(self) {
+        if (tbhIsAlive(_server)) [_server stop];
         [_logTimer invalidate], _logTimer = nil;
         [_monitorTimer invalidate], _monitorTimer = nil;
     }
@@ -589,17 +595,16 @@
 	}
 	free(buf);
 
-    AKPollingIntervalOptimize(AKTMSServerConnectionRetryInterval)
+    if ([self isExcludingLocal])
     {
-        if (![self _pokeServer])
-        {
-            _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
-        }
-    }
-    NSDictionary *local = [self _pokeServer] ? [_server statistics] : nil;
+        AKPollingIntervalOptimize(AKTMSServerConnectionRetryInterval)
+            if (![self _pokeServer])
+                _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
 
-    totalibytes -= TMSDTFromNumber([local objectForKey:@"in"]);
-    totalobytes -= TMSDTFromNumber([local objectForKey:@"out"]);
+        NSDictionary *local = [self _pokeServer] ? [_server statistics] : nil;
+        totalibytes -= TMSDTFromNumber([local objectForKey:@"in"]);
+        totalobytes -= TMSDTFromNumber([local objectForKey:@"out"]);
+    }
 
 	return [NSDictionary dictionaryWithObjectsAndKeys:
 			NumberFromTMSDT(totalibytes), @"in", 
@@ -754,6 +759,7 @@
 #pragma mark property synthesize
 @synthesize monitoring = _monitoring;
 @synthesize includeInterfaces = _includeInterfaces, monitoringMode = _monitoringMode;
+@synthesize excludingLocal = _excludingLocal;
 @synthesize thresholds = _thresholds;
 @synthesize rollingPeriodInterval = _rollingPeriodInterval;
 @synthesize fixedPeriodRestartDate = _fixedPeriodRestartDate;
