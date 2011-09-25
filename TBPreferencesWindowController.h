@@ -9,10 +9,14 @@
 #import <Cocoa/Cocoa.h>
 
 @class TBSummaryGenerator, AKSummaryView, AKAddLandmarkWindowController;
-@interface TBPreferencesWindowController : NSWindowController <NSPathControlDelegate, NSTableViewDataSource, NSTableViewDelegate> {
+@interface TBPreferencesWindowController
+    : NSWindowController
+    <NSWindowDelegate, NSPathControlDelegate, NSTableViewDataSource, NSTableViewDelegate>
+{
 
     AKAddLandmarkWindowController *addLocationWindowController;
 
+    // preferences window
 	IBOutlet NSToolbar *pToolbar;
 	IBOutlet NSView *statusView;
 	IBOutlet NSView *generalView;
@@ -20,20 +24,27 @@
     IBOutlet NSView *locationView;
 	IBOutlet NSView *advancedView;
 	
+    // summary pane
 	IBOutlet AKSummaryView *summaryView;
 
+    // monitoring pane
+    IBOutlet NSImageView *tbhStatusImageView;
+    IBOutlet NSTextField *tbhStatusTextField;
 	IBOutlet NSPathControl *pathControl;
 
+    // location pane
 	IBOutlet NSArrayController *landmarkArrayController;
 	IBOutlet NSTableView *landmarkTableView;
 	IBOutlet NSTextField *landmarksWarningTextField;
 
+    // advanced pane
     IBOutlet NSTableView *interfacesTableView;
     IBOutlet NSTextField *interfacesWarningTextField;
 
 @private
 	__weak NSView *_preferencesView;
 	TBSummaryGenerator *_summaryGenerator;
+    __weak NSTimer *_tbhPollTimer;
     NSArray *_interfaces;
     NSArray *_includeInterfaces;
 }
@@ -51,6 +62,7 @@
 - (IBAction)updateLimit:(id)sender;
 - (IBAction)updateThresholds:(id)sender;
 
+- (IBAction)toggleExcludingLocal:(id)sender;
 - (IBAction)runPathDidChange:(NSPathControl *)myPathControl;
 
 - (IBAction)addLandmark:(id)sender;

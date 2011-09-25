@@ -8,6 +8,7 @@
 
 #import "TBPreferencesWindowController.h"
 #import "AKTrafficMonitorService.h"
+#import "TrafficBotHelperConnection.h"
 #import "AKLandmarkManager.h"
 #import "AKAddLandmarkWindowController.h"
 #import "TrafficBotAppDelegate.h"
@@ -23,6 +24,11 @@
 
 @interface TBPreferencesWindowController ()
 
+- (void)_pollTrafficBotHelperConnection:(id)info;
+- (BOOL)_tbhIsGood;
+- (NSString *)_tbhDescription;
+- (void)_tbhInstallAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo;
+
 - (void)addLandmarkSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
 - (void)editLocationSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
 
@@ -37,7 +43,6 @@
 
 
 @implementation TBPreferencesWindowController
-
 
 - (id)init {
 	self = [super initWithWindowNibName:@"TBPreferencesWindow"];
@@ -57,6 +62,8 @@
 }
 
 - (void)awakeFromNib {
+
+    self.window.delegate = self;
 
 	// summary generator
 	if (!_summaryGenerator)
@@ -97,8 +104,8 @@
 	NSRect frame = generalView.frame;
 	frame.size.height = 75; // offset for the toolbar
     [self.window setFrame:frame display:NO animate:NO];
-	[self.window center];	
-	
+	[self.window center];
+
     // path
 	[pathControl setURL:[NSURL fileURLWithPath:Defaults(runURL)]];
 
@@ -127,6 +134,22 @@
 	_interfaces = [interfaces retain];
 	// reload table view
 	[interfacesTableView reloadData];
+}
+
+#pragma mark -
+#pragma mark le window delegate
+- (void)windowDidBecomeKey:(NSNotification *)notification
+{
+    _tbhPollTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                     target:self
+                                                   selector:@selector(_pollTrafficBotHelperConnection:)
+                                                   userInfo:nil
+                                                    repeats:YES];
+    [_tbhPollTimer fire];
+}
+- (void)windowWillClose:(NSNotification *)notification
+{
+    [_tbhPollTimer invalidate], _tbhPollTimer = nil;
 }
 
 #pragma mark -
@@ -167,6 +190,63 @@
 
 #pragma mark -
 #pragma mark monitoring
+
+#pragma mark -
+#pragma mark trafficbothelper
+- (IBAction)toggleExcludingLocal:(id)sender
+{
+    tbhStatusImageView.image = nil;
+    [tbhStatusTextField setTitleWithMnemonic:[NSString string]];
+
+    if ([(NSButton *)sender state] != NSOnState) return;
+    if ([self _tbhIsGood]) return;
+    SetBOOLDefaults(NO, excludingLocal);
+
+    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+    [alert addButtonWithTitle:NSLocalizedString(@"Take me there", @"OK button")];
+	[alert addButtonWithTitle:NSLocalizedString(@"No, thanks", @"Cancel button")];
+	[alert setMessageText:NSLocalizedString(@"Install TrafficBotHelper to enable this feature", @"install title")];
+	[alert setInformativeText:
+     [[self _tbhDescription] stringByAppendingString:NSLocalizedString(@" For this feature you must install TrafficBotHelper. Please refer to the TrafficBot website.", @"install description")]];
+	[alert setAlertStyle:NSInformationalAlertStyle];
+	[alert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:@selector(_tbhInstallAlertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+}
+- (void)_tbhInstallAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo
+{
+    if (returnCode == NSAlertFirstButtonReturn)
+    {
+        // goto site
+    }
+}
+- (void)_pollTrafficBotHelperConnection:(id)info
+{
+    BOOL excludingLocal = BOOLDefaults(excludingLocal);
+    [tbhStatusImageView setHidden:!excludingLocal];
+    [tbhStatusTextField setHidden:!excludingLocal];
+
+    if (!excludingLocal) return;
+    tbhStatusImageView.image = [NSImage imageNamed:[self _tbhIsGood] ? @"Good16.png" : @"Bad16.png"];
+    [tbhStatusTextField setTitleWithMnemonic:[self _tbhDescription]];
+}
+- (BOOL)_tbhIsGood
+{
+    if (!tbhServerIsGood()) return NO;
+    return YES;
+}
+- (NSString *)_tbhDescription
+{
+    if (tbhServerIsGood())
+    {
+        if (tbhServerIsAlive())
+        {
+            return NSLocalizedString(@"TrafficBotHelper is running normally.", @"TBH alive");
+        }
+        else
+            return NSLocalizedString(@"TrafficBotHelper is not working normally and needs reinstall.", @"TBH broken");
+    }
+    else
+        return NSLocalizedString(@"TrafficBotHelper is not running.", @"TBH dead");
+}
 
 #pragma mark path control
 - (void)pathControl:(NSPathControl *)myPathControl willDisplayOpenPanel:(NSOpenPanel *)openPanel {

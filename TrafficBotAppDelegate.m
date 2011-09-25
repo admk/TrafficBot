@@ -68,6 +68,7 @@
 							Property(fixedPeriodRestartDate),
 							Property(monitoringMode),
 							Property(includeInterfaces),
+                            @"excludingLocal",
 							@"monitoring", nil];
 	for (NSString *bindingKey in tmsBindings)
 		[[AKTrafficMonitorService sharedService]

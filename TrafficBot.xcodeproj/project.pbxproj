@@ -39,6 +39,8 @@
 		B581F7CE13CA1DCC00885FE8 /* AKAddLandmarkWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B581F7CD13CA1DCC00885FE8 /* AKAddLandmarkWindowController.m */; };
 		B593C18713CD8049006D03B9 /* Maps.png in Resources */ = {isa = PBXBuildFile; fileRef = B593C18613CD8049006D03B9 /* Maps.png */; };
 		B5A1932C13D58A75006E6F40 /* Entitlements.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = B5A1932B13D58A75006E6F40 /* Entitlements.entitlements */; };
+		B5E35C11142F533E00BC1734 /* Good16.png in Resources */ = {isa = PBXBuildFile; fileRef = B5E35C0F142F533E00BC1734 /* Good16.png */; };
+		B5E35C12142F533E00BC1734 /* Bad16.png in Resources */ = {isa = PBXBuildFile; fileRef = B5E35C10142F533E00BC1734 /* Bad16.png */; };
 		DA049FC112B8534600ECA24C /* Gauge Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FBF12B8534600ECA24C /* Gauge Pressed.png */; };
 		DA049FC212B8534600ECA24C /* Gauge.png in Resources */ = {isa = PBXBuildFile; fileRef = DA049FC012B8534600ECA24C /* Gauge.png */; };
 		DA06937612BD9774008B1584 /* GVViewCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = DA06937512BD9774008B1584 /* GVViewCollection.m */; };
@@ -178,6 +180,8 @@
 		B581F7CD13CA1DCC00885FE8 /* AKAddLandmarkWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AKAddLandmarkWindowController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B593C18613CD8049006D03B9 /* Maps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Maps.png; sourceTree = "<group>"; };
 		B5A1932B13D58A75006E6F40 /* Entitlements.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Entitlements.entitlements; sourceTree = "<group>"; };
+		B5E35C0F142F533E00BC1734 /* Good16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Good16.png; sourceTree = "<group>"; };
+		B5E35C10142F533E00BC1734 /* Bad16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bad16.png; sourceTree = "<group>"; };
 		DA049FBF12B8534600ECA24C /* Gauge Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gauge Pressed.png"; sourceTree = "<group>"; };
 		DA049FC012B8534600ECA24C /* Gauge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gauge.png; sourceTree = "<group>"; };
 		DA06937412BD9774008B1584 /* GVViewCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVViewCollection.h; sourceTree = "<group>"; };
@@ -344,6 +348,8 @@
 		B1063270127FAABF0041B919 /* Preferences Window */ = {
 			isa = PBXGroup;
 			children = (
+				B5E35C0F142F533E00BC1734 /* Good16.png */,
+				B5E35C10142F533E00BC1734 /* Bad16.png */,
 				DA66DAA412EB737C0065454C /* Caution.png */,
 				B57E9E8913CF435400F76ED6 /* Help.png */,
 				DA66DB3712ECA0490065454C /* Hint.png */,
@@ -529,9 +535,9 @@
 		B5795FDF1429EC8F00D35F8E /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				B5795FE41429EC8F00D35F8E /* TrafficBotHelper.app */,
 				B5D94771142E087E00D5E1CC /* TrafficBotHelperDaemon */,
 				B5D94773142E087E00D5E1CC /* TrafficBotHelperInstaller */,
-				B5795FE41429EC8F00D35F8E /* TrafficBotHelper.app */,
 				B5D946CF142DD3CA00D5E1CC /* TrafficBotHelperTester */,
 			);
 			name = Products;
@@ -807,6 +813,8 @@
 				B593C18713CD8049006D03B9 /* Maps.png in Resources */,
 				B57E9E8A13CF435400F76ED6 /* Help.png in Resources */,
 				B5A1932C13D58A75006E6F40 /* Entitlements.entitlements in Resources */,
+				B5E35C11142F533E00BC1734 /* Good16.png in Resources */,
+				B5E35C12142F533E00BC1734 /* Bad16.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
