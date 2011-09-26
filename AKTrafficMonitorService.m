@@ -286,7 +286,11 @@
 	// empty checking
 	ZAssert(self.monitoringMode != tms_rolling_mode || self.rollingPeriodInterval, @"must specify time interval for rolling period monitoring.");
 	ZAssert(self.monitoringMode == tms_rolling_mode || !IsEmpty(self.fixedPeriodRestartDate), @"must specify fresh start date for fixed period monitoring.");
-	
+
+    // set up connection with AKSMS
+    if ([self isExcludingLocal])
+        _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
+
 	// initialise readings
 	NSDictionary *initReading = [self _workerReadDataUsage];
 	_lastRec.kin = TMSDTFromNumber([initReading objectForKey:@"in"]);
@@ -331,10 +335,13 @@
 		} break;
 			
 		case tms_indefinite_mode: {
-			NSString *dateString = [[_fixedLog allKeys] objectAtIndex:0];
-			NSDictionary *entry = [_fixedLog objectForKey:dateString];
-			_totalRec.kin = TMSDTFromNumber([entry objectForKey:@"in"]);
-			_totalRec.kout = TMSDTFromNumber([entry objectForKey:@"out"]);			
+            NSArray *dateKeys = [_fixedLog allKeys];
+            if ([dateKeys count])
+            {
+                NSDictionary *entry = [_fixedLog objectForKey:[dateKeys objectAtIndex:0]];
+                _totalRec.kin = TMSDTFromNumber([entry objectForKey:@"in"]);
+                _totalRec.kout = TMSDTFromNumber([entry objectForKey:@"out"]);
+            }
 		} break;
 
 		default: ALog(@"unrecognised mode"); break;
@@ -345,10 +352,6 @@
 	// threshold update
 	_lastTotal = _totalRec.kin + _totalRec.kout;
 	
-    // set up connection with AKSMS
-    if ([self isExcludingLocal])
-        _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
-
 	// timer
 	if (!_monitorTimer)
 		_monitorTimer = [NSTimer scheduledTimerWithTimeInterval:TMS_MONITOR_INTERVAL target:self selector:@selector(_dispatchUpdateTraffic:) userInfo:nil repeats:YES];
@@ -429,9 +432,6 @@
 
         // should not notify if no change
         if (TMSRecIsZero(_stashedRec)) return;
-
-        // pending addition
-        if (_stashedRec.kin < 0 || _stashedRec.kout < 0) return;
         
         [self _postNotificationName:AKTrafficMonitorStatisticsDidUpdateNotification
                              object:nil
@@ -559,6 +559,18 @@
 #define AKTMSServerConnectionRetryInterval 1.0
 - (NSDictionary *)_workerReadDataUsage {
 
+    if ([self isExcludingLocal])
+    {
+        AKPollingIntervalOptimize(AKTMSServerConnectionRetryInterval)
+        {
+            if (![self _pokeServer])
+                _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
+        }
+        NSDictionary *internet = [self _pokeServer] ? [_server statistics] : nil;
+        DLog(@"%@ %@", [internet objectForKey:@"in"], [internet objectForKey:@"out"]);
+        return [NSDictionary dictionaryWithDictionary:internet];
+    }
+
     BOOL shouldIncludeAll = (nil == self.includeInterfaces);
 
 	int mib[] = {CTL_NET, PF_ROUTE, 0, 0, NET_RT_IFLIST2, 0};
@@ -594,18 +606,6 @@
 		}
 	}
 	free(buf);
-
-    if ([self isExcludingLocal])
-    {
-        AKPollingIntervalOptimize(AKTMSServerConnectionRetryInterval)
-            if (![self _pokeServer])
-                _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
-
-        NSDictionary *local = [self _pokeServer] ? [_server statistics] : nil;
-        totalibytes -= TMSDTFromNumber([local objectForKey:@"in"]);
-        totalobytes -= TMSDTFromNumber([local objectForKey:@"out"]);
-    }
-
 	return [NSDictionary dictionaryWithObjectsAndKeys:
 			NumberFromTMSDT(totalibytes), @"in", 
 			NumberFromTMSDT(totalobytes), @"out", nil];

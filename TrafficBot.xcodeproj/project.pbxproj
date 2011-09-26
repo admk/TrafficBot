@@ -79,33 +79,33 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B5795FE31429EC8F00D35F8E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B5795B7E1429982900D35F8E;
-			remoteInfo = TrafficBotHelper;
-		};
-		B5D946CE142DD3CA00D5E1CC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6137962B142DB98A00822607;
-			remoteInfo = TrafficBotHelperTester;
-		};
-		B5D94770142E087E00D5E1CC /* PBXContainerItemProxy */ = {
+		B525B14414305DFC00E8C985 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = B5D94740142DDBFE00D5E1CC;
 			remoteInfo = TrafficBotHelperDaemon;
 		};
-		B5D94772142E087E00D5E1CC /* PBXContainerItemProxy */ = {
+		B525B14614305DFC00E8C985 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = B5D94705142DD92200D5E1CC;
 			remoteInfo = TrafficBotHelperInstaller;
+		};
+		B525B14814305DFC00E8C985 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6137962B142DB98A00822607;
+			remoteInfo = TrafficBotHelperTester;
+		};
+		B5795FE31429EC8F00D35F8E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B5795B7E1429982900D35F8E;
+			remoteInfo = TrafficBotHelper;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -536,9 +536,9 @@
 			isa = PBXGroup;
 			children = (
 				B5795FE41429EC8F00D35F8E /* TrafficBotHelper.app */,
-				B5D94771142E087E00D5E1CC /* TrafficBotHelperDaemon */,
-				B5D94773142E087E00D5E1CC /* TrafficBotHelperInstaller */,
-				B5D946CF142DD3CA00D5E1CC /* TrafficBotHelperTester */,
+				B525B14514305DFC00E8C985 /* TrafficBotHelperDaemon */,
+				B525B14714305DFC00E8C985 /* TrafficBotHelperInstaller */,
+				B525B14914305DFC00E8C985 /* TrafficBotHelperTester */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -750,32 +750,32 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		B525B14514305DFC00E8C985 /* TrafficBotHelperDaemon */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = TrafficBotHelperDaemon;
+			remoteRef = B525B14414305DFC00E8C985 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B525B14714305DFC00E8C985 /* TrafficBotHelperInstaller */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = TrafficBotHelperInstaller;
+			remoteRef = B525B14614305DFC00E8C985 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B525B14914305DFC00E8C985 /* TrafficBotHelperTester */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = TrafficBotHelperTester;
+			remoteRef = B525B14814305DFC00E8C985 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		B5795FE41429EC8F00D35F8E /* TrafficBotHelper.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = TrafficBotHelper.app;
 			remoteRef = B5795FE31429EC8F00D35F8E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B5D946CF142DD3CA00D5E1CC /* TrafficBotHelperTester */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = TrafficBotHelperTester;
-			remoteRef = B5D946CE142DD3CA00D5E1CC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B5D94771142E087E00D5E1CC /* TrafficBotHelperDaemon */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = TrafficBotHelperDaemon;
-			remoteRef = B5D94770142E087E00D5E1CC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B5D94773142E087E00D5E1CC /* TrafficBotHelperInstaller */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = TrafficBotHelperInstaller;
-			remoteRef = B5D94772142E087E00D5E1CC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -929,7 +929,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -952,7 +952,6 @@
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -966,7 +965,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
@@ -986,7 +985,6 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PROVISIONING_PROFILE = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = YES;
