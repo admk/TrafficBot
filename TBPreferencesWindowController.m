@@ -230,14 +230,41 @@
 }
 - (BOOL)_tbhIsGood
 {
-    if (!tbhServerIsGood()) return NO;
+    BOOL isGood = YES;
+    NS_DURING
+    {
+        id server = [[AKTrafficMonitorService sharedService] server];
+        if (!server) isGood = NO;
+        isGood &= ![server isBroken];
+    }
+    NS_HANDLER
+    {
+        isGood = NO;
+    }
+    NS_ENDHANDLER
+
+    if (!isGood) return NO;
     return YES;
 }
 - (NSString *)_tbhDescription
 {
-    if (tbhServerIsGood())
+    BOOL isAlive = YES;
+    BOOL isBroken = NO;
+    NS_DURING
     {
-        if (tbhServerIsAlive())
+        id server = [[AKTrafficMonitorService sharedService] server];
+        if (!server) isAlive = NO;
+        isBroken = [server isBroken];
+    }
+    NS_HANDLER
+    {
+        isAlive = NO;
+    }
+    NS_ENDHANDLER
+
+    if (isAlive)
+    {
+        if (!isBroken)
         {
             return NSLocalizedString(@"TrafficBotHelper is running normally.", @"TBH alive");
         }

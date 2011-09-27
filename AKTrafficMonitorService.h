@@ -129,6 +129,9 @@ typedef struct {
 // all names of network interfaces
 - (NSArray *)networkInterfaceNames;
 
+// tbh server
+- (NSDistantObject<TrafficBotHelperServer> *)server;
+
 - (void)clearStatistics;
 
 @end
