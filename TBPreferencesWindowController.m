@@ -248,6 +248,11 @@
 }
 - (NSString *)_tbhDescription
 {
+    if (![[AKTrafficMonitorService sharedService] isMonitoring])
+    {
+        return NSLocalizedString(@"TrafficBot is not monitoring, please enable it to see TrafficBotHelper's status.", @"TBH TB not monitoring");
+    }
+
     BOOL isAlive = YES;
     BOOL isBroken = NO;
     NS_DURING
