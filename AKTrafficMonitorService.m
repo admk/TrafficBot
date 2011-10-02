@@ -420,6 +420,7 @@
     @synchronized(self) {
 
         NSDictionary *reading = [self _workerReadDataUsage];
+        if (!reading) return;
         _nowRec.kin = TMSDTFromNumber([reading objectForKey:@"in"]);
         _nowRec.kout = TMSDTFromNumber([reading objectForKey:@"out"]);
         
@@ -559,7 +560,11 @@
     } // @synchronized(self)
 }
 
+#ifdef DEBUG
 #define AKTMSServerConnectionRetryInterval 10.0
+#else
+#define AKTMSServerConnectionRetryInterval 60.0
+#endif
 - (NSDictionary *)_workerReadDataUsage {
 
     if ([self isExcludingLocal])
@@ -567,7 +572,10 @@
         AKPollingIntervalOptimize(AKTMSServerConnectionRetryInterval)
         {
             if (!tbhIsAlive(_server))
+            {
                 _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
+                [self _reinitialiseIfMonitoring];
+            }
         }
         NSDictionary *internet;
         NS_DURING
@@ -729,8 +737,7 @@
 #pragma mark server connections
 - (void)_serverDidDie:(NSNotification *)notification
 {
-    [self _reinitialiseIfMonitoring];
-    _server = tbhVendServer(self, @selector(_serverDidDie:), [self includeInterfaces]);
+    _server = nil;
 }
 - (void)ping
 {
