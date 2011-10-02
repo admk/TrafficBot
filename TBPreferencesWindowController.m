@@ -199,7 +199,7 @@
     [tbhStatusTextField setTitleWithMnemonic:[NSString string]];
 
     if ([(NSButton *)sender state] != NSOnState) return;
-    if ([self _tbhIsGood]) return;
+    if (tbhServerIsOK()) return;
     SetBOOLDefaults(NO, excludingLocal);
 
     NSAlert *alert = [[[NSAlert alloc] init] autorelease];
