@@ -30,6 +30,8 @@
 		B1F44B52127F30530020735E /* Set Up Button.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B50127F30530020735E /* Set Up Button.png */; };
 		B1F44B53127F30530020735E /* Set Up Button Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F44B51127F30530020735E /* Set Up Button Pressed.png */; };
 		B500D93313C99CC000FD6D1C /* AKLandmark.m in Sources */ = {isa = PBXBuildFile; fileRef = B500D93213C99CC000FD6D1C /* AKLandmark.m */; };
+		B5518F5A1438D2F6002A433C /* BWQuincyMain.nib in Resources */ = {isa = PBXBuildFile; fileRef = B5518F571438D2F6002A433C /* BWQuincyMain.nib */; };
+		B5518F5B1438D2F6002A433C /* BWQuincyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5518F591438D2F6002A433C /* BWQuincyManager.m */; };
 		B552662513C721ED0037C39E /* AKLandmarkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B552662413C721ED0037C39E /* AKLandmarkManager.m */; };
 		B552662713C723820037C39E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B552662613C723820037C39E /* CoreLocation.framework */; };
 		B567EC1613ED715200934E1E /* NSDate+AKCachedDateString.m in Sources */ = {isa = PBXBuildFile; fileRef = B567EC1513ED715200934E1E /* NSDate+AKCachedDateString.m */; };
@@ -165,6 +167,9 @@
 		B1F44B51127F30530020735E /* Set Up Button Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Set Up Button Pressed.png"; sourceTree = "<group>"; };
 		B500D93113C99CC000FD6D1C /* AKLandmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKLandmark.h; sourceTree = "<group>"; };
 		B500D93213C99CC000FD6D1C /* AKLandmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKLandmark.m; sourceTree = "<group>"; };
+		B5518F571438D2F6002A433C /* BWQuincyMain.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = BWQuincyMain.nib; path = "Quincy Kit/client/Mac/BWQuincyMain.nib"; sourceTree = "<group>"; };
+		B5518F581438D2F6002A433C /* BWQuincyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BWQuincyManager.h; path = "Quincy Kit/client/Mac/BWQuincyManager.h"; sourceTree = "<group>"; };
+		B5518F591438D2F6002A433C /* BWQuincyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BWQuincyManager.m; path = "Quincy Kit/client/Mac/BWQuincyManager.m"; sourceTree = "<group>"; };
 		B552662313C721ED0037C39E /* AKLandmarkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AKLandmarkManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B552662413C721ED0037C39E /* AKLandmarkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AKLandmarkManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B552662613C723820037C39E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -504,9 +509,20 @@
 				DA4BF12712B2962F0070618E /* NSWindow (AKFlip) */,
 				B1F449B5127E356F0020735E /* NSWindow+NoodleEffects */,
 				B16F1087127A09B600D13C0B /* Drawing */,
+				B5518F5C1438D2FE002A433C /* Quincy Kit */,
 			);
 			name = Utilities;
 			path = "Cocoa-Utilities";
+			sourceTree = "<group>";
+		};
+		B5518F5C1438D2FE002A433C /* Quincy Kit */ = {
+			isa = PBXGroup;
+			children = (
+				B5518F571438D2F6002A433C /* BWQuincyMain.nib */,
+				B5518F581438D2F6002A433C /* BWQuincyManager.h */,
+				B5518F591438D2F6002A433C /* BWQuincyManager.m */,
+			);
+			name = "Quincy Kit";
 			sourceTree = "<group>";
 		};
 		B552662113C721510037C39E /* Landmark Manager */ = {
@@ -815,6 +831,7 @@
 				B5A1932C13D58A75006E6F40 /* Entitlements.entitlements in Resources */,
 				B5E35C11142F533E00BC1734 /* Good16.png in Resources */,
 				B5E35C12142F533E00BC1734 /* Bad16.png in Resources */,
+				B5518F5A1438D2F6002A433C /* BWQuincyMain.nib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -855,6 +872,7 @@
 				B581F7CE13CA1DCC00885FE8 /* AKAddLandmarkWindowController.m in Sources */,
 				B567EC1613ED715200934E1E /* NSDate+AKCachedDateString.m in Sources */,
 				B5795FF4142A208600D35F8E /* TrafficBotHelperConnection.m in Sources */,
+				B5518F5B1438D2F6002A433C /* BWQuincyManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -49,6 +49,11 @@
 }
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 
+	// quincy kit
+	[[BWQuincyManager sharedQuincyManager] setSubmissionURL:@"http://admk.zzl.org/quincy/crash_v200.php"];
+    [[BWQuincyManager sharedQuincyManager] setCompanyName:@"AK.Kloca"];
+    [[BWQuincyManager sharedQuincyManager] setDelegate:self];
+
 	// setup defaults
 	NSString *defaultsPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"TBDefaults.plist"];
 	NSDictionary *defaultsDict = [NSDictionary dictionaryWithContentsOfFile:defaultsPath];
