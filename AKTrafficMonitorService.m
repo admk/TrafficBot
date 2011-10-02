@@ -416,6 +416,7 @@
              [self _workerUpdateTraffic];
          });
 }
+#define kSpeedLowPassFiltering 0.8f
 - (void)_workerUpdateTraffic {
     @synchronized(self) {
 
@@ -428,11 +429,11 @@
         _stashedRec.kout = _nowRec.kout - _lastRec.kout;
         
         // speed
-        _speedRec.kin = (_nowRec.kin - _prevNowRec.kin) / TMS_MONITOR_INTERVAL;
-        _speedRec.kout = (_nowRec.kout - _prevNowRec.kout) / TMS_MONITOR_INTERVAL;
-        if (_speedRec.kin < 0) _speedRec.kin = 0;
-        if (_speedRec.kout < 0) _speedRec.kout = 0;
+        _nlpfSpeedRec.kin = (_nowRec.kin - _prevNowRec.kin) / TMS_MONITOR_INTERVAL;
+        _nlpfSpeedRec.kout = (_nowRec.kout - _prevNowRec.kout) / TMS_MONITOR_INTERVAL;
         _prevNowRec = _nowRec;
+        _speedRec.kin = _speedRec.kin * kSpeedLowPassFiltering + _nlpfSpeedRec.kin * (1 - kSpeedLowPassFiltering);
+        _speedRec.kout = _speedRec.kout * kSpeedLowPassFiltering + _nlpfSpeedRec.kout * (1 - kSpeedLowPassFiltering);
 
         // should not notify if no change
         if (TMSRecIsZero(_stashedRec)) return;

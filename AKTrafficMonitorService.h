@@ -60,6 +60,7 @@ typedef struct {
 	tms_rec_t		_prevNowRec;
 	tms_rec_t		_totalRec;
 	tms_rec_t		_speedRec;
+    tms_rec_t       _nlpfSpeedRec;
 	TMS_D_T			_lastTotal;
 
     NSMutableDictionary *_rollingLog;
