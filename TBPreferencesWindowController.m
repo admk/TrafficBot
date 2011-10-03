@@ -287,10 +287,12 @@
 	[openPanel setCanChooseDirectories:NO];
 	[openPanel setCanChooseFiles:YES];
 	[openPanel setResolvesAliases:YES];
+    // TODO localize me
 	[openPanel setTitle:@"Choose an executable file"];
 	[openPanel setPrompt:@"Choose"];
 }
 - (void)pathControl:(NSPathControl *)myPathControl willPopUpMenu:(NSMenu *)menu {
+    // TODO localize me
 	NSMenuItem *sleepMacItem = [[[NSMenuItem allocWithZone:[NSMenu menuZone]]
 								 initWithTitle:@"Sleep Mac"
 								 action:@selector(didSelectPathItem:)
@@ -300,6 +302,7 @@
 	[menu addItem:sleepMacItem];
 }
 - (void)didSelectPathItem:(id)sender {
+    // TODO localize me
 	if ([[sender title] isEqual:@"Sleep Mac"]) {
 		NSString *urlString = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Sleep Mac.scpt"];
 		NSURL *url = [NSURL fileURLWithPath:urlString];
@@ -413,6 +416,7 @@
 
 - (IBAction)clearStatistics:(id)sender {
 	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+    // TODO localize me
 	[alert addButtonWithTitle:@"OK"];
 	[alert addButtonWithTitle:@"Cancel"];
 	[alert setMessageText:@"Clear statistics"];
@@ -427,6 +431,7 @@
 
 - (IBAction)resetAllPrefs:(id)sender{
 	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+    // TODO localize me
 	[alert addButtonWithTitle:@"OK"];
 	[alert addButtonWithTitle:@"Cancel"];
 	[alert setMessageText:@"Reset All Preferences"];
