@@ -380,9 +380,6 @@
 #define TMS_SHORTEST_UPDATE_INTERVAL 10
 - (NSTimeInterval)_timerInterval {
     // logging timer interval should never be < 1 sec
-#if DEBUG
-	return 2;
-#else
 	if (self.monitoringMode == tms_rolling_mode) {
 		NSTimeInterval proposedInterval = self.rollingPeriodInterval/TMS_MAX_NO_OF_LOG_ENTRIES;
 		if (proposedInterval > TMS_SHORTEST_UPDATE_INTERVAL) return proposedInterval;
@@ -390,7 +387,6 @@
 	}
 	else
 		return TMS_SHORTEST_UPDATE_INTERVAL;
-#endif
 }
 
 #pragma mark -
@@ -452,6 +448,7 @@
              [self _workerLogTrafficData];
          });
 }
+#define k12Hours (12 * 60 * 60)
 - (void)_workerLogTrafficData {
 
 	// reinitialise if interfaces changed
@@ -480,10 +477,11 @@
             [_rollingLog setObject:rollingEntry forKey:[[NSDate date] description]];
         }
         // rolling elimination
+        NSTimeInterval interval = (self.monitoringMode == tms_rolling_mode) ? self.rollingPeriodInterval : k12Hours;
         for (NSString *dateString in [_rollingLog allKeys]) {
             AKScopeAutoreleased();
             NSDate *date = [NSDate ak_cachedDateWithString:dateString];
-            if ([date timeIntervalSinceNow] < -self.rollingPeriodInterval) {
+            if ([date timeIntervalSinceNow] < -interval) {
                 // rolling total needs to minus expired entries
                 if (self.monitoringMode == tms_rolling_mode) {
                     _totalRec.kin -= TMSDTFromNumber([[_rollingLog objectForKey:dateString] objectForKey:@"in"]);

@@ -220,6 +220,8 @@
 }
 - (void)_pollTrafficBotHelperConnection:(id)info
 {
+    if (![[self window] isVisible]) return;
+
     BOOL excludingLocal = BOOLDefaults(excludingLocal);
     [tbhStatusImageView setHidden:!excludingLocal];
     [tbhStatusTextField setHidden:!excludingLocal];
