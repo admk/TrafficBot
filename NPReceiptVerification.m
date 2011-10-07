@@ -47,7 +47,7 @@
 
 //These need to be defined for each application and version
 static NSString * const kReceiptBundleIdentifier = @"com.akkloca.TrafficBot";
-static NSString * const kReceiptBundleVersion = @"1.1.0";
+static NSString * const kReceiptBundleVersion = @"1.2.0";
 
 static NSString * const kReceiptBundleIdentiferKey = @"BundleIdentifier";
 static NSString * const kReceiptBundleIdentiferDataKey = @"BundleIdentifierData";
