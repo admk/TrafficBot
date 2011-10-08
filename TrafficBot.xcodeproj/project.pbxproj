@@ -718,6 +718,7 @@
 			buildPhases = (
 				8D1107290486CEB800E47090 /* Resources */,
 				DAB7E70612E3D5BB006ED7C8 /* Copy Libraries */,
+				B5A922EB1440BFA3001BC1E3 /* ShellScript */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 			);
@@ -836,6 +837,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B5A922EB1440BFA3001BC1E3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd ${CONFIGURATION_BUILD_DIR}/TrafficBot.app/Contents/Frameworks/Growl.framework/Versions/Current/\ncodesign -f -v -s \"3rd Party Mac Developer Application: Xitong Gao\" ./Growl\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D11072C0486CEB800E47090 /* Sources */ = {
