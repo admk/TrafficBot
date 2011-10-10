@@ -37,6 +37,10 @@
 
 - (void)didSelectPathItem:(id)sender;
 
+- (NSInteger)_numberOfRowsInInterfacesTableView:(NSTableView *)tableView;
+- (id)_interfacesTableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
+- (void)_interfacesTableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
+
 - (void)_selectPane:(NSString *)pane;
 
 @end
@@ -453,11 +457,11 @@
 
 #pragma mark -
 #pragma mark interfaces table view
-- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
+- (NSInteger)_numberOfRowsInInterfacesTableView:(NSTableView *)tableView
 {
     return [self.interfaces count];
 }
-- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+- (id)_interfacesTableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
     // update warning text field on no interfaces selected
     BOOL setRed = YES;
@@ -481,7 +485,7 @@
     NSNumber *stateVal = [NSNumber numberWithInteger:state?NSOnState:NSOffState];
     return stateVal;
 }
-- (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+- (void)_interfacesTableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
     NSString *interfaceName = [self.interfaces objectAtIndex:row];
     if (!self.includeInterfaces)
@@ -498,6 +502,38 @@
         [newInterfaces removeObject:interfaceName];
     }
     SetDefaults(newInterfaces, includeInterfaces);
+}
+
+
+#pragma mark -
+#pragma mark table view boilerpate
+#define kInterfaceTableViewMagic 1764
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
+{
+    switch ([tableView tag])
+    {
+        case kInterfaceTableViewMagic:
+            return [self _numberOfRowsInInterfacesTableView:tableView];
+    }
+    return 0;
+}
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+    switch ([tableView tag])
+    {
+        case kInterfaceTableViewMagic:
+            return [self _interfacesTableView:tableView objectValueForTableColumn:tableColumn row:row];
+    }
+    return NULL;
+}
+- (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+    switch ([tableView tag])
+    {
+        case kInterfaceTableViewMagic:
+            [self _interfacesTableView:tableView setObjectValue:object forTableColumn:tableColumn row:row];
+            return;
+    }
 }
 
 #pragma mark -
