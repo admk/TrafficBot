@@ -7,13 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "AKAddAnniversaryWindowController.h"
 
 @class TBSummaryGenerator, AKSummaryView, AKAddLandmarkWindowController;
 @interface TBPreferencesWindowController
     : NSWindowController
-    <NSWindowDelegate, NSPathControlDelegate, NSTableViewDataSource, NSTableViewDelegate>
+    <NSWindowDelegate, NSPathControlDelegate, NSTableViewDataSource, NSTableViewDelegate, AKAddAnniversaryDelegate>
 {
 
+    AKAddAnniversaryWindowController *addAnniversaryWindowController;
     AKAddLandmarkWindowController *addLocationWindowController;
 
     // preferences window
@@ -31,6 +33,7 @@
     IBOutlet NSImageView *tbhStatusImageView;
     IBOutlet NSTextField *tbhStatusTextField;
 	IBOutlet NSPathControl *pathControl;
+    IBOutlet NSArrayController *anniversaryArrayController;
     IBOutlet NSTableView *anniversaryTableView;
     IBOutlet NSButton *anniversaryAddButton;
 
@@ -68,6 +71,10 @@
 
 - (IBAction)toggleExcludingLocal:(id)sender;
 - (IBAction)runPathDidChange:(NSPathControl *)myPathControl;
+
+- (IBAction)addAnniversary:(id)sender;
+- (IBAction)removeAnniversary:(id)sender;
+- (IBAction)editAnniversary:(id)sender;
 
 - (IBAction)addLandmark:(id)sender;
 - (IBAction)removeLandmark:(id)sender;

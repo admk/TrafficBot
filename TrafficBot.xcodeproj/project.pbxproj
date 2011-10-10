@@ -36,6 +36,9 @@
 		B552662713C723820037C39E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B552662613C723820037C39E /* CoreLocation.framework */; };
 		B553598114435183001DFB15 /* AKAnniversaryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B553598014435183001DFB15 /* AKAnniversaryManager.m */; };
 		B5535984144351D9001DFB15 /* AKAnniversary.m in Sources */ = {isa = PBXBuildFile; fileRef = B5535983144351D9001DFB15 /* AKAnniversary.m */; };
+		B553598614437CC6001DFB15 /* AKAddAnniversaryWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B553598514437CC6001DFB15 /* AKAddAnniversaryWindow.xib */; };
+		B553598914437EF2001DFB15 /* AKAddAnniversaryWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B553598814437EF2001DFB15 /* AKAddAnniversaryWindowController.m */; };
+		B553598C1443A2C4001DFB15 /* TTTOrdinalNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B553598B1443A2C4001DFB15 /* TTTOrdinalNumberFormatter.m */; };
 		B567EC1613ED715200934E1E /* NSDate+AKCachedDateString.m in Sources */ = {isa = PBXBuildFile; fileRef = B567EC1513ED715200934E1E /* NSDate+AKCachedDateString.m */; };
 		B5795FF4142A208600D35F8E /* TrafficBotHelperConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B5795FF3142A208600D35F8E /* TrafficBotHelperConnection.m */; };
 		B57E9E8A13CF435400F76ED6 /* Help.png in Resources */ = {isa = PBXBuildFile; fileRef = B57E9E8913CF435400F76ED6 /* Help.png */; };
@@ -179,6 +182,11 @@
 		B553598014435183001DFB15 /* AKAnniversaryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKAnniversaryManager.m; path = "private-utilities/Anniversary Manager/AKAnniversaryManager.m"; sourceTree = "<group>"; };
 		B5535982144351D9001DFB15 /* AKAnniversary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKAnniversary.h; path = "private-utilities/Anniversary Manager/AKAnniversary.h"; sourceTree = "<group>"; };
 		B5535983144351D9001DFB15 /* AKAnniversary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKAnniversary.m; path = "private-utilities/Anniversary Manager/AKAnniversary.m"; sourceTree = "<group>"; };
+		B553598514437CC6001DFB15 /* AKAddAnniversaryWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AKAddAnniversaryWindow.xib; path = "private-utilities/Anniversary Manager/AKAddAnniversaryWindow.xib"; sourceTree = "<group>"; };
+		B553598714437EF2001DFB15 /* AKAddAnniversaryWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKAddAnniversaryWindowController.h; path = "private-utilities/Anniversary Manager/AKAddAnniversaryWindowController.h"; sourceTree = "<group>"; };
+		B553598814437EF2001DFB15 /* AKAddAnniversaryWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKAddAnniversaryWindowController.m; path = "private-utilities/Anniversary Manager/AKAddAnniversaryWindowController.m"; sourceTree = "<group>"; };
+		B553598A1443A2C4001DFB15 /* TTTOrdinalNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTTOrdinalNumberFormatter.h; path = FormatterKit/TTTOrdinalNumberFormatter/TTTOrdinalNumberFormatter.h; sourceTree = "<group>"; };
+		B553598B1443A2C4001DFB15 /* TTTOrdinalNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTTOrdinalNumberFormatter.m; path = FormatterKit/TTTOrdinalNumberFormatter/TTTOrdinalNumberFormatter.m; sourceTree = "<group>"; };
 		B567EC1413ED715200934E1E /* NSDate+AKCachedDateString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+AKCachedDateString.h"; path = "NSDate (AKCachedDateString)/NSDate+AKCachedDateString.h"; sourceTree = "<group>"; };
 		B567EC1513ED715200934E1E /* NSDate+AKCachedDateString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+AKCachedDateString.m"; path = "NSDate (AKCachedDateString)/NSDate+AKCachedDateString.m"; sourceTree = "<group>"; };
 		B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TrafficBotHelper.xcodeproj; path = TrafficBotHelper/TrafficBotHelper.xcodeproj; sourceTree = "<group>"; };
@@ -507,6 +515,7 @@
 		B1F44A5D127F031B0020735E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B553598D1443A2CC001DFB15 /* Ordinal Number Formatter */,
 				B5A7AEF213C43DA50058EC62 /* Macros */,
 				DABEB7FF13480C0E00063B84 /* NSFont (AKFallback) */,
 				DA4BE75E12AC8CAD0070618E /* Launch At Login Controller */,
@@ -553,8 +562,19 @@
 				B553598014435183001DFB15 /* AKAnniversaryManager.m */,
 				B5535982144351D9001DFB15 /* AKAnniversary.h */,
 				B5535983144351D9001DFB15 /* AKAnniversary.m */,
+				B553598714437EF2001DFB15 /* AKAddAnniversaryWindowController.h */,
+				B553598814437EF2001DFB15 /* AKAddAnniversaryWindowController.m */,
 			);
 			name = "Anniversary Manager";
+			sourceTree = "<group>";
+		};
+		B553598D1443A2CC001DFB15 /* Ordinal Number Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				B553598A1443A2C4001DFB15 /* TTTOrdinalNumberFormatter.h */,
+				B553598B1443A2C4001DFB15 /* TTTOrdinalNumberFormatter.m */,
+			);
+			name = "Ordinal Number Formatter";
 			sourceTree = "<group>";
 		};
 		B567EC1713ED715600934E1E /* NSDate (AKCachedDateString) */ = {
@@ -686,6 +706,7 @@
 				DA198D5412B6B41A00D64DD7 /* TBGraphWindow.xib */,
 				B16F068B1275E53C00D13C0B /* TBPreferencesWindow.xib */,
 				DAB7E48512E34B4D006ED7C8 /* TBFirstLaunchWindow.xib */,
+				B553598514437CC6001DFB15 /* AKAddAnniversaryWindow.xib */,
 				B581F7C913CA1D6000885FE8 /* AKAddLandmarkWindow.xib */,
 			);
 			name = Nibs;
@@ -851,6 +872,7 @@
 				B5E35C11142F533E00BC1734 /* Good16.png in Resources */,
 				B5E35C12142F533E00BC1734 /* Bad16.png in Resources */,
 				B5518F5A1438D2F6002A433C /* BWQuincyMain.nib in Resources */,
+				B553598614437CC6001DFB15 /* AKAddAnniversaryWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -910,6 +932,8 @@
 				B5518F5B1438D2F6002A433C /* BWQuincyManager.m in Sources */,
 				B553598114435183001DFB15 /* AKAnniversaryManager.m in Sources */,
 				B5535984144351D9001DFB15 /* AKAnniversary.m in Sources */,
+				B553598914437EF2001DFB15 /* AKAddAnniversaryWindowController.m in Sources */,
+				B553598C1443A2C4001DFB15 /* TTTOrdinalNumberFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

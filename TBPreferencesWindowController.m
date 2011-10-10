@@ -111,9 +111,11 @@
 	[self.window center];
 
     // anniversary
-    {   BOOL enabled = tms_anniversary_mode == [Defaults(monitoringMode) intValue];
-        [anniversaryTableView setEnabled:enabled];
-        [anniversaryAddButton setEnabled:enabled]; }
+    BOOL enabled = tms_anniversary_mode == [Defaults(monitoringMode) intValue];
+    [anniversaryTableView setEnabled:enabled];
+    [anniversaryAddButton setEnabled:enabled];
+    [anniversaryTableView setTarget:self];
+    [anniversaryTableView setDoubleAction:@selector(editAnniversary:)];
 
     // path
 	[pathControl setURL:[NSURL fileURLWithPath:Defaults(runURL)]];
@@ -344,6 +346,7 @@
     BOOL enabled = tms_anniversary_mode == [Defaults(monitoringMode) intValue];
     [anniversaryTableView setEnabled:enabled];
     [anniversaryAddButton setEnabled:enabled];
+    [anniversaryArrayController setSelectionIndexes:nil];
     [self updateFixedPeriod:sender];
 }
 - (IBAction)updateRollingPeriodTimeInterval:(id)sender {
@@ -371,6 +374,49 @@
 }
 - (IBAction)updateThresholds:(id)sender {
 	[[NSApp delegate] refreshThresholds];
+}
+
+#pragma mark -
+#pragma mark anniversary
+- (IBAction)addAnniversary:(id)sender
+{
+    if (!addAnniversaryWindowController)
+    {
+        addAnniversaryWindowController = [[AKAddAnniversaryWindowController alloc] initWithWindowNibName:@"AKAddAnniversaryWindow"];
+        addAnniversaryWindowController.delegate = self;
+    }
+    [addAnniversaryWindowController beginSheetForWindow:self.window anniversary:nil];
+}
+- (IBAction)removeAnniversary:(id)sender
+{
+    NSMutableArray *anniversaries = [[[anniversaryArrayController arrangedObjects] mutableCopy] autorelease];
+    NSArray *selected = [anniversaryArrayController selectedObjects];
+    [anniversaries removeObjectsInArray:selected];
+    SetDefaults([NSKeyedArchiver archivedDataWithRootObject:anniversaries], anniversaries);
+    [[NSApp delegate] updateFixedPeriodRestartDate];
+}
+- (IBAction)editAnniversary:(id)sender
+{
+    NSArray *selected = [anniversaryArrayController selectedObjects];
+    AKAnniversary *anniversary = [selected objectAtIndex:0];
+    NSMutableArray *anniversaries = [[[anniversaryArrayController arrangedObjects] mutableCopy] autorelease];
+    [anniversaries removeObject:anniversary];
+    SetDefaults([NSKeyedArchiver archivedDataWithRootObject:anniversaries], anniversaries);
+
+    if (!addAnniversaryWindowController)
+    {
+        addAnniversaryWindowController = [[AKAddAnniversaryWindowController alloc] initWithWindowNibName:@"AKAddAnniversaryWindow"];
+        addAnniversaryWindowController.delegate = self;
+    }
+    [addAnniversaryWindowController beginSheetForWindow:self.window anniversary:anniversary];
+}
+- (void)didFinishWithAnniversary:(AKAnniversary *)anniversary
+{
+    NSMutableArray *anniversaries = [[[anniversaryArrayController arrangedObjects] mutableCopy] autorelease];
+    if ([anniversaries containsObject:anniversary]) return;
+    [anniversaries addObject:anniversary];
+    SetDefaults([NSKeyedArchiver archivedDataWithRootObject:anniversaries], anniversaries);
+    [[NSApp delegate] updateFixedPeriodRestartDate];
 }
 
 #pragma mark -
