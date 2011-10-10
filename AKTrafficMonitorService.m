@@ -323,7 +323,8 @@
 			[self _workerScheduleWriteRollingLogToFile];
 		} break;
 
-		case tms_fixed_mode: {
+		case tms_fixed_mode: 
+        case tms_anniversary_mode: {
 			if ([self.fixedPeriodRestartDate timeIntervalSinceNow] > 0) {
 				NSString *dateString = [[_fixedLog allKeys] objectAtIndex:0];
 				NSDictionary *entry = [_fixedLog objectForKey:dateString];
@@ -501,7 +502,8 @@
                 if (TMSRecIsZero(_stashedRec)) return;
             } break;
                 
-            case tms_fixed_mode: {
+            case tms_fixed_mode:
+            case tms_anniversary_mode: {
                 if ([self.fixedPeriodRestartDate timeIntervalSinceNow] > 0) {
                     // log only total
                     NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -745,10 +747,12 @@
 
 #pragma mark -
 #pragma mark property accessors
+#ifdef DEBUG
 - (void)setValue:(id)value forKey:(NSString *)key {
 	DLog(@"\"%@\" = %@", key, value);
 	[super setValue:value forKey:key];
 }
+#endif
 
 #pragma mark -
 #pragma mark private setters
