@@ -326,10 +326,13 @@
 		case tms_fixed_mode: 
         case tms_anniversary_mode: {
 			if ([self.fixedPeriodRestartDate timeIntervalSinceNow] > 0) {
-				NSString *dateString = [[_fixedLog allKeys] objectAtIndex:0];
-				NSDictionary *entry = [_fixedLog objectForKey:dateString];
-				_totalRec.kin = TMSDTFromNumber([entry objectForKey:@"in"]);
-				_totalRec.kout = TMSDTFromNumber([entry objectForKey:@"out"]);
+                NSArray *dateKeys = [_fixedLog allKeys];
+                if ([dateKeys count])
+                {
+                    NSDictionary *entry = [_fixedLog objectForKey:[dateKeys objectAtIndex:0]];
+                    _totalRec.kin = TMSDTFromNumber([entry objectForKey:@"in"]);
+                    _totalRec.kout = TMSDTFromNumber([entry objectForKey:@"out"]);
+                }
 			}
 			else {
 				DLog(@"fixed period monitor date expired.");
