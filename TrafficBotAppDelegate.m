@@ -212,10 +212,11 @@
 #pragma mark AKTrafficMonitorService
 - (void)updateFixedPeriodRestartDate {
 	NSDate *restartDate;
-    switch ([Defaults(fixedPeriodRestartDate) intValue])
+    switch ([Defaults(monitoringMode) intValue])
     {
         case tms_fixed_mode:
         {
+            restartDate = [NSDate date];
             long fixedPeriodInterval = [Defaults(fixedPeriodInterval) longValue];
             switch (fixedPeriodInterval) {
                 case 3600:		restartDate = [restartDate nextHour];			break;
