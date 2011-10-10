@@ -110,6 +110,11 @@
     [self.window setFrame:frame display:NO animate:NO];
 	[self.window center];
 
+    // anniversary
+    {   BOOL enabled = tms_anniversary_mode == [Defaults(monitoringMode) intValue];
+        [anniversaryTableView setEnabled:enabled];
+        [anniversaryAddButton setEnabled:enabled]; }
+
     // path
 	[pathControl setURL:[NSURL fileURLWithPath:Defaults(runURL)]];
 
@@ -335,6 +340,12 @@
 }
 
 #pragma mark defaults update
+- (IBAction)updateMonitoringMode:(id)sender {
+    BOOL enabled = tms_anniversary_mode == [Defaults(monitoringMode) intValue];
+    [anniversaryTableView setEnabled:enabled];
+    [anniversaryAddButton setEnabled:enabled];
+    [self updateFixedPeriod:sender];
+}
 - (IBAction)updateRollingPeriodTimeInterval:(id)sender {
 	float factor = [Defaults(rollingPeriodFactor) floatValue];
 	float multiplier = [Defaults(rollingPeriodMultiplier) floatValue];
@@ -343,6 +354,11 @@
 }
 
 - (IBAction)updateFixedPeriod:(id)sender {
+    if (tms_anniversary_mode == [Defaults(monitoringMode) intValue])
+    {
+        [[NSApp delegate] updateFixedPeriodRestartDate];
+        return;
+    }
     SetDefaults([NSDate distantPast], fixedPeriodRestartDate);
 }
 - (IBAction)updateLimit:(id)sender {
@@ -449,6 +465,7 @@
 	[alert setAlertStyle:NSInformationalAlertStyle];
 	[alert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:@selector(resetAllPrefsAlertDidEnd:returnCode:contextInfo:) contextInfo:nil];
 }
+
 - (void)resetAllPrefsAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo {
 	if (returnCode != NSAlertFirstButtonReturn) return;
 	[[NSUserDefaults standardUserDefaults] removePersistentDomainForName:[[NSBundle mainBundle] bundleIdentifier]];

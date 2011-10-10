@@ -31,6 +31,8 @@
     IBOutlet NSImageView *tbhStatusImageView;
     IBOutlet NSTextField *tbhStatusTextField;
 	IBOutlet NSPathControl *pathControl;
+    IBOutlet NSTableView *anniversaryTableView;
+    IBOutlet NSButton *anniversaryAddButton;
 
     // location pane
 	IBOutlet NSArrayController *landmarkArrayController;
@@ -58,6 +60,7 @@
 - (IBAction)clearStatistics:(id)sender;
 - (IBAction)resetAllPrefs:(id)sender;
 
+- (IBAction)updateMonitoringMode:(id)sender;
 - (IBAction)updateRollingPeriodTimeInterval:(id)sender;
 - (IBAction)updateFixedPeriod:(id)sender;
 - (IBAction)updateLimit:(id)sender;
