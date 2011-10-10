@@ -9,6 +9,7 @@
 #import "TrafficBotAppDelegate.h"
 #import "AKTrafficMonitorService.h"
 #import "AKLandmarkManager.h"
+#import "AKAnniversaryManager.h"
 #import "TBPreferencesWindowController.h"
 #import "TBFirstLaunchWindowController.h"
 #import "TBStatusWindowController.h"
@@ -26,8 +27,6 @@
 
 - (void)_simulateCrash;
 
-- (void)_newRestartDate;
-
 - (void)_sendGrowlNotificationWithTitle:(NSString *)title description:(NSString *)description notificationName:(NSString *)name;
 
 - (void)_didReceiveNotificationFromTrafficMonitorService:(NSNotification *)notification;
@@ -38,6 +37,23 @@
 @implementation TrafficBotAppDelegate
 
 #pragma mark -
+#pragma mark ctor & dtor
+- (id)init
+{
+    self = [super init];
+    if (!self) return nil;
+    
+    // anniversary manager
+    anniversaryManager = [[AKAnniversaryManager alloc] init];
+
+    return self;
+}
+- (void)dealloc
+{
+    [anniversaryManager release], anniversaryManager = nil;
+    [super dealloc];
+}
+
 #pragma mark init
 - (void)awakeFromNib {
 	[statusItemController showStatusItem];
@@ -66,7 +82,7 @@
 		[self showFirstLaunchWindow:self];
 		[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(dismissFirstLaunchWindow:) userInfo:nil repeats:NO];
 	}
-	
+    
 	// TMS bindings & notifications
 	NSArray *tmsBindings = [NSArray arrayWithObjects:
 							Property(rollingPeriodInterval),
@@ -100,7 +116,14 @@
 	 options:[NSDictionary dictionaryWithObject:NSKeyedUnarchiveFromDataTransformerName
 										 forKey:NSValueTransformerNameBindingOption]];
 	[[AKLandmarkManager sharedManager] addObserver:self selector:@selector(_didReceiveNotificationFromLocationManager:)];
-	
+	    
+    // anniversary manager bindings
+    [anniversaryManager bind:Property(anniversaries)
+                    toObject:[NSUserDefaultsController sharedUserDefaultsController]
+                 withKeyPath:@"values.anniversaries"
+                     options:[NSDictionary dictionaryWithObject:NSKeyedUnarchiveFromDataTransformerName
+                                                         forKey:NSValueTransformerNameBindingOption]];
+
 	// threshold notifications
 	[self refreshThresholds];
 	[GrowlApplicationBridge setGrowlDelegate:self];
@@ -186,6 +209,32 @@
 }
 
 #pragma mark -
+#pragma mark AKTrafficMonitorService
+- (void)updateFixedPeriodRestartDate {
+	NSDate *restartDate;
+    switch ([Defaults(fixedPeriodRestartDate) intValue])
+    {
+        case tms_fixed_mode:
+        {
+            long fixedPeriodInterval = [Defaults(fixedPeriodInterval) longValue];
+            switch (fixedPeriodInterval) {
+                case 3600:		restartDate = [restartDate nextHour];			break;
+                case 86400:		restartDate = [restartDate midnightTomorrow];	break;
+                case 2592000:	restartDate = [restartDate midnightNextMonth];	break;
+                default: ALog(@"invalid fixedPeriodInterval: %l", fixedPeriodInterval); break;
+            }
+        } break;
+        
+        case tms_anniversary_mode:
+        {
+            restartDate = [anniversaryManager nextDate];
+            if (!restartDate) restartDate = [NSDate distantFuture];
+        }
+        default: break;
+    }
+    DLog(@"new restart date: %@", [restartDate description]);
+    SetDefaults(restartDate, fixedPeriodRestartDate);
+}
 #pragma mark thresholds
 - (void)refreshThresholds {
 	float criticalPercentage = [Defaults(criticalPercentage) floatValue];
@@ -200,20 +249,6 @@
 
 #pragma mark -
 @implementation TrafficBotAppDelegate (Private)
-#pragma mark AKTrafficMonitorService
-- (void)_newRestartDate {
-	NSDate *restartDate = [NSDate date];
-	long fixedPeriodInterval = [Defaults(fixedPeriodInterval) longValue];
-	switch (fixedPeriodInterval) {
-		case 3600:		restartDate = [restartDate nextHour];			break;
-		case 86400:		restartDate = [restartDate midnightTomorrow];	break;
-		case 2592000:	restartDate = [restartDate midnightNextMonth];	break;
-		default: ALog(@"invalid fixedPeriodInterval: %l", fixedPeriodInterval); break;
-	}
-	DLog(@"new restart date: %@", [restartDate description]);
-	SetDefaults(restartDate, fixedPeriodRestartDate);
-}
-
 #pragma mark -
 #pragma mark growl
 - (NSDictionary *)registrationDictionaryForGrowl {
@@ -251,7 +286,7 @@
 	if ([[notification name] isEqual:AKTrafficMonitorNeedsNewFixedPeriodRestartDateNotification]) {
 		DLog(@"received: %@", notification);
 		// update restart date
-		[self _newRestartDate];
+		[self updateFixedPeriodRestartDate];
 	}
 	if ([[notification name] isEqual:AKTrafficMonitorThresholdDidExceedNotification]) {
 		

@@ -14,10 +14,12 @@
 @class TBFirstLaunchWindowController;
 @class TBStatusWindowController, TBGraphWindowController;
 @class TBStatusItemController;
+@class AKAnniversaryManager;
 
-@interface TrafficBotAppDelegate : NSObject
-	<NSApplicationDelegate, GrowlApplicationBridgeDelegate, BWQuincyManagerDelegate> {
-	
+@interface TrafficBotAppDelegate : NSObject<NSApplicationDelegate, GrowlApplicationBridgeDelegate, BWQuincyManagerDelegate> {
+
+    AKAnniversaryManager *anniversaryManager;
+    
 	// ui
 	IBOutlet TBStatusItemController	*statusItemController;
 	TBFirstLaunchWindowController	*firstLaunchWindowController;
@@ -38,6 +40,7 @@
 - (void)showGraphWindow:(id)sender;
 - (void)dismissGraphWindow:(id)sender;
 
+- (void)updateFixedPeriodRestartDate;
 - (void)refreshThresholds;
 
 @end
