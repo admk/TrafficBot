@@ -337,6 +337,10 @@
 	NSNumber *interval = [NSNumber numberWithFloat:(factor * multiplier)];
 	SetDefaults(interval, rollingPeriodInterval);
 }
+
+- (IBAction)updateFixedPeriod:(id)sender {
+    SetDefaults([NSDate distantPast], fixedPeriodRestartDate);
+}
 - (IBAction)updateLimit:(id)sender {
 	float factor = [Defaults(limitFactor) floatValue];
 	float multiplier = [Defaults(limitMultiplier) floatValue];

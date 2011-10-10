@@ -59,6 +59,7 @@
 - (IBAction)resetAllPrefs:(id)sender;
 
 - (IBAction)updateRollingPeriodTimeInterval:(id)sender;
+- (IBAction)updateFixedPeriod:(id)sender;
 - (IBAction)updateLimit:(id)sender;
 - (IBAction)updateThresholds:(id)sender;
 
