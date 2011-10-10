@@ -26,6 +26,7 @@ typedef enum {
 	tms_rolling_mode = 0,
 	tms_fixed_mode = 1,
 	tms_indefinite_mode = 2,
+    tms_anniversary_mode = 3,
 	tms_unreachable_mode = -1
 } tms_mode_t;
 

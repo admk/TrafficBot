@@ -34,6 +34,8 @@
 		B5518F5B1438D2F6002A433C /* BWQuincyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5518F591438D2F6002A433C /* BWQuincyManager.m */; };
 		B552662513C721ED0037C39E /* AKLandmarkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B552662413C721ED0037C39E /* AKLandmarkManager.m */; };
 		B552662713C723820037C39E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B552662613C723820037C39E /* CoreLocation.framework */; };
+		B553598114435183001DFB15 /* AKAnniversaryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B553598014435183001DFB15 /* AKAnniversaryManager.m */; };
+		B5535984144351D9001DFB15 /* AKAnniversary.m in Sources */ = {isa = PBXBuildFile; fileRef = B5535983144351D9001DFB15 /* AKAnniversary.m */; };
 		B567EC1613ED715200934E1E /* NSDate+AKCachedDateString.m in Sources */ = {isa = PBXBuildFile; fileRef = B567EC1513ED715200934E1E /* NSDate+AKCachedDateString.m */; };
 		B5795FF4142A208600D35F8E /* TrafficBotHelperConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B5795FF3142A208600D35F8E /* TrafficBotHelperConnection.m */; };
 		B57E9E8A13CF435400F76ED6 /* Help.png in Resources */ = {isa = PBXBuildFile; fileRef = B57E9E8913CF435400F76ED6 /* Help.png */; };
@@ -173,6 +175,10 @@
 		B552662313C721ED0037C39E /* AKLandmarkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AKLandmarkManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B552662413C721ED0037C39E /* AKLandmarkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AKLandmarkManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B552662613C723820037C39E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B553597F14435183001DFB15 /* AKAnniversaryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKAnniversaryManager.h; path = "private-utilities/Anniversary Manager/AKAnniversaryManager.h"; sourceTree = "<group>"; };
+		B553598014435183001DFB15 /* AKAnniversaryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKAnniversaryManager.m; path = "private-utilities/Anniversary Manager/AKAnniversaryManager.m"; sourceTree = "<group>"; };
+		B5535982144351D9001DFB15 /* AKAnniversary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKAnniversary.h; path = "private-utilities/Anniversary Manager/AKAnniversary.h"; sourceTree = "<group>"; };
+		B5535983144351D9001DFB15 /* AKAnniversary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKAnniversary.m; path = "private-utilities/Anniversary Manager/AKAnniversary.m"; sourceTree = "<group>"; };
 		B567EC1413ED715200934E1E /* NSDate+AKCachedDateString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+AKCachedDateString.h"; path = "NSDate (AKCachedDateString)/NSDate+AKCachedDateString.h"; sourceTree = "<group>"; };
 		B567EC1513ED715200934E1E /* NSDate+AKCachedDateString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+AKCachedDateString.m"; path = "NSDate (AKCachedDateString)/NSDate+AKCachedDateString.m"; sourceTree = "<group>"; };
 		B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TrafficBotHelper.xcodeproj; path = TrafficBotHelper/TrafficBotHelper.xcodeproj; sourceTree = "<group>"; };
@@ -400,6 +406,7 @@
 		B16F0867127749C200D13C0B /* Core Services */ = {
 			isa = PBXGroup;
 			children = (
+				B553597E14435124001DFB15 /* Anniversary Manager */,
 				B552662113C721510037C39E /* Landmark Manager */,
 				B5795E761429E72A00D35F8E /* TrafficBotHelper.xcodeproj */,
 				B16F0E911278CE4700D13C0B /* Traffic Monitor Notification Service */,
@@ -537,6 +544,17 @@
 			);
 			name = "Landmark Manager";
 			path = "private-utilities/Landmark Manager";
+			sourceTree = "<group>";
+		};
+		B553597E14435124001DFB15 /* Anniversary Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B553597F14435183001DFB15 /* AKAnniversaryManager.h */,
+				B553598014435183001DFB15 /* AKAnniversaryManager.m */,
+				B5535982144351D9001DFB15 /* AKAnniversary.h */,
+				B5535983144351D9001DFB15 /* AKAnniversary.m */,
+			);
+			name = "Anniversary Manager";
 			sourceTree = "<group>";
 		};
 		B567EC1713ED715600934E1E /* NSDate (AKCachedDateString) */ = {
@@ -890,6 +908,8 @@
 				B567EC1613ED715200934E1E /* NSDate+AKCachedDateString.m in Sources */,
 				B5795FF4142A208600D35F8E /* TrafficBotHelperConnection.m in Sources */,
 				B5518F5B1438D2F6002A433C /* BWQuincyManager.m in Sources */,
+				B553598114435183001DFB15 /* AKAnniversaryManager.m in Sources */,
+				B5535984144351D9001DFB15 /* AKAnniversary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
