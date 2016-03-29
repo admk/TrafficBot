@@ -1,0 +1,10 @@
+//
+// Prefix header for all source files of the 'TrafficBotHelper' target in the 'TrafficBotHelper' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import "AKOptimizationMacros.h"
+    #import "AKDebugMacros.h"
+    #import "DMCommonMacros.h"
+#endif

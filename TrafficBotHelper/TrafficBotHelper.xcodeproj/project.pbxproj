@@ -1,0 +1,695 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6137962D142DB98A00822607 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5795B801429982900D35F8E /* Foundation.framework */; };
+		6137963A142DBA3900822607 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 61379638142DBA3000822607 /* main.mm */; };
+		6137963B142DBB2B00822607 /* AKPcap.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5DCDC051425E23B000C244C /* AKPcap.mm */; };
+		6137963C142DBB2B00822607 /* AKPcapHandles.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5DCDC1114262374000C244C /* AKPcapHandles.mm */; };
+		6137963D142DBB2B00822607 /* AKNetworkInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 61126FA91425D03F00EB1A5D /* AKNetworkInterface.m */; };
+		6137963E142DBB2B00822607 /* TrafficBotHelperConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B5795FF0142A0C6B00D35F8E /* TrafficBotHelperConnection.m */; };
+		6137963F142DBB2B00822607 /* TrafficBotHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5795C191429D72000D35F8E /* TrafficBotHelper.mm */; };
+		61379640142DBB3800822607 /* libpcap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 61126FAE1425D06D00EB1A5D /* libpcap.dylib */; };
+		61379643142DBBE800822607 /* TrafficBotHelperTester.m in Sources */ = {isa = PBXBuildFile; fileRef = 61379642142DBBE800822607 /* TrafficBotHelperTester.m */; };
+		B559DEDD142F6FD600352125 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B559DEDC142F6FD600352125 /* Icon.icns */; };
+		B5D9470F142DD92D00D5E1CC /* BetterAuthorizationSampleLibInstallTool.c in Sources */ = {isa = PBXBuildFile; fileRef = B5D946E8142DD76100D5E1CC /* BetterAuthorizationSampleLibInstallTool.c */; };
+		B5D94716142DDB8700D5E1CC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61126F731425D01700EB1A5D /* Cocoa.framework */; };
+		B5D9471D142DDB8700D5E1CC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5D9471B142DDB8700D5E1CC /* InfoPlist.strings */; };
+		B5D94723142DDB8700D5E1CC /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B5D94721142DDB8700D5E1CC /* Credits.rtf */; };
+		B5D94726142DDB8700D5E1CC /* TrafficBotHelperAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D94725142DDB8700D5E1CC /* TrafficBotHelperAppDelegate.m */; };
+		B5D94729142DDB8700D5E1CC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D94727142DDB8700D5E1CC /* MainMenu.xib */; };
+		B5D9473A142DDBD400D5E1CC /* TrafficBotHelperInstaller in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5D94705142DD92200D5E1CC /* TrafficBotHelperInstaller */; };
+		B5D94742142DDBFE00D5E1CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5795B801429982900D35F8E /* Foundation.framework */; };
+		B5D9474D142DDC3200D5E1CC /* AKPcap.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5DCDC051425E23B000C244C /* AKPcap.mm */; };
+		B5D9474E142DDC3200D5E1CC /* AKPcapHandles.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5DCDC1114262374000C244C /* AKPcapHandles.mm */; };
+		B5D9474F142DDC3200D5E1CC /* AKNetworkInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 61126FA91425D03F00EB1A5D /* AKNetworkInterface.m */; };
+		B5D94750142DDC3200D5E1CC /* TrafficBotHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5795C191429D72000D35F8E /* TrafficBotHelper.mm */; };
+		B5D94751142DDC3200D5E1CC /* BetterAuthorizationSampleLib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5D946E6142DD76100D5E1CC /* BetterAuthorizationSampleLib.c */; };
+		B5D94754142DDC3F00D5E1CC /* libpcap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 61126FAE1425D06D00EB1A5D /* libpcap.dylib */; };
+		B5D94757142DDC8300D5E1CC /* TrafficBotHelperDaemon in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5D94740142DDBFE00D5E1CC /* TrafficBotHelperDaemon */; };
+		B5D94760142DFFA300D5E1CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D9475F142DFFA300D5E1CC /* main.m */; };
+		B5D94761142E00A400D5E1CC /* TrafficBotHelperConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B5795FF0142A0C6B00D35F8E /* TrafficBotHelperConnection.m */; };
+		B5D94762142E00AA00D5E1CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 61126F7F1425D01700EB1A5D /* main.m */; };
+		B5D94764142E015700D5E1CC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D94763142E015700D5E1CC /* Security.framework */; };
+		B5D94765142E01D300D5E1CC /* BetterAuthorizationSampleLib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5D946E6142DD76100D5E1CC /* BetterAuthorizationSampleLib.c */; };
+		B5D94766142E01E300D5E1CC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D94763142E015700D5E1CC /* Security.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B5D9472F142DDB9400D5E1CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 61126F661425D01700EB1A5D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5D94704142DD92200D5E1CC;
+			remoteInfo = TrafficBotHelperInstaller;
+		};
+		B5D94755142DDC7F00D5E1CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 61126F661425D01700EB1A5D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5D9473F142DDBFE00D5E1CC;
+			remoteInfo = TrafficBotHelperDaemon;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		61379629142DB98A00822607 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		B5D94738142DDBCE00D5E1CC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				B5D9473A142DDBD400D5E1CC /* TrafficBotHelperInstaller in CopyFiles */,
+				B5D94757142DDC8300D5E1CC /* TrafficBotHelperDaemon in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		61126F731425D01700EB1A5D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		61126F761425D01700EB1A5D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		61126F781425D01700EB1A5D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		61126F7F1425D01700EB1A5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		61126F811425D01700EB1A5D /* TrafficBotHelper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TrafficBotHelper-Prefix.pch"; sourceTree = "<group>"; };
+		61126F911425D01700EB1A5D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		61126FA81425D03F00EB1A5D /* AKNetworkInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKNetworkInterface.h; sourceTree = "<group>"; };
+		61126FA91425D03F00EB1A5D /* AKNetworkInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AKNetworkInterface.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		61126FAE1425D06D00EB1A5D /* libpcap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcap.dylib; path = usr/lib/libpcap.dylib; sourceTree = SDKROOT; };
+		6137962B142DB98A00822607 /* TrafficBotHelperTester */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TrafficBotHelperTester; sourceTree = BUILT_PRODUCTS_DIR; };
+		61379638142DBA3000822607 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		61379641142DBBE800822607 /* TrafficBotHelperTester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrafficBotHelperTester.h; sourceTree = "<group>"; };
+		61379642142DBBE800822607 /* TrafficBotHelperTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrafficBotHelperTester.m; sourceTree = "<group>"; };
+		61BD1EC6142863F0006DF444 /* AKDebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AKDebugMacros.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		61BD1EC8142863F0006DF444 /* AKScopeReleased.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AKScopeReleased.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		61BD1EC9142863F0006DF444 /* AKUKHelperMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AKUKHelperMacros.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		61BD1ECA142863F0006DF444 /* DMCommonMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCommonMacros.h; sourceTree = "<group>"; };
+		61BD1ECB142865CC006DF444 /* AKOptimizationMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKOptimizationMacros.h; sourceTree = "<group>"; };
+		B559DEDC142F6FD600352125 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Icon.icns; path = ../Images/Icon.icns; sourceTree = "<group>"; };
+		B5795B801429982900D35F8E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B5795C181429D72000D35F8E /* TrafficBotHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrafficBotHelper.h; sourceTree = "<group>"; };
+		B5795C191429D72000D35F8E /* TrafficBotHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TrafficBotHelper.mm; sourceTree = "<group>"; };
+		B5795FF0142A0C6B00D35F8E /* TrafficBotHelperConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrafficBotHelperConnection.m; sourceTree = "<group>"; };
+		B5795FF1142A203400D35F8E /* TrafficBotHelperConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrafficBotHelperConnection.h; sourceTree = "<group>"; };
+		B5D946E6142DD76100D5E1CC /* BetterAuthorizationSampleLib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = BetterAuthorizationSampleLib.c; sourceTree = "<group>"; };
+		B5D946E7142DD76100D5E1CC /* BetterAuthorizationSampleLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BetterAuthorizationSampleLib.h; sourceTree = "<group>"; };
+		B5D946E8142DD76100D5E1CC /* BetterAuthorizationSampleLibInstallTool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = BetterAuthorizationSampleLibInstallTool.c; sourceTree = "<group>"; };
+		B5D94705142DD92200D5E1CC /* TrafficBotHelperInstaller */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TrafficBotHelperInstaller; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5D94714142DDB8700D5E1CC /* TrafficBotHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrafficBotHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5D94717142DDB8700D5E1CC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B5D9471A142DDB8700D5E1CC /* TrafficBotHelper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TrafficBotHelper-Info.plist"; sourceTree = "<group>"; };
+		B5D9471C142DDB8700D5E1CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B5D94722142DDB8700D5E1CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		B5D94724142DDB8700D5E1CC /* TrafficBotHelperAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrafficBotHelperAppDelegate.h; sourceTree = "<group>"; };
+		B5D94725142DDB8700D5E1CC /* TrafficBotHelperAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrafficBotHelperAppDelegate.m; sourceTree = "<group>"; };
+		B5D94728142DDB8700D5E1CC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		B5D94740142DDBFE00D5E1CC /* TrafficBotHelperDaemon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TrafficBotHelperDaemon; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5D9475F142DFFA300D5E1CC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B5D94763142E015700D5E1CC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B5DCDC041425E23B000C244C /* AKPcap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AKPcap.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B5DCDC051425E23B000C244C /* AKPcap.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = AKPcap.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B5DCDC1114262374000C244C /* AKPcapHandles.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = AKPcapHandles.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B5DCDC1314262393000C244C /* AKPcapHandles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AKPcapHandles.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		61379628142DB98A00822607 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6137962D142DB98A00822607 /* Foundation.framework in Frameworks */,
+				61379640142DBB3800822607 /* libpcap.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5D94702142DD92200D5E1CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5D94711142DDB8700D5E1CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5D94716142DDB8700D5E1CC /* Cocoa.framework in Frameworks */,
+				B5D94766142E01E300D5E1CC /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5D9473D142DDBFE00D5E1CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5D94764142E015700D5E1CC /* Security.framework in Frameworks */,
+				B5D94754142DDC3F00D5E1CC /* libpcap.dylib in Frameworks */,
+				B5D94742142DDBFE00D5E1CC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		61126F641425D01700EB1A5D = {
+			isa = PBXGroup;
+			children = (
+				61126F811425D01700EB1A5D /* TrafficBotHelper-Prefix.pch */,
+				61126F791425D01700EB1A5D /* TrafficBotHelperDaemon */,
+				B5D94718142DDB8700D5E1CC /* TrafficBotHelper */,
+				B559DEDA142F6FC200352125 /* Resources */,
+				61BD1EBF142863BB006DF444 /* Utilities */,
+				6137962E142DB98A00822607 /* TrafficBotHelperTester */,
+				61126F721425D01700EB1A5D /* Frameworks */,
+				61126F701425D01700EB1A5D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		61126F701425D01700EB1A5D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6137962B142DB98A00822607 /* TrafficBotHelperTester */,
+				B5D94705142DD92200D5E1CC /* TrafficBotHelperInstaller */,
+				B5D94714142DDB8700D5E1CC /* TrafficBotHelper.app */,
+				B5D94740142DDBFE00D5E1CC /* TrafficBotHelperDaemon */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		61126F721425D01700EB1A5D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				61126FAE1425D06D00EB1A5D /* libpcap.dylib */,
+				B5D94763142E015700D5E1CC /* Security.framework */,
+				61126F731425D01700EB1A5D /* Cocoa.framework */,
+				61126F911425D01700EB1A5D /* SenTestingKit.framework */,
+				B5795B801429982900D35F8E /* Foundation.framework */,
+				61126F751425D01700EB1A5D /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61126F751425D01700EB1A5D /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				61126F761425D01700EB1A5D /* AppKit.framework */,
+				61126F781425D01700EB1A5D /* Foundation.framework */,
+				B5D94717142DDB8700D5E1CC /* CoreData.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		61126F791425D01700EB1A5D /* TrafficBotHelperDaemon */ = {
+			isa = PBXGroup;
+			children = (
+				B5DCDC041425E23B000C244C /* AKPcap.h */,
+				B5DCDC051425E23B000C244C /* AKPcap.mm */,
+				B5DCDC1314262393000C244C /* AKPcapHandles.h */,
+				B5DCDC1114262374000C244C /* AKPcapHandles.mm */,
+				61126FA81425D03F00EB1A5D /* AKNetworkInterface.h */,
+				61126FA91425D03F00EB1A5D /* AKNetworkInterface.m */,
+				B5795FF1142A203400D35F8E /* TrafficBotHelperConnection.h */,
+				B5795FF0142A0C6B00D35F8E /* TrafficBotHelperConnection.m */,
+				B5795C181429D72000D35F8E /* TrafficBotHelper.h */,
+				B5795C191429D72000D35F8E /* TrafficBotHelper.mm */,
+				61126F7F1425D01700EB1A5D /* main.m */,
+			);
+			path = TrafficBotHelperDaemon;
+			sourceTree = "<group>";
+		};
+		6137962E142DB98A00822607 /* TrafficBotHelperTester */ = {
+			isa = PBXGroup;
+			children = (
+				61379641142DBBE800822607 /* TrafficBotHelperTester.h */,
+				61379642142DBBE800822607 /* TrafficBotHelperTester.m */,
+				61379638142DBA3000822607 /* main.mm */,
+			);
+			path = TrafficBotHelperTester;
+			sourceTree = SOURCE_ROOT;
+		};
+		61BD1EBF142863BB006DF444 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B5D946E5142DD76100D5E1CC /* BetterAuthorization */,
+				61BD1EC0142863CC006DF444 /* Macros */,
+			);
+			name = Utilities;
+			path = "../Cocoa-Utilities";
+			sourceTree = "<group>";
+		};
+		61BD1EC0142863CC006DF444 /* Macros */ = {
+			isa = PBXGroup;
+			children = (
+				61BD1EC6142863F0006DF444 /* AKDebugMacros.h */,
+				61BD1ECB142865CC006DF444 /* AKOptimizationMacros.h */,
+				61BD1EC8142863F0006DF444 /* AKScopeReleased.h */,
+				61BD1EC9142863F0006DF444 /* AKUKHelperMacros.h */,
+				61BD1ECA142863F0006DF444 /* DMCommonMacros.h */,
+			);
+			path = Macros;
+			sourceTree = "<group>";
+		};
+		B559DEDA142F6FC200352125 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B559DEDC142F6FD600352125 /* Icon.icns */,
+				B5D94727142DDB8700D5E1CC /* MainMenu.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		B5D946E5142DD76100D5E1CC /* BetterAuthorization */ = {
+			isa = PBXGroup;
+			children = (
+				B5D946E6142DD76100D5E1CC /* BetterAuthorizationSampleLib.c */,
+				B5D946E7142DD76100D5E1CC /* BetterAuthorizationSampleLib.h */,
+				B5D946E8142DD76100D5E1CC /* BetterAuthorizationSampleLibInstallTool.c */,
+			);
+			name = BetterAuthorization;
+			path = ../TrafficBotHelper/BetterAuthorization;
+			sourceTree = "<group>";
+		};
+		B5D94718142DDB8700D5E1CC /* TrafficBotHelper */ = {
+			isa = PBXGroup;
+			children = (
+				B5D94724142DDB8700D5E1CC /* TrafficBotHelperAppDelegate.h */,
+				B5D94725142DDB8700D5E1CC /* TrafficBotHelperAppDelegate.m */,
+				B5D9475F142DFFA300D5E1CC /* main.m */,
+				B5D94719142DDB8700D5E1CC /* Supporting Files */,
+			);
+			path = TrafficBotHelper;
+			sourceTree = "<group>";
+		};
+		B5D94719142DDB8700D5E1CC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B5D9471A142DDB8700D5E1CC /* TrafficBotHelper-Info.plist */,
+				B5D9471B142DDB8700D5E1CC /* InfoPlist.strings */,
+				B5D94721142DDB8700D5E1CC /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6137962A142DB98A00822607 /* TrafficBotHelperTester */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61379635142DB98A00822607 /* Build configuration list for PBXNativeTarget "TrafficBotHelperTester" */;
+			buildPhases = (
+				61379627142DB98A00822607 /* Sources */,
+				61379628142DB98A00822607 /* Frameworks */,
+				61379629142DB98A00822607 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TrafficBotHelperTester;
+			productName = TrafficBotHelperTester;
+			productReference = 6137962B142DB98A00822607 /* TrafficBotHelperTester */;
+			productType = "com.apple.product-type.tool";
+		};
+		B5D94704142DD92200D5E1CC /* TrafficBotHelperInstaller */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5D9470C142DD92200D5E1CC /* Build configuration list for PBXNativeTarget "TrafficBotHelperInstaller" */;
+			buildPhases = (
+				B5D94701142DD92200D5E1CC /* Sources */,
+				B5D94702142DD92200D5E1CC /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TrafficBotHelperInstaller;
+			productName = TrafficBotHelperInstaller;
+			productReference = B5D94705142DD92200D5E1CC /* TrafficBotHelperInstaller */;
+			productType = "com.apple.product-type.tool";
+		};
+		B5D94713142DDB8700D5E1CC /* TrafficBotHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5D9472A142DDB8700D5E1CC /* Build configuration list for PBXNativeTarget "TrafficBotHelper" */;
+			buildPhases = (
+				B5D94710142DDB8700D5E1CC /* Sources */,
+				B5D94711142DDB8700D5E1CC /* Frameworks */,
+				B5D94712142DDB8700D5E1CC /* Resources */,
+				B5D94738142DDBCE00D5E1CC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B5D94730142DDB9400D5E1CC /* PBXTargetDependency */,
+				B5D94756142DDC7F00D5E1CC /* PBXTargetDependency */,
+			);
+			name = TrafficBotHelper;
+			productName = TrafficBotHelper;
+			productReference = B5D94714142DDB8700D5E1CC /* TrafficBotHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B5D9473F142DDBFE00D5E1CC /* TrafficBotHelperDaemon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5D9474A142DDBFE00D5E1CC /* Build configuration list for PBXNativeTarget "TrafficBotHelperDaemon" */;
+			buildPhases = (
+				B5D9473C142DDBFE00D5E1CC /* Sources */,
+				B5D9473D142DDBFE00D5E1CC /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TrafficBotHelperDaemon;
+			productName = TrafficBotHelperDaemon;
+			productReference = B5D94740142DDBFE00D5E1CC /* TrafficBotHelperDaemon */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		61126F661425D01700EB1A5D /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 61126F691425D01700EB1A5D /* Build configuration list for PBXProject "TrafficBotHelper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 61126F641425D01700EB1A5D;
+			productRefGroup = 61126F701425D01700EB1A5D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B5D94713142DDB8700D5E1CC /* TrafficBotHelper */,
+				B5D9473F142DDBFE00D5E1CC /* TrafficBotHelperDaemon */,
+				B5D94704142DD92200D5E1CC /* TrafficBotHelperInstaller */,
+				6137962A142DB98A00822607 /* TrafficBotHelperTester */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B5D94712142DDB8700D5E1CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5D9471D142DDB8700D5E1CC /* InfoPlist.strings in Resources */,
+				B5D94723142DDB8700D5E1CC /* Credits.rtf in Resources */,
+				B5D94729142DDB8700D5E1CC /* MainMenu.xib in Resources */,
+				B559DEDD142F6FD600352125 /* Icon.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		61379627142DB98A00822607 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6137963A142DBA3900822607 /* main.mm in Sources */,
+				6137963B142DBB2B00822607 /* AKPcap.mm in Sources */,
+				6137963C142DBB2B00822607 /* AKPcapHandles.mm in Sources */,
+				6137963D142DBB2B00822607 /* AKNetworkInterface.m in Sources */,
+				6137963E142DBB2B00822607 /* TrafficBotHelperConnection.m in Sources */,
+				6137963F142DBB2B00822607 /* TrafficBotHelper.mm in Sources */,
+				61379643142DBBE800822607 /* TrafficBotHelperTester.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5D94701142DD92200D5E1CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5D9470F142DD92D00D5E1CC /* BetterAuthorizationSampleLibInstallTool.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5D94710142DDB8700D5E1CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5D94726142DDB8700D5E1CC /* TrafficBotHelperAppDelegate.m in Sources */,
+				B5D94765142E01D300D5E1CC /* BetterAuthorizationSampleLib.c in Sources */,
+				B5D94760142DFFA300D5E1CC /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5D9473C142DDBFE00D5E1CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5D94762142E00AA00D5E1CC /* main.m in Sources */,
+				B5D9474D142DDC3200D5E1CC /* AKPcap.mm in Sources */,
+				B5D9474E142DDC3200D5E1CC /* AKPcapHandles.mm in Sources */,
+				B5D9474F142DDC3200D5E1CC /* AKNetworkInterface.m in Sources */,
+				B5D94750142DDC3200D5E1CC /* TrafficBotHelper.mm in Sources */,
+				B5D94761142E00A400D5E1CC /* TrafficBotHelperConnection.m in Sources */,
+				B5D94751142DDC3200D5E1CC /* BetterAuthorizationSampleLib.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B5D94730142DDB9400D5E1CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5D94704142DD92200D5E1CC /* TrafficBotHelperInstaller */;
+			targetProxy = B5D9472F142DDB9400D5E1CC /* PBXContainerItemProxy */;
+		};
+		B5D94756142DDC7F00D5E1CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5D9473F142DDBFE00D5E1CC /* TrafficBotHelperDaemon */;
+			targetProxy = B5D94755142DDC7F00D5E1CC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B5D9471B142DDB8700D5E1CC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B5D9471C142DDB8700D5E1CC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B5D94721142DDB8700D5E1CC /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B5D94722142DDB8700D5E1CC /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		B5D94727142DDB8700D5E1CC /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B5D94728142DDB8700D5E1CC /* en */,
+			);
+			name = MainMenu.xib;
+			path = TrafficBotHelper;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		61126FA01425D01800EB1A5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TrafficBotHelper-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		61126FA11425D01800EB1A5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TrafficBotHelper-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		61379636142DB98A00822607 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TrafficBotHelper-Prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		61379637142DB98A00822607 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TrafficBotHelper-Prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B5D9470D142DD92200D5E1CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B5D9470E142DD92200D5E1CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B5D9472B142DDB8700D5E1CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TrafficBotHelper-Prefix.pch";
+				INFOPLIST_FILE = "TrafficBotHelper/TrafficBotHelper-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B5D9472C142DDB8700D5E1CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TrafficBotHelper-Prefix.pch";
+				INFOPLIST_FILE = "TrafficBotHelper/TrafficBotHelper-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		B5D9474B142DDBFE00D5E1CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TrafficBotHelper-Prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B5D9474C142DDBFE00D5E1CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TrafficBotHelper-Prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		61126F691425D01700EB1A5D /* Build configuration list for PBXProject "TrafficBotHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61126FA01425D01800EB1A5D /* Debug */,
+				61126FA11425D01800EB1A5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61379635142DB98A00822607 /* Build configuration list for PBXNativeTarget "TrafficBotHelperTester" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61379636142DB98A00822607 /* Debug */,
+				61379637142DB98A00822607 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5D9470C142DD92200D5E1CC /* Build configuration list for PBXNativeTarget "TrafficBotHelperInstaller" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5D9470D142DD92200D5E1CC /* Debug */,
+				B5D9470E142DD92200D5E1CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5D9472A142DDB8700D5E1CC /* Build configuration list for PBXNativeTarget "TrafficBotHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5D9472B142DDB8700D5E1CC /* Debug */,
+				B5D9472C142DDB8700D5E1CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5D9474A142DDBFE00D5E1CC /* Build configuration list for PBXNativeTarget "TrafficBotHelperDaemon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5D9474B142DDBFE00D5E1CC /* Debug */,
+				B5D9474C142DDBFE00D5E1CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 61126F661425D01700EB1A5D /* Project object */;
+}
