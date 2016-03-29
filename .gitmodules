@@ -4,6 +4,3 @@
 [submodule "private-utilities"]
 	path = private-utilities
 	url = git@admko.unfuddle.com:admko/private-utilities.git
-[submodule "TrafficBotHelper"]
-	path = TrafficBotHelper
-	url = git@admko.unfuddle.com:admko/trafficbot-helper.git
