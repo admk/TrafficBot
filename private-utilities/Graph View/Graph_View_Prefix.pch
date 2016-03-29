@@ -1,0 +1,9 @@
+//
+// Prefix header for all source files of the 'Graph View' target in the 'Graph View' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
+
+#import "AKScopeReleased.h"
