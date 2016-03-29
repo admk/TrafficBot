@@ -1,6 +1,3 @@
 [submodule "Cocoa-Utilities"]
 	path = Cocoa-Utilities
 	url = git@github.com:admko/Cocoa-Utilities.git
-[submodule "private-utilities"]
-	path = private-utilities
-	url = git@admko.unfuddle.com:admko/private-utilities.git
